@@ -1,7 +1,7 @@
 # React hook
 
 ```sh
-npm i optiq-image@beta   # react >= 18 is an optional peer dependency
+npm i optiq-image   # react >= 18 is an optional peer dependency
 ```
 
 ```tsx
@@ -37,3 +37,27 @@ export function AvatarPicker({ onReady }: { onReady: (file: Blob, name: string) 
   on unmount.
 - `enabled: false` keeps the hook idle; `compressor` lets you pass your own `createCompressor()` pool.
 - On error the original file is untouched; upload it instead.
+
+## Example: photo upload form
+
+Compress on the device, show progress and the saving, upload through a presigned S3 URL, and fall back to the
+original file if compression or upload fails. (This file is type-checked in CI against the real package types.)
+
+::: details View example: PhotoUploadForm.tsx
+<<< @/examples/PhotoUploadForm.tsx
+:::
+
+[Source on GitHub](https://github.com/Baukaalm/optiq/blob/main/docs/examples/PhotoUploadForm.tsx)
+
+## Example: several files at once
+
+One hook per file. Jobs share the default worker pool (two at a time), so a long list does not freeze the page or
+start dozens of encoders.
+
+::: details View example: GalleryUploader.tsx
+<<< @/examples/GalleryUploader.tsx
+:::
+
+[Source on GitHub](https://github.com/Baukaalm/optiq/blob/main/docs/examples/GalleryUploader.tsx)
+
+

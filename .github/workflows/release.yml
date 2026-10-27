@@ -34,11 +34,12 @@ jobs:
       - run: node test/browser/run.mjs
       - run: VITE_VERSION=7 node scripts/pack-check.mjs
       - run: VITE_VERSION=8 node scripts/pack-check.mjs
-      - name: Publish (prerelease versions go to the "beta" dist-tag)
+      # Every release goes to "latest" so `npm i optiq-image` installs the newest version, betas included.
+      # Prereleases are additionally tagged "beta" so `optiq-image@beta` keeps working.
+      - name: Publish
         run: |
-          tag=latest
-          case "$VERSION" in *-*) tag=beta ;; esac
-          npm publish --provenance --access public --tag "$tag"
+          npm publish --provenance --access public --tag latest
+          case "$VERSION" in *-*) npm dist-tag add "optiq-image@$VERSION" beta ;; esac
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: GitHub release

@@ -122,6 +122,8 @@ import { useOptiq } from "optiq-image/react";
 const { status, result, progress, cancel } = useOptiq(file, { mode: "fast" });
 ```
 
+[View example](https://github.com/Baukaalm/optiq/blob/main/docs/examples/PhotoUploadForm.tsx) (upload form with progress, cancel and S3) · [React hook docs](https://baukaalm.github.io/optiq/guide/react)
+
 ```sh
 npx optiq-image ./photos --out ./photos-optimized      # static images, in parallel worker threads
 ```
