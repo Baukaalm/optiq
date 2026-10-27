@@ -1,6 +1,6 @@
 # Bundlers and deployment
 
-SmartCompress ships plain ES modules. It starts its worker with the standard pattern
+Optiq ships plain ES modules. It starts its worker with the standard pattern
 `new Worker(new URL("./worker.js", import.meta.url), { type: "module" })`, and the codecs locate their `.wasm`
 files with `new URL("x.wasm", import.meta.url)`. Bundlers that understand these patterns emit the worker and the
 WASM files as separate assets automatically.
@@ -16,7 +16,7 @@ WASM files as separate assets automatically.
 export default defineConfig({
   worker: { format: "es" },
   optimizeDeps: {
-    exclude: ["smartcompress", "@jsquash/jpeg", "@jsquash/png", "@jsquash/webp", "@jsquash/avif", "@jsquash/oxipng", "@jsquash/resize"],
+    exclude: ["optiq-image", "@jsquash/jpeg", "@jsquash/png", "@jsquash/webp", "@jsquash/avif", "@jsquash/oxipng", "@jsquash/resize"],
   },
 });
 ```
@@ -27,20 +27,20 @@ export default defineConfig({
 
 ## Next.js / SSR
 
-Call SmartCompress only in the browser (inside an event handler or `useEffect`, or via `import()` in a client
+Call Optiq only in the browser (inside an event handler or `useEffect`, or via `import()` in a client
 component). It touches `Worker`, `OffscreenCanvas` and `Blob`, none of which exist during server rendering.
 
 ## Custom worker loading
 
 If your bundler cannot follow `new URL(..., import.meta.url)`, or you want to host the worker elsewhere, build
-`smartcompress/worker` as a separate module-worker entry with your bundler (it imports the `@jsquash/*` codecs,
+`optiq-image/worker` as a separate module-worker entry with your bundler (it imports the `@jsquash/*` codecs,
 so it must be bundled, not copied) and pass its URL:
 
 ```ts
-import { createCompressor } from "smartcompress";
+import { createCompressor } from "optiq-image";
 
 const compressor = createCompressor({
-  workerFactory: () => new Worker("/assets/smartcompress-worker.js", { type: "module" }),
+  workerFactory: () => new Worker("/assets/optiq-worker.js", { type: "module" }),
 });
 ```
 
@@ -49,7 +49,7 @@ const compressor = createCompressor({
 - WebAssembly needs `script-src 'wasm-unsafe-eval'` (or `'unsafe-eval'`).
 - The worker needs `worker-src 'self'` (or the origin you serve it from).
 
-Without `'wasm-unsafe-eval'` SmartCompress falls back to the browser's canvas encoders and reports it in
+Without `'wasm-unsafe-eval'` Optiq falls back to the browser's canvas encoders and reports it in
 `result.fallbacks`; AVIF output is then unavailable in Chromium. This path is covered by an automated browser test.
 
 ## What gets downloaded

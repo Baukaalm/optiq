@@ -7,18 +7,18 @@ import { probeJpeg } from "../../src/container/jpeg.js";
 import { probePng } from "../../src/container/png.js";
 import { probeWebp } from "../../src/container/webp.js";
 import { optimize, type EngineOutput } from "../../src/engine.js";
-import { SmartCompressError } from "../../src/errors.js";
+import { OptiqError } from "../../src/errors.js";
 import { initNodeCodecs } from "../../src/node.js";
 import { applyOrientation, pixelsEqual, type RawImage } from "../../src/pixels.js";
 import { probe } from "../../src/probe.js";
 import { ssim } from "../../src/quality.js";
-import type { SmartCompressOptions } from "../../src/types.js";
+import type { OptiqOptions } from "../../src/types.js";
 import { animated, gradient, photoLike, screenshotLike, toGif, toJpeg, toPng, toWebp, transparentIllustration } from "../helpers/fixtures.js";
 
 const wasm = createWasmBackend();
 beforeAll(() => initNodeCodecs());
 
-const run = (input: Uint8Array, options?: SmartCompressOptions, backend: CodecBackend = wasm, signal?: AbortSignal) => optimize(input, options, { backend, signal });
+const run = (input: Uint8Array, options?: OptiqOptions, backend: CodecBackend = wasm, signal?: AbortSignal) => optimize(input, options, { backend, signal });
 const outBytes = (input: Uint8Array, o: EngineOutput) => o.bytes ?? input;
 const decodeOut = async (input: Uint8Array, o: EngineOutput): Promise<RawImage> => {
   const b = outBytes(input, o);
@@ -26,7 +26,7 @@ const decodeOut = async (input: Uint8Array, o: EngineOutput): Promise<RawImage> 
   return wasm.decode(info.format as "png", b);
 };
 async function expectError(p: Promise<unknown>, code: string) {
-  await expect(p).rejects.toBeInstanceOf(SmartCompressError);
+  await expect(p).rejects.toBeInstanceOf(OptiqError);
   await expect(p).rejects.toMatchObject({ code });
 }
 

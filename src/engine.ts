@@ -6,7 +6,7 @@ import { tagAvifSrgb } from "./container/isobmff.js";
 import { injectJpegMetadata, rewriteJpegMetadata } from "./container/jpeg.js";
 import { injectPngMetadata, rewritePngMetadata } from "./container/png.js";
 import { extractFirstWebpFrame, injectWebpMetadata, probeWebp, rewriteWebpMetadata } from "./container/webp.js";
-import { SmartCompressError, throwIfAborted } from "./errors.js";
+import { OptiqError, throwIfAborted } from "./errors.js";
 import { OUTPUT_FORMATS, resolveOptions, type ResolvedOptions } from "./options.js";
 import { applyOrientation, hasTransparentPixels, pixelsEqual, targetSize, tileMosaic, type RawImage } from "./pixels.js";
 import { effectiveMinQuality, losslessPlans, planCandidates, type FormatPlan, type PlanInput } from "./plan.js";
@@ -21,7 +21,7 @@ import type {
   OutputFormat,
   ProgressEvent,
   ProgressStage,
-  SmartCompressOptions,
+  OptiqOptions,
   UnmetConstraint,
 } from "./types.js";
 
@@ -94,7 +94,7 @@ const PROXY_MIN_PIXELS = 4_000_000;
 const isOutputFormat = (f: string): f is OutputFormat => (OUTPUT_FORMATS as readonly string[]).includes(f);
 
 function incompatible(message: string, details?: Record<string, unknown>): never {
-  throw new SmartCompressError("INCOMPATIBLE_OPTIONS", message, details);
+  throw new OptiqError("INCOMPATIBLE_OPTIONS", message, details);
 }
 
 interface MetadataPlan {
@@ -163,7 +163,7 @@ async function injectMetadata(format: OutputFormat, bytes: Uint8Array, meta: Met
 /**
  * Optimise one image. Environment-agnostic: runs in a Worker, on the main thread, or in Node, given a codec backend.
  */
-export async function optimize(input: Uint8Array, options: SmartCompressOptions | undefined, ctx: EngineContext): Promise<EngineOutput> {
+export async function optimize(input: Uint8Array, options: OptiqOptions | undefined, ctx: EngineContext): Promise<EngineOutput> {
   const now = ctx.now ?? (() => performance.now());
   const t0 = now();
   const opts = resolveOptions(options);
@@ -193,9 +193,9 @@ export async function optimize(input: Uint8Array, options: SmartCompressOptions 
     return best;
   };
 
-  if (input.length === 0) throw new SmartCompressError("INVALID_INPUT", "Input is empty");
+  if (input.length === 0) throw new OptiqError("INVALID_INPUT", "Input is empty");
   if (input.length > opts.maxInputBytes) {
-    throw new SmartCompressError("INPUT_TOO_LARGE", `Input is ${input.length} bytes; limit is ${opts.maxInputBytes} (maxInputBytes)`, { bytes: input.length, limit: opts.maxInputBytes });
+    throw new OptiqError("INPUT_TOO_LARGE", `Input is ${input.length} bytes; limit is ${opts.maxInputBytes} (maxInputBytes)`, { bytes: input.length, limit: opts.maxInputBytes });
   }
   emit("probing", 0.02);
   const info = await timed("probe", () => probe(input));
@@ -209,7 +209,7 @@ export async function optimize(input: Uint8Array, options: SmartCompressOptions 
 
   const explicit = isOutputFormat(opts.targetFormat) ? opts.targetFormat : undefined;
   if (info.format === "heif") {
-    throw new SmartCompressError(
+    throw new OptiqError(
       "UNSUPPORTED_FORMAT",
       "HEIC/HEIF is recognized but not supported: no reliable, licence-compatible browser decoder is available. Convert to JPEG on the device or server.",
     );
@@ -221,7 +221,7 @@ export async function optimize(input: Uint8Array, options: SmartCompressOptions 
     return finish(passthrough(input, info.format), undefined);
   }
   if (info.width * info.height > opts.maxInputPixels) {
-    throw new SmartCompressError("INPUT_TOO_LARGE", `Image declares ${info.width}x${info.height} pixels; limit is ${opts.maxInputPixels} (maxInputPixels)`, {
+    throw new OptiqError("INPUT_TOO_LARGE", `Image declares ${info.width}x${info.height} pixels; limit is ${opts.maxInputPixels} (maxInputPixels)`, {
       width: info.width,
       height: info.height,
       limit: opts.maxInputPixels,
@@ -313,11 +313,11 @@ export async function optimize(input: Uint8Array, options: SmartCompressOptions 
       decoded = placeOnCanvas(await ctx.backend.decode("webp", f.still), f.x, f.y, f.canvasWidth, f.canvasHeight);
     } else decoded = await timed("decode", () => ctx.backend.decode(info.format as "jpeg" | "png" | "webp" | "avif", input));
   } catch (e) {
-    if (e instanceof SmartCompressError) throw e;
-    throw new SmartCompressError("MALFORMED_INPUT", `Could not decode ${info.format.toUpperCase()}: ${e instanceof Error ? e.message : String(e)}`);
+    if (e instanceof OptiqError) throw e;
+    throw new OptiqError("MALFORMED_INPUT", `Could not decode ${info.format.toUpperCase()}: ${e instanceof Error ? e.message : String(e)}`);
   }
   if (decoded.width !== info.width || decoded.height !== info.height) {
-    throw new SmartCompressError("MALFORMED_INPUT", `Decoded size ${decoded.width}x${decoded.height} does not match header ${info.width}x${info.height}`);
+    throw new OptiqError("MALFORMED_INPUT", `Decoded size ${decoded.width}x${decoded.height} does not match header ${info.width}x${info.height}`);
   }
   check();
   if (flatten) warnings.push("Animation flattened to its first frame (preserveAnimation: false) unless the original is returned");
@@ -336,7 +336,7 @@ export async function optimize(input: Uint8Array, options: SmartCompressOptions 
   if (needsResize) {
     emit("resizing", 0.1);
     const t = targetSize(reference.width, reference.height, opts.maxWidthOrHeight!);
-    if (!ctx.backend.resize) throw new SmartCompressError("CODEC_UNAVAILABLE", "No resize implementation available");
+    if (!ctx.backend.resize) throw new OptiqError("CODEC_UNAVAILABLE", "No resize implementation available");
     const src = reference;
     reference = await timed("resize", () => ctx.backend.resize!(src, t.width, t.height));
     resized = true;
@@ -430,7 +430,7 @@ export async function optimize(input: Uint8Array, options: SmartCompressOptions 
     try {
       return await evaluate(plan, settings, onProxy);
     } catch (e) {
-      if (e instanceof SmartCompressError || ctx.signal?.aborted) throw e;
+      if (e instanceof OptiqError || ctx.signal?.aborted) throw e;
       unavailable.add(key);
       warnings.push(`${ctx.backend.codecName(plan.format, settings)} unavailable, skipped: ${(e instanceof Error ? e.message : String(e)).slice(0, 160)}`);
       return undefined;
@@ -546,7 +546,7 @@ export async function optimize(input: Uint8Array, options: SmartCompressOptions 
       if (!chosen) {
         // Nothing met the quality constraint: best-effort is the highest-quality candidate.
         chosen = [...candidates].sort((a, b) => (b.report.quality ?? 0) - (a.report.quality ?? 0) || a.bytes.length - b.bytes.length)[0];
-        if (!chosen) throw new SmartCompressError("CODEC_UNAVAILABLE", `No encoder could produce output: ${warnings.filter((w) => w.includes("unavailable")).join("; ")}`);
+        if (!chosen) throw new OptiqError("CODEC_UNAVAILABLE", `No encoder could produce output: ${warnings.filter((w) => w.includes("unavailable")).join("; ")}`);
         unmet.push({ constraint: "minQuality", limit: minQuality, actual: chosen.report.quality ?? 0 });
       }
       // Prefer the container candidate unless re-encoding saves at least minSavingsRatio.
@@ -570,7 +570,7 @@ export async function optimize(input: Uint8Array, options: SmartCompressOptions 
       unmet.push({ constraint: "targetFormat", requested: explicit, reason: "no valid candidate in the requested format" });
     }
     if (unmet.length && opts.onUnmetConstraints === "throw") {
-      throw new SmartCompressError("CONSTRAINTS_UNSATISFIABLE", `Constraints not met: ${unmet.map((u) => u.constraint).join(", ")}`, { unmetConstraints: unmet });
+      throw new OptiqError("CONSTRAINTS_UNSATISFIABLE", `Constraints not met: ${unmet.map((u) => u.constraint).join(", ")}`, { unmetConstraints: unmet });
     }
     if (flatten && chosen.container) {
       const i = warnings.findIndex((w) => w.startsWith("Animation flattened"));

@@ -6,7 +6,7 @@ import { probeIsobmff, sniffIsobmff } from "./container/isobmff.js";
 import { probeJpeg } from "./container/jpeg.js";
 import { inflateIcc, PNG_SIGNATURE, probePng } from "./container/png.js";
 import { isWebp, probeWebp } from "./container/webp.js";
-import { SmartCompressError } from "./errors.js";
+import { OptiqError } from "./errors.js";
 import type { DetectedFormat } from "./types.js";
 
 export interface ProbeInfo {
@@ -45,13 +45,13 @@ export function sniffFormat(b: Uint8Array): DetectedFormat | undefined {
   return undefined;
 }
 
-function malformed(format: string, e: unknown): SmartCompressError {
-  return new SmartCompressError("MALFORMED_INPUT", `Malformed ${format.toUpperCase()}: ${e instanceof Error ? e.message : String(e)}`);
+function malformed(format: string, e: unknown): OptiqError {
+  return new OptiqError("MALFORMED_INPUT", `Malformed ${format.toUpperCase()}: ${e instanceof Error ? e.message : String(e)}`);
 }
 
 export async function probe(b: Uint8Array): Promise<ProbeInfo> {
   const format = sniffFormat(b);
-  if (!format) throw new SmartCompressError("UNSUPPORTED_FORMAT", "Unrecognized image format (checked file content, not extension or MIME type)");
+  if (!format) throw new OptiqError("UNSUPPORTED_FORMAT", "Unrecognized image format (checked file content, not extension or MIME type)");
   const base = { format, hasAlpha: false, animated: false, bitDepth: 8, orientation: 1, warnings: [] as string[] };
   let info: ProbeInfo;
   try {
@@ -104,7 +104,7 @@ export async function probe(b: Uint8Array): Promise<ProbeInfo> {
         return { ...base, width: 0, height: 0 };
     }
   } catch (e) {
-    if (e instanceof SmartCompressError) throw e;
+    if (e instanceof OptiqError) throw e;
     throw malformed(format, e);
   }
   if (!info.width || !info.height) throw malformed(format, new Error("zero image dimensions"));

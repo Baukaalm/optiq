@@ -1,8 +1,15 @@
-# SmartCompress
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="brand/logo-white.svg" />
+    <img src="brand/logo-black.svg" width="96" height="96" alt="Optiq" />
+  </picture>
+</p>
 
-**[Try the demo](https://baukaalm.github.io/smartcompress/try)** · **[Documentation](https://baukaalm.github.io/smartcompress/)** · [Benchmarks](https://baukaalm.github.io/smartcompress/benchmarks)
+<h1 align="center">Optiq</h1>
 
-Browser-side image optimisation for uploads. For every image SmartCompress encodes a bounded set of candidates
+**[Try the demo](https://baukaalm.github.io/optiq/try)** · **[Documentation](https://baukaalm.github.io/optiq/)** · [Benchmarks](https://baukaalm.github.io/optiq/benchmarks)
+
+Browser-side image optimisation for uploads. For every image Optiq encodes a bounded set of candidates
 (MozJPEG, libwebp, libavif, oxipng — compiled to WebAssembly), **measures** each one, and returns the smallest
 output that satisfies your constraint:
 
@@ -13,13 +20,13 @@ output that satisfies your constraint:
 Work runs in a Web Worker; the main thread only posts a `Blob` and receives an `ArrayBuffer`. Results carry the
 chosen codec/settings, every candidate tried, the measured quality, warnings, fallbacks and unmet constraints.
 
-> Benchmarks: see [Benchmark results](#benchmark-results) and `bench/results/RESULTS.md`. SmartCompress is not
+> Benchmarks: see [Benchmark results](#benchmark-results) and `bench/results/RESULTS.md`. Optiq is not
 > uniformly better than the alternatives; the trade-offs (size vs. time vs. memory) are listed there per category.
 
 ## Install
 
 ```sh
-pnpm add smartcompress      # or npm / yarn
+pnpm add optiq-image      # or npm / yarn
 ```
 
 Requirements: an ES2022 browser with module Workers and WebAssembly (Chrome/Edge 80+, Firefox 114+, Safari 15+).
@@ -33,7 +40,7 @@ with `autoFormats: ["jpeg", "png", "webp"]` otherwise.
 export default defineConfig({
   worker: { format: "es" }, // codecs are loaded with dynamic import() inside the worker
   optimizeDeps: {           // dev only: pre-bundling breaks `new URL("x.wasm", import.meta.url)`
-    exclude: ["smartcompress", "@jsquash/jpeg", "@jsquash/png", "@jsquash/webp", "@jsquash/avif", "@jsquash/oxipng", "@jsquash/resize"],
+    exclude: ["optiq-image", "@jsquash/jpeg", "@jsquash/png", "@jsquash/webp", "@jsquash/avif", "@jsquash/oxipng", "@jsquash/resize"],
   },
 });
 ```
@@ -45,7 +52,7 @@ Each codec is a separate chunk, fetched on first use (AVIF ≈ 3.5 MB, others 35
 ## Usage
 
 ```ts
-import { compressImage, isSmartCompressError } from "smartcompress";
+import { compressImage, isOptiqError } from "optiq-image";
 
 const controller = new AbortController();
 try {
@@ -60,7 +67,7 @@ try {
   result.sizeReductionRatio, result.qualityMetric, result.codec, result.warnings;
   if (!result.constraintsMet) console.warn(result.unmetConstraints);
 } catch (e) {
-  if (isSmartCompressError(e)) console.warn(e.code, e.message); // e.g. UNSUPPORTED_FORMAT, ABORTED
+  if (isOptiqError(e)) console.warn(e.code, e.message); // e.g. UNSUPPORTED_FORMAT, ABORTED
   // the original `file` is untouched — upload it instead
 }
 ```
@@ -111,7 +118,7 @@ Error codes: `INVALID_INPUT`, `UNSUPPORTED_FORMAT`, `MALFORMED_INPUT`, `INPUT_TO
 ## Uploading to S3
 
 ```ts
-import { compressAndUpload } from "smartcompress/upload";
+import { compressAndUpload } from "optiq-image/upload";
 const out = await compressAndUpload(file, { requestPresignedUpload: (req) => fetch("/api/presign", …).then((r) => r.json()) });
 ```
 
@@ -134,7 +141,7 @@ Formats are detected from file content. Extensions and MIME types are ignored (a
 
 ## Guarantees and limitations
 
-- **Lossless** means decoded RGBA equality, verified per candidate, for the decoder SmartCompress uses. JPEG
+- **Lossless** means decoded RGBA equality, verified per candidate, for the decoder Optiq uses. JPEG
   decoders are not bit-exact across implementations, so “lossless” for a JPEG input is only ever a byte-level
   container rewrite (metadata removal), never a re-encode.
 - **Transparency** is never dropped: JPEG is excluded when any pixel has alpha < 255.
@@ -155,7 +162,7 @@ Formats are detected from file content. Extensions and MIME types are ignored (a
 
 ## Licensing
 
-SmartCompress: Apache-2.0. Bundled codecs (via jSquash, Apache-2.0 wrappers): MozJPEG (IJG + BSD-3 + zlib),
+Optiq: Apache-2.0. Bundled codecs (via jSquash, Apache-2.0 wrappers): MozJPEG (IJG + BSD-3 + zlib),
 libwebp (BSD-3), libavif (BSD-2) with libaom (BSD-2 + AOMedia patent licence), Rust `png`, `oxipng`, `resize`
 (MIT/Apache-2.0). All permit commercial redistribution with notices. No GPL code is included
 (libimagequant was rejected for that reason).
@@ -171,9 +178,9 @@ input. Full tables, per-image rows and the optimisation log: [`bench/results/RES
 
 | Tool | Total output | Reduction | Meets SSIM ≥ 0.975 | Median time | Median peak RSS |
 |---|---|---|---|---|---|
-| SmartCompress `balanced` | 13.25 → 5.15 MB | 61.1% | 24/24 | 1.8 s | 301 MB |
-| SmartCompress `balanced`, `preserveMetadata: false` | 13.25 → 4.73 MB | 64.3% | 24/24 | 1.5 s | 297 MB |
-| SmartCompress `visually-lossless` | 13.25 → 6.38 MB | 51.8% | 24/24 (≥ 0.99: 24/24) | 2.3 s | 325 MB |
+| Optiq `balanced` | 13.25 → 5.15 MB | 61.1% | 24/24 | 1.8 s | 301 MB |
+| Optiq `balanced`, `preserveMetadata: false` | 13.25 → 4.73 MB | 64.3% | 24/24 | 1.5 s | 297 MB |
+| Optiq `visually-lossless` | 13.25 → 6.38 MB | 51.8% | 24/24 (≥ 0.99: 24/24) | 2.3 s | 325 MB |
 | libvips WebP q80 | 13.25 → 6.50 MB | 51.0% | 17/24 | 59 ms | 105 MB |
 | libvips MozJPEG q80 (opaque only) | 12.82 → 6.87 MB | 46.4% | 11/20 | 54 ms | 106 MB |
 | libvips AVIF q50 | 13.25 → 3.41 MB | 74.3% | 11/24 (photos: 0/10) | 590 ms | 151 MB |
@@ -182,7 +189,7 @@ input. Full tables, per-image rows and the optimisation log: [`bench/results/RES
 
 | Tool | Total output | Reduction | Meets SSIM ≥ 0.975 | Median time |
 |---|---|---|---|---|
-| SmartCompress `balanced` | 13.25 → 5.15 MB | 61.1% | 24/24 | 1.4 s |
+| Optiq `balanced` | 13.25 → 5.15 MB | 61.1% | 24/24 | 1.4 s |
 | browser-image-compression `initialQuality: 0.8` | 13.25 → 10.21 MB | 22.9% | 19/24 | 78 ms |
 | browser-image-compression `fileType: webp, 0.8` | 13.25 → 6.52 MB | 50.8% | 18/24 | 37 ms |
 | browser-image-compression `maxSizeMB: 1` | 13.25 → 7.14 MB | 46.1% | 21/24 (3 large photos were downscaled, not scored) | 128 ms |
@@ -190,15 +197,15 @@ input. Full tables, per-image rows and the optimisation log: [`bench/results/RES
 
 What the numbers say:
 
-- **Per image, no baseline dominated SmartCompress `balanced`** (smaller *and* higher SSIM) on any image.
+- **Per image, no baseline dominated Optiq `balanced`** (smaller *and* higher SSIM) on any image.
   `balanced` dominated MozJPEG q80 on 11/20, WebP q80 on 10/24, browser-image-compression WebP 0.8 on 10/24 and
   AVIF q50 on 2/24; everything else is a trade-off.
 - **AVIF q50 is much smaller on photos, but at SSIM 0.93–0.97**, below the 0.975 constraint on all 10 Kodak photos.
-  SmartCompress spends bytes to stay above the threshold; whether that threshold is right for you is a product decision.
+  Optiq spends bytes to stay above the threshold; whether that threshold is right for you is a product decision.
 - **Category matters.** Screenshots/text: −90.6% / −91.8% vs. −62.8% / −46.6% for WebP q80 (lossless WebP and
   screen-content AVIF win there). Large 12 MP phone photos: −41.5% with metadata kept (AVIF excluded because EXIF
   must be preserved), −47.7% with `preserveMetadata: false`, vs. −30.7% for WebP q80.
-- **SmartCompress is slow and memory-hungry by comparison.** It runs several encodes plus decodes and SSIM per
+- **Optiq is slow and memory-hungry by comparison.** It runs several encodes plus decodes and SSIM per
   image: 1–4 s typical, 3–4 s for 12 MP photos (8–12 s when AVIF is allowed), 16.6 s for a 5 MP screenshot in
   `balanced` and 38 s in `visually-lossless`; median peak RSS ≈ 300 MB, up to 1.1 GB. Single canvas/libvips encodes
   take 5–800 ms. Work runs in a worker, so the UI stays responsive (max main-thread gap 11 ms during a 12 MP job).
@@ -224,8 +231,8 @@ pnpm pack:check       # pack the tarball, install it in a fresh Vite app, typech
 pnpm demo             # React + HeroUI demo with a mock presigned-S3 backend
 pnpm docs:dev         # VitePress documentation site
 pnpm bench:corpus     # download/render the benchmark corpus (24 images)
-pnpm bench:node       # SmartCompress vs libvips (sharp), with peak RSS per run
-pnpm bench:browser    # SmartCompress vs browser-image-compression and canvas, in Chromium
+pnpm bench:node       # Optiq vs libvips (sharp), with peak RSS per run
+pnpm bench:browser    # Optiq vs browser-image-compression and canvas, in Chromium
 pnpm bench:report     # writes bench/results/RESULTS.md
 ```
 

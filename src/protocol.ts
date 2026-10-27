@@ -1,6 +1,6 @@
 import type { EngineReport } from "./engine.js";
 import type { SerializedError } from "./errors.js";
-import type { ProgressEvent, SmartCompressOptions } from "./types.js";
+import type { ProgressEvent, OptiqOptions } from "./types.js";
 
 export type CodecFallbackPolicy = "canvas" | "none";
 
@@ -9,7 +9,7 @@ export interface CompressRequest {
   id: number;
   /** Blobs are structured-cloned by reference, so the main thread never copies the file. */
   input: Blob;
-  options?: SmartCompressOptions;
+  options?: OptiqOptions;
   fallback: CodecFallbackPolicy;
 }
 

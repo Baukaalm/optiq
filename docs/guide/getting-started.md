@@ -3,7 +3,7 @@
 ## Install
 
 ```sh
-pnpm add smartcompress   # npm i smartcompress / yarn add smartcompress
+pnpm add optiq-image   # npm i optiq-image / yarn add optiq-image
 ```
 
 Requirements: an ES2022 browser with module Web Workers and WebAssembly — Chrome/Edge 80+, Firefox 114+,
@@ -20,7 +20,7 @@ export default defineConfig({
   worker: { format: "es" }, // codecs are loaded with dynamic import() inside the worker
   optimizeDeps: {
     // dev server only: pre-bundling breaks `new URL("codec.wasm", import.meta.url)`
-    exclude: ["smartcompress", "@jsquash/jpeg", "@jsquash/png", "@jsquash/webp", "@jsquash/avif", "@jsquash/oxipng", "@jsquash/resize"],
+    exclude: ["optiq-image", "@jsquash/jpeg", "@jsquash/png", "@jsquash/webp", "@jsquash/avif", "@jsquash/oxipng", "@jsquash/resize"],
   },
 });
 ```
@@ -30,7 +30,7 @@ Other bundlers: see [Bundlers and deployment](./bundlers).
 ## Compress a file
 
 ```ts
-import { compressImage, isSmartCompressError } from "smartcompress";
+import { compressImage, isOptiqError } from "optiq-image";
 
 input.addEventListener("change", async () => {
   const file = input.files![0];
@@ -39,7 +39,7 @@ input.addEventListener("change", async () => {
     console.log(`${result.originalFormat} → ${result.outputFormat}`, result.sizeReductionRatio, result.qualityMetric);
     upload(result.blob, result.fileName, result.mimeType);
   } catch (e) {
-    if (isSmartCompressError(e)) console.warn(e.code, e.message);
+    if (isOptiqError(e)) console.warn(e.code, e.message);
     upload(file, file.name, file.type); // the original is never modified
   }
 });
@@ -66,13 +66,13 @@ const result = await compressImage(file, {
 ```
 
 Aborting terminates the worker running the job (a WASM encode cannot be interrupted otherwise) and rejects with
-a `SmartCompressError` whose `code` is `ABORTED` and `name` is `AbortError`.
+a `OptiqError` whose `code` is `ABORTED` and `name` is `AbortError`.
 
 ## React
 
 ```tsx
 import { useEffect, useState } from "react";
-import { compressImage, type CompressionResult } from "smartcompress";
+import { compressImage, type CompressionResult } from "optiq-image";
 
 export function useCompressed(file?: File) {
   const [state, setState] = useState<{ result?: CompressionResult; error?: unknown; progress: number }>({ progress: 0 });
@@ -90,13 +90,13 @@ export function useCompressed(file?: File) {
 ```
 
 A complete React app (HeroUI) with a multi-file queue, before/after comparison and S3 upload lives in the
-repository's [`demo/`](https://github.com/Baukaalm/smartcompress/tree/main/demo) folder — run it with `pnpm demo`, or [try it online](/try).
+repository's [`demo/`](https://github.com/Baukaalm/optiq/tree/main/demo) folder — run it with `pnpm demo`, or [try it online](/try).
 
 ## Vue
 
 ```ts
 import { ref, watch, onScopeDispose, type Ref } from "vue";
-import { compressImage, type CompressionResult } from "smartcompress";
+import { compressImage, type CompressionResult } from "optiq-image";
 
 export function useCompressed(file: Ref<File | undefined>) {
   const result = ref<CompressionResult>();
@@ -119,7 +119,7 @@ export function useCompressed(file: Ref<File | undefined>) {
 custom worker:
 
 ```ts
-import { createCompressor } from "smartcompress";
+import { createCompressor } from "optiq-image";
 
 const compressor = createCompressor({
   maxWorkers: 1,            // default min(2, cores − 1)

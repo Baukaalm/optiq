@@ -3,7 +3,7 @@
 import { chromium } from "playwright";
 import { serveSite } from "../../scripts/serve-site.mjs";
 
-const base = process.env.SITE_BASE ?? "/smartcompress/";
+const base = process.env.SITE_BASE ?? "/optiq/";
 const server = await serveSite();
 const origin = `http://127.0.0.1:${server.address().port}`;
 const browser = await chromium.launch();

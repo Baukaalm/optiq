@@ -70,7 +70,7 @@ async function render(html, width, height, { transparent = false, scale = 1 } = 
   return buf;
 }
 const lorem =
-  "SmartCompress chooses the smallest encoding that satisfies an explicit quality constraint. Screenshots and text-heavy graphics contain sharp edges and flat colours, where lossless or high-fidelity encoders often beat photographic codecs. ";
+  "Optiq chooses the smallest encoding that satisfies an explicit quality constraint. Screenshots and text-heavy graphics contain sharp edges and flat colours, where lossless or high-fidelity encoders often beat photographic codecs. ";
 
 const dashboard = `<style>body{margin:0;font:14px system-ui;background:#f3f4f6;color:#111}nav{background:#111827;color:#fff;padding:14px 20px;font-weight:600}
 .grid{display:grid;grid-template-columns:220px 1fr;min-height:100vh}aside{background:#fff;border-right:1px solid #e5e7eb;padding:16px}aside div{padding:8px;border-radius:6px}aside div:nth-child(2){background:#eef2ff;color:#3730a3}

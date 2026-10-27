@@ -1,4 +1,4 @@
-import type { HttpTransport, PresignRequest, PresignedUpload } from "smartcompress/upload";
+import type { HttpTransport, PresignRequest, PresignedUpload } from "optiq-image/upload";
 
 /**
  * "server": the dev/preview server answers /api/presign and /mock-s3 (see vite.config.ts) like a real backend + S3.

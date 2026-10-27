@@ -1,4 +1,4 @@
-import { compressImage, type CompressionResult } from "smartcompress";
+import { compressImage, type CompressionResult } from "optiq-image";
 
 async function canvasImage(kind: "photo" | "screenshot" | "transparent", w: number, h: number, type: string, quality?: number): Promise<Blob> {
   const c = new OffscreenCanvas(w, h);

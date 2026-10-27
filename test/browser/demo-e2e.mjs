@@ -99,7 +99,7 @@ try {
 
   // Static build as deployed to GitHub Pages: served under a sub-path, upload simulated in the page.
   const outDir = fileURLToPath(new URL("../../test-results/demo-static", import.meta.url));
-  process.env.DEMO_BASE = "/smartcompress/demo/";
+  process.env.DEMO_BASE = "/optiq/demo/";
   process.env.VITE_UPLOAD_MODE = "simulated";
   await build({ configFile: `${root}/vite.config.ts`, root, logLevel: "warn", build: { outDir, emptyOutDir: true } });
   const prev = await preview({ configFile: `${root}/vite.config.ts`, root, logLevel: "warn", build: { outDir }, preview: { port: 0, host: "127.0.0.1" } });
@@ -113,7 +113,7 @@ try {
   const note = await staticPage.textContent('[data-testid="uploaded"]');
   if (!/Simulated upload/.test(note)) throw new Error("expected simulated upload in static build");
   if (staticErrors.length) throw new Error(staticErrors.join("\n"));
-  console.log("static build under /smartcompress/demo/: sample compressed, simulated upload ok");
+  console.log("static build under /optiq/demo/: sample compressed, simulated upload ok");
   prev.httpServer.close();
   console.log("demo e2e: PASS (screenshots in test-results/)");
 } catch (e) {

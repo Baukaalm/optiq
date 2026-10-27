@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { SmartCompressError } from "../../src/errors.js";
+import { OptiqError } from "../../src/errors.js";
 import type { CompressionResult } from "../../src/types.js";
 import { compressAndUpload, UploadError, uploadToPresignedUrl, type HttpRequest } from "../../src/upload.js";
 
@@ -35,7 +35,7 @@ describe("S3 presigned upload", () => {
     const r = await compressAndUpload(file, {
       requestPresignedUpload: async () => ({ url: "https://x/put" }),
       compress: async () => {
-        throw new SmartCompressError("MALFORMED_INPUT", "bad");
+        throw new OptiqError("MALFORMED_INPUT", "bad");
       },
       transport: async (req) => (requests.push(req), { status: 200, headers: {} }),
     });
@@ -59,7 +59,7 @@ describe("S3 presigned upload", () => {
     const ac = new AbortController();
     ac.abort();
     await expect(
-      compressAndUpload(file, { requestPresignedUpload: async () => ({ url: "u" }), compress: async () => { throw new SmartCompressError("ABORTED", "a"); }, transport, signal: ac.signal }),
+      compressAndUpload(file, { requestPresignedUpload: async () => ({ url: "u" }), compress: async () => { throw new OptiqError("ABORTED", "a"); }, transport, signal: ac.signal }),
     ).rejects.toMatchObject({ code: "ABORTED" });
     expect(transport).not.toHaveBeenCalled();
   });

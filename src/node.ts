@@ -1,5 +1,5 @@
 /**
- * `smartcompress/node` — Node.js support (tests, benchmarks, server-side use). jSquash fetches its .wasm via `fetch(import.meta.url)`,
+ * `optiq-image/node` — Node.js support (tests, benchmarks, server-side use). jSquash fetches its .wasm via `fetch(import.meta.url)`,
  * which does not work for file: URLs in Node, so compile the modules from disk and hand them over explicitly.
  *
  * @packageDocumentation
@@ -10,7 +10,7 @@ import { dirname, join } from "node:path";
 import { createWasmBackend } from "./codecs/wasm.js";
 import type { CodecBackend } from "./codecs/types.js";
 import { optimize, type EngineContext, type EngineOutput } from "./engine.js";
-import type { SmartCompressOptions } from "./types.js";
+import type { OptiqOptions } from "./types.js";
 
 let ready: Promise<void> | undefined;
 
@@ -67,7 +67,7 @@ export function initNodeCodecs(): Promise<void> {
 /** Optimise bytes in Node with the WASM codecs (single-threaded; no Worker). */
 export async function optimizeInNode(
   input: Uint8Array,
-  options?: SmartCompressOptions,
+  options?: OptiqOptions,
   ctx: Partial<EngineContext> = {},
 ): Promise<EngineOutput> {
   await initNodeCodecs();

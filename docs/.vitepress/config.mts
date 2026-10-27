@@ -5,12 +5,17 @@ const base = process.env.SITE_BASE ?? "/";
 
 export default defineConfig({
   base,
-  title: "SmartCompress",
+  title: "Optiq",
   description: "Browser-side image optimisation for uploads: the smallest output that meets a measured quality constraint.",
   cleanUrls: true,
   lastUpdated: false,
   srcExclude: ["**/node_modules/**"],
-  head: [["meta", { name: "theme-color", content: "#3355ff" }]],
+  head: [
+    ["meta", { name: "theme-color", content: "#3355ff" }],
+    ["link", { rel: "icon", type: "image/svg+xml", href: `${base}favicon.svg` }],
+    ["link", { rel: "icon", type: "image/png", sizes: "32x32", href: `${base}favicon-32.png` }],
+    ["link", { rel: "apple-touch-icon", href: `${base}apple-touch-icon.png` }],
+  ],
   vite: {
     // Local docs dev: point the embedded demo at a running `pnpm demo` with DEMO_URL=http://localhost:5173/
     define: { __DEMO_URL__: JSON.stringify(process.env.DEMO_URL ?? "") },
@@ -42,9 +47,9 @@ export default defineConfig({
         {
           text: "Reference",
           items: [
-            { text: "API: smartcompress", link: "/api/" },
-            { text: "API: smartcompress/upload", link: "/api/upload" },
-            { text: "API: smartcompress/node", link: "/api/node" },
+            { text: "API: optiq-image", link: "/api/" },
+            { text: "API: optiq-image/upload", link: "/api/upload" },
+            { text: "API: optiq-image/node", link: "/api/node" },
             { text: "Benchmarks", link: "/benchmarks" },
             { text: "Audit", link: "/audit" },
             { text: "Architecture", link: "/architecture" },
@@ -52,12 +57,14 @@ export default defineConfig({
         },
       ],
     },
+    // <img> cannot inherit currentColor, so ship explicit light/dark variants.
+    logo: { light: "/logo-black.svg", dark: "/logo-white.svg", alt: "Optiq" },
     search: { provider: "local" },
-    socialLinks: [{ icon: "github", link: "https://github.com/Baukaalm/smartcompress" }],
-    editLink: { pattern: "https://github.com/Baukaalm/smartcompress/edit/main/docs/:path", text: "Edit this page on GitHub" },
+    socialLinks: [{ icon: "github", link: "https://github.com/Baukaalm/optiq" }],
+    editLink: { pattern: "https://github.com/Baukaalm/optiq/edit/main/docs/:path", text: "Edit this page on GitHub" },
     outline: { level: [2, 3] },
     footer: {
-      message: 'Apache-2.0 · <a href="https://github.com/Baukaalm/smartcompress">GitHub</a> · <a href="https://github.com/Baukaalm/smartcompress/issues">Issues</a> · codec notices in <a href="https://github.com/Baukaalm/smartcompress/blob/main/NOTICE">NOTICE</a>',
+      message: 'Apache-2.0 · <a href="https://github.com/Baukaalm/optiq">GitHub</a> · <a href="https://github.com/Baukaalm/optiq/issues">Issues</a> · codec notices in <a href="https://github.com/Baukaalm/optiq/blob/main/NOTICE">NOTICE</a>',
     },
   },
 });

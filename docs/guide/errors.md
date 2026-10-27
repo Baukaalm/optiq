@@ -1,6 +1,6 @@
 # Errors, cancellation, fallbacks
 
-All failures reject with `SmartCompressError` (`isSmartCompressError(e)`), which has a `code` and sometimes
+All failures reject with `OptiqError` (`isOptiqError(e)`), which has a `code` and sometimes
 `details`. Messages never contain image data or metadata.
 
 | Code | When | What to do |

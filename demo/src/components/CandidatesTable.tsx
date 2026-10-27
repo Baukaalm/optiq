@@ -1,5 +1,5 @@
 import { Chip, Table } from "@heroui/react";
-import type { CandidateReport } from "smartcompress";
+import type { CandidateReport } from "optiq-image";
 import { formatBytes, formatMs } from "../format";
 
 export function CandidatesTable({ candidates, chosen }: { candidates: CandidateReport[]; chosen?: string }) {

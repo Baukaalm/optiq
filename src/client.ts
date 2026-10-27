@@ -1,9 +1,9 @@
 import type { EngineReport } from "./engine.js";
-import { abortError, deserializeError, SmartCompressError } from "./errors.js";
+import { abortError, deserializeError, OptiqError } from "./errors.js";
 import type { CodecFallbackPolicy, CompressRequest, WorkerMessage } from "./protocol.js";
-import type { CompressionResult, OutputFormat, DetectedFormat, ProgressEvent, SmartCompressOptions } from "./types.js";
+import type { CompressionResult, OutputFormat, DetectedFormat, ProgressEvent, OptiqOptions } from "./types.js";
 
-export interface CompressCallOptions extends SmartCompressOptions {
+export interface CompressCallOptions extends OptiqOptions {
   signal?: AbortSignal;
   onProgress?: (event: ProgressEvent) => void;
 }
@@ -63,13 +63,13 @@ export function buildResult(input: Blob, bytes: ArrayBuffer | Uint8Array | undef
 }
 
 function defaultWorkerFactory(): Worker {
-  return new Worker(new URL("./worker.js", import.meta.url), { type: "module", name: "smartcompress" });
+  return new Worker(new URL("./worker.js", import.meta.url), { type: "module", name: "optiq" });
 }
 
 interface Job {
   id: number;
   input: Blob;
-  options: SmartCompressOptions;
+  options: OptiqOptions;
   onProgress?: (e: ProgressEvent) => void;
   signal?: AbortSignal;
   resolve: (r: CompressionResult) => void;
@@ -135,7 +135,7 @@ export function createCompressor(config: CompressorConfig = {}): Compressor {
     if (job) {
       job.slot = undefined;
       job.cleanup();
-      job.reject(new SmartCompressError("WORKER_ERROR", `Compression worker failed: ${detail}`));
+      job.reject(new OptiqError("WORKER_ERROR", `Compression worker failed: ${detail}`));
     }
     pump();
   }
@@ -163,7 +163,7 @@ export function createCompressor(config: CompressorConfig = {}): Compressor {
         } catch (e) {
           const job = queue.shift()!;
           job.cleanup();
-          job.reject(new SmartCompressError("UNSUPPORTED_ENVIRONMENT", `Could not start a Web Worker: ${e instanceof Error ? e.message : String(e)}`));
+          job.reject(new OptiqError("UNSUPPORTED_ENVIRONMENT", `Could not start a Web Worker: ${e instanceof Error ? e.message : String(e)}`));
           continue;
         }
       }
@@ -186,17 +186,17 @@ export function createCompressor(config: CompressorConfig = {}): Compressor {
 
   return {
     compress(input: Blob, options: CompressCallOptions = {}) {
-      if (terminated) return Promise.reject(new SmartCompressError("UNSUPPORTED_ENVIRONMENT", "Compressor was terminated"));
-      if (!(input instanceof Blob)) return Promise.reject(new SmartCompressError("INVALID_INPUT", "Input must be a File or Blob"));
+      if (terminated) return Promise.reject(new OptiqError("UNSUPPORTED_ENVIRONMENT", "Compressor was terminated"));
+      if (!(input instanceof Blob)) return Promise.reject(new OptiqError("INVALID_INPUT", "Input must be a File or Blob"));
       const { signal, onProgress, ...engineOptions } = options;
       if (signal?.aborted) return Promise.reject(abortError());
       const limit = engineOptions.maxInputBytes ?? 100 * 1024 * 1024;
       if (input.size > limit) {
-        return Promise.reject(new SmartCompressError("INPUT_TOO_LARGE", `Input is ${input.size} bytes; limit is ${limit} (maxInputBytes)`, { bytes: input.size, limit }));
+        return Promise.reject(new OptiqError("INPUT_TOO_LARGE", `Input is ${input.size} bytes; limit is ${limit} (maxInputBytes)`, { bytes: input.size, limit }));
       }
       if (typeof Worker === "undefined" && !config.workerFactory) {
         if (config.allowMainThread) return runOnMainThread(input, options);
-        return Promise.reject(new SmartCompressError("UNSUPPORTED_ENVIRONMENT", "Web Workers are not available; pass allowMainThread: true to run on the main thread"));
+        return Promise.reject(new OptiqError("UNSUPPORTED_ENVIRONMENT", "Web Workers are not available; pass allowMainThread: true to run on the main thread"));
       }
       return new Promise<CompressionResult>((resolve, reject) => {
         const job: Job = { id: nextId++, input, options: engineOptions, onProgress, signal, resolve, reject, cleanup: () => {} };
@@ -243,7 +243,7 @@ let shared: Compressor | undefined;
 
 /**
  * Compress an image in a background Web Worker using a shared compressor.
- * Rejects with `SmartCompressError` (`code`), or an `AbortError` (code `ABORTED`) when `signal` aborts.
+ * Rejects with `OptiqError` (`code`), or an `AbortError` (code `ABORTED`) when `signal` aborts.
  */
 export function compressImage(input: File | Blob, options?: CompressCallOptions): Promise<CompressionResult> {
   shared ??= createCompressor();

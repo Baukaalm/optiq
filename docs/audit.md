@@ -1,6 +1,6 @@
 # Performance and correctness audit
 
-An independent pass over SmartCompress looking for outputs larger than the input, quality loss, lost metadata and
+An independent pass over Optiq looking for outputs larger than the input, quality loss, lost metadata and
 WebAssembly overhead. Every number on this page comes from a script in `bench/audit/` and its output file in
 `bench/results/`. Lossless semantics were not changed to save bytes.
 
@@ -12,7 +12,7 @@ WebAssembly overhead. Every number on this page comes from a script in `bench/au
   WebP; static and animated GIF; CMYK JPEG; AVIF; screenshot; transparent icon.
 - **Variants:** `lossless`, `lossless` + strip metadata, `visually-lossless`, `balanced`, `balanced` + strip,
   `balanced` + `maxWidthOrHeight: 1024`, `balanced` + `targetFormat: "webp"` — 119 runs.
-- **Independent checks** (no SmartCompress code involved):
+- **Independent checks** (no Optiq code involved):
   lossless claims → decode input and output with libvips and compare raw pixels (16-bit for 16-bit input);
   quality → `ssim.js` reference SSIM and PSNR; metadata → `sharp.metadata()` of the output (EXIF, GPS IFD,
   ICC bytes, XMP, orientation, frame count).
@@ -90,7 +90,7 @@ WASM vs native libvips, same settings, single thread, median:
 Interpretation: the WASM codecs cost 1.1–2.5× native time (MozJPEG ~2.1×: the jSquash build has no SIMD). That is
 the price of running in the browser and cannot be removed without rebuilding the codecs. Buffer copies (3 ms at
 12 MP), classification (≤ 8 ms) and module initialisation (40 ms in Node) are negligible. SSIM was the only
-overhead owned by SmartCompress that mattered: it cost ~25% of each candidate on small photos.
+overhead owned by Optiq that mattered: it cost ~25% of each candidate on small photos.
 
 **Optimisation applied:** SSIM windows are 8 rows tall at stride 4, so every pixel was converted and accumulated
 twice. Partial sums are now kept per 4-row group. Results are numerically identical (test, |Δ| < 1e-10) and SSIM is

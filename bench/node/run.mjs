@@ -1,4 +1,4 @@
-// Node benchmark: SmartCompress engine (same WASM codecs as in the browser) vs native libvips (sharp) encoders.
+// Node benchmark: Optiq engine (same WASM codecs as in the browser) vs native libvips (sharp) encoders.
 // Usage: node bench/node/run.mjs [--only substring] [--tools a,b]
 import { execFile } from "node:child_process";
 import { mkdir, readFile, writeFile } from "node:fs/promises";

@@ -1,8 +1,8 @@
-# SmartCompress architecture
+# Optiq architecture
 
 ## Goals and non-goals
 
-SmartCompress optimises **raster images in the browser before upload**. For each image it looks for the smallest
+Optiq optimises **raster images in the browser before upload**. For each image it looks for the smallest
 encoding that satisfies an explicit constraint:
 
 | Mode | Constraint | Verification |

@@ -1,4 +1,4 @@
-// Browser benchmark (Playwright Chromium): SmartCompress (Web Worker + WASM) vs browser-image-compression and
+// Browser benchmark (Playwright Chromium): Optiq (Web Worker + WASM) vs browser-image-compression and
 // native canvas encoders. Outputs are scored in Node with the same decoder + SSIM as every other benchmark.
 // Usage: node bench/browser/run.mjs [--only substring] [--tools a,b]
 import { createServer } from "node:http";

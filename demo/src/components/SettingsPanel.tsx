@@ -1,5 +1,5 @@
 import { Card, Description, Label, ListBox, Select, Switch } from "@heroui/react";
-import type { CompressionMode } from "smartcompress";
+import type { CompressionMode } from "optiq-image";
 
 export interface Settings {
   mode: CompressionMode;

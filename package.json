@@ -1,16 +1,16 @@
 {
-  "name": "smartcompress",
+  "name": "optiq-image",
   "version": "0.1.0-beta.0",
   "description": "Browser-side image optimizer: picks the smallest encoding that satisfies lossless or perceptual (SSIM) quality constraints, in a Web Worker.",
   "license": "Apache-2.0",
   "author": "Bauyrzhan (https://github.com/Baukaalm)",
-  "homepage": "https://baukaalm.github.io/smartcompress/",
+  "homepage": "https://baukaalm.github.io/optiq/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Baukaalm/smartcompress.git"
+    "url": "git+https://github.com/Baukaalm/optiq.git"
   },
   "bugs": {
-    "url": "https://github.com/Baukaalm/smartcompress/issues"
+    "url": "https://github.com/Baukaalm/optiq/issues"
   },
   "keywords": [
     "image",
@@ -74,8 +74,8 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run",
     "test:browser": "pnpm build && node test/browser/run.mjs",
-    "demo": "pnpm build && pnpm --filter smartcompress-demo dev",
-    "demo:build": "pnpm build && pnpm --filter smartcompress-demo build",
+    "demo": "pnpm build && pnpm --filter optiq-demo dev",
+    "demo:build": "pnpm build && pnpm --filter optiq-demo build",
     "bench:corpus": "node bench/corpus/build.mjs",
     "bench:node": "node bench/node/run.mjs",
     "bench:browser": "pnpm build && node bench/browser/run.mjs",
@@ -83,8 +83,8 @@
     "test:demo": "pnpm build && node test/browser/demo-e2e.mjs",
     "prepublishOnly": "pnpm typecheck && pnpm test && pnpm build",
     "pack:check": "pnpm build && node scripts/pack-check.mjs",
-    "docs:dev": "pnpm --filter smartcompress-docs dev",
-    "docs:build": "pnpm --filter smartcompress-docs build",
+    "docs:dev": "pnpm --filter optiq-docs dev",
+    "docs:build": "pnpm --filter optiq-docs build",
     "site:build": "pnpm build && node scripts/build-site.mjs",
     "test:site": "pnpm site:build && node test/browser/site-e2e.mjs"
   },

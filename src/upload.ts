@@ -1,11 +1,11 @@
 /**
- * `smartcompress/upload` — upload a compressed (or original) image to S3 through a presigned URL issued by your
+ * `optiq-image/upload` — upload a compressed (or original) image to S3 through a presigned URL issued by your
  * backend. Start with {@link compressAndUpload}.
  *
  * @packageDocumentation
  */
 import { compressImage, type CompressCallOptions } from "./client.js";
-import { abortError, SmartCompressError } from "./errors.js";
+import { abortError, OptiqError } from "./errors.js";
 import type { CompressionResult } from "./types.js";
 
 /** What your backend returns for a presigned S3 upload. Credentials never reach the browser. */
@@ -108,7 +108,7 @@ export async function uploadToPresignedUrl(
 
 export interface CompressAndUploadOptions {
   requestPresignedUpload: RequestPresignedUpload;
-  /** SmartCompress options, or `false` to upload the original as-is. */
+  /** Optiq options, or `false` to upload the original as-is. */
   compression?: Omit<CompressCallOptions, "signal" | "onProgress"> | false;
   /** Custom compressor (defaults to the shared `compressImage`). */
   compress?: (input: Blob, options: CompressCallOptions) => Promise<CompressionResult>;
@@ -128,7 +128,7 @@ export interface CompressAndUploadResult {
   bytes: number;
   compression?: CompressionResult;
   /** Set when compression failed and the original was uploaded instead. */
-  compressionError?: SmartCompressError;
+  compressionError?: OptiqError;
 }
 
 /**
@@ -139,15 +139,15 @@ export interface CompressAndUploadResult {
 export async function compressAndUpload(file: File, opts: CompressAndUploadOptions): Promise<CompressAndUploadResult> {
   const compress = opts.compress ?? compressImage;
   let compression: CompressionResult | undefined;
-  let compressionError: SmartCompressError | undefined;
+  let compressionError: OptiqError | undefined;
   if (opts.compression !== false) {
     opts.onStage?.("compressing");
     try {
       compression = await compress(file, { ...opts.compression, signal: opts.signal, onProgress: opts.onCompressProgress });
     } catch (e) {
-      if (e instanceof SmartCompressError && e.code === "ABORTED") throw e;
+      if (e instanceof OptiqError && e.code === "ABORTED") throw e;
       if (opts.signal?.aborted) throw abortError();
-      compressionError = e instanceof SmartCompressError ? e : new SmartCompressError("WORKER_ERROR", e instanceof Error ? e.message : String(e));
+      compressionError = e instanceof OptiqError ? e : new OptiqError("WORKER_ERROR", e instanceof Error ? e.message : String(e));
     }
   }
   const useOptimized = !!compression && !compression.usedOriginal && compression.outputBytes < file.size;

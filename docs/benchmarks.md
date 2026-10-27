@@ -8,8 +8,8 @@ Reproduce:
 
 ```sh
 pnpm bench:corpus    # download/render the corpus
-pnpm bench:node      # SmartCompress vs libvips (sharp); peak RSS per run in a fresh process
-pnpm bench:browser   # SmartCompress vs browser-image-compression and canvas, in Chromium
+pnpm bench:node      # Optiq vs libvips (sharp); peak RSS per run in a fresh process
+pnpm bench:browser   # Optiq vs browser-image-compression and canvas, in Chromium
 pnpm bench:report    # regenerate bench/results/RESULTS.md
 ```
 

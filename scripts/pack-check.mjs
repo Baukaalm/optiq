@@ -30,13 +30,13 @@ writeFileSync(join(app, "index.html"), `<!doctype html><html><body><script type=
 // The configuration the docs recommend (optimizeDeps.exclude matters for the dev server only).
 writeFileSync(
   join(app, "vite.config.ts"),
-  `import { defineConfig } from "vite";\nexport default defineConfig({ worker: { format: "es" }, optimizeDeps: { exclude: ["smartcompress", "@jsquash/jpeg", "@jsquash/png", "@jsquash/webp", "@jsquash/avif", "@jsquash/oxipng", "@jsquash/resize"] } });\n`,
+  `import { defineConfig } from "vite";\nexport default defineConfig({ worker: { format: "es" }, optimizeDeps: { exclude: ["optiq-image", "@jsquash/jpeg", "@jsquash/png", "@jsquash/webp", "@jsquash/avif", "@jsquash/oxipng", "@jsquash/resize"] } });\n`,
 );
 writeFileSync(join(app, "tsconfig.json"), JSON.stringify({ compilerOptions: { target: "ES2022", module: "ESNext", moduleResolution: "Bundler", strict: true, lib: ["ES2022", "DOM"], skipLibCheck: false, noEmit: true }, include: ["src"] }, null, 2));
 writeFileSync(
   join(app, "src/main.ts"),
-  `import { compressImage, type CompressionResult } from "smartcompress";
-import { compressAndUpload } from "smartcompress/upload";
+  `import { compressImage, type CompressionResult } from "optiq-image";
+import { compressAndUpload } from "optiq-image/upload";
 void compressAndUpload;
 (window as unknown as { run: () => Promise<unknown> }).run = async () => {
   const c = new OffscreenCanvas(640, 400);

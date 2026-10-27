@@ -19,10 +19,10 @@
       "node"
     ],
     "paths": {
-      "smartcompress": [
+      "optiq-image": [
         "./src/index.ts"
       ],
-      "smartcompress/*": [
+      "optiq-image/*": [
         "./src/*.ts"
       ]
     }

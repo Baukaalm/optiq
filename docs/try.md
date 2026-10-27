@@ -19,7 +19,7 @@ and transparent-icon samples, switch modes, and drag the before/after slider.
   <a :href="src" target="_blank" rel="noopener">Open the demo full screen ↗</a>
 </p>
 
-<iframe :src="src + (src.includes('?') ? '&' : '?') + 'embed'" title="SmartCompress demo" class="demo-frame" loading="lazy" allow="clipboard-write"></iframe>
+<iframe :src="src + (src.includes('?') ? '&' : '?') + 'embed'" title="Optiq demo" class="demo-frame" loading="lazy" allow="clipboard-write"></iframe>
 
 ::: tip Upload on this site is simulated
 GitHub Pages has no backend, so “Upload” here simulates the presigned URL and the PUT inside your browser. Run

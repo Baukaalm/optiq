@@ -1,5 +1,5 @@
-// Where does time go? Same codec, same settings: WASM (jSquash, as used by SmartCompress) vs native libvips (sharp,
-// single-threaded), plus SmartCompress's own JS work per candidate (SSIM, exact compare, copies, classification).
+// Where does time go? Same codec, same settings: WASM (jSquash, as used by Optiq) vs native libvips (sharp,
+// single-threaded), plus Optiq's own JS work per candidate (SSIM, exact compare, copies, classification).
 // Median of N runs after one warm-up. Usage: node bench/audit/codecs.mjs   (needs the corpus and `pnpm build`)
 import { readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";

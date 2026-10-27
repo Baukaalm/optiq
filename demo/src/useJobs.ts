@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { compressImage, isSmartCompressError, type CompressionResult, type ProgressEvent, type SmartCompressOptions } from "smartcompress";
-import { uploadToPresignedUrl } from "smartcompress/upload";
+import { compressImage, isOptiqError, type CompressionResult, type ProgressEvent, type OptiqOptions } from "optiq-image";
+import { uploadToPresignedUrl } from "optiq-image/upload";
 import { objectHref, requestPresignedUpload, simulatedTransport, uploadMode } from "./api";
 
 export type JobStatus = "compressing" | "done" | "failed" | "cancelled";
@@ -19,7 +19,7 @@ export interface Job {
   progress?: ProgressEvent;
   result?: CompressionResult;
   error?: string;
-  options: SmartCompressOptions;
+  options: OptiqOptions;
   upload: UploadState;
   /** Added from the built-in samples. */
   sample?: boolean;
@@ -38,7 +38,7 @@ export function useJobs() {
   }, []);
 
   const run = useCallback(
-    async (id: string, file: File, options: SmartCompressOptions) => {
+    async (id: string, file: File, options: OptiqOptions) => {
       controllers.current.get(id)?.abort();
       const ac = new AbortController();
       controllers.current.set(id, ac);
@@ -51,7 +51,7 @@ export function useJobs() {
         patch(id, { status: "done", result, outputUrl: URL.createObjectURL(result.blob) });
       } catch (e) {
         if (ac.signal.aborted) patch(id, { status: "cancelled" });
-        else patch(id, { status: "failed", error: isSmartCompressError(e) ? `${e.code}: ${e.message}` : String(e) });
+        else patch(id, { status: "failed", error: isOptiqError(e) ? `${e.code}: ${e.message}` : String(e) });
       } finally {
         if (controllers.current.get(id) === ac) controllers.current.delete(id);
       }
@@ -60,7 +60,7 @@ export function useJobs() {
   );
 
   const add = useCallback(
-    (files: File[], options: SmartCompressOptions, sample = false) => {
+    (files: File[], options: OptiqOptions, sample = false) => {
       const created = files.map((file) => ({
         id: `job-${++seq}`,
         file,

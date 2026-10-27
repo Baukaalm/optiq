@@ -1,5 +1,5 @@
 import imageCompression from "browser-image-compression";
-import { compressImage } from "smartcompress";
+import { compressImage } from "optiq-image";
 
 type Tool = (file: File) => Promise<Blob>;
 

@@ -37,7 +37,7 @@ block with only the orientation is kept).
 ## Metadata
 
 `preserveMetadata: true` (default) keeps EXIF and XMP in JPEG, PNG and WebP outputs. AVIF output is skipped in
-that case because SmartCompress cannot write AVIF metadata yet; the warning says so. When the image is resized,
+that case because Optiq cannot write AVIF metadata yet; the warning says so. When the image is resized,
 EXIF pixel-dimension tags may still describe the original size.
 
 `preserveMetadata: false` removes EXIF (including GPS location), XMP, comments and trailing data such as embedded

@@ -1,6 +1,6 @@
-// Independent audit of SmartCompress outputs on edge-case fixtures derived from the benchmark corpus.
+// Independent audit of Optiq outputs on edge-case fixtures derived from the benchmark corpus.
 //
-// Every check uses tooling *other than* SmartCompress's own decoders and metric:
+// Every check uses tooling *other than* Optiq's own decoders and metric:
 //  - lossless claims: decode input and output with libvips (sharp) and compare raw pixels (16-bit when the input is 16-bit);
 //  - perceptual quality: ssim.js (Gaussian "original" SSIM on luma) after flattening alpha on white, plus PSNR;
 //  - metadata: sharp.metadata() of the output (EXIF, GPS IFD pointer, ICC bytes, XMP, orientation).

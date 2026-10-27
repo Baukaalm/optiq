@@ -1,6 +1,6 @@
 import { Chip, Separator } from "@heroui/react";
 import { useEffect, useMemo, useRef, useState } from "react";
-import type { SmartCompressOptions } from "smartcompress";
+import type { OptiqOptions } from "optiq-image";
 import { Dropzone } from "./components/Dropzone";
 import { JobCard } from "./components/JobCard";
 import { loadSample, Samples } from "./components/Samples";
@@ -8,7 +8,7 @@ import { SettingsPanel, type Settings } from "./components/SettingsPanel";
 import { formatBytes, formatPct } from "./format";
 import { useJobs } from "./useJobs";
 
-function toOptions(s: Settings): SmartCompressOptions {
+function toOptions(s: Settings): OptiqOptions {
   const maxWidthOrHeight = s.maxSide === "none" ? undefined : Number(s.maxSide);
   return {
     mode: s.mode,
@@ -51,21 +51,26 @@ export function App() {
     <div className={`mx-auto max-w-6xl px-4 pb-24 ${embedded ? "pt-4" : ""}`}>
       {!embedded && (
       <header className="flex flex-col items-start gap-4 pt-12 pb-10 sm:pt-16">
-        <div className="flex w-full flex-wrap items-center gap-2">
-          <Chip variant="soft" color="accent">Runs in a Web Worker</Chip>
-          <Chip variant="soft">MozJPEG · WebP · AVIF · oxipng (WASM)</Chip>
-          <Chip variant="soft" color="success">Nothing leaves the page until you upload</Chip>
+        <div className="flex w-full items-center gap-3">
+          {/* logo.svg uses currentColor, which <img> cannot inherit: invert it in dark mode instead. */}
+          <img src={`${import.meta.env.BASE_URL}logo.svg`} alt="" className="size-9 dark:invert" />
+          <span className="text-2xl font-semibold tracking-tight">Optiq</span>
           <span className="flex-1" />
-          <a className="button button--tertiary button--sm" href="https://github.com/Baukaalm/smartcompress" target="_blank" rel="noreferrer">
+          <a className="button button--tertiary button--sm" href="https://github.com/Baukaalm/optiq" target="_blank" rel="noreferrer">
             GitHub
           </a>
-          <a className="button button--tertiary button--sm" href={import.meta.env.BASE_URL === "/" ? "https://baukaalm.github.io/smartcompress/" : `${import.meta.env.BASE_URL}../`}>
+          <a className="button button--tertiary button--sm" href={import.meta.env.BASE_URL === "/" ? "https://baukaalm.github.io/optiq/" : `${import.meta.env.BASE_URL}../`}>
             Docs
           </a>
         </div>
+        <div className="flex flex-wrap gap-2">
+          <Chip variant="soft" color="accent">Runs in a Web Worker</Chip>
+          <Chip variant="soft">MozJPEG · WebP · AVIF · oxipng (WASM)</Chip>
+          <Chip variant="soft" color="success">Nothing leaves the page until you upload</Chip>
+        </div>
         <h1 className="text-4xl font-bold tracking-tight text-balance sm:text-5xl">Smaller uploads, measured quality.</h1>
         <p className="max-w-2xl text-lg text-muted text-pretty">
-          SmartCompress tries several encoders on your device, measures each result, and keeps the smallest one that meets the quality
+          Optiq tries several encoders on your device, measures each result, and keeps the smallest one that meets the quality
           constraint — then uploads it to S3 through a presigned URL from your backend.
         </p>
       </header>

@@ -1,5 +1,5 @@
-import { SmartCompressError } from "./errors.js";
-import type { CompressionMode, OutputFormat, SearchStrategy, SmartCompressOptions, TargetFormat } from "./types.js";
+import { OptiqError } from "./errors.js";
+import type { CompressionMode, OutputFormat, SearchStrategy, OptiqOptions, TargetFormat } from "./types.js";
 
 export interface ResolvedOptions {
   mode: CompressionMode;
@@ -35,7 +35,7 @@ export const MODE_DEFAULTS: Record<CompressionMode, { minQuality: number; maxCan
 };
 
 function invalid(message: string): never {
-  throw new SmartCompressError("INVALID_OPTIONS", message);
+  throw new OptiqError("INVALID_OPTIONS", message);
 }
 
 function positiveInt(name: string, v: number | undefined): number | undefined {
@@ -44,7 +44,7 @@ function positiveInt(name: string, v: number | undefined): number | undefined {
   return v;
 }
 
-export function resolveOptions(o: SmartCompressOptions = {}): ResolvedOptions {
+export function resolveOptions(o: OptiqOptions = {}): ResolvedOptions {
   const mode = o.mode ?? "balanced";
   if (!MODES.includes(mode)) invalid(`mode must be one of ${MODES.join(", ")}; got "${String(mode)}"`);
   const d = MODE_DEFAULTS[mode];

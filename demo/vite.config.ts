@@ -81,7 +81,7 @@ export default defineConfig({
   worker: { format: "es" },
   // Dev only: pre-bundling would break jSquash's `new URL("x.wasm", import.meta.url)` lookups.
   optimizeDeps: {
-    exclude: ["smartcompress", "@jsquash/jpeg", "@jsquash/png", "@jsquash/webp", "@jsquash/avif", "@jsquash/oxipng", "@jsquash/resize"],
+    exclude: ["optiq-image", "@jsquash/jpeg", "@jsquash/png", "@jsquash/webp", "@jsquash/avif", "@jsquash/oxipng", "@jsquash/resize"],
   },
   // React + HeroUI + react-aria are ~600 KB minified (186 KB gzip); expected for a demo app.
   build: { target: "es2022", chunkSizeWarningLimit: 800 },

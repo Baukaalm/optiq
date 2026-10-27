@@ -25,7 +25,7 @@ Perceptual modes never claim to be lossless: the result reports `qualityMetricNa
 - Every re-encoded candidate is decoded and compared pixel by pixel; a mismatch rejects it.
 - Resizing is refused unless `allowLossyResize: true`.
 
-“Lossless” refers to the decoder SmartCompress uses. Different JPEG decoders do not produce bit-identical pixels,
+“Lossless” refers to the decoder Optiq uses. Different JPEG decoders do not produce bit-identical pixels,
 which is one more reason JPEG inputs are only ever rewritten at container level.
 
 ## The quality metric

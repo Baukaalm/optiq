@@ -1,5 +1,5 @@
 {
-  "name": "smartcompress-demo",
+  "name": "optiq-demo",
   "private": true,
   "type": "module",
   "scripts": {
@@ -12,7 +12,7 @@
     "@heroui/styles": "3.2.6",
     "react": "19.3.1",
     "react-dom": "19.3.1",
-    "smartcompress": "workspace:*"
+    "optiq-image": "workspace:*"
   },
   "devDependencies": {
     "@tailwindcss/vite": "4.3.3",

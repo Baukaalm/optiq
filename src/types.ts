@@ -1,10 +1,10 @@
-/** Formats SmartCompress can recognise from magic bytes. Recognition is not the same as support. */
+/** Formats Optiq can recognise from magic bytes. Recognition is not the same as support. */
 export type DetectedFormat = "jpeg" | "png" | "webp" | "avif" | "gif" | "heif" | "svg";
 
 /** Formats that can be decoded to pixels and re-encoded. */
 export type DecodableFormat = "jpeg" | "png" | "webp" | "avif" | "gif";
 
-/** Formats SmartCompress can encode. */
+/** Formats Optiq can encode. */
 export type OutputFormat = "jpeg" | "png" | "webp" | "avif";
 
 export type TargetFormat = "auto" | "original" | OutputFormat;
@@ -26,7 +26,7 @@ export type ImageCategory =
 
 export type SearchStrategy = "binary" | "fixed";
 
-export interface SmartCompressOptions {
+export interface OptiqOptions {
   /** Default `balanced`. */
   mode?: CompressionMode;
   /** Upper bound for output size. Not a promise: reported in `unmetConstraints` if impossible. */

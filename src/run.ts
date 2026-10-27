@@ -3,12 +3,12 @@ import { withFallback } from "./codecs/fallback.js";
 import { createWasmBackend } from "./codecs/wasm.js";
 import { optimize, type EngineOutput } from "./engine.js";
 import type { CodecFallbackPolicy } from "./protocol.js";
-import type { ProgressEvent, SmartCompressOptions } from "./types.js";
+import type { ProgressEvent, OptiqOptions } from "./types.js";
 
 /** Run the engine with the default browser backend (WASM codecs, optional canvas fallback). */
 export async function runJob(
   input: Blob,
-  options: SmartCompressOptions | undefined,
+  options: OptiqOptions | undefined,
   fallback: CodecFallbackPolicy,
   onProgress?: (e: ProgressEvent) => void,
   signal?: AbortSignal,
