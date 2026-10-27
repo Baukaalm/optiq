@@ -12,6 +12,10 @@ rmSync(work, { recursive: true, force: true });
 mkdirSync(work, { recursive: true });
 const sh = (cmd, args, cwd) => execFileSync(cmd, args, { cwd, stdio: ["ignore", "pipe", "inherit"], encoding: "utf8" });
 
+// npm silently rewrites some package.json fields at publish time; treat that as a failure so it is fixed in the repo.
+const publishLog = execFileSync("sh", ["-c", "npm publish --dry-run --ignore-scripts 2>&1"], { cwd: root, encoding: "utf8" });
+if (/auto-corrected|errors corrected/.test(publishLog)) throw new Error(`npm would rewrite package.json on publish:\n${publishLog}`);
+console.log("npm publish --dry-run: manifest needs no corrections");
 const out = sh("pnpm", ["pack", "--pack-destination", work], root);
 const tgz = readdirSync(work).find((f) => f.endsWith(".tgz"));
 const listing = sh("tar", ["-tzf", tgz], work).trim().split("\n");
