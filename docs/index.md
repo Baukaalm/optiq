@@ -4,6 +4,10 @@ hero:
   name: Optiq
   text: Smaller uploads, measured quality
   tagline: Encodes each image several ways in a Web Worker, measures every result, and keeps the smallest one that meets your lossless or SSIM constraint.
+  image:
+    light: /logo-black.svg
+    dark: /logo-white.svg
+    alt: Optiq aperture mark
   actions:
     - theme: brand
       text: Try the demo
@@ -17,9 +21,6 @@ hero:
     - theme: alt
       text: API reference
       link: /api/
-    - theme: alt
-      text: GitHub
-      link: https://github.com/Baukaalm/optiq
 features:
   - title: Constraint first
     details: "lossless (pixel-exact, verified), visually-lossless (SSIM ≥ 0.99) or balanced (SSIM ≥ 0.975). Every candidate is decoded and scored; nothing is returned on an estimate."

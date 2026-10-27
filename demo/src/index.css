@@ -11,3 +11,53 @@ body {
   background-image: repeating-conic-gradient(color-mix(in oklab, currentColor 10%, transparent) 0 25%, transparent 0 50%);
   background-size: 16px 16px;
 }
+
+/*
+ * Optiq palette ("darkroom"): untinted graphite neutrals, ink as the primary colour, colour only for meaning
+ * (saved = emerald, warning = amber, error = red). Overrides HeroUI's default tokens (blue accent, violet-tinted greys).
+ */
+:root {
+  --background: oklch(0.982 0.002 85);
+  --foreground: oklch(0.2 0.004 85);
+  --surface: oklch(1 0 0);
+  --surface-secondary: oklch(0.965 0.002 85);
+  --surface-tertiary: oklch(0.945 0.003 85);
+  --overlay: oklch(1 0 0);
+  --segment: oklch(1 0 0);
+  --muted: oklch(0.52 0.006 85);
+  --border: oklch(0.905 0.003 85);
+  --default: oklch(0.945 0.003 85);
+  --default-foreground: oklch(0.2 0.004 85);
+  --field-background: oklch(1 0 0);
+  --field-foreground: oklch(0.2 0.004 85);
+  --accent: oklch(0.21 0.004 85);
+  --accent-foreground: oklch(0.985 0.002 85);
+  --success: oklch(0.56 0.11 160);
+  --success-foreground: oklch(0.99 0 0);
+  --warning: oklch(0.72 0.13 70);
+  --danger: oklch(0.57 0.19 27);
+  --focus: oklch(0.45 0.005 85);
+}
+
+:root.dark {
+  --background: oklch(0.155 0.003 85);
+  --foreground: oklch(0.955 0.003 85);
+  --surface: oklch(0.2 0.003 85);
+  --surface-secondary: oklch(0.235 0.003 85);
+  --surface-tertiary: oklch(0.27 0.003 85);
+  --overlay: oklch(0.22 0.003 85);
+  --segment: oklch(0.27 0.003 85);
+  --muted: oklch(0.68 0.006 85);
+  --border: oklch(0.3 0.003 85);
+  --default: oklch(0.27 0.003 85);
+  --default-foreground: oklch(0.955 0.003 85);
+  --field-background: oklch(0.22 0.003 85);
+  --field-foreground: oklch(0.955 0.003 85);
+  --accent: oklch(0.95 0.003 85);
+  --accent-foreground: oklch(0.17 0.003 85);
+  --success: oklch(0.7 0.12 160);
+  --success-foreground: oklch(0.17 0.003 85);
+  --warning: oklch(0.78 0.12 75);
+  --danger: oklch(0.66 0.17 27);
+  --focus: oklch(0.75 0.005 85);
+}

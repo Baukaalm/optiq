@@ -11,7 +11,7 @@ export default defineConfig({
   lastUpdated: false,
   srcExclude: ["**/node_modules/**"],
   head: [
-    ["meta", { name: "theme-color", content: "#3355ff" }],
+    ["meta", { name: "theme-color", content: "#1c1b19" }],
     ["link", { rel: "icon", type: "image/svg+xml", href: `${base}favicon.svg` }],
     ["link", { rel: "icon", type: "image/png", sizes: "32x32", href: `${base}favicon-32.png` }],
     ["link", { rel: "apple-touch-icon", href: `${base}apple-touch-icon.png` }],

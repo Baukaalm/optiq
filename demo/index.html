@@ -8,8 +8,9 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <script>
-    // Follow the OS theme; HeroUI v3 switches on the `dark` class.
-    if (matchMedia("(prefers-color-scheme: dark)").matches) document.documentElement.classList.add("dark");
+    // ?theme=dark|light (set by the docs when embedding) wins; otherwise follow the OS. HeroUI v3 keys off `.dark`.
+    const theme = new URLSearchParams(location.search).get("theme");
+    if (theme === "dark" || (theme !== "light" && matchMedia("(prefers-color-scheme: dark)").matches)) document.documentElement.classList.add("dark");
   </script>
 </head>
 <body class="bg-background text-foreground antialiased">

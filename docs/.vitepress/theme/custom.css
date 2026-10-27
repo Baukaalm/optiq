@@ -1,0 +1,91 @@
+/* Optiq palette: graphite neutrals, ink as the brand colour (matches the aperture mark), no violet/indigo. */
+:root {
+  --vp-c-bg: #fbfaf8;
+  --vp-c-bg-alt: #f4f3f0;
+  --vp-c-bg-soft: #efeeea;
+  --vp-c-bg-elv: #ffffff;
+  --vp-c-text-1: #1c1b19;
+  --vp-c-text-2: #55534e;
+  --vp-c-text-3: #8a8780;
+  --vp-c-divider: #e3e1dc;
+  --vp-c-gutter: #ebe9e4;
+  --vp-c-border: #d6d3cc;
+
+  --vp-c-brand-1: #1c1b19;
+  --vp-c-brand-2: #3a3833;
+  --vp-c-brand-3: #1c1b19;
+  --vp-c-brand-soft: rgba(28, 27, 25, 0.08);
+
+  --vp-button-brand-text: #fbfaf8;
+  --vp-button-brand-hover-text: #fbfaf8;
+  --vp-button-brand-active-text: #fbfaf8;
+  --vp-button-brand-bg: #1c1b19;
+  --vp-button-brand-hover-bg: #3a3833;
+  --vp-button-brand-active-bg: #000000;
+
+  --vp-home-hero-name-color: var(--vp-c-text-1);
+  --vp-c-tip-1: #2f6f55;
+  --vp-c-tip-soft: rgba(47, 111, 85, 0.1);
+  --vp-c-default-1: #c9c6be;
+  --vp-c-default-2: #dcd9d2;
+  --vp-c-default-3: #e8e6e0;
+  --vp-c-default-soft: rgba(28, 27, 25, 0.06);
+  --vp-c-gray-1: #c9c6be;
+  --vp-c-gray-2: #dcd9d2;
+  --vp-c-gray-3: #e8e6e0;
+  --vp-c-gray-soft: rgba(28, 27, 25, 0.06);
+}
+
+.dark {
+  --vp-c-bg: #151513;
+  --vp-c-bg-alt: #11110f;
+  --vp-c-bg-soft: #1d1d1a;
+  --vp-c-bg-elv: #1d1d1a;
+  --vp-c-text-1: #f1efea;
+  --vp-c-text-2: #b3b0a8;
+  --vp-c-text-3: #7d7a73;
+  --vp-c-divider: #2b2a27;
+  --vp-c-gutter: #0d0d0c;
+  --vp-c-border: #3a3935;
+
+  --vp-c-brand-1: #f1efea;
+  --vp-c-brand-2: #d6d3cc;
+  --vp-c-brand-3: #f1efea;
+  --vp-c-brand-soft: rgba(241, 239, 234, 0.1);
+
+  --vp-button-brand-text: #151513;
+  --vp-button-brand-hover-text: #151513;
+  --vp-button-brand-active-text: #151513;
+  --vp-button-brand-bg: #f1efea;
+  --vp-button-brand-hover-bg: #d6d3cc;
+  --vp-button-brand-active-bg: #ffffff;
+
+  --vp-c-tip-1: #7cc4a2;
+  --vp-c-tip-soft: rgba(124, 196, 162, 0.12);
+  --vp-c-default-1: #4a4844;
+  --vp-c-default-2: #3a3935;
+  --vp-c-default-3: #2d2c29;
+  --vp-c-default-soft: rgba(241, 239, 234, 0.08);
+  --vp-c-gray-1: #4a4844;
+  --vp-c-gray-2: #3a3935;
+  --vp-c-gray-3: #2d2c29;
+  --vp-c-gray-soft: rgba(241, 239, 234, 0.08);
+}
+
+/* Hero mark: large aperture, slightly muted so the headline stays dominant. */
+.VPHero .image-src {
+  max-width: 280px;
+  max-height: 280px;
+  opacity: 0.92;
+}
+
+/* Links in prose: ink with an underline instead of a coloured link. */
+.vp-doc a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--vp-c-text-3);
+}
+.vp-doc a:hover {
+  text-decoration-color: currentColor;
+}

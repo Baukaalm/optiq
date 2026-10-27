@@ -5,8 +5,12 @@ pageClass: try-page
 ---
 
 <script setup>
-import { withBase } from "vitepress";
+import { computed } from "vue";
+import { useData, withBase } from "vitepress";
+const { isDark } = useData();
 const src = __DEMO_URL__ || withBase("/demo/");
+// The embedded demo follows the docs theme toggle, not only the OS setting.
+const frameSrc = computed(() => `${src}${src.includes("?") ? "&" : "?"}embed&theme=${isDark.value ? "dark" : "light"}`);
 </script>
 
 # Try the demo
@@ -19,7 +23,7 @@ and transparent-icon samples, switch modes, and drag the before/after slider.
   <a :href="src" target="_blank" rel="noopener">Open the demo full screen ↗</a>
 </p>
 
-<iframe :src="src + (src.includes('?') ? '&' : '?') + 'embed'" title="Optiq demo" class="demo-frame" loading="lazy" allow="clipboard-write"></iframe>
+<iframe :key="frameSrc" :src="frameSrc" title="Optiq demo" class="demo-frame" loading="lazy" allow="clipboard-write"></iframe>
 
 ::: tip Upload on this site is simulated
 GitHub Pages has no backend, so “Upload” here simulates the presigned URL and the PUT inside your browser. Run
