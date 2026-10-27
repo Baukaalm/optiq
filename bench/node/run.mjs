@@ -15,7 +15,7 @@ const args = process.argv.slice(2);
 const only = args.includes("--only") ? args[args.indexOf("--only") + 1] : undefined;
 const TOOLS = args.includes("--tools")
   ? args[args.indexOf("--tools") + 1].split(",")
-  : ["sc-balanced", "sc-balanced-nometa", "sc-visually-lossless", "sc-lossless", "sharp-mozjpeg-q80", "sharp-webp-q80", "sharp-avif-q50", "sharp-png-max", "sharp-webp-lossless"];
+  : ["sc-fast", "sc-balanced", "sc-balanced-nometa", "sc-visually-lossless", "sc-lossless", "sharp-mozjpeg-q80", "sharp-webp-q80", "sharp-avif-q50", "sharp-png-max", "sharp-webp-lossless"];
 
 const manifest = JSON.parse(await readFile(join(benchDir, "corpus/manifest.json"), "utf8"));
 const outDir = join(benchDir, "results/raw/node");

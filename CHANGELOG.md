@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.0-beta.0 (unreleased)
+
+- `mode: "fast"`: SSIM ≥ 0.975 like `balanced`, no AVIF, no oxipng, ≤ 5 encodes. Benchmark: −54.9% total
+  (balanced −61.2%), median 405 ms in Chromium (balanced 1.3 s), median peak RSS 184 MB (balanced 304 MB).
+- `optiq-image` CLI (`npx optiq-image <files|folders>`): dry run by default, `--out`, `--in-place`, parallel workers.
+- `optiq-image/vite`: Vite plugin that optimises build output in place (same names and formats).
+- `optiq-image/react`: `useOptiq(file, options)` hook.
+- `optimizeFiles()` batch API for Node (worker_threads pool).
+
 ## 0.1.0-beta.0 (unreleased)
 
 Audit fixes (see docs/audit.md):

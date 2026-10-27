@@ -25,13 +25,16 @@ export interface ResolvedOptions {
 
 export const OUTPUT_FORMATS: readonly OutputFormat[] = ["jpeg", "png", "webp", "avif"];
 const TARGETS: readonly TargetFormat[] = ["auto", "original", ...OUTPUT_FORMATS];
-const MODES: readonly CompressionMode[] = ["lossless", "visually-lossless", "balanced"];
+const MODES: readonly CompressionMode[] = ["lossless", "visually-lossless", "balanced", "fast"];
 
 export const MODE_DEFAULTS: Record<CompressionMode, { minQuality: number; maxCandidates: number; qualityTolerance: number; avifSpeed: number }> = {
   lossless: { minQuality: 1, maxCandidates: 4, qualityTolerance: 0, avifSpeed: 6 },
   "visually-lossless": { minQuality: 0.99, maxCandidates: 16, qualityTolerance: 3, avifSpeed: 6 },
   // AVIF speed 7, not 8: at speed 8 libaom lost its screen-content gains (5 MP dashboard: 45 KB vs 13 KB at q50).
   balanced: { minQuality: 0.975, maxCandidates: 10, qualityTolerance: 5, avifSpeed: 7 },
+  // Same quality bar as balanced; cost is capped instead: AVIF (3.5 MB download, slowest encoder, most memory) is off
+  // by default, oxipng is skipped, and the quality search stops early.
+  fast: { minQuality: 0.975, maxCandidates: 5, qualityTolerance: 8, avifSpeed: 8 },
 };
 
 function invalid(message: string): never {
@@ -50,7 +53,7 @@ export function resolveOptions(o: OptiqOptions = {}): ResolvedOptions {
   const d = MODE_DEFAULTS[mode];
   const targetFormat = o.targetFormat ?? "auto";
   if (!TARGETS.includes(targetFormat)) invalid(`targetFormat must be one of ${TARGETS.join(", ")}; got "${String(targetFormat)}"`);
-  const autoFormats = o.autoFormats ?? [...OUTPUT_FORMATS];
+  const autoFormats = o.autoFormats ?? (mode === "fast" ? OUTPUT_FORMATS.filter((f) => f !== "avif") : [...OUTPUT_FORMATS]);
   if (!autoFormats.length || autoFormats.some((f) => !OUTPUT_FORMATS.includes(f))) invalid(`autoFormats must be a non-empty subset of ${OUTPUT_FORMATS.join(", ")}`);
   if (o.minQuality !== undefined && (!Number.isFinite(o.minQuality) || o.minQuality <= 0 || o.minQuality > 1)) {
     invalid("minQuality is an SSIM value and must be in (0, 1]");

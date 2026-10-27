@@ -24,7 +24,7 @@ try {
   const r = await demo.goto(`${origin}${base}demo/`);
   await demo.waitForSelector('[data-testid="job"][data-status="done"]', { timeout: 120_000 });
   console.log("stand-alone demo:", r.status());
-  for (const p of ["guide/getting-started", "guide/modes", "guide/options", "guide/formats", "guide/errors", "guide/bundlers", "guide/s3", "guide/faq", "api/", "api/upload", "api/node", "benchmarks", "architecture", "try"]) {
+  for (const p of ["guide/getting-started", "guide/modes", "guide/options", "guide/formats", "guide/errors", "guide/bundlers", "guide/s3", "guide/faq", "guide/react", "guide/static", "api/", "api/react", "api/vite", "api/upload", "api/node", "benchmarks", "architecture", "try"]) {
     const res = await fetch(`${origin}${base}${p}`);
     if (res.status !== 200) throw new Error(`${p}: HTTP ${res.status}`);
   }

@@ -1,0 +1,39 @@
+# React hook
+
+```sh
+npm i optiq-image@beta   # react >= 18 is an optional peer dependency
+```
+
+```tsx
+import { useState } from "react";
+import { useOptiq } from "optiq-image/react";
+
+export function AvatarPicker({ onReady }: { onReady: (file: Blob, name: string) => void }) {
+  const [file, setFile] = useState<File | null>(null);
+  const { status, result, progress, error, cancel } = useOptiq(file, { mode: "fast", maxWidthOrHeight: 1024 });
+
+  return (
+    <div>
+      <input type="file" accept="image/*" onChange={(e) => setFile(e.target.files?.[0] ?? null)} />
+      {status === "compressing" && (
+        <p>
+          {progress?.stage} {Math.round((progress?.progress ?? 0) * 100)}% <button onClick={cancel}>Cancel</button>
+        </p>
+      )}
+      {status === "done" && result && (
+        <button onClick={() => onReady(result.blob, result.fileName)}>
+          Use it ({Math.round(result.sizeReductionRatio * 100)}% smaller)
+        </button>
+      )}
+      {status === "error" && file && <button onClick={() => onReady(file, file.name)}>Upload original</button>}
+    </div>
+  );
+}
+```
+
+- `status`: `idle | compressing | done | error | cancelled`.
+- The job restarts when `file` or the options change. Options are compared by value, so an inline object does not
+  restart it on every render. The previous job is aborted (its worker is terminated), and so is the running job
+  on unmount.
+- `enabled: false` keeps the hook idle; `compressor` lets you pass your own `createCompressor()` pool.
+- On error the original file is untouched; upload it instead.

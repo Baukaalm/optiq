@@ -13,6 +13,7 @@ global.gc?.();
 const baseRss = process.memoryUsage().rss;
 
 const SC = {
+  "sc-fast": { mode: "fast" },
   "sc-balanced": { mode: "balanced" },
   "sc-balanced-nometa": { mode: "balanced", preserveMetadata: false },
   "sc-visually-lossless": { mode: "visually-lossless" },

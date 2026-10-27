@@ -56,6 +56,10 @@ const viteVersion = process.env.VITE_VERSION ?? pkgVersions.vite;
 sh("npm", ["install", "--no-audit", "--no-fund", join(work, tgz), `vite@${viteVersion}`, `typescript@${pkgVersions.typescript}`], app);
 console.log(`consumer uses vite ${JSON.parse(sh("node", ["-p", "JSON.stringify(require('vite/package.json').version)"], app))}`);
 sh("npx", ["tsc", "-p", "tsconfig.json"], app);
+// The bin from the installed tarball works (Node side: CLI + worker_threads + WASM codecs from node_modules).
+const cliReport = JSON.parse(sh("npx", ["optiq-image", join(root, "demo/public/samples"), "--mode", "fast", "--json"], app));
+if (cliReport.totals.after >= cliReport.totals.before || cliReport.totals.errors) throw new Error("installed CLI failed");
+console.log(`installed CLI: ${cliReport.files.length} files, ${cliReport.totals.before} -> ${cliReport.totals.after} B`);
 console.log("consumer typecheck against shipped .d.ts: ok");
 sh("npx", ["vite", "build", "--logLevel", "warn"], app);
 const { preview, createServer } = await import(join(app, "node_modules/vite/dist/node/index.js"));

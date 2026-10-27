@@ -13,8 +13,9 @@ export type TargetFormat = "auto" | "original" | OutputFormat;
  * - `lossless`: decoded pixels (incl. alpha) of the output are verified to be identical to the input.
  * - `visually-lossless`: decoded pixels may differ; the perceptual difference (SSIM) is kept above a strict threshold.
  * - `balanced`: lower SSIM threshold and smaller search budget; trades some quality for size and speed.
+ * - `fast`: same threshold as `balanced`, but no AVIF, no oxipng and at most 5 encodes; for phones and batches.
  */
-export type CompressionMode = "lossless" | "visually-lossless" | "balanced";
+export type CompressionMode = "lossless" | "visually-lossless" | "balanced" | "fast";
 
 export type ImageCategory =
   | "photo"

@@ -27,9 +27,10 @@ const RANGES: Record<Exclude<OutputFormat, "png">, [number, number]> = {
 };
 
 /** Starting points for the search, by mode. Chosen from benchmark medians; only affect speed, not the result's validity. */
-const START: Record<"visually-lossless" | "balanced", Record<Exclude<OutputFormat, "png">, number>> = {
+const START: Record<"visually-lossless" | "balanced" | "fast", Record<Exclude<OutputFormat, "png">, number>> = {
   "visually-lossless": { jpeg: 86, webp: 86, avif: 72 },
   balanced: { jpeg: 76, webp: 76, avif: 58 },
+  fast: { jpeg: 78, webp: 78, avif: 58 },
 };
 
 const isGraphic = (c: ImageCategory) => c === "screenshot" || c === "text-graphic" || c === "illustration" || c === "transparent-illustration";
@@ -37,7 +38,8 @@ const isGraphic = (c: ImageCategory) => c === "screenshot" || c === "text-graphi
 export function losslessPlans(input: PlanInput, mode: ResolvedOptions["mode"]): FormatPlan[] {
   const plans: FormatPlan[] = [];
   const has = (f: OutputFormat) => input.allowed.includes(f);
-  if (has("png")) {
+  // oxipng costs ~0.3 s per MP and rarely beats lossless WebP on graphics; `fast` only uses it when PNG is required.
+  if (has("png") && !(mode === "fast" && has("webp"))) {
     if (input.pngContainerEligible) plans.push({ kind: "exact", format: "png", settings: { level: 2 }, fromContainer: true });
     else if (input.pixelsExact) plans.push({ kind: "exact", format: "png", settings: { level: 2 } });
   }

@@ -41,6 +41,8 @@ export default defineConfig({
             { text: "Errors, cancellation, fallbacks", link: "/guide/errors" },
             { text: "Bundlers and deployment", link: "/guide/bundlers" },
             { text: "Uploading to S3", link: "/guide/s3" },
+            { text: "React hook", link: "/guide/react" },
+            { text: "CLI and Vite plugin (static images)", link: "/guide/static" },
             { text: "Limitations and FAQ", link: "/guide/faq" },
           ],
         },
@@ -49,6 +51,8 @@ export default defineConfig({
           items: [
             { text: "API: optiq-image", link: "/api/" },
             { text: "API: optiq-image/upload", link: "/api/upload" },
+            { text: "API: optiq-image/react", link: "/api/react" },
+            { text: "API: optiq-image/vite", link: "/api/vite" },
             { text: "API: optiq-image/node", link: "/api/node" },
             { text: "Benchmarks", link: "/benchmarks" },
             { text: "Audit", link: "/audit" },

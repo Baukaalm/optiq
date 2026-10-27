@@ -5,6 +5,7 @@
 | `lossless` | decoded RGBA identical to the input | unchanged (verified) | 4 encodes | not used |
 | `visually-lossless` | SSIM ≥ 0.99 | may differ | 16 encodes | speed 6 |
 | `balanced` (default) | SSIM ≥ 0.975 | may differ | 10 encodes | speed 7 |
+| `fast` | SSIM ≥ 0.975 | may differ | 5 encodes | not used (no AVIF, no oxipng) |
 
 Perceptual modes never claim to be lossless: the result reports `qualityMetricName: "ssim"` and the measured
 `qualityMetric`.
@@ -12,6 +13,9 @@ Perceptual modes never claim to be lossless: the result reports `qualityMetricNa
 ## Which one?
 
 - **User photos for a feed or profile** — `balanced`, optionally with `maxWidthOrHeight`.
+- **Phones, batches of many photos, slow networks** — `fast`: same quality bar, about 3× faster and ~40% less
+  memory than `balanced` in the benchmark, at the cost of larger files (no AVIF: transparent illustrations end up
+  ~5× larger than with `balanced`).
 - **Product images, artwork, anything people zoom into** — `visually-lossless`.
 - **Archival, medical, design source files, screenshots used as evidence** — `lossless`.
 

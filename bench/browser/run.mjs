@@ -16,7 +16,7 @@ const args = process.argv.slice(2);
 const only = args.includes("--only") ? args[args.indexOf("--only") + 1] : undefined;
 const TOOLS = args.includes("--tools")
   ? args[args.indexOf("--tools") + 1].split(",")
-  : ["sc-balanced", "sc-visually-lossless", "sc-lossless", "bic-maxsize-1mb", "bic-quality-0.8", "bic-webp-0.8", "canvas-webp-0.8", "canvas-jpeg-0.8"];
+  : ["sc-fast", "sc-balanced", "sc-visually-lossless", "sc-lossless", "bic-maxsize-1mb", "bic-quality-0.8", "bic-webp-0.8", "canvas-webp-0.8", "canvas-jpeg-0.8"];
 
 await build({ configFile: join(here, "vite.config.ts") });
 const TYPES = { ".html": "text/html", ".js": "text/javascript", ".wasm": "application/wasm", ".png": "image/png", ".jpg": "image/jpeg" };

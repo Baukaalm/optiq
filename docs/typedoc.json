@@ -3,6 +3,8 @@
   "entryPoints": [
     "../src/index.ts",
     "../src/upload.ts",
+    "../src/react.ts",
+    "../src/vite.ts",
     "../src/node.ts"
   ],
   "tsconfig": "../tsconfig.build.json",

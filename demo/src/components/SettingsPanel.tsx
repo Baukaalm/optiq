@@ -9,7 +9,8 @@ export interface Settings {
 }
 
 const MODES: { id: CompressionMode; label: string; hint: string }[] = [
-  { id: "balanced", label: "Balanced", hint: "SSIM ≥ 0.975, fast preset. Pixels change." },
+  { id: "fast", label: "Fast", hint: "SSIM ≥ 0.975, no AVIF, ≤ 5 encodes. Best for phones and batches." },
+  { id: "balanced", label: "Balanced", hint: "SSIM ≥ 0.975, all formats incl. AVIF. Pixels change." },
   { id: "visually-lossless", label: "Visually lossless", hint: "SSIM ≥ 0.99, larger search. Pixels change." },
   { id: "lossless", label: "Lossless", hint: "Decoded pixels verified identical." },
 ];

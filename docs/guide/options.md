@@ -4,15 +4,15 @@
 
 | Option | Default | Meaning |
 |---|---|---|
-| `mode` | `"balanced"` | `lossless`, `visually-lossless`, `balanced` |
+| `mode` | `"balanced"` | `lossless`, `visually-lossless`, `balanced`, `fast` |
 | `minQuality` | 0.99 / 0.975 | SSIM threshold for perceptual modes |
 | `maxOutputBytes` | – | Upper bound; reported in `unmetConstraints` when it cannot be met without violating quality |
 | `maxWidthOrHeight` | – | Downscale the longest side (Lanczos3, linear light, premultiplied alpha) |
 | `allowLossyResize` | `false` | Permit resizing in `lossless` mode |
 | `targetFormat` | `"auto"` | `auto`, `original`, `jpeg`, `png`, `webp`, `avif` |
-| `autoFormats` | all four | Formats `auto` may choose |
+| `autoFormats` | all four (`fast`: no AVIF) | Formats `auto` may choose |
 | `allowFormatConversion` | `true` | `false` keeps the input format |
-| `maxCandidates` | 10 / 16 / 4 | Encode budget |
+| `maxCandidates` | 10 / 16 / 4 / 5 | Encode budget (balanced / visually-lossless / lossless / fast) |
 | `searchStrategy` | `"binary"` | `fixed`: one encode per format |
 | `preserveMetadata` | `true` | Keep EXIF/XMP/ICC; `false` removes EXIF (incl. GPS) and XMP |
 | `preserveAnimation` | `true` | `false` permits flattening animations to the first frame |

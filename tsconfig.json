@@ -25,7 +25,8 @@
       "optiq-image/*": [
         "./src/*.ts"
       ]
-    }
+    },
+    "jsx": "react-jsx"
   },
   "include": [
     "src",

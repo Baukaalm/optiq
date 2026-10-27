@@ -1,6 +1,6 @@
 {
   "name": "optiq-image",
-  "version": "0.1.0-beta.0",
+  "version": "0.2.0-beta.0",
   "description": "Browser-side image optimizer: picks the smallest encoding that satisfies lossless or perceptual (SSIM) quality constraints, in a Web Worker.",
   "license": "Apache-2.0",
   "author": "Bauyrzhan (https://github.com/Baukaalm)",
@@ -28,10 +28,15 @@
   ],
   "type": "module",
   "sideEffects": [
-    "./dist/worker.js"
+    "./dist/worker.js",
+    "./dist/batch-worker.js",
+    "./dist/cli.js"
   ],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "bin": {
+    "optiq-image": "./dist/cli.js"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -52,6 +57,14 @@
     "./node": {
       "types": "./dist/node.d.ts",
       "import": "./dist/node.js"
+    },
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "import": "./dist/react.js"
+    },
+    "./vite": {
+      "types": "./dist/vite.d.ts",
+      "import": "./dist/vite.js"
     }
   },
   "files": [
@@ -87,6 +100,18 @@
     "site:build": "pnpm build && node scripts/build-site.mjs",
     "test:site": "pnpm site:build && node test/browser/site-e2e.mjs"
   },
+  "peerDependencies": {
+    "react": ">=18",
+    "vite": ">=5"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "vite": {
+      "optional": true
+    }
+  },
   "dependencies": {
     "@jsquash/avif": "2.1.1",
     "@jsquash/jpeg": "1.6.0",
@@ -97,8 +122,13 @@
   },
   "devDependencies": {
     "@types/node": "24.19.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
     "browser-image-compression": "2.0.2",
+    "jsdom": "30.1.3",
     "playwright": "1.64.1",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
     "sharp": "0.35.5",
     "ssim.js": "3.5.0",
     "typescript": "5.9.3",

@@ -12,6 +12,7 @@ async function canvasEncode(file: File, type: string, quality: number): Promise<
 }
 
 const tools: Record<string, Tool> = {
+  "sc-fast": async (f) => (await compressImage(f, { mode: "fast" })).blob,
   "sc-balanced": async (f) => (await compressImage(f, { mode: "balanced" })).blob,
   "sc-visually-lossless": async (f) => (await compressImage(f, { mode: "visually-lossless" })).blob,
   "sc-lossless": async (f) => (await compressImage(f, { mode: "lossless" })).blob,
