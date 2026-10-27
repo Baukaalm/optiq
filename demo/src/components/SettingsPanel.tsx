@@ -23,18 +23,20 @@ const SIDES = [
 ];
 
 function Toggle({ label, hint, isSelected, onChange, testId }: { label: string; hint: string; isSelected: boolean; onChange: (v: boolean) => void; testId: string }) {
+  // HeroUI v3: the root (SwitchField) holds the state; Switch.Content is the interactive element, so the whole row
+  // (text + control) toggles and the label is announced to screen readers.
   return (
-    <div className="flex items-start justify-between gap-4">
-      <div>
-        <p className="text-sm font-medium">{label}</p>
-        <p className="text-xs text-muted">{hint}</p>
-      </div>
-      <Switch isSelected={isSelected} onChange={onChange} aria-label={label} data-testid={testId}>
-        <Switch.Control>
+    <Switch isSelected={isSelected} onChange={onChange} data-testid={testId} className="w-full">
+      <Switch.Content className="flex w-full cursor-pointer items-start justify-between gap-4">
+        <span className="flex flex-col">
+          <span className="text-sm font-medium">{label}</span>
+          <span className="text-xs text-muted">{hint}</span>
+        </span>
+        <Switch.Control className="shrink-0">
           <Switch.Thumb />
         </Switch.Control>
-      </Switch>
-    </div>
+      </Switch.Content>
+    </Switch>
   );
 }
 

@@ -19,10 +19,11 @@ export interface PlanInput {
   inputLossy: boolean;
 }
 
+// Upper bounds were 95/95/92 until the audit found photos (P3 PNG) that need JPEG/WebP q96+ to reach SSIM 0.99.
 const RANGES: Record<Exclude<OutputFormat, "png">, [number, number]> = {
-  jpeg: [40, 95],
-  webp: [40, 95],
-  avif: [25, 92],
+  jpeg: [40, 98],
+  webp: [40, 99],
+  avif: [25, 95],
 };
 
 /** Starting points for the search, by mode. Chosen from benchmark medians; only affect speed, not the result's validity. */
@@ -33,7 +34,7 @@ const START: Record<"visually-lossless" | "balanced", Record<Exclude<OutputForma
 
 const isGraphic = (c: ImageCategory) => c === "screenshot" || c === "text-graphic" || c === "illustration" || c === "transparent-illustration";
 
-function lossless(input: PlanInput, mode: ResolvedOptions["mode"]): FormatPlan[] {
+export function losslessPlans(input: PlanInput, mode: ResolvedOptions["mode"]): FormatPlan[] {
   const plans: FormatPlan[] = [];
   const has = (f: OutputFormat) => input.allowed.includes(f);
   if (has("png")) {
@@ -54,7 +55,7 @@ export function planCandidates(input: PlanInput, opts: ResolvedOptions): FormatP
   if (opts.mode === "lossless") {
     // Lossless re-encoding of decoded lossy photos costs seconds and loses to the container-level candidate.
     if (input.inputLossy && input.category === "photo") return [];
-    return lossless(input, opts.mode);
+    return losslessPlans(input, opts.mode);
   }
   const mode = opts.mode;
   const has = (f: OutputFormat) => input.allowed.includes(f);
@@ -70,7 +71,7 @@ export function planCandidates(input: PlanInput, opts: ResolvedOptions): FormatP
   const graphic = isGraphic(input.category);
   // Lossless encodes are only worth their cost for flat-colour content, or when nothing else is allowed.
   const lossyAllowed = has("jpeg") || has("webp") || has("avif");
-  if (graphic || input.category === "gradient" || !lossyAllowed) plans.push(...lossless(input, mode));
+  if (graphic || input.category === "gradient" || !lossyAllowed) plans.push(...losslessPlans(input, mode));
   const chroma = graphic ? "444" : "420";
   const lossy: FormatPlan[] = [];
   if (has("avif")) lossy.push(search("avif", input.transparent ? { speed: opts.avifSpeed, chroma, alphaBoost: 25 } : { speed: opts.avifSpeed, chroma }));

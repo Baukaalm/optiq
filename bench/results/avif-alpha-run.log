@@ -1,0 +1,12 @@
+transparent-illustration-1.png   q30  boost0: 6902 B, haze 4.75% max α 5, max α err elsewhere 128  |  boost25: 9989 B, haze 2.34% max α 4, max α err elsewhere 73
+transparent-illustration-1.png   q45  boost0: 10883 B, haze 2.05% max α 4, max α err elsewhere 142  |  boost25: 14305 B, haze 1.29% max α 2, max α err elsewhere 39
+transparent-illustration-1.png   q60  boost0: 17913 B, haze 2.19% max α 4, max α err elsewhere 45  |  boost25: 22490 B, haze 0.38% max α 2, max α err elsewhere 19
+transparent-illustration-2.png   q30  boost0: 8746 B, haze 7.26% max α 6, max α err elsewhere 140  |  boost25: 12730 B, haze 2.55% max α 3, max α err elsewhere 71
+transparent-illustration-2.png   q45  boost0: 13945 B, haze 3.06% max α 5, max α err elsewhere 124  |  boost25: 18712 B, haze 1.84% max α 3, max α err elsewhere 43
+transparent-illustration-2.png   q60  boost0: 22315 B, haze 2.90% max α 3, max α err elsewhere 53  |  boost25: 28581 B, haze 0.80% max α 2, max α err elsewhere 20
+transparent-illustration-3.png   q30  boost0: 6874 B, haze 2.62% max α 5, max α err elsewhere 125  |  boost25: 10332 B, haze 1.41% max α 3, max α err elsewhere 73
+transparent-illustration-3.png   q45  boost0: 10873 B, haze 2.12% max α 3, max α err elsewhere 78  |  boost25: 14883 B, haze 1.42% max α 2, max α err elsewhere 65
+transparent-illustration-3.png   q60  boost0: 17227 B, haze 2.13% max α 3, max α err elsewhere 72  |  boost25: 22735 B, haze 0.71% max α 2, max α err elsewhere 28
+transparent-icon.png             q30  boost0: 1717 B, haze 6.44% max α 65, max α err elsewhere 99  |  boost25: 2113 B, haze 3.69% max α 26, max α err elsewhere 42
+transparent-icon.png             q45  boost0: 2510 B, haze 5.12% max α 40, max α err elsewhere 69  |  boost25: 2904 B, haze 2.89% max α 20, max α err elsewhere 35
+transparent-icon.png             q60  boost0: 3696 B, haze 2.55% max α 25, max α err elsewhere 41  |  boost25: 4087 B, haze 0.72% max α 10, max α err elsewhere 22

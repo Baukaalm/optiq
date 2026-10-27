@@ -26,7 +26,7 @@ Requirements: an ES2022 browser with module Workers and WebAssembly (Chrome/Edge
 AVIF *output* is only useful where your audience can decode AVIF (Chrome 85+, Firefox 93+, Safari 16.4+); remove it
 with `autoFormats: ["jpeg", "png", "webp"]` otherwise.
 
-### Bundler setup (Vite)
+### Bundler setup (Vite 7 and 8)
 
 ```ts
 // vite.config.ts

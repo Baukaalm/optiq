@@ -17,6 +17,9 @@ hero:
     - theme: alt
       text: API reference
       link: /api/
+    - theme: alt
+      text: GitHub
+      link: https://github.com/Baukaalm/smartcompress
 features:
   - title: Constraint first
     details: "lossless (pixel-exact, verified), visually-lossless (SSIM ≥ 0.99) or balanced (SSIM ≥ 0.975). Every candidate is decoded and scored; nothing is returned on an estimate."

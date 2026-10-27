@@ -186,6 +186,26 @@ describe("perceptual modes", () => {
   }, 180_000);
 });
 
+describe("audit regressions", () => {
+  it("a perceptual mode never returns more bytes than lossless mode for a losslessly stored photo", async () => {
+    // Found by bench/audit: a P3 photo PNG where no JPEG/WebP quality <= 95 reached SSIM 0.99 and AVIF was excluded,
+    // so visually-lossless returned the 0.8 MB original while lossless mode found a 0.47 MB lossless WebP.
+    const png = await toPng(photoLike(256, 192, 3, 14), { icc: "p3" });
+    const lossless = await run(png, { mode: "lossless" });
+    for (const mode of ["visually-lossless", "balanced"] as const) {
+      const r = await run(png, { mode, minQuality: 0.9999 });
+      expect(r.report.outputBytes).toBeLessThanOrEqual(lossless.report.outputBytes);
+    }
+  });
+
+  it("warns when the result is larger than the input because the original was not allowed", async () => {
+    const webp = await toWebp(screenshotLike(400, 300), { lossless: true });
+    const r = await run(webp, { targetFormat: "jpeg" });
+    expect(r.report.outputBytes).toBeGreaterThan(webp.length);
+    expect(r.report.warnings.join()).toMatch(/larger than the input .*targetFormat/);
+  });
+});
+
 describe("orientation, animation, metadata", () => {
   it("EXIF orientation is baked into re-encoded pixels and kept in passthrough", async () => {
     const img = photoLike(120, 80);

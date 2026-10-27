@@ -3,10 +3,11 @@
     "runtime": "Chromium 156.0.8078.4 (Playwright, headless)",
     "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36",
     "platform": "darwin-arm64",
-    "date": "2026-10-27T12:10:41.567Z",
+    "date": "2026-10-27T13:08:44.960Z",
     "memory": "not measured in the browser (see Node benchmark for peak RSS)",
     "merged": [
-      "2026-10-27T12:10:41.567Z: sc-balanced"
+      "2026-10-27T12:10:41.567Z: sc-balanced",
+      "2026-10-27T13:08:44.960Z: sc-balanced,sc-visually-lossless,sc-lossless"
     ]
   },
   "results": [
@@ -16,10 +17,10 @@
       "tool": "sc-balanced",
       "originalBytes": 167760,
       "bytes": 80520,
-      "timeMs": 985.5999994277954,
+      "timeMs": 989.3000001907349,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9767097059565417,
+      "ssim": 0.9767097059565416,
       "reduction": 0.5200286123032904
     },
     {
@@ -28,10 +29,10 @@
       "tool": "sc-visually-lossless",
       "originalBytes": 167760,
       "bytes": 112366,
-      "timeMs": 1585.2999992370605,
+      "timeMs": 1674.6999998092651,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9911320409053205,
+      "ssim": 0.9911320409053216,
       "reduction": 0.3301979017644253
     },
     {
@@ -40,7 +41,7 @@
       "tool": "sc-lossless",
       "originalBytes": 167760,
       "bytes": 167760,
-      "timeMs": 13.199999809265137,
+      "timeMs": 14.199999809265137,
       "outFormat": "jpeg",
       "exact": true,
       "ssim": 1,
@@ -112,10 +113,10 @@
       "tool": "sc-balanced",
       "originalBytes": 86969,
       "bytes": 29735,
-      "timeMs": 722.3999996185303,
+      "timeMs": 713.1999998092651,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9767304169640225,
+      "ssim": 0.9767304169640205,
       "reduction": 0.658096563143189
     },
     {
@@ -123,12 +124,12 @@
       "category": "photo",
       "tool": "sc-visually-lossless",
       "originalBytes": 86969,
-      "bytes": 56948,
-      "timeMs": 1037.4000005722046,
+      "bytes": 53589,
+      "timeMs": 1085.3999996185303,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9918797576711547,
-      "reduction": 0.3451919649530293
+      "ssim": 0.9907899039268535,
+      "reduction": 0.3838149225586128
     },
     {
       "image": "photo-kodim03.jpg",
@@ -136,7 +137,7 @@
       "tool": "sc-lossless",
       "originalBytes": 86969,
       "bytes": 86969,
-      "timeMs": 11.600000381469727,
+      "timeMs": 10,
       "outFormat": "jpeg",
       "exact": true,
       "ssim": 1,
@@ -208,10 +209,10 @@
       "tool": "sc-balanced",
       "originalBytes": 173611,
       "bytes": 78288,
-      "timeMs": 957.2000007629395,
+      "timeMs": 938.9000005722046,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9765485787988604,
+      "ssim": 0.9765485787988601,
       "reduction": 0.549060831398932
     },
     {
@@ -220,10 +221,10 @@
       "tool": "sc-visually-lossless",
       "originalBytes": 173611,
       "bytes": 113870,
-      "timeMs": 1502.7000007629395,
+      "timeMs": 1518.6999998092651,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9908875493327919,
+      "ssim": 0.9908875493327928,
       "reduction": 0.3441083802293633
     },
     {
@@ -232,7 +233,7 @@
       "tool": "sc-lossless",
       "originalBytes": 173611,
       "bytes": 173611,
-      "timeMs": 11.09999942779541,
+      "timeMs": 12.300000190734863,
       "outFormat": "jpeg",
       "exact": true,
       "ssim": 1,
@@ -304,10 +305,10 @@
       "tool": "sc-balanced",
       "originalBytes": 99340,
       "bytes": 29628,
-      "timeMs": 785.1000003814697,
+      "timeMs": 763.8000001907349,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9755632686750706,
+      "ssim": 0.9755632686750705,
       "reduction": 0.7017515602979666
     },
     {
@@ -315,12 +316,12 @@
       "category": "photo",
       "tool": "sc-visually-lossless",
       "originalBytes": 99340,
-      "bytes": 53730,
-      "timeMs": 1156.1000003814697,
+      "bytes": 56370,
+      "timeMs": 1168.8000001907349,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9902804770313587,
-      "reduction": 0.45913025971411314
+      "ssim": 0.9909759442564304,
+      "reduction": 0.43255486208979266
     },
     {
       "image": "photo-kodim07.jpg",
@@ -400,10 +401,10 @@
       "tool": "sc-balanced",
       "originalBytes": 201392,
       "bytes": 110720,
-      "timeMs": 1054.9000005722046,
+      "timeMs": 1054.0999994277954,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9788647223603482,
+      "ssim": 0.9788647223603479,
       "reduction": 0.4502264240883451
     },
     {
@@ -412,10 +413,10 @@
       "tool": "sc-visually-lossless",
       "originalBytes": 201392,
       "bytes": 139224,
-      "timeMs": 2092.1000003814697,
+      "timeMs": 2240.8999996185303,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9903873415488953,
+      "ssim": 0.9903873415488963,
       "reduction": 0.30869150711051085
     },
     {
@@ -424,7 +425,7 @@
       "tool": "sc-lossless",
       "originalBytes": 201392,
       "bytes": 201392,
-      "timeMs": 10.799999237060547,
+      "timeMs": 10.899999618530273,
       "outFormat": "jpeg",
       "exact": true,
       "ssim": 1,
@@ -496,10 +497,10 @@
       "tool": "sc-balanced",
       "originalBytes": 102888,
       "bytes": 47134,
-      "timeMs": 816.4000005722046,
+      "timeMs": 881.7000007629395,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9785719390312833,
+      "ssim": 0.9785719390312827,
       "reduction": 0.5418902107145633
     },
     {
@@ -507,12 +508,12 @@
       "category": "photo",
       "tool": "sc-visually-lossless",
       "originalBytes": 102888,
-      "bytes": 72941,
-      "timeMs": 1191.6000003814697,
+      "bytes": 69356,
+      "timeMs": 1257.0999994277954,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9916981707258876,
-      "reduction": 0.2910640696679885
+      "ssim": 0.99041414166477,
+      "reduction": 0.32590778322058933
     },
     {
       "image": "photo-kodim15.jpg",
@@ -520,7 +521,7 @@
       "tool": "sc-lossless",
       "originalBytes": 102888,
       "bytes": 102888,
-      "timeMs": 9.90000057220459,
+      "timeMs": 10.699999809265137,
       "outFormat": "jpeg",
       "exact": true,
       "ssim": 1,
@@ -592,10 +593,10 @@
       "tool": "sc-balanced",
       "originalBytes": 86487,
       "bytes": 27632,
-      "timeMs": 675.3000001907349,
+      "timeMs": 671.9000005722046,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9753366027262942,
+      "ssim": 0.9753366027262994,
       "reduction": 0.6805068969902991
     },
     {
@@ -603,12 +604,12 @@
       "category": "photo",
       "tool": "sc-visually-lossless",
       "originalBytes": 86487,
-      "bytes": 48756,
-      "timeMs": 1740.1999998092651,
+      "bytes": 51201,
+      "timeMs": 1780,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9906133372679025,
-      "reduction": 0.43626209719379794
+      "ssim": 0.9913298014711194,
+      "reduction": 0.40799195254778176
     },
     {
       "image": "photo-kodim20.jpg",
@@ -616,7 +617,7 @@
       "tool": "sc-lossless",
       "originalBytes": 86487,
       "bytes": 86487,
-      "timeMs": 8.899999618530273,
+      "timeMs": 9.600000381469727,
       "outFormat": "jpeg",
       "exact": true,
       "ssim": 1,
@@ -688,10 +689,10 @@
       "tool": "sc-balanced",
       "originalBytes": 84887,
       "bytes": 30117,
-      "timeMs": 717.9000005722046,
+      "timeMs": 717.1000003814697,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9781738749376901,
+      "ssim": 0.9781738749376883,
       "reduction": 0.6452106918609446
     },
     {
@@ -699,12 +700,12 @@
       "category": "photo",
       "tool": "sc-visually-lossless",
       "originalBytes": 84887,
-      "bytes": 53956,
-      "timeMs": 1018.1999998092651,
+      "bytes": 58731,
+      "timeMs": 1173.7999992370605,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9902488153182669,
-      "reduction": 0.36437852674732296
+      "ssim": 0.9917048223141901,
+      "reduction": 0.30812727508334614
     },
     {
       "image": "photo-kodim23.jpg",
@@ -712,7 +713,7 @@
       "tool": "sc-lossless",
       "originalBytes": 84887,
       "bytes": 84887,
-      "timeMs": 9.600000381469727,
+      "timeMs": 9.399999618530273,
       "outFormat": "jpeg",
       "exact": true,
       "ssim": 1,
@@ -784,10 +785,10 @@
       "tool": "sc-balanced",
       "originalBytes": 994528,
       "bytes": 101867,
-      "timeMs": 1242.5,
+      "timeMs": 1251.5999994277954,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.977360806343408,
+      "ssim": 0.9773608063434088,
       "reduction": 0.8975725168119952
     },
     {
@@ -796,10 +797,10 @@
       "tool": "sc-visually-lossless",
       "originalBytes": 994528,
       "bytes": 163585,
-      "timeMs": 2020.5999994277954,
+      "timeMs": 2166.699999809265,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9905348588686602,
+      "ssim": 0.9905348588686604,
       "reduction": 0.8355149377393095
     },
     {
@@ -808,7 +809,7 @@
       "tool": "sc-lossless",
       "originalBytes": 994528,
       "bytes": 552370,
-      "timeMs": 380.80000019073486,
+      "timeMs": 397.30000019073486,
       "outFormat": "webp",
       "exact": true,
       "ssim": 1,
@@ -879,24 +880,24 @@
       "category": "photo",
       "tool": "sc-balanced",
       "originalBytes": 798639,
-      "bytes": 74670,
-      "timeMs": 972.1999998092651,
+      "bytes": 70744,
+      "timeMs": 984.5,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9772143990453667,
-      "reduction": 0.9065034389755572
+      "ssim": 0.9757535372130629,
+      "reduction": 0.9114193020876766
     },
     {
       "image": "photo-kodim19.png",
       "category": "photo",
       "tool": "sc-visually-lossless",
       "originalBytes": 798639,
-      "bytes": 141333,
-      "timeMs": 2119.300000190735,
+      "bytes": 157150,
+      "timeMs": 1857,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9912975713156593,
-      "reduction": 0.8230326843542577
+      "ssim": 0.9926984387353113,
+      "reduction": 0.8032277411947075
     },
     {
       "image": "photo-kodim19.png",
@@ -904,7 +905,7 @@
       "tool": "sc-lossless",
       "originalBytes": 798639,
       "bytes": 486068,
-      "timeMs": 390.30000019073486,
+      "timeMs": 398.5,
       "outFormat": "webp",
       "exact": true,
       "ssim": 1,
@@ -976,10 +977,10 @@
       "tool": "sc-balanced",
       "originalBytes": 2285854,
       "bytes": 1371351,
-      "timeMs": 2889.5,
+      "timeMs": 4269.10000038147,
       "outFormat": "jpeg",
       "exact": false,
-      "ssim": 0.9841954466342724,
+      "ssim": 0.9841954466342728,
       "reduction": 0.4000706081840747
     },
     {
@@ -988,10 +989,10 @@
       "tool": "sc-visually-lossless",
       "originalBytes": 2285854,
       "bytes": 1601997,
-      "timeMs": 3423.699999809265,
+      "timeMs": 3556,
       "outFormat": "jpeg",
       "exact": false,
-      "ssim": 0.9935748803813579,
+      "ssim": 0.9935748803813574,
       "reduction": 0.2991691507856582
     },
     {
@@ -1000,7 +1001,7 @@
       "tool": "sc-lossless",
       "originalBytes": 2285854,
       "bytes": 2285854,
-      "timeMs": 103.09999942779541,
+      "timeMs": 104.39999961853027,
       "outFormat": "jpeg",
       "exact": true,
       "ssim": 1,
@@ -1073,10 +1074,10 @@
       "tool": "sc-balanced",
       "originalBytes": 3293882,
       "bytes": 2044901,
-      "timeMs": 4155.300000190735,
+      "timeMs": 3824.5,
       "outFormat": "jpeg",
       "exact": false,
-      "ssim": 0.9794365408239667,
+      "ssim": 0.9794365408239665,
       "reduction": 0.3791820714888997
     },
     {
@@ -1085,10 +1086,10 @@
       "tool": "sc-visually-lossless",
       "originalBytes": 3293882,
       "bytes": 2352615,
-      "timeMs": 4258.10000038147,
+      "timeMs": 4216.199999809265,
       "outFormat": "jpeg",
       "exact": false,
-      "ssim": 0.9932846832416813,
+      "ssim": 0.9932846832416811,
       "reduction": 0.2857622100609555
     },
     {
@@ -1097,7 +1098,7 @@
       "tool": "sc-lossless",
       "originalBytes": 3293882,
       "bytes": 3293882,
-      "timeMs": 112,
+      "timeMs": 113.39999961853027,
       "outFormat": "jpeg",
       "exact": true,
       "ssim": 1,
@@ -1170,10 +1171,10 @@
       "tool": "sc-balanced",
       "originalBytes": 1997063,
       "bytes": 1014978,
-      "timeMs": 3178,
+      "timeMs": 2976.7000007629395,
       "outFormat": "webp",
       "exact": false,
-      "ssim": 0.9751990210853292,
+      "ssim": 0.9751990210853296,
       "reduction": 0.49176465639792033
     },
     {
@@ -1182,10 +1183,10 @@
       "tool": "sc-visually-lossless",
       "originalBytes": 1997063,
       "bytes": 1343631,
-      "timeMs": 3306,
+      "timeMs": 3186,
       "outFormat": "jpeg",
       "exact": false,
-      "ssim": 0.9916922446372204,
+      "ssim": 0.9916922446372198,
       "reduction": 0.32719648804269064
     },
     {
@@ -1194,7 +1195,7 @@
       "tool": "sc-lossless",
       "originalBytes": 1997063,
       "bytes": 1997063,
-      "timeMs": 103.20000076293945,
+      "timeMs": 100.19999980926514,
       "outFormat": "jpeg",
       "exact": true,
       "ssim": 1,
@@ -1267,10 +1268,10 @@
       "tool": "sc-balanced",
       "originalBytes": 250605,
       "bytes": 17121,
-      "timeMs": 15543.199999809265,
+      "timeMs": 15232.10000038147,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.981928361392752,
+      "ssim": 0.9819283613927591,
       "reduction": 0.9316813311785479
     },
     {
@@ -1279,10 +1280,10 @@
       "tool": "sc-visually-lossless",
       "originalBytes": 250605,
       "bytes": 17346,
-      "timeMs": 34036.5,
+      "timeMs": 33067.5,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.990159592216833,
+      "ssim": 0.9901595922168822,
       "reduction": 0.9307835039205123
     },
     {
@@ -1291,7 +1292,7 @@
       "tool": "sc-lossless",
       "originalBytes": 250605,
       "bytes": 80542,
-      "timeMs": 2537.3999996185303,
+      "timeMs": 2511.800000190735,
       "outFormat": "webp",
       "exact": true,
       "ssim": 1,
@@ -1363,7 +1364,7 @@
       "tool": "sc-balanced",
       "originalBytes": 189720,
       "bytes": 24372,
-      "timeMs": 1295.3000001907349,
+      "timeMs": 1183.4000005722046,
       "outFormat": "webp",
       "exact": true,
       "ssim": 1,
@@ -1375,7 +1376,7 @@
       "tool": "sc-visually-lossless",
       "originalBytes": 189720,
       "bytes": 24372,
-      "timeMs": 1354.6999998092651,
+      "timeMs": 1325,
       "outFormat": "webp",
       "exact": true,
       "ssim": 1,
@@ -1387,7 +1388,7 @@
       "tool": "sc-lossless",
       "originalBytes": 189720,
       "bytes": 24372,
-      "timeMs": 374.30000019073486,
+      "timeMs": 361.80000019073486,
       "outFormat": "webp",
       "exact": true,
       "ssim": 1,
@@ -1459,7 +1460,7 @@
       "tool": "sc-balanced",
       "originalBytes": 341086,
       "bytes": 22230,
-      "timeMs": 2125.5,
+      "timeMs": 2055.1000003814697,
       "outFormat": "webp",
       "exact": true,
       "ssim": 1,
@@ -1471,7 +1472,7 @@
       "tool": "sc-visually-lossless",
       "originalBytes": 341086,
       "bytes": 22230,
-      "timeMs": 1285.3999996185303,
+      "timeMs": 1257.3000001907349,
       "outFormat": "webp",
       "exact": true,
       "ssim": 1,
@@ -1483,7 +1484,7 @@
       "tool": "sc-lossless",
       "originalBytes": 341086,
       "bytes": 22230,
-      "timeMs": 661,
+      "timeMs": 640.6999998092651,
       "outFormat": "webp",
       "exact": true,
       "ssim": 1,
@@ -1555,10 +1556,10 @@
       "tool": "sc-balanced",
       "originalBytes": 54989,
       "bytes": 10195,
-      "timeMs": 1420.6999998092651,
+      "timeMs": 1362.5999994277954,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9976571558491936,
+      "ssim": 0.997657155849193,
       "reduction": 0.8145992834930622
     },
     {
@@ -1567,10 +1568,10 @@
       "tool": "sc-visually-lossless",
       "originalBytes": 54989,
       "bytes": 9434,
-      "timeMs": 2527.300000190735,
+      "timeMs": 2443.300000190735,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9979604748475697,
+      "ssim": 0.9979604748475694,
       "reduction": 0.8284384149557185
     },
     {
@@ -1579,7 +1580,7 @@
       "tool": "sc-lossless",
       "originalBytes": 54989,
       "bytes": 14676,
-      "timeMs": 443.20000076293945,
+      "timeMs": 436.29999923706055,
       "outFormat": "webp",
       "exact": true,
       "ssim": 1,
@@ -1651,10 +1652,10 @@
       "tool": "sc-balanced",
       "originalBytes": 128735,
       "bytes": 9328,
-      "timeMs": 2211.3999996185303,
+      "timeMs": 2213.300000190735,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9759775628831442,
+      "ssim": 0.9750877012877097,
       "reduction": 0.9275410727463393
     },
     {
@@ -1662,12 +1663,12 @@
       "category": "transparent-illustration",
       "tool": "sc-visually-lossless",
       "originalBytes": 128735,
-      "bytes": 14366,
-      "timeMs": 3251.300000190735,
+      "bytes": 15701,
+      "timeMs": 3237.5,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9901631403548755,
-      "reduction": 0.8884064162815085
+      "ssim": 0.9907244175220915,
+      "reduction": 0.8780362760709985
     },
     {
       "image": "transparent-illustration-1.png",
@@ -1675,7 +1676,7 @@
       "tool": "sc-lossless",
       "originalBytes": 128735,
       "bytes": 74432,
-      "timeMs": 655,
+      "timeMs": 629.6999998092651,
       "outFormat": "webp",
       "exact": true,
       "ssim": 1,
@@ -1735,10 +1736,10 @@
       "tool": "sc-balanced",
       "originalBytes": 153516,
       "bytes": 11976,
-      "timeMs": 2273.300000190735,
+      "timeMs": 2298.3999996185303,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9780287192272827,
+      "ssim": 0.9762438795561823,
       "reduction": 0.9219885875087939
     },
     {
@@ -1746,12 +1747,12 @@
       "category": "transparent-illustration",
       "tool": "sc-visually-lossless",
       "originalBytes": 153516,
-      "bytes": 19979,
-      "timeMs": 3336.199999809265,
+      "bytes": 21801,
+      "timeMs": 3396.300000190735,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9909854604744034,
-      "reduction": 0.8698572135803434
+      "ssim": 0.9913436083013595,
+      "reduction": 0.8579887438442899
     },
     {
       "image": "transparent-illustration-2.png",
@@ -1759,7 +1760,7 @@
       "tool": "sc-lossless",
       "originalBytes": 153516,
       "bytes": 87370,
-      "timeMs": 673.6999998092651,
+      "timeMs": 663.8999996185303,
       "outFormat": "webp",
       "exact": true,
       "ssim": 1,
@@ -1819,10 +1820,10 @@
       "tool": "sc-balanced",
       "originalBytes": 143695,
       "bytes": 9623,
-      "timeMs": 2254.5,
+      "timeMs": 2283.2999992370605,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.97924978156014,
+      "ssim": 0.977033228895197,
       "reduction": 0.9330317686767111
     },
     {
@@ -1830,12 +1831,12 @@
       "category": "transparent-illustration",
       "tool": "sc-visually-lossless",
       "originalBytes": 143695,
-      "bytes": 14286,
-      "timeMs": 3342.1000003814697,
+      "bytes": 16193,
+      "timeMs": 3510.800000190735,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9909550615883161,
-      "reduction": 0.9005810918960298
+      "ssim": 0.9910788121544645,
+      "reduction": 0.8873099272765232
     },
     {
       "image": "transparent-illustration-3.png",
@@ -1843,7 +1844,7 @@
       "tool": "sc-lossless",
       "originalBytes": 143695,
       "bytes": 85724,
-      "timeMs": 666.7999992370605,
+      "timeMs": 692.6000003814697,
       "outFormat": "webp",
       "exact": true,
       "ssim": 1,
@@ -1902,24 +1903,24 @@
       "category": "transparent-illustration",
       "tool": "sc-balanced",
       "originalBytes": 10123,
-      "bytes": 2035,
-      "timeMs": 511.8999996185303,
+      "bytes": 2147,
+      "timeMs": 546.8000001907349,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9952748952853548,
-      "reduction": 0.7989726365701867
+      "ssim": 0.9823830246055513,
+      "reduction": 0.7879087227106589
     },
     {
       "image": "transparent-icon.png",
       "category": "transparent-illustration",
       "tool": "sc-visually-lossless",
       "originalBytes": 10123,
-      "bytes": 2210,
-      "timeMs": 755.5999994277954,
+      "bytes": 2836,
+      "timeMs": 773.8000001907349,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9972233827539525,
-      "reduction": 0.7816852711646745
+      "ssim": 0.9930068861054503,
+      "reduction": 0.719845895485528
     },
     {
       "image": "transparent-icon.png",
@@ -1927,7 +1928,7 @@
       "tool": "sc-lossless",
       "originalBytes": 10123,
       "bytes": 4036,
-      "timeMs": 129.60000038146973,
+      "timeMs": 134.30000019073486,
       "outFormat": "webp",
       "exact": true,
       "ssim": 1,
@@ -1987,10 +1988,10 @@
       "tool": "sc-balanced",
       "originalBytes": 792201,
       "bytes": 1413,
-      "timeMs": 3887.6000003814697,
+      "timeMs": 3980.699999809265,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9965063241038279,
+      "ssim": 0.9965063241038343,
       "reduction": 0.9982163617566754
     },
     {
@@ -1999,10 +2000,10 @@
       "tool": "sc-visually-lossless",
       "originalBytes": 792201,
       "bytes": 1257,
-      "timeMs": 5350.5,
+      "timeMs": 5373.39999961853,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9965756908124602,
+      "ssim": 0.9965756908124656,
       "reduction": 0.9984132814778067
     },
     {
@@ -2011,7 +2012,7 @@
       "tool": "sc-lossless",
       "originalBytes": 792201,
       "bytes": 120770,
-      "timeMs": 2367.3999996185303,
+      "timeMs": 2413.6000003814697,
       "outFormat": "webp",
       "exact": true,
       "ssim": 1,
@@ -2083,10 +2084,10 @@
       "tool": "sc-balanced",
       "originalBytes": 783802,
       "bytes": 1936,
-      "timeMs": 6331.5,
+      "timeMs": 6308.799999237061,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9957869582244565,
+      "ssim": 0.9957869582244594,
       "reduction": 0.9975299884409583
     },
     {
@@ -2095,10 +2096,10 @@
       "tool": "sc-visually-lossless",
       "originalBytes": 783802,
       "bytes": 1825,
-      "timeMs": 8491.5,
+      "timeMs": 8449.900000572205,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9954829310499113,
+      "ssim": 0.9954829310499165,
       "reduction": 0.9976716058392298
     },
     {
@@ -2107,7 +2108,7 @@
       "tool": "sc-lossless",
       "originalBytes": 783802,
       "bytes": 406828,
-      "timeMs": 3149.1000003814697,
+      "timeMs": 3158.5,
       "outFormat": "png",
       "exact": true,
       "ssim": 1,
@@ -2179,10 +2180,10 @@
       "tool": "sc-balanced",
       "originalBytes": 31601,
       "bytes": 499,
-      "timeMs": 3063.5,
+      "timeMs": 3041.4000005722046,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9964611244350329,
+      "ssim": 0.9964611244350389,
       "reduction": 0.9842093604632765
     },
     {
@@ -2191,10 +2192,10 @@
       "tool": "sc-visually-lossless",
       "originalBytes": 31601,
       "bytes": 497,
-      "timeMs": 5068.39999961853,
+      "timeMs": 5039.5,
       "outFormat": "avif",
       "exact": false,
-      "ssim": 0.9964654575212903,
+      "ssim": 0.9964654575212789,
       "reduction": 0.9842726495996962
     },
     {
@@ -2203,7 +2204,7 @@
       "tool": "sc-lossless",
       "originalBytes": 31601,
       "bytes": 13730,
-      "timeMs": 747.7000007629395,
+      "timeMs": 756.3000001907349,
       "outFormat": "webp",
       "exact": true,
       "ssim": 1,

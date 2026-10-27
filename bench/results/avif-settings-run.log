@@ -1,0 +1,24 @@
+screenshot-code.png              ssim>=0.975  444 boost0: 44179 B (q43)  |  420 boost0: 34155 B (q35)
+screenshot-code.png              ssim>=0.99  444 boost0: 62705 B (q60)  |  420 boost0: unreachable
+text-docs.png                    ssim>=0.975  444 boost0: 125824 B (q44)  |  420 boost0: 145433 B (q52)
+text-docs.png                    ssim>=0.99  444 boost0: 227044 B (q77)  |  420 boost0: 285531 B (q90)
+text-slide.png                   ssim>=0.975  444 boost0: 6873 B (q20)  |  420 boost0: 6529 B (q20)
+text-slide.png                   ssim>=0.99  444 boost0: 6873 B (q20)  |  420 boost0: 6529 B (q20)
+transparent-illustration-1.png   ssim>=0.975  444 boost25: 9181 B (q27)  |  444 boost0: 7555 B (q33)  |  420 boost25: 8956 B (q30)  |  420 boost0: 7314 B (q38)
+transparent-illustration-1.png   ssim>=0.99  444 boost25: 16102 B (q49)  |  444 boost0: 16317 B (q57)  |  420 boost25: 20452 B (q63)  |  420 boost0: 17623 B (q70)
+transparent-illustration-2.png   ssim>=0.975  444 boost25: 11715 B (q27)  |  444 boost0: 9938 B (q35)  |  420 boost25: 10900 B (q28)  |  420 boost0: 9966 B (q39)
+transparent-illustration-2.png   ssim>=0.99  444 boost25: 22217 B (q51)  |  444 boost0: 21253 B (q58)  |  420 boost25: 29195 B (q65)  |  420 boost0: 24042 B (q73)
+transparent-illustration-3.png   ssim>=0.975  444 boost25: 8407 B (q22)  |  444 boost0: 7251 B (q31)  |  420 boost25: 8885 B (q28)  |  420 boost0: 7423 B (q36)
+transparent-illustration-3.png   ssim>=0.99  444 boost25: 15521 B (q46)  |  444 boost0: 15195 B (q55)  |  420 boost25: 18842 B (q57)  |  420 boost0: 16908 B (q65)
+transparent-icon.png             ssim>=0.975  444 boost25: 1752 B (q20)  |  444 boost0: 1455 B (q20)  |  420 boost25: 1714 B (q20)  |  420 boost0: 1417 B (q20)
+transparent-icon.png             ssim>=0.99  444 boost25: 1752 B (q20)  |  444 boost0: 1455 B (q20)  |  420 boost25: 1820 B (q24)  |  420 boost0: 1478 B (q24)
+
+Total bytes per setting (only images where every setting was tried):
+  0.975 444 boost0     203075 B over 7 images
+  0.975 420 boost0     212237 B over 7 images
+  0.99 444 boost0      350842 B over 7 images
+  0.99 420 boost0      352111 B over 6 images
+  0.975 444 boost25    31055 B over 4 images
+  0.975 420 boost25    30455 B over 4 images
+  0.99 444 boost25     55592 B over 4 images
+  0.99 420 boost25     70309 B over 4 images

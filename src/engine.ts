@@ -9,7 +9,7 @@ import { extractFirstWebpFrame, injectWebpMetadata, probeWebp, rewriteWebpMetada
 import { SmartCompressError, throwIfAborted } from "./errors.js";
 import { OUTPUT_FORMATS, resolveOptions, type ResolvedOptions } from "./options.js";
 import { applyOrientation, hasTransparentPixels, pixelsEqual, targetSize, tileMosaic, type RawImage } from "./pixels.js";
-import { effectiveMinQuality, planCandidates, type FormatPlan } from "./plan.js";
+import { effectiveMinQuality, losslessPlans, planCandidates, type FormatPlan, type PlanInput } from "./plan.js";
 import { displayDimensions, probe, type ProbeInfo } from "./probe.js";
 import { ssim } from "./quality.js";
 import type {
@@ -30,7 +30,11 @@ export interface EngineContext {
   signal?: AbortSignal;
   onProgress?: (e: ProgressEvent) => void;
   now?: () => number;
+  /** Profiling hook: wall time per pipeline phase (used by the benchmark audit; no effect when absent). */
+  onTiming?: (phase: TimingPhase, ms: number) => void;
 }
+
+export type TimingPhase = "probe" | "decode" | "orient" | "resize" | "classify" | "encode" | "verify-decode" | "ssim" | "exact-compare" | "container";
 
 export type EngineReport = Omit<CompressionResult, "blob" | "fileName">;
 
@@ -173,6 +177,15 @@ export async function optimize(input: Uint8Array, options: SmartCompressOptions 
     ctx.onProgress?.({ stage, progress, candidatesTried: tried, candidateBudget: budget, bestBytes: best?.bytes.length });
   };
   const check = () => throwIfAborted(ctx.signal);
+  const timed = async <T>(phase: TimingPhase, f: () => T | Promise<T>): Promise<T> => {
+    if (!ctx.onTiming) return f();
+    const t = now();
+    try {
+      return await f();
+    } finally {
+      ctx.onTiming(phase, now() - t);
+    }
+  };
   let minQuality = opts.minQuality;
   const bestValid = (pool: Candidate[] = candidates): Candidate | undefined => {
     let best: Candidate | undefined;
@@ -185,13 +198,14 @@ export async function optimize(input: Uint8Array, options: SmartCompressOptions 
     throw new SmartCompressError("INPUT_TOO_LARGE", `Input is ${input.length} bytes; limit is ${opts.maxInputBytes} (maxInputBytes)`, { bytes: input.length, limit: opts.maxInputBytes });
   }
   emit("probing", 0.02);
-  const info = await probe(input);
+  const info = await timed("probe", () => probe(input));
   warnings.push(...info.warnings);
   check();
   const display = displayDimensions(info);
   const meta = metadataPlan(info, opts);
   let baseline: Candidate | undefined;
   let flatten = false;
+  let needsResizeForReport = false;
 
   const explicit = isOutputFormat(opts.targetFormat) ? opts.targetFormat : undefined;
   if (info.format === "heif") {
@@ -215,6 +229,7 @@ export async function optimize(input: Uint8Array, options: SmartCompressOptions 
   }
 
   const needsResize = opts.maxWidthOrHeight !== undefined && Math.max(display.width, display.height) > opts.maxWidthOrHeight;
+  needsResizeForReport = needsResize;
   if (needsResize && opts.mode === "lossless" && !opts.allowLossyResize) {
     incompatible("Resizing changes pixels and is not allowed in lossless mode; set allowLossyResize: true to permit it", { maxWidthOrHeight: opts.maxWidthOrHeight });
   }
@@ -263,7 +278,7 @@ export async function optimize(input: Uint8Array, options: SmartCompressOptions 
 
   // ---- Container-level candidate (no pixel change) ---------------------------------------------------------------
   if (originalAllowed) {
-    const bytes = await rewriteContainer(input, info, meta, opts, warnings);
+    const bytes = await timed("container", () => rewriteContainer(input, info, meta, opts, warnings));
     baseline = {
       report: {
         format: info.format,
@@ -296,7 +311,7 @@ export async function optimize(input: Uint8Array, options: SmartCompressOptions 
     else if (info.format === "webp" && info.animated) {
       const f = extractFirstWebpFrame(input);
       decoded = placeOnCanvas(await ctx.backend.decode("webp", f.still), f.x, f.y, f.canvasWidth, f.canvasHeight);
-    } else decoded = await ctx.backend.decode(info.format as "jpeg" | "png" | "webp" | "avif", input);
+    } else decoded = await timed("decode", () => ctx.backend.decode(info.format as "jpeg" | "png" | "webp" | "avif", input));
   } catch (e) {
     if (e instanceof SmartCompressError) throw e;
     throw new SmartCompressError("MALFORMED_INPUT", `Could not decode ${info.format.toUpperCase()}: ${e instanceof Error ? e.message : String(e)}`);
@@ -306,7 +321,7 @@ export async function optimize(input: Uint8Array, options: SmartCompressOptions 
   }
   check();
   if (flatten) warnings.push("Animation flattened to its first frame (preserveAnimation: false) unless the original is returned");
-  let reference = applyOrientation(decoded, info.orientation);
+  let reference = await timed("orient", () => applyOrientation(decoded, info.orientation));
   const transparent = hasTransparentPixels(reference);
   if (transparent) removeFormat("jpeg", "the image has transparent pixels and JPEG cannot store alpha");
   const pixelsExact = info.bitDepth <= 8;
@@ -322,26 +337,25 @@ export async function optimize(input: Uint8Array, options: SmartCompressOptions 
     emit("resizing", 0.1);
     const t = targetSize(reference.width, reference.height, opts.maxWidthOrHeight!);
     if (!ctx.backend.resize) throw new SmartCompressError("CODEC_UNAVAILABLE", "No resize implementation available");
-    reference = await ctx.backend.resize(reference, t.width, t.height);
+    const src = reference;
+    reference = await timed("resize", () => ctx.backend.resize!(src, t.width, t.height));
     resized = true;
     if (meta.pixel.exif) warnings.push("EXIF was kept; its pixel-dimension tags may still describe the original size");
     check();
   }
 
   emit("analyzing", 0.12);
-  const { category } = classify(reference);
+  const { category } = await timed("classify", () => classify(reference));
   minQuality = effectiveMinQuality(category, opts);
-  const plans = planCandidates(
-    {
-      category,
-      allowed,
-      transparent,
-      pngContainerEligible: info.format === "png" && !resized && !flatten,
-      pixelsExact,
-      inputLossy: info.format === "jpeg" || info.format === "avif" || (info.format === "webp" && !isLosslessWebp(input)),
-    },
-    opts,
-  );
+  const planInput: PlanInput = {
+    category,
+    allowed,
+    transparent,
+    pngContainerEligible: info.format === "png" && !resized && !flatten,
+    pixelsExact,
+    inputLossy: info.format === "jpeg" || info.format === "avif" || (info.format === "webp" && !isLosslessWebp(input)),
+  };
+  const plans = planCandidates(planInput, opts);
 
   // ---- Candidate search ------------------------------------------------------------------------------------------
   emit("encoding", 0.15);
@@ -359,15 +373,16 @@ export async function optimize(input: Uint8Array, options: SmartCompressOptions 
     let bytes: Uint8Array;
     const fromContainer = plan.kind === "exact" && plan.fromContainer;
     if (fromContainer) {
-      bytes = await ctx.backend.optimisePng!(input, settings);
+      bytes = await timed("encode", () => ctx.backend.optimisePng!(input, settings));
       if (!opts.preserveMetadata) bytes = await rewritePngMetadata(bytes, meta.container, { dropIcc: !meta.keepIcc });
     } else {
-      bytes = await ctx.backend.encode(plan.format, image, settings);
+      bytes = await timed("encode", () => ctx.backend.encode(plan.format, image, settings));
       if (!onProxy) bytes = await injectMetadata(plan.format, bytes, meta.pixel);
     }
     tried++;
     check();
-    const out = await ctx.backend.decode(plan.format, bytes);
+    const encoded = bytes;
+    const out = await timed("verify-decode", () => ctx.backend.decode(plan.format, encoded));
     const expected = fromContainer ? decoded : image;
     let quality: number;
     let passed: boolean;
@@ -375,12 +390,12 @@ export async function optimize(input: Uint8Array, options: SmartCompressOptions 
     let note: string | undefined;
     if (plan.kind === "exact") {
       metric = "exact";
-      passed = pixelsEqual(expected, out);
-      quality = passed ? 1 : ssim(expected, out).ssim;
+      passed = await timed("exact-compare", () => pixelsEqual(expected, out));
+      quality = passed ? 1 : (await timed("ssim", () => ssim(expected, out))).ssim;
       if (!passed) note = "lossless verification failed; candidate rejected";
     } else {
       metric = "ssim";
-      quality = out.width === expected.width && out.height === expected.height ? ssim(expected, out).ssim : 0;
+      quality = out.width === expected.width && out.height === expected.height ? (await timed("ssim", () => ssim(expected, out))).ssim : 0;
       passed = quality >= minQuality;
     }
     const c: Candidate = {
@@ -489,17 +504,20 @@ export async function optimize(input: Uint8Array, options: SmartCompressOptions 
     }
   }
 
-  // Safety net: if nothing meets the quality constraint and the original cannot be returned, add one exact encode.
-  if (!bestValid()) {
-    const f = (["png", "webp"] as const).find((x) => allowed.includes(x));
-    if (f && pixelsExact) {
+  // Safety net: no re-encode met the quality constraint. Lossless encodes always meet it, so try the ones not tried
+  // yet — unless the original is available and lossy-coded (then lossless re-encodes are virtually always larger).
+  // Guarantees a perceptual mode never returns more bytes than `lossless` mode would for a losslessly stored input.
+  const reencodedValid = candidates.some((c) => c !== baseline && c.report.passed);
+  if (!reencodedValid && (!baseline || !planInput.inputLossy)) {
+    const tried = new Set(candidates.map((c) => `${c.report.format}:${c.report.settings.lossless === true}`));
+    const extra = losslessPlans({ ...planInput, pixelsExact: planInput.pixelsExact || !baseline }, "lossless").filter(
+      (p) => !tried.has(`${p.format}:${p.settings.lossless === true}`),
+    );
+    for (const plan of extra) {
       budget++;
-      await tryEvaluate(
-        { kind: "exact", format: f, settings: f === "png" ? { level: 2 } : { lossless: true, quality: 75, method: 4, exact: true } },
-        f === "png" ? { level: 2 } : { lossless: true, quality: 75, method: 4, exact: true },
-      );
-      warnings.push("No lossy candidate met minQuality within maxCandidates; a lossless encode was added");
+      await tryEvaluate(plan, plan.settings);
     }
+    if (extra.length) warnings.push("No lossy candidate met minQuality within maxCandidates; lossless encodes were added");
   }
 
   emit("finalizing", 0.97);
@@ -538,6 +556,12 @@ export async function optimize(input: Uint8Array, options: SmartCompressOptions 
           chosen = baseline;
         }
       }
+    }
+    if (!chosen.isOriginal && chosen.bytes.length > input.length) {
+      warnings.push(
+        `Output (${chosen.bytes.length} B) is larger than the input (${input.length} B): the original was not an allowed result` +
+          (needsResizeForReport ? " because it exceeds maxWidthOrHeight" : " for the requested targetFormat"),
+      );
     }
     if (opts.maxOutputBytes && chosen.bytes.length > opts.maxOutputBytes) {
       unmet.push({ constraint: "maxOutputBytes", limit: opts.maxOutputBytes, actual: chosen.bytes.length });

@@ -90,7 +90,7 @@ export function useCompressed(file?: File) {
 ```
 
 A complete React app (HeroUI) with a multi-file queue, before/after comparison and S3 upload lives in the
-repository's `demo/` folder — run it with `pnpm demo`.
+repository's [`demo/`](https://github.com/Baukaalm/smartcompress/tree/main/demo) folder — run it with `pnpm demo`, or [try it online](/try).
 
 ## Vue
 

@@ -51,10 +51,17 @@ export function App() {
     <div className={`mx-auto max-w-6xl px-4 pb-24 ${embedded ? "pt-4" : ""}`}>
       {!embedded && (
       <header className="flex flex-col items-start gap-4 pt-12 pb-10 sm:pt-16">
-        <div className="flex flex-wrap gap-2">
+        <div className="flex w-full flex-wrap items-center gap-2">
           <Chip variant="soft" color="accent">Runs in a Web Worker</Chip>
           <Chip variant="soft">MozJPEG · WebP · AVIF · oxipng (WASM)</Chip>
           <Chip variant="soft" color="success">Nothing leaves the page until you upload</Chip>
+          <span className="flex-1" />
+          <a className="button button--tertiary button--sm" href="https://github.com/Baukaalm/smartcompress" target="_blank" rel="noreferrer">
+            GitHub
+          </a>
+          <a className="button button--tertiary button--sm" href={import.meta.env.BASE_URL === "/" ? "https://baukaalm.github.io/smartcompress/" : `${import.meta.env.BASE_URL}../`}>
+            Docs
+          </a>
         </div>
         <h1 className="text-4xl font-bold tracking-tight text-balance sm:text-5xl">Smaller uploads, measured quality.</h1>
         <p className="max-w-2xl text-lg text-muted text-pretty">

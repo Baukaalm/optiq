@@ -27,7 +27,11 @@ const app = join(work, "consumer");
 mkdirSync(join(app, "src"), { recursive: true });
 writeFileSync(join(app, "package.json"), JSON.stringify({ name: "consumer", private: true, type: "module" }, null, 2));
 writeFileSync(join(app, "index.html"), `<!doctype html><html><body><script type="module" src="/src/main.ts"></script></body></html>`);
-writeFileSync(join(app, "vite.config.ts"), `import { defineConfig } from "vite";\nexport default defineConfig({ worker: { format: "es" } });\n`);
+// The configuration the docs recommend (optimizeDeps.exclude matters for the dev server only).
+writeFileSync(
+  join(app, "vite.config.ts"),
+  `import { defineConfig } from "vite";\nexport default defineConfig({ worker: { format: "es" }, optimizeDeps: { exclude: ["smartcompress", "@jsquash/jpeg", "@jsquash/png", "@jsquash/webp", "@jsquash/avif", "@jsquash/oxipng", "@jsquash/resize"] } });\n`,
+);
 writeFileSync(join(app, "tsconfig.json"), JSON.stringify({ compilerOptions: { target: "ES2022", module: "ESNext", moduleResolution: "Bundler", strict: true, lib: ["ES2022", "DOM"], skipLibCheck: false, noEmit: true }, include: ["src"] }, null, 2));
 writeFileSync(
   join(app, "src/main.ts"),
@@ -47,18 +51,30 @@ void compressAndUpload;
 `,
 );
 const pkgVersions = JSON.parse(sh("node", ["-p", "JSON.stringify(require('./package.json').devDependencies)"], root));
-sh("npm", ["install", "--no-audit", "--no-fund", join(work, tgz), `vite@${pkgVersions.vite}`, `typescript@${pkgVersions.typescript}`], app);
+// VITE_VERSION=8 node scripts/pack-check.mjs checks another Vite major.
+const viteVersion = process.env.VITE_VERSION ?? pkgVersions.vite;
+sh("npm", ["install", "--no-audit", "--no-fund", join(work, tgz), `vite@${viteVersion}`, `typescript@${pkgVersions.typescript}`], app);
+console.log(`consumer uses vite ${JSON.parse(sh("node", ["-p", "JSON.stringify(require('vite/package.json').version)"], app))}`);
 sh("npx", ["tsc", "-p", "tsconfig.json"], app);
 console.log("consumer typecheck against shipped .d.ts: ok");
 sh("npx", ["vite", "build", "--logLevel", "warn"], app);
-const { preview } = await import(join(app, "node_modules/vite/dist/node/index.js"));
+const { preview, createServer } = await import(join(app, "node_modules/vite/dist/node/index.js"));
 const srv = await preview({ root: app, preview: { port: 0, host: "127.0.0.1" }, logLevel: "warn" });
 const browser = await chromium.launch();
 const page = await browser.newPage();
 await page.goto(srv.resolvedUrls.local[0]);
 const result = await page.evaluate(() => window.run());
-await browser.close();
 srv.httpServer.close();
-console.log("consumer run in Chromium:", result);
+console.log("consumer run in Chromium (production build):", result);
+const dev = await createServer({ root: app, server: { port: 0, host: "127.0.0.1" }, logLevel: "warn" });
+await dev.listen();
+const devPage = await browser.newPage();
+await devPage.goto(dev.resolvedUrls.local[0]);
+await devPage.waitForFunction(() => typeof window.run === "function");
+const devResult = await devPage.evaluate(() => window.run());
+await dev.close();
+await browser.close();
+console.log("consumer run in Chromium (dev server):", devResult);
+if (!devResult.ok) throw new Error("dev server compression failed");
 if (!result.ok || result.bytes >= result.original) throw new Error("consumer compression failed");
 console.log("pack check: PASS (nothing was published)");

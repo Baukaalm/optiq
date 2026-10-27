@@ -1,0 +1,3943 @@
+{
+  "date": "2026-10-27T12:48:25.342Z",
+  "node": "v24.15.0",
+  "phases": {
+    "probe": 41.890542000008054,
+    "container": 6.513123999979484,
+    "decode": 869.8161260000212,
+    "orient": 300.9503350000158,
+    "classify": 583.2478369999885,
+    "total": 72913.19267000002,
+    "encode": 58809.098706999976,
+    "verify-decode": 4763.319086000052,
+    "ssim": 6439.765539000023,
+    "resize": 883.2276250000104,
+    "exact-compare": 51.84525000001668
+  },
+  "findings": [
+    {
+      "fixture": "lossless.webp",
+      "variant": "balanced-1024",
+      "kind": "larger-than-original",
+      "detail": "24362 -> 54659 (resize)"
+    }
+  ],
+  "rows": [
+    {
+      "fixture": "phone-12mp-orient6-p3-gps-xmp.jpg",
+      "variant": "lossless",
+      "originalBytes": 2525774,
+      "flags": [],
+      "timeMs": 141.34537499999988,
+      "bytes": 2525774,
+      "outFormat": "jpeg",
+      "usedOriginal": true,
+      "codec": "original",
+      "category": "photo",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "kept",
+        "xmp": "kept",
+        "iccProfile": "kept",
+        "orientation": "kept"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 4.367375000000038,
+        "container": 0.017625000000066393,
+        "decode": 73.11508300000003,
+        "orient": 43.263417000000004,
+        "classify": 8.340583000000152
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "phone-12mp-orient6-p3-gps-xmp.jpg",
+      "variant": "lossless-strip",
+      "originalBytes": 2525774,
+      "flags": [],
+      "timeMs": 129.8804580000001,
+      "bytes": 2521150,
+      "outFormat": "jpeg",
+      "usedOriginal": false,
+      "codec": "container-rewrite",
+      "category": "photo",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "removed",
+        "xmp": "removed",
+        "iccProfile": "kept",
+        "orientation": "kept"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 4.077375000000075,
+        "container": 3.6515419999998358,
+        "decode": 60.166041999999834,
+        "orient": 42.38337499999989,
+        "classify": 8.802208000000064
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "phone-12mp-orient6-p3-gps-xmp.jpg",
+      "variant": "visually-lossless",
+      "originalBytes": 2525774,
+      "flags": [],
+      "timeMs": 3437.6893340000006,
+      "bytes": 1583219,
+      "outFormat": "jpeg",
+      "usedOriginal": false,
+      "codec": "mozjpeg",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9925949828355097,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "kept",
+        "xmp": "kept",
+        "iccProfile": "kept",
+        "orientation": "baked"
+      },
+      "warnings": [
+        "AVIF output skipped: its sP3C ICC profile cannot be embedded in AVIF output"
+      ],
+      "timing": {
+        "probe": 4.6508329999999205,
+        "container": 0.0012080000001333246,
+        "decode": 57.40166599999998,
+        "orient": 39.09445800000003,
+        "classify": 7.787499999999909,
+        "encode": 2444.025918,
+        "verify-decode": 272.5542919999989,
+        "ssim": 601.5205409999999
+      },
+      "ssimRef": 0.9995349568119479,
+      "psnr": 39.19063913817095
+    },
+    {
+      "fixture": "phone-12mp-orient6-p3-gps-xmp.jpg",
+      "variant": "balanced",
+      "originalBytes": 2525774,
+      "flags": [],
+      "timeMs": 2974.1893340000006,
+      "bytes": 1349314,
+      "outFormat": "jpeg",
+      "usedOriginal": false,
+      "codec": "mozjpeg",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9825351278512511,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "kept",
+        "xmp": "kept",
+        "iccProfile": "kept",
+        "orientation": "baked"
+      },
+      "warnings": [
+        "AVIF output skipped: its sP3C ICC profile cannot be embedded in AVIF output"
+      ],
+      "timing": {
+        "probe": 4.001709000000119,
+        "container": 0.004417000000103144,
+        "decode": 64.46170900000016,
+        "orient": 49.47595799999999,
+        "classify": 7.595083999999588,
+        "encode": 2004.2319570000009,
+        "verify-decode": 217.95095799999945,
+        "ssim": 617.9784169999994
+      },
+      "ssimRef": 0.9990924434165294,
+      "psnr": 36.164034273609765
+    },
+    {
+      "fixture": "phone-12mp-orient6-p3-gps-xmp.jpg",
+      "variant": "balanced-strip",
+      "originalBytes": 2525774,
+      "flags": [],
+      "timeMs": 2883.726832999999,
+      "bytes": 1344654,
+      "outFormat": "jpeg",
+      "usedOriginal": false,
+      "codec": "mozjpeg",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9825351278512511,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "removed",
+        "xmp": "removed",
+        "iccProfile": "kept",
+        "orientation": "baked"
+      },
+      "warnings": [
+        "AVIF output skipped: its sP3C ICC profile cannot be embedded in AVIF output"
+      ],
+      "timing": {
+        "probe": 3.8795420000005834,
+        "container": 2.2759170000008453,
+        "decode": 55.88749999999891,
+        "orient": 38.74850000000151,
+        "classify": 16.619833000000654,
+        "encode": 1990.3368329999994,
+        "verify-decode": 212.79416599999968,
+        "ssim": 552.2736250000034
+      },
+      "ssimRef": 0.9990924434165294,
+      "psnr": 36.164034273609765
+    },
+    {
+      "fixture": "phone-12mp-orient6-p3-gps-xmp.jpg",
+      "variant": "balanced-1024",
+      "originalBytes": 2525774,
+      "flags": [],
+      "timeMs": 1165.3667080000014,
+      "bytes": 186808,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9764847962387154,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "kept",
+        "xmp": "kept",
+        "iccProfile": "kept",
+        "orientation": "baked"
+      },
+      "warnings": [
+        "AVIF output skipped: its sP3C ICC profile cannot be embedded in AVIF output",
+        "EXIF was kept; its pixel-dimension tags may still describe the original size"
+      ],
+      "timing": {
+        "probe": 3.5903330000001006,
+        "decode": 57.464874999999665,
+        "orient": 48.878749999999854,
+        "resize": 546.2775829999991,
+        "classify": 8.054041999999754,
+        "encode": 368.5279580000006,
+        "verify-decode": 48.81491699999788,
+        "ssim": 73.36920899999859
+      }
+    },
+    {
+      "fixture": "phone-12mp-orient6-p3-gps-xmp.jpg",
+      "variant": "balanced-webp",
+      "originalBytes": 2525774,
+      "flags": [],
+      "timeMs": 1973.294667000002,
+      "bytes": 1532130,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9818839590114419,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "kept",
+        "xmp": "kept",
+        "iccProfile": "kept",
+        "orientation": "baked"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 3.9819580000003043,
+        "decode": 56.710666999999376,
+        "orient": 39.0151249999999,
+        "classify": 8.11816699999872,
+        "encode": 1270.2792499999978,
+        "verify-decode": 220.89849999999933,
+        "ssim": 363.9321660000005
+      },
+      "ssimRef": 0.9989319644177456,
+      "psnr": 37.53207755387022
+    },
+    {
+      "fixture": "photo-srgb-exif.jpg",
+      "variant": "lossless",
+      "originalBytes": 85570,
+      "flags": [],
+      "timeMs": 11.259125000000495,
+      "bytes": 85570,
+      "outFormat": "jpeg",
+      "usedOriginal": true,
+      "codec": "original",
+      "category": "photo",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "kept",
+        "xmp": "none",
+        "iccProfile": "kept",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.6129579999978887,
+        "container": 0.004708000000391621,
+        "decode": 2.091167000002315,
+        "orient": 0.004957999997714069,
+        "classify": 7.6240839999991294
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "photo-srgb-exif.jpg",
+      "variant": "lossless-strip",
+      "originalBytes": 85570,
+      "flags": [],
+      "timeMs": 11.601958999999624,
+      "bytes": 84864,
+      "outFormat": "jpeg",
+      "usedOriginal": false,
+      "codec": "container-rewrite",
+      "category": "photo",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "removed",
+        "xmp": "none",
+        "iccProfile": "dropped-srgb",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.08299999999871943,
+        "container": 0.09445899999991525,
+        "decode": 2.125,
+        "orient": 0.0005000000019208528,
+        "classify": 9.022458999999799
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "photo-srgb-exif.jpg",
+      "variant": "visually-lossless",
+      "originalBytes": 85570,
+      "flags": [],
+      "timeMs": 304.78995900000155,
+      "bytes": 78216,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9904655788765098,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "kept",
+        "xmp": "none",
+        "iccProfile": "kept",
+        "orientation": "none"
+      },
+      "warnings": [
+        "AVIF output skipped: EXIF/XMP cannot be embedded in AVIF output (set preserveMetadata: false to allow AVIF)"
+      ],
+      "timing": {
+        "probe": 0.29575000000113505,
+        "container": 0.0008330000018759165,
+        "decode": 2.170458000000508,
+        "orient": 0.0044589999997697305,
+        "classify": 7.714457999998558,
+        "encode": 225.21616700000232,
+        "verify-decode": 24.26224999999613,
+        "ssim": 44.21416599999793
+      },
+      "ssimRef": 0.9961310382718604,
+      "psnr": 44.01435232907713
+    },
+    {
+      "fixture": "photo-srgb-exif.jpg",
+      "variant": "balanced",
+      "originalBytes": 85570,
+      "flags": [],
+      "timeMs": 244.29229100000157,
+      "bytes": 41348,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9785968410199379,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "kept",
+        "xmp": "none",
+        "iccProfile": "kept",
+        "orientation": "none"
+      },
+      "warnings": [
+        "AVIF output skipped: EXIF/XMP cannot be embedded in AVIF output (set preserveMetadata: false to allow AVIF)"
+      ],
+      "timing": {
+        "probe": 0.30912499999976717,
+        "container": 0.0010839999995368998,
+        "decode": 2.258625000002212,
+        "orient": 0.0006670000002486631,
+        "classify": 7.580250000002707,
+        "encode": 170.98620900000242,
+        "verify-decode": 18.810999000001175,
+        "ssim": 43.79858400000012
+      },
+      "ssimRef": 0.9899852711510515,
+      "psnr": 40.41074261068851
+    },
+    {
+      "fixture": "photo-srgb-exif.jpg",
+      "variant": "balanced-strip",
+      "originalBytes": 85570,
+      "flags": [],
+      "timeMs": 784.9264999999978,
+      "bytes": 30079,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9781253639658557,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "removed",
+        "xmp": "none",
+        "iccProfile": "dropped-srgb",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.10345800000141026,
+        "container": 0.07758299999841256,
+        "decode": 2.145249999997759,
+        "orient": 0.0005420000015874393,
+        "classify": 9.624332999999751,
+        "encode": 607.1787490000024,
+        "verify-decode": 106.67245899999762,
+        "ssim": 58.12216599999738
+      },
+      "ssimRef": 0.9891413116423666,
+      "psnr": 39.29864801333784
+    },
+    {
+      "fixture": "photo-srgb-exif.jpg",
+      "variant": "balanced-1024",
+      "originalBytes": 85570,
+      "flags": [],
+      "timeMs": 253.29300000000148,
+      "bytes": 41348,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9785968410199379,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "kept",
+        "xmp": "none",
+        "iccProfile": "kept",
+        "orientation": "none"
+      },
+      "warnings": [
+        "AVIF output skipped: EXIF/XMP cannot be embedded in AVIF output (set preserveMetadata: false to allow AVIF)"
+      ],
+      "timing": {
+        "probe": 0.10108300000138115,
+        "container": 0.001082999999198364,
+        "decode": 2.1654580000031274,
+        "orient": 0.0006250000005820766,
+        "classify": 9.557291999997688,
+        "encode": 177.20395999999528,
+        "verify-decode": 19.266291000003548,
+        "ssim": 43.959961000000476
+      },
+      "ssimRef": 0.9899852711510515,
+      "psnr": 40.41074261068851
+    },
+    {
+      "fixture": "photo-srgb-exif.jpg",
+      "variant": "balanced-webp",
+      "originalBytes": 85570,
+      "flags": [],
+      "timeMs": 122.6896250000027,
+      "bytes": 41348,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9785968410199379,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "kept",
+        "xmp": "none",
+        "iccProfile": "kept",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.0968749999992724,
+        "decode": 2.1749589999999444,
+        "orient": 0.0006250000005820766,
+        "classify": 9.706457999996928,
+        "encode": 75.81704099999843,
+        "verify-decode": 11.931499999998778,
+        "ssim": 22.084373999998206
+      },
+      "ssimRef": 0.9899852711510515,
+      "psnr": 40.41074261068851
+    },
+    {
+      "fixture": "photo-p3.png",
+      "variant": "lossless",
+      "originalBytes": 793849,
+      "flags": [],
+      "timeMs": 491.74654199999713,
+      "bytes": 471928,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp-lossless",
+      "category": "photo",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "kept",
+        "xmp": "none",
+        "iccProfile": "kept",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 4.940040999998018,
+        "container": 0.0009579999968991615,
+        "decode": 10.681667000000743,
+        "orient": 0.0010000000002037268,
+        "classify": 9.682708000000275,
+        "encode": 447.2030829999967,
+        "verify-decode": 17.016750000002503,
+        "exact-compare": 1.12275000000227
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "photo-p3.png",
+      "variant": "lossless-strip",
+      "originalBytes": 793849,
+      "flags": [],
+      "timeMs": 395.5110420000019,
+      "bytes": 471740,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp-lossless",
+      "category": "photo",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "removed",
+        "xmp": "none",
+        "iccProfile": "kept",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.4635419999976875,
+        "container": 0.21491700000115088,
+        "decode": 6.258958000002167,
+        "orient": 0.0010419999998703133,
+        "classify": 11.430458999999246,
+        "encode": 361.2606259999993,
+        "verify-decode": 13.557457999999315,
+        "exact-compare": 1.1921669999974256
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "photo-p3.png",
+      "variant": "visually-lossless",
+      "originalBytes": 793849,
+      "flags": [],
+      "timeMs": 565.0188750000016,
+      "bytes": 793849,
+      "outFormat": "png",
+      "usedOriginal": true,
+      "codec": "original",
+      "category": "photo",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "kept",
+        "xmp": "none",
+        "iccProfile": "kept",
+        "orientation": "none"
+      },
+      "warnings": [
+        "AVIF output skipped: its sP3C ICC profile cannot be embedded in AVIF output"
+      ],
+      "timing": {
+        "probe": 0.44595900000058464,
+        "container": 0.0009160000008705538,
+        "decode": 5.987875000002532,
+        "orient": 0.0006670000002486631,
+        "classify": 9.342124999999214,
+        "encode": 443.2275000000009,
+        "verify-decode": 47.50124899999719,
+        "ssim": 57.3267909999995
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "photo-p3.png",
+      "variant": "balanced",
+      "originalBytes": 793849,
+      "flags": [],
+      "timeMs": 336.2307499999988,
+      "bytes": 109280,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9843729160731792,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "kept",
+        "xmp": "none",
+        "iccProfile": "kept",
+        "orientation": "none"
+      },
+      "warnings": [
+        "AVIF output skipped: its sP3C ICC profile cannot be embedded in AVIF output"
+      ],
+      "timing": {
+        "probe": 0.3833329999979469,
+        "container": 0.0006659999999101274,
+        "decode": 6.0804170000010345,
+        "orient": 0.0006250000005820766,
+        "classify": 6.911041999999725,
+        "encode": 251.64895900000192,
+        "verify-decode": 26.527415999997174,
+        "ssim": 43.585165999997116
+      },
+      "ssimRef": 0.9952939059042855,
+      "psnr": 39.771458430338534
+    },
+    {
+      "fixture": "photo-p3.png",
+      "variant": "balanced-strip",
+      "originalBytes": 793849,
+      "flags": [],
+      "timeMs": 339.1317909999998,
+      "bytes": 109092,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9843729160731792,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "removed",
+        "xmp": "none",
+        "iccProfile": "kept",
+        "orientation": "none"
+      },
+      "warnings": [
+        "AVIF output skipped: its sP3C ICC profile cannot be embedded in AVIF output"
+      ],
+      "timing": {
+        "probe": 0.5361249999987194,
+        "container": 0.05829199999789125,
+        "decode": 6.3524579999975685,
+        "orient": 0.0009170000012090895,
+        "classify": 6.992915999999241,
+        "encode": 254.09829100000206,
+        "verify-decode": 26.874707999995735,
+        "ssim": 43.248625000000175
+      },
+      "ssimRef": 0.9952939059042855,
+      "psnr": 39.771458430338534
+    },
+    {
+      "fixture": "photo-p3.png",
+      "variant": "balanced-1024",
+      "originalBytes": 793849,
+      "flags": [],
+      "timeMs": 337.80020800000057,
+      "bytes": 109280,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9843729160731792,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "kept",
+        "xmp": "none",
+        "iccProfile": "kept",
+        "orientation": "none"
+      },
+      "warnings": [
+        "AVIF output skipped: its sP3C ICC profile cannot be embedded in AVIF output"
+      ],
+      "timing": {
+        "probe": 0.4627909999981057,
+        "container": 0.0008339999985764734,
+        "decode": 6.320166999998037,
+        "orient": 0.0009580000005371403,
+        "classify": 7.22320899999977,
+        "encode": 253.35483199999726,
+        "verify-decode": 26.65679199999795,
+        "ssim": 42.909874000000855
+      },
+      "ssimRef": 0.9952939059042855,
+      "psnr": 39.771458430338534
+    },
+    {
+      "fixture": "photo-p3.png",
+      "variant": "balanced-webp",
+      "originalBytes": 793849,
+      "flags": [],
+      "timeMs": 146.3858340000006,
+      "bytes": 109280,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9843729160731792,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "kept",
+        "xmp": "none",
+        "iccProfile": "kept",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.5074580000000424,
+        "decode": 6.370832999997219,
+        "orient": 0.000875000001542503,
+        "classify": 7.004499999999098,
+        "encode": 93.72816599999715,
+        "verify-decode": 16.934916999998677,
+        "ssim": 20.9854589999959
+      },
+      "ssimRef": 0.9952939059042855,
+      "psnr": 39.771458430338534
+    },
+    {
+      "fixture": "gray.jpg",
+      "variant": "lossless",
+      "originalBytes": 70315,
+      "flags": [],
+      "timeMs": 8.712000000003172,
+      "bytes": 70315,
+      "outFormat": "jpeg",
+      "usedOriginal": true,
+      "codec": "original",
+      "category": "photo",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.06862499999988358,
+        "container": 0.0019169999977748375,
+        "decode": 1.9373749999977008,
+        "orient": 0.0015409999978146516,
+        "classify": 6.41675000000032
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "gray.jpg",
+      "variant": "lossless-strip",
+      "originalBytes": 70315,
+      "flags": [],
+      "timeMs": 9.289624999997613,
+      "bytes": 70315,
+      "outFormat": "jpeg",
+      "usedOriginal": true,
+      "codec": "original",
+      "category": "photo",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.0540419999997539,
+        "container": 0.0011250000025029294,
+        "decode": 1.8203749999993306,
+        "orient": 0.0002500000009604264,
+        "classify": 6.554624999997031
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "gray.jpg",
+      "variant": "visually-lossless",
+      "originalBytes": 70315,
+      "flags": [],
+      "timeMs": 1033.7867499999993,
+      "bytes": 49171,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9925340076622936,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.0532920000005106,
+        "container": 0.0007919999989098869,
+        "decode": 1.8889589999998861,
+        "orient": 0.0003749999996216502,
+        "classify": 6.459249999999884,
+        "encode": 864.9815830000043,
+        "verify-decode": 94.13612600000852,
+        "ssim": 65.81562399999893
+      },
+      "ssimRef": 0.9960731476256454,
+      "psnr": 47.816762117684426
+    },
+    {
+      "fixture": "gray.jpg",
+      "variant": "balanced",
+      "originalBytes": 70315,
+      "flags": [],
+      "timeMs": 635.3086670000012,
+      "bytes": 24077,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9760806466379569,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.06912500000180444,
+        "container": 0.0017079999997804407,
+        "decode": 1.9488750000018626,
+        "orient": 0.0009580000005371403,
+        "classify": 6.496499999997468,
+        "encode": 489.20666600000186,
+        "verify-decode": 77.93625099999917,
+        "ssim": 58.81904100000247
+      },
+      "ssimRef": 0.9857624574869861,
+      "psnr": 41.571746861552946
+    },
+    {
+      "fixture": "gray.jpg",
+      "variant": "balanced-strip",
+      "originalBytes": 70315,
+      "flags": [],
+      "timeMs": 628.9257910000015,
+      "bytes": 24077,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9760806466379569,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.06908400000247639,
+        "container": 0.0017919999991136137,
+        "decode": 1.9552089999997406,
+        "orient": 0.0010000000002037268,
+        "classify": 6.521958000001177,
+        "encode": 486.1357519999947,
+        "verify-decode": 75.78612499999144,
+        "ssim": 57.65233499999522
+      },
+      "ssimRef": 0.9857624574869861,
+      "psnr": 41.571746861552946
+    },
+    {
+      "fixture": "gray.jpg",
+      "variant": "balanced-1024",
+      "originalBytes": 70315,
+      "flags": [],
+      "timeMs": 631.9720420000012,
+      "bytes": 24077,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9760806466379569,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.06145900000046822,
+        "container": 0.001583000001119217,
+        "decode": 1.9210000000020955,
+        "orient": 0.0007079999995767139,
+        "classify": 6.604624999999942,
+        "encode": 486.97579099998984,
+        "verify-decode": 77.40700000000652,
+        "ssim": 58.186623000008694
+      },
+      "ssimRef": 0.9857624574869861,
+      "psnr": 41.571746861552946
+    },
+    {
+      "fixture": "gray.jpg",
+      "variant": "balanced-webp",
+      "originalBytes": 70315,
+      "flags": [],
+      "timeMs": 116.76079100000061,
+      "bytes": 36542,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9794466069822874,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.06937499999912689,
+        "decode": 1.928790999998455,
+        "orient": 0.0006250000005820766,
+        "classify": 6.531291999999667,
+        "encode": 74.3043329999964,
+        "verify-decode": 11.088208000001032,
+        "ssim": 22.09583399999974
+      },
+      "ssimRef": 0.9896256842472136,
+      "psnr": 42.15490342695564
+    },
+    {
+      "fixture": "already-compressed-q55.jpg",
+      "variant": "lossless",
+      "originalBytes": 22645,
+      "flags": [],
+      "timeMs": 8.21295900000041,
+      "bytes": 22645,
+      "outFormat": "jpeg",
+      "usedOriginal": true,
+      "codec": "original",
+      "category": "photo",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.028874999999970896,
+        "container": 0.0015419999981531873,
+        "decode": 1.5617500000007567,
+        "orient": 0.0006670000002486631,
+        "classify": 5.9614999999976135
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "already-compressed-q55.jpg",
+      "variant": "lossless-strip",
+      "originalBytes": 22645,
+      "flags": [],
+      "timeMs": 7.825874999998632,
+      "bytes": 22645,
+      "outFormat": "jpeg",
+      "usedOriginal": true,
+      "codec": "original",
+      "category": "photo",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.023166999999375548,
+        "container": 0.0011249999988649506,
+        "decode": 1.5858340000013413,
+        "orient": 0.0003749999996216502,
+        "classify": 5.979833000001236
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "already-compressed-q55.jpg",
+      "variant": "visually-lossless",
+      "originalBytes": 22645,
+      "flags": [],
+      "timeMs": 3191.136792000001,
+      "bytes": 18949,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9901648125262494,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.027290999998513144,
+        "container": 0.0017079999997804407,
+        "decode": 1.7424160000009579,
+        "orient": 0.0007079999995767139,
+        "classify": 5.9901669999999285,
+        "encode": 3027.6276249999974,
+        "verify-decode": 81.12837400000353,
+        "ssim": 73.97220899999593
+      },
+      "ssimRef": 0.9950141951714826,
+      "psnr": 41.45866434694288
+    },
+    {
+      "fixture": "already-compressed-q55.jpg",
+      "variant": "balanced",
+      "originalBytes": 22645,
+      "flags": [],
+      "timeMs": 1419.169041000001,
+      "bytes": 13358,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9758480773429645,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.029209000000264496,
+        "container": 0.0020000000004074536,
+        "decode": 1.64904199999728,
+        "orient": 0.0007079999995767139,
+        "classify": 6.167166999999608,
+        "encode": 1271.1539999999914,
+        "verify-decode": 66.2172920000121,
+        "ssim": 72.94295899999997
+      },
+      "ssimRef": 0.9865512960225283,
+      "psnr": 37.36118960594809
+    },
+    {
+      "fixture": "already-compressed-q55.jpg",
+      "variant": "balanced-strip",
+      "originalBytes": 22645,
+      "flags": [],
+      "timeMs": 1422.0668750000004,
+      "bytes": 13358,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9758480773429645,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.029999999998835847,
+        "container": 0.0022499999977299012,
+        "decode": 1.722458000000188,
+        "orient": 0.0007079999995767139,
+        "classify": 6.193083999998635,
+        "encode": 1275.1020400000052,
+        "verify-decode": 66.00967000001401,
+        "ssim": 72.5513329999958
+      },
+      "ssimRef": 0.9865512960225283,
+      "psnr": 37.36118960594809
+    },
+    {
+      "fixture": "already-compressed-q55.jpg",
+      "variant": "balanced-1024",
+      "originalBytes": 22645,
+      "flags": [],
+      "timeMs": 1411.7761669999963,
+      "bytes": 13358,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9758480773429645,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.02466600000479957,
+        "container": 0.0022089999984018505,
+        "decode": 1.6964999999981956,
+        "orient": 0.0005000000019208528,
+        "classify": 6.038625000001048,
+        "encode": 1264.75383400001,
+        "verify-decode": 66.12745899998845,
+        "ssim": 72.24175100000866
+      },
+      "ssimRef": 0.9865512960225283,
+      "psnr": 37.36118960594809
+    },
+    {
+      "fixture": "already-compressed-q55.jpg",
+      "variant": "balanced-webp",
+      "originalBytes": 22645,
+      "flags": [],
+      "timeMs": 137.96554100000503,
+      "bytes": 21656,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9761606312184787,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.025332999997772276,
+        "decode": 1.6888749999998254,
+        "orient": 0.0004169999956502579,
+        "classify": 6.037959000001138,
+        "encode": 87.42304200000217,
+        "verify-decode": 12.92166700000962,
+        "ssim": 29.146332999996957
+      },
+      "ssimRef": 0.9895154189519187,
+      "psnr": 38.67386781353622
+    },
+    {
+      "fixture": "palette-alpha.png",
+      "variant": "lossless",
+      "originalBytes": 4901,
+      "flags": [],
+      "timeMs": 140.90141699999367,
+      "bytes": 3250,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp-lossless",
+      "category": "transparent-illustration",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.02074999999604188,
+        "container": 0.004124999999476131,
+        "decode": 1.1517499999972642,
+        "orient": 0.0008329999982379377,
+        "classify": 15.166125000003376,
+        "encode": 120.62900000000081,
+        "verify-decode": 2.855999999992491,
+        "exact-compare": 0.8936660000035772
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "palette-alpha.png",
+      "variant": "lossless-strip",
+      "originalBytes": 4901,
+      "flags": [],
+      "timeMs": 128.06979199999478,
+      "bytes": 3250,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp-lossless",
+      "category": "transparent-illustration",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.009459000000788365,
+        "container": 0.002165999998396728,
+        "decode": 0.8924590000024182,
+        "orient": 0.0006250000005820766,
+        "classify": 5.1872090000033495,
+        "encode": 120.11533399999462,
+        "verify-decode": 1.3474580000038259,
+        "exact-compare": 0.4185839999918244
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "palette-alpha.png",
+      "variant": "visually-lossless",
+      "originalBytes": 4901,
+      "flags": [],
+      "timeMs": 695.7297500000059,
+      "bytes": 2363,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "transparent-illustration",
+      "metric": "ssim",
+      "quality": 0.9962273303827959,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "JPEG output skipped: the image has transparent pixels and JPEG cannot store alpha"
+      ],
+      "timing": {
+        "probe": 0.008957999998528976,
+        "container": 0.0011250000025029294,
+        "decode": 0.8700000000026193,
+        "orient": 0.0004580000022542663,
+        "classify": 3.9002499999987776,
+        "encode": 540.969374999986,
+        "verify-decode": 46.31020800002443,
+        "exact-compare": 0.43950000000040745,
+        "ssim": 102.91241900000023
+      },
+      "ssimRef": 0.9991592482690402,
+      "psnr": 40.344458985446394
+    },
+    {
+      "fixture": "palette-alpha.png",
+      "variant": "balanced",
+      "originalBytes": 4901,
+      "flags": [],
+      "timeMs": 444.5430000000051,
+      "bytes": 2257,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "transparent-illustration",
+      "metric": "ssim",
+      "quality": 0.9945560871750326,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "JPEG output skipped: the image has transparent pixels and JPEG cannot store alpha"
+      ],
+      "timing": {
+        "probe": 0.0236670000012964,
+        "container": 0.001958000000740867,
+        "decode": 0.9639580000002752,
+        "orient": 0.0010409999958937988,
+        "classify": 3.2101669999974547,
+        "encode": 338.54145800000697,
+        "verify-decode": 36.68591699999524,
+        "exact-compare": 0.8416660000002594,
+        "ssim": 63.994417000001704
+      },
+      "ssimRef": 0.9989813950488752,
+      "psnr": 39.35282033153667
+    },
+    {
+      "fixture": "palette-alpha.png",
+      "variant": "balanced-strip",
+      "originalBytes": 4901,
+      "flags": [],
+      "timeMs": 451.6477919999961,
+      "bytes": 2257,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "transparent-illustration",
+      "metric": "ssim",
+      "quality": 0.9945560871750326,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "JPEG output skipped: the image has transparent pixels and JPEG cannot store alpha"
+      ],
+      "timing": {
+        "probe": 0.016042000002926216,
+        "container": 0.0016670000040903687,
+        "decode": 0.9578750000000582,
+        "orient": 0.0008330000055138953,
+        "classify": 3.166625000005297,
+        "encode": 343.93141700001433,
+        "verify-decode": 37.20220800000243,
+        "exact-compare": 0.7569169999987935,
+        "ssim": 65.31937399999879
+      },
+      "ssimRef": 0.9989813950488752,
+      "psnr": 39.35282033153667
+    },
+    {
+      "fixture": "palette-alpha.png",
+      "variant": "balanced-1024",
+      "originalBytes": 4901,
+      "flags": [],
+      "timeMs": 452.1362090000039,
+      "bytes": 2257,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "transparent-illustration",
+      "metric": "ssim",
+      "quality": 0.9945560871750326,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "JPEG output skipped: the image has transparent pixels and JPEG cannot store alpha"
+      ],
+      "timing": {
+        "probe": 0.014957999999751337,
+        "container": 0.001707999996142462,
+        "decode": 0.9643749999959255,
+        "orient": 0.0005830000009154901,
+        "classify": 3.4380420000015874,
+        "encode": 344.9794180000026,
+        "verify-decode": 36.85329199999978,
+        "exact-compare": 0.9674160000067786,
+        "ssim": 64.47275000000081
+      },
+      "ssimRef": 0.9989813950488752,
+      "psnr": 39.35282033153667
+    },
+    {
+      "fixture": "palette-alpha.png",
+      "variant": "balanced-webp",
+      "originalBytes": 4901,
+      "flags": [],
+      "timeMs": 115.55304199999955,
+      "bytes": 3396,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp-lossless",
+      "category": "transparent-illustration",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.01504199999908451,
+        "decode": 1.0032500000015716,
+        "orient": 0.0005840000012540258,
+        "classify": 3.440083000001323,
+        "encode": 70.98983400000725,
+        "verify-decode": 7.113376000001153,
+        "exact-compare": 0.5814580000005662,
+        "ssim": 32.22816700000112
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "rgb16.png",
+      "variant": "lossless",
+      "originalBytes": 75325,
+      "flags": [],
+      "timeMs": 617.7234170000011,
+      "bytes": 44999,
+      "outFormat": "png",
+      "usedOriginal": false,
+      "codec": "oxipng",
+      "category": "gradient",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "16-bit input: only same-format lossless optimization keeps full precision"
+      ],
+      "timing": {
+        "probe": 0.013500000000931323,
+        "container": 0.0010840000031748787,
+        "decode": 11.927167000001646,
+        "orient": 0.0012090000018361025,
+        "classify": 4.664166999995359,
+        "encode": 583.5710830000025,
+        "verify-decode": 13.955625000002328,
+        "exact-compare": 1.6524999999965075
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "rgb16.png",
+      "variant": "lossless-strip",
+      "originalBytes": 75325,
+      "flags": [],
+      "timeMs": 609.6675830000022,
+      "bytes": 44999,
+      "outFormat": "png",
+      "usedOriginal": false,
+      "codec": "oxipng",
+      "category": "gradient",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "16-bit input: only same-format lossless optimization keeps full precision"
+      ],
+      "timing": {
+        "probe": 0.015124999998079147,
+        "container": 0.0010840000031748787,
+        "decode": 11.361540999998397,
+        "orient": 0.0012499999938881956,
+        "classify": 4.623874999997497,
+        "encode": 578.1859170000025,
+        "verify-decode": 12.827666999997746,
+        "exact-compare": 0.9415840000001481
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "rgb16.png",
+      "variant": "visually-lossless",
+      "originalBytes": 75325,
+      "flags": [],
+      "timeMs": 5064.287125000003,
+      "bytes": 497,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "gradient",
+      "metric": "ssim",
+      "quality": 0.9964654575212903,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "16-bit input is reduced to 8 bits per channel when re-encoded"
+      ],
+      "timing": {
+        "probe": 0.015583000000333413,
+        "container": 0.0014579999988200143,
+        "decode": 11.35029200000281,
+        "orient": 0.0015839999978197739,
+        "classify": 4.562582999998995,
+        "encode": 4506.855417999999,
+        "verify-decode": 198.3417929999705,
+        "exact-compare": 1.8763330000001588,
+        "ssim": 338.25170900001103
+      },
+      "ssimRef": 0.9971456264950704,
+      "psnr": 42.679413070878056
+    },
+    {
+      "fixture": "rgb16.png",
+      "variant": "balanced",
+      "originalBytes": 75325,
+      "flags": [],
+      "timeMs": 3136.086083000002,
+      "bytes": 499,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "gradient",
+      "metric": "ssim",
+      "quality": 0.9964611244350329,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "16-bit input is reduced to 8 bits per channel when re-encoded"
+      ],
+      "timing": {
+        "probe": 0.07704099999682512,
+        "container": 0.0016249999971478246,
+        "decode": 11.338250000000698,
+        "orient": 0.0017910000024130568,
+        "classify": 4.476416999998037,
+        "encode": 2762.674042000006,
+        "verify-decode": 121.14008499999909,
+        "exact-compare": 1.6491250000035507,
+        "ssim": 232.78912500001752
+      },
+      "ssimRef": 0.9979545929887872,
+      "psnr": 43.82344683004626
+    },
+    {
+      "fixture": "rgb16.png",
+      "variant": "balanced-strip",
+      "originalBytes": 75325,
+      "flags": [],
+      "timeMs": 3115.231083999999,
+      "bytes": 499,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "gradient",
+      "metric": "ssim",
+      "quality": 0.9964611244350329,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "16-bit input is reduced to 8 bits per channel when re-encoded"
+      ],
+      "timing": {
+        "probe": 0.017166999998153187,
+        "container": 0.0015410000050906092,
+        "decode": 11.520416999999725,
+        "orient": 0.0012080000014975667,
+        "classify": 4.424582999999984,
+        "encode": 2740.4670419999893,
+        "verify-decode": 119.86449999998877,
+        "exact-compare": 1.572583000001032,
+        "ssim": 235.62312399999792
+      },
+      "ssimRef": 0.9979545929887872,
+      "psnr": 43.82344683004626
+    },
+    {
+      "fixture": "rgb16.png",
+      "variant": "balanced-1024",
+      "originalBytes": 75325,
+      "flags": [],
+      "timeMs": 2141.0561670000025,
+      "bytes": 477,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "gradient",
+      "metric": "ssim",
+      "quality": 0.9971041052719695,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "16-bit input is reduced to 8 bits per channel when re-encoded"
+      ],
+      "timing": {
+        "probe": 0.01804200000333367,
+        "decode": 11.703332999997656,
+        "orient": 0.0009169999975711107,
+        "resize": 119.98220800000126,
+        "classify": 4.615250000002561,
+        "encode": 1754.7235429999928,
+        "verify-decode": 84.08070700000826,
+        "ssim": 164.2715809999936
+      }
+    },
+    {
+      "fixture": "rgb16.png",
+      "variant": "balanced-webp",
+      "originalBytes": 75325,
+      "flags": [],
+      "timeMs": 421.71104200000264,
+      "bytes": 6456,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp",
+      "category": "gradient",
+      "metric": "ssim",
+      "quality": 0.9952129466518268,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "16-bit input is reduced to 8 bits per channel when re-encoded"
+      ],
+      "timing": {
+        "probe": 0.013082999998005107,
+        "decode": 11.184124999999767,
+        "orient": 0.0006250000005820766,
+        "classify": 4.351249999999709,
+        "encode": 270.94008400000166,
+        "verify-decode": 29.862958999998227,
+        "ssim": 104.26904100000684
+      },
+      "ssimRef": 0.9963343953187614,
+      "psnr": 45.68773838927904
+    },
+    {
+      "fixture": "gama.png",
+      "variant": "lossless",
+      "originalBytes": 162025,
+      "flags": [],
+      "timeMs": 368.95650000000023,
+      "bytes": 24372,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp-lossless",
+      "category": "screenshot",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "PNG gAMA/cHRM colour chunks are only preserved in PNG output"
+      ],
+      "timing": {
+        "probe": 0.021249999997962732,
+        "container": 0.0015000000057625584,
+        "decode": 3.961417000005895,
+        "orient": 0.0010410000031697564,
+        "classify": 3.5593749999970896,
+        "encode": 351.2637919999979,
+        "verify-decode": 7.34004200000345,
+        "exact-compare": 1.7445829999996931
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "gama.png",
+      "variant": "lossless-strip",
+      "originalBytes": 162025,
+      "flags": [],
+      "timeMs": 373.9078329999975,
+      "bytes": 24372,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp-lossless",
+      "category": "screenshot",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "PNG gAMA/cHRM colour chunks are only preserved in PNG output"
+      ],
+      "timing": {
+        "probe": 0.016625000003841706,
+        "container": 0.0010000000038417056,
+        "decode": 3.8861660000038682,
+        "orient": 0.0007079999995767139,
+        "classify": 3.770250000001397,
+        "encode": 356.95029200000135,
+        "verify-decode": 7.515542000008281,
+        "exact-compare": 1.1474170000001322
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "gama.png",
+      "variant": "visually-lossless",
+      "originalBytes": 162025,
+      "flags": [],
+      "timeMs": 1365.2617090000058,
+      "bytes": 24372,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp-lossless",
+      "category": "screenshot",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "PNG gAMA/cHRM colour chunks are only preserved in PNG output"
+      ],
+      "timing": {
+        "probe": 0.014667000003100839,
+        "container": 0.001207999994221609,
+        "decode": 4.042915999998513,
+        "orient": 0.000750000006519258,
+        "classify": 3.636084000005212,
+        "encode": 1197.3183340000032,
+        "verify-decode": 92.04579200001899,
+        "exact-compare": 1.8283339999979944,
+        "ssim": 65.35725000000821
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "gama.png",
+      "variant": "balanced",
+      "originalBytes": 162025,
+      "flags": [],
+      "timeMs": 1222.070249999997,
+      "bytes": 24372,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp-lossless",
+      "category": "screenshot",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "PNG gAMA/cHRM colour chunks are only preserved in PNG output"
+      ],
+      "timing": {
+        "probe": 0.017250000004423782,
+        "container": 0.001083000002836343,
+        "decode": 3.9295840000049793,
+        "orient": 0.0005830000009154901,
+        "classify": 3.6920830000017304,
+        "encode": 1036.5284159999937,
+        "verify-decode": 91.95866599999863,
+        "exact-compare": 2.820625000000291,
+        "ssim": 82.35358299999643
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "gama.png",
+      "variant": "balanced-strip",
+      "originalBytes": 162025,
+      "flags": [],
+      "timeMs": 1219.619375000002,
+      "bytes": 24372,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp-lossless",
+      "category": "screenshot",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "PNG gAMA/cHRM colour chunks are only preserved in PNG output"
+      ],
+      "timing": {
+        "probe": 0.017708999999740627,
+        "container": 0.0015419999981531873,
+        "decode": 4.006249999998545,
+        "orient": 0.0008339999985764734,
+        "classify": 3.703417000004265,
+        "encode": 1033.6522110000005,
+        "verify-decode": 92.24375099999452,
+        "exact-compare": 3.2652499999967404,
+        "ssim": 80.22654299999704
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "gama.png",
+      "variant": "balanced-1024",
+      "originalBytes": 162025,
+      "flags": [],
+      "timeMs": 1264.471458,
+      "bytes": 54659,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "screenshot",
+      "metric": "ssim",
+      "quality": 0.9763566026069714,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "PNG gAMA/cHRM colour chunks are only preserved in PNG output"
+      ],
+      "timing": {
+        "probe": 0.016790999994555023,
+        "decode": 3.8799999999973807,
+        "orient": 0.0007919999989098869,
+        "resize": 72.38091700000223,
+        "classify": 5.649916000002122,
+        "encode": 1003.5898749999906,
+        "verify-decode": 101.96341499999835,
+        "exact-compare": 1.5260839999973541,
+        "ssim": 72.9074580000015
+      }
+    },
+    {
+      "fixture": "gama.png",
+      "variant": "balanced-webp",
+      "originalBytes": 162025,
+      "flags": [],
+      "timeMs": 209.53125,
+      "bytes": 24372,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp-lossless",
+      "category": "screenshot",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "PNG gAMA/cHRM colour chunks are only preserved in PNG output"
+      ],
+      "timing": {
+        "probe": 0.015124999998079147,
+        "decode": 4.089542000001529,
+        "orient": 0.0008749999979045242,
+        "classify": 4.314624999999069,
+        "encode": 147.83387400000356,
+        "verify-decode": 17.3393750000032,
+        "exact-compare": 1.1277089999930467,
+        "ssim": 34.03662600000098
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "tiny-16.png",
+      "variant": "lossless",
+      "originalBytes": 563,
+      "flags": [],
+      "timeMs": 1.664083000003302,
+      "bytes": 404,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp-lossless",
+      "category": "transparent-illustration",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.01429199999984121,
+        "container": 0.0015000000057625584,
+        "decode": 0.08541600000171456,
+        "orient": 0.0006250000005820766,
+        "classify": 0.019959000004746486,
+        "encode": 1.401000000005297,
+        "verify-decode": 0.07966799999121577,
+        "exact-compare": 0.008042000001296401
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "tiny-16.png",
+      "variant": "lossless-strip",
+      "originalBytes": 563,
+      "flags": [],
+      "timeMs": 1.4125829999975394,
+      "bytes": 404,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp-lossless",
+      "category": "transparent-illustration",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.0048749999987194315,
+        "container": 0.0005000000019208528,
+        "decode": 0.04516700000385754,
+        "orient": 0.000375000003259629,
+        "classify": 0.015334000003349502,
+        "encode": 1.2365419999987353,
+        "verify-decode": 0.06287500001053559,
+        "exact-compare": 0.007416000000375789
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "tiny-16.png",
+      "variant": "visually-lossless",
+      "originalBytes": 563,
+      "flags": [],
+      "timeMs": 7.1901250000009895,
+      "bytes": 310,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp",
+      "category": "transparent-illustration",
+      "metric": "ssim",
+      "quality": 0.990160477844569,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "JPEG output skipped: the image has transparent pixels and JPEG cannot store alpha"
+      ],
+      "timing": {
+        "probe": 0.0034159999995608814,
+        "container": 0.00033399999665562063,
+        "decode": 0.034749999998894054,
+        "orient": 0.0002919999969890341,
+        "classify": 0.014083000001846813,
+        "encode": 5.181873999979871,
+        "verify-decode": 1.831248999995296,
+        "exact-compare": 0.007417000007990282,
+        "ssim": 0.0600410000042757
+      },
+      "ssimRef": 0.9958066956880567,
+      "psnr": 32.218707812186736
+    },
+    {
+      "fixture": "tiny-16.png",
+      "variant": "balanced",
+      "originalBytes": 563,
+      "flags": [],
+      "timeMs": 7.8947079999998095,
+      "bytes": 246,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp",
+      "category": "transparent-illustration",
+      "metric": "ssim",
+      "quality": 0.9800910034608235,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "JPEG output skipped: the image has transparent pixels and JPEG cannot store alpha"
+      ],
+      "timing": {
+        "probe": 0.005499999999301508,
+        "container": 0.0005410000012489036,
+        "decode": 0.041207999995094724,
+        "orient": 0.00029200000426499173,
+        "classify": 0.018667000003915746,
+        "encode": 5.191124000011769,
+        "verify-decode": 2.515210000005027,
+        "exact-compare": 0.008166999992681667,
+        "ssim": 0.06145799999649171
+      },
+      "ssimRef": 0.9877264411199099,
+      "psnr": 29.00966293362088
+    },
+    {
+      "fixture": "tiny-16.png",
+      "variant": "balanced-strip",
+      "originalBytes": 563,
+      "flags": [],
+      "timeMs": 7.958249999996042,
+      "bytes": 246,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp",
+      "category": "transparent-illustration",
+      "metric": "ssim",
+      "quality": 0.9800910034608235,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "JPEG output skipped: the image has transparent pixels and JPEG cannot store alpha"
+      ],
+      "timing": {
+        "probe": 0.005875000002561137,
+        "container": 0.0006250000005820766,
+        "decode": 0.04387499999575084,
+        "orient": 0.000375000003259629,
+        "classify": 0.02008400000340771,
+        "encode": 5.2204579999961425,
+        "verify-decode": 2.534375999995973,
+        "exact-compare": 0.007541999999375548,
+        "ssim": 0.05695900000137044
+      },
+      "ssimRef": 0.9877264411199099,
+      "psnr": 29.00966293362088
+    },
+    {
+      "fixture": "tiny-16.png",
+      "variant": "balanced-1024",
+      "originalBytes": 563,
+      "flags": [],
+      "timeMs": 7.888499999993655,
+      "bytes": 246,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp",
+      "category": "transparent-illustration",
+      "metric": "ssim",
+      "quality": 0.9800910034608235,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "JPEG output skipped: the image has transparent pixels and JPEG cannot store alpha"
+      ],
+      "timing": {
+        "probe": 0.005749999996623956,
+        "container": 0.0006670000002486631,
+        "decode": 0.045165999996243045,
+        "orient": 0.0002919999969890341,
+        "classify": 0.016500000005180482,
+        "encode": 5.135832000007213,
+        "verify-decode": 2.5609149999872898,
+        "exact-compare": 0.00849999999627471,
+        "ssim": 0.05608400000346592
+      },
+      "ssimRef": 0.9877264411199099,
+      "psnr": 29.00966293362088
+    },
+    {
+      "fixture": "tiny-16.png",
+      "variant": "balanced-webp",
+      "originalBytes": 563,
+      "flags": [],
+      "timeMs": 1.1294999999954598,
+      "bytes": 246,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp",
+      "category": "transparent-illustration",
+      "metric": "ssim",
+      "quality": 0.9800910034608235,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.009624999998777639,
+        "decode": 0.05645899999944959,
+        "orient": 0.0005000000019208528,
+        "classify": 0.017290999996475875,
+        "encode": 0.8344580000048154,
+        "verify-decode": 0.12279200000193669,
+        "exact-compare": 0.01604100000258768,
+        "ssim": 0.030873999996401835
+      },
+      "ssimRef": 0.9877264411199099,
+      "psnr": 29.00966293362088
+    },
+    {
+      "fixture": "lossy-q50.webp",
+      "variant": "lossless",
+      "originalBytes": 16818,
+      "flags": [],
+      "timeMs": 10.243415999997524,
+      "bytes": 16818,
+      "outFormat": "webp",
+      "usedOriginal": true,
+      "codec": "original",
+      "category": "photo",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.019625000000814907,
+        "container": 0.0008750000051804818,
+        "decode": 3.0678330000009737,
+        "orient": 0.000999999996565748,
+        "classify": 6.289375000000291
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "lossy-q50.webp",
+      "variant": "lossless-strip",
+      "originalBytes": 16818,
+      "flags": [],
+      "timeMs": 9.758125000000291,
+      "bytes": 16818,
+      "outFormat": "webp",
+      "usedOriginal": true,
+      "codec": "original",
+      "category": "photo",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.01020799999969313,
+        "container": 0.000999999996565748,
+        "decode": 3.0198330000057467,
+        "orient": 0.000375000003259629,
+        "classify": 6.438583000002836
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "lossy-q50.webp",
+      "variant": "visually-lossless",
+      "originalBytes": 16818,
+      "flags": [],
+      "timeMs": 357.44116600000416,
+      "bytes": 16818,
+      "outFormat": "webp",
+      "usedOriginal": true,
+      "codec": "original",
+      "category": "photo",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.008832999999867752,
+        "container": 0.0010419999962323345,
+        "decode": 3.0944170000002487,
+        "orient": 0.00041700000292621553,
+        "classify": 6.186125000000175,
+        "encode": 278.89958399999887,
+        "verify-decode": 29.985458000002836,
+        "ssim": 38.81533300000592
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "lossy-q50.webp",
+      "variant": "balanced",
+      "originalBytes": 16818,
+      "flags": [],
+      "timeMs": 640.2330419999998,
+      "bytes": 13260,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9772007965674336,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.02275000000372529,
+        "container": 0.0010000000038417056,
+        "decode": 3.301500000001397,
+        "orient": 0.0009579999968991615,
+        "classify": 5.991582999995444,
+        "encode": 506.8240400000068,
+        "verify-decode": 68.56212599999708,
+        "ssim": 55.020915999986755
+      },
+      "ssimRef": 0.9851086064256184,
+      "psnr": 37.38029802656759
+    },
+    {
+      "fixture": "lossy-q50.webp",
+      "variant": "balanced-strip",
+      "originalBytes": 16818,
+      "flags": [],
+      "timeMs": 644.0475420000002,
+      "bytes": 13260,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9772007965674336,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.028958000002603512,
+        "container": 0.0016250000044237822,
+        "decode": 3.160334000000148,
+        "orient": 0.0012500000011641532,
+        "classify": 6.283416999998735,
+        "encode": 510.9097519999923,
+        "verify-decode": 67.9080399999948,
+        "ssim": 54.5867900000012
+      },
+      "ssimRef": 0.9851086064256184,
+      "psnr": 37.38029802656759
+    },
+    {
+      "fixture": "lossy-q50.webp",
+      "variant": "balanced-1024",
+      "originalBytes": 16818,
+      "flags": [],
+      "timeMs": 634.8214159999989,
+      "bytes": 13260,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9772007965674336,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.02558300000237068,
+        "container": 0.0014159999991534278,
+        "decode": 3.21112500000163,
+        "orient": 0.0006670000002486631,
+        "classify": 6.3104999999995925,
+        "encode": 502.32174900000246,
+        "verify-decode": 67.70349800000258,
+        "ssim": 54.315957000006165
+      },
+      "ssimRef": 0.9851086064256184,
+      "psnr": 37.38029802656759
+    },
+    {
+      "fixture": "lossy-q50.webp",
+      "variant": "balanced-webp",
+      "originalBytes": 16818,
+      "flags": [],
+      "timeMs": 135.40533300000243,
+      "bytes": 14400,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9821543257951113,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.02350000000296859,
+        "container": 0.001542000005429145,
+        "decode": 3.179791999995359,
+        "orient": 0.0007499999992433004,
+        "classify": 6.197041999999783,
+        "encode": 88.5008319999979,
+        "verify-decode": 12.369250000003376,
+        "ssim": 24.284082999998645
+      },
+      "ssimRef": 0.986524915389937,
+      "psnr": 39.299751347242406
+    },
+    {
+      "fixture": "lossless.webp",
+      "variant": "lossless",
+      "originalBytes": 24362,
+      "flags": [],
+      "timeMs": 371.7971249999973,
+      "bytes": 24362,
+      "outFormat": "webp",
+      "usedOriginal": true,
+      "codec": "original",
+      "category": "screenshot",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.09024999999382999,
+        "container": 0.0011660000018309802,
+        "decode": 1.8626250000015716,
+        "orient": 0.0006670000002486631,
+        "classify": 3.7522079999980633,
+        "encode": 355.39270899999974,
+        "verify-decode": 7.1499170000024606,
+        "exact-compare": 2.327832999995735
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "lossless.webp",
+      "variant": "lossless-strip",
+      "originalBytes": 24362,
+      "flags": [],
+      "timeMs": 373.8430420000004,
+      "bytes": 24362,
+      "outFormat": "webp",
+      "usedOriginal": true,
+      "codec": "original",
+      "category": "screenshot",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.028874999996332917,
+        "container": 0.0014169999994919635,
+        "decode": 1.8197500000023865,
+        "orient": 0.0007499999992433004,
+        "classify": 3.665499999995518,
+        "encode": 358.26162500000646,
+        "verify-decode": 7.244999999995343,
+        "exact-compare": 1.3729160000002594
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "lossless.webp",
+      "variant": "visually-lossless",
+      "originalBytes": 24362,
+      "flags": [],
+      "timeMs": 1357.332957999999,
+      "bytes": 24362,
+      "outFormat": "webp",
+      "usedOriginal": true,
+      "codec": "original",
+      "category": "screenshot",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.03445799999462906,
+        "container": 0.0012500000011641532,
+        "decode": 1.8074590000032913,
+        "orient": 0.0008340000058524311,
+        "classify": 3.763041999998677,
+        "encode": 1192.638540999993,
+        "verify-decode": 90.80483299998014,
+        "exact-compare": 1.6786250000077416,
+        "ssim": 65.04650000000402
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "lossless.webp",
+      "variant": "balanced",
+      "originalBytes": 24362,
+      "flags": [],
+      "timeMs": 1213.812165999996,
+      "bytes": 24362,
+      "outFormat": "webp",
+      "usedOriginal": true,
+      "codec": "original",
+      "category": "screenshot",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.030916999996406958,
+        "container": 0.0011249999952269718,
+        "decode": 1.98291700000118,
+        "orient": 0.0013330000001587905,
+        "classify": 3.666958000001614,
+        "encode": 1029.197541000016,
+        "verify-decode": 92.90049999998882,
+        "exact-compare": 1.1925839999967138,
+        "ssim": 81.8190839999952
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "lossless.webp",
+      "variant": "balanced-strip",
+      "originalBytes": 24362,
+      "flags": [],
+      "timeMs": 1208.3498330000002,
+      "bytes": 24362,
+      "outFormat": "webp",
+      "usedOriginal": true,
+      "codec": "original",
+      "category": "screenshot",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.02966700000979472,
+        "container": 0.001041999988956377,
+        "decode": 2.122457999998005,
+        "orient": 0.001249999986612238,
+        "classify": 3.8629999999975553,
+        "encode": 1025.7203330000048,
+        "verify-decode": 92.44924900001206,
+        "exact-compare": 1.155125000004773,
+        "ssim": 81.59904299998016
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "lossless.webp",
+      "variant": "balanced-1024",
+      "originalBytes": 24362,
+      "flags": [
+        "larger-than-original"
+      ],
+      "timeMs": 1251.0508330000011,
+      "bytes": 54659,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "screenshot",
+      "metric": "ssim",
+      "quality": 0.9763566026069714,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.02483300000312738,
+        "decode": 1.7970000000059372,
+        "orient": 0.0007080000068526715,
+        "resize": 72.46516700000211,
+        "classify": 5.449458000002778,
+        "encode": 995.4373330000235,
+        "verify-decode": 102.09533400001237,
+        "exact-compare": 1.1258340000058524,
+        "ssim": 71.77658299998438
+      }
+    },
+    {
+      "fixture": "lossless.webp",
+      "variant": "balanced-webp",
+      "originalBytes": 24362,
+      "flags": [],
+      "timeMs": 201.94133300000976,
+      "bytes": 24362,
+      "outFormat": "webp",
+      "usedOriginal": true,
+      "codec": "original",
+      "category": "screenshot",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.01445899999816902,
+        "container": 0.0010829999955603853,
+        "decode": 1.7554999999993015,
+        "orient": 0.0007499999919673428,
+        "classify": 3.7232500000100117,
+        "encode": 145.53945799998473,
+        "verify-decode": 17.08712499999092,
+        "exact-compare": 0.7857500000100117,
+        "ssim": 31.610958999983268
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "static.gif",
+      "variant": "lossless",
+      "originalBytes": 35744,
+      "flags": [],
+      "timeMs": 66.08291699999245,
+      "bytes": 27898,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp-lossless",
+      "category": "screenshot",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.28125,
+        "container": 0.0024169999960577115,
+        "orient": 0.001791999995475635,
+        "classify": 5.071415999991586,
+        "encode": 55.15670800000953,
+        "verify-decode": 1.2180829999997513,
+        "exact-compare": 0.15774900000542402
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "static.gif",
+      "variant": "lossless-strip",
+      "originalBytes": 35744,
+      "flags": [],
+      "timeMs": 61.405666999999085,
+      "bytes": 27898,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp-lossless",
+      "category": "screenshot",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.03491600000415929,
+        "container": 0.0009999999892897904,
+        "orient": 0.0006670000002486631,
+        "classify": 3.5603339999943273,
+        "encode": 55.47075000000768,
+        "verify-decode": 1.2565009999962058,
+        "exact-compare": 0.09854200000700075
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "static.gif",
+      "variant": "visually-lossless",
+      "originalBytes": 35744,
+      "flags": [],
+      "timeMs": 310.93624999999884,
+      "bytes": 15303,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "screenshot",
+      "metric": "ssim",
+      "quality": 0.9911599967320099,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.05174999999871943,
+        "container": 0.0009590000117896125,
+        "orient": 0.000750000006519258,
+        "classify": 3.280749999990803,
+        "encode": 256.2503760000109,
+        "verify-decode": 30.23275099998864,
+        "exact-compare": 0.16549899999517947,
+        "ssim": 19.754500999988522
+      },
+      "ssimRef": 0.9979478552213383,
+      "psnr": 43.41232444057973
+    },
+    {
+      "fixture": "static.gif",
+      "variant": "balanced",
+      "originalBytes": 35744,
+      "flags": [],
+      "timeMs": 202.47416699999303,
+      "bytes": 11787,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "screenshot",
+      "metric": "ssim",
+      "quality": 0.9829285659276785,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.02337499998975545,
+        "container": 0.0013750000071013346,
+        "orient": 0.0012920000008307397,
+        "classify": 4.390958999996656,
+        "encode": 161.74150099996768,
+        "verify-decode": 21.38074900000356,
+        "exact-compare": 0.1613329999963753,
+        "ssim": 11.414125000010245
+      },
+      "ssimRef": 0.9945851432540125,
+      "psnr": 40.235215049822415
+    },
+    {
+      "fixture": "static.gif",
+      "variant": "balanced-strip",
+      "originalBytes": 35744,
+      "flags": [],
+      "timeMs": 199.14095899999666,
+      "bytes": 11787,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "screenshot",
+      "metric": "ssim",
+      "quality": 0.9829285659276785,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.02816599998914171,
+        "container": 0.0012500000011641532,
+        "orient": 0.0006250000005820766,
+        "classify": 3.394750000006752,
+        "encode": 162.00424899999052,
+        "verify-decode": 21.160542000026908,
+        "exact-compare": 0.1677919999929145,
+        "ssim": 10.762624000009964
+      },
+      "ssimRef": 0.9945851432540125,
+      "psnr": 40.235215049822415
+    },
+    {
+      "fixture": "static.gif",
+      "variant": "balanced-1024",
+      "originalBytes": 35744,
+      "flags": [],
+      "timeMs": 199.18479200000002,
+      "bytes": 11787,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "screenshot",
+      "metric": "ssim",
+      "quality": 0.9829285659276785,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.025708000001031905,
+        "container": 0.0012910000077681616,
+        "orient": 0.0017499999958090484,
+        "classify": 3.445332999996026,
+        "encode": 162.00470800000767,
+        "verify-decode": 21.419210000007297,
+        "exact-compare": 0.11275000000023283,
+        "ssim": 10.662083999981405
+      },
+      "ssimRef": 0.9945851432540125,
+      "psnr": 40.235215049822415
+    },
+    {
+      "fixture": "static.gif",
+      "variant": "balanced-webp",
+      "originalBytes": 35744,
+      "flags": [],
+      "timeMs": 40.96224999999686,
+      "bytes": 15010,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp",
+      "category": "screenshot",
+      "metric": "ssim",
+      "quality": 0.9782225010031758,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.023625000001629815,
+        "orient": 0.0013749999925494194,
+        "classify": 3.344249999994645,
+        "encode": 27.97454199999629,
+        "verify-decode": 3.7499580000003334,
+        "exact-compare": 0.08320799999637529,
+        "ssim": 4.544999000005191
+      },
+      "ssimRef": 0.9961086469981725,
+      "psnr": 38.643365835025485
+    },
+    {
+      "fixture": "animated.gif",
+      "variant": "lossless",
+      "originalBytes": 43250,
+      "flags": [],
+      "timeMs": 0.0736250000045402,
+      "bytes": 43250,
+      "outFormat": "gif",
+      "usedOriginal": true,
+      "codec": "original",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "Animated image: frames are not re-encoded; only container-level optimization was applied"
+      ],
+      "timing": {
+        "probe": 0.032959000003756955,
+        "container": 0.0016669999895384535
+      }
+    },
+    {
+      "fixture": "animated.gif",
+      "variant": "lossless-strip",
+      "originalBytes": 43250,
+      "flags": [],
+      "timeMs": 0.023875000013504177,
+      "bytes": 43250,
+      "outFormat": "gif",
+      "usedOriginal": true,
+      "codec": "original",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "Animated image: frames are not re-encoded; only container-level optimization was applied"
+      ],
+      "timing": {
+        "probe": 0.01037499999802094,
+        "container": 0.0003749999887077138
+      }
+    },
+    {
+      "fixture": "animated.gif",
+      "variant": "visually-lossless",
+      "originalBytes": 43250,
+      "flags": [],
+      "timeMs": 0.024082999996608123,
+      "bytes": 43250,
+      "outFormat": "gif",
+      "usedOriginal": true,
+      "codec": "original",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "Animated image: frames are not re-encoded; only container-level optimization was applied"
+      ],
+      "timing": {
+        "probe": 0.011292000010143965,
+        "container": 0.0005830000009154901
+      }
+    },
+    {
+      "fixture": "animated.gif",
+      "variant": "balanced",
+      "originalBytes": 43250,
+      "flags": [],
+      "timeMs": 0.02462500000547152,
+      "bytes": 43250,
+      "outFormat": "gif",
+      "usedOriginal": true,
+      "codec": "original",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "Animated image: frames are not re-encoded; only container-level optimization was applied"
+      ],
+      "timing": {
+        "probe": 0.010917000006884336,
+        "container": 0.0005839999939780682
+      }
+    },
+    {
+      "fixture": "animated.gif",
+      "variant": "balanced-strip",
+      "originalBytes": 43250,
+      "flags": [],
+      "timeMs": 0.014291999992565252,
+      "bytes": 43250,
+      "outFormat": "gif",
+      "usedOriginal": true,
+      "codec": "original",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "Animated image: frames are not re-encoded; only container-level optimization was applied"
+      ],
+      "timing": {
+        "probe": 0.007042000012006611,
+        "container": 0.0003330000035930425
+      }
+    },
+    {
+      "fixture": "animated.gif",
+      "variant": "balanced-1024",
+      "originalBytes": 43250,
+      "flags": [],
+      "timeMs": 0.01804199999605771,
+      "bytes": 43250,
+      "outFormat": "gif",
+      "usedOriginal": true,
+      "codec": "original",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "Animated image: frames are not re-encoded; only container-level optimization was applied"
+      ],
+      "timing": {
+        "probe": 0.00841700000455603,
+        "container": 0.0004169999883743003
+      }
+    },
+    {
+      "fixture": "animated.gif",
+      "variant": "balanced-webp",
+      "originalBytes": 43250,
+      "flags": [],
+      "error": "INCOMPATIBLE_OPTIONS: Animated GIF cannot be converted to WEBP without losing animation; set preserveAnimation: false to flatten it to the first frame"
+    },
+    {
+      "fixture": "cmyk.jpg",
+      "variant": "lossless",
+      "originalBytes": 256870,
+      "flags": [],
+      "timeMs": 0.2748330000031274,
+      "bytes": 256870,
+      "outFormat": "jpeg",
+      "usedOriginal": true,
+      "codec": "original",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "CMYK/YCCK JPEG cannot be converted to RGB faithfully in the browser; original kept"
+      ],
+      "timing": {
+        "probe": 0.2429580000025453,
+        "container": 0.0007920000061858445
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "cmyk.jpg",
+      "variant": "lossless-strip",
+      "originalBytes": 256870,
+      "flags": [],
+      "timeMs": 0.291958000001614,
+      "bytes": 256870,
+      "outFormat": "jpeg",
+      "usedOriginal": true,
+      "codec": "original",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "CMYK/YCCK JPEG cannot be converted to RGB faithfully in the browser; original kept"
+      ],
+      "timing": {
+        "probe": 0.26750000000174623,
+        "container": 0.000666000007186085
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "cmyk.jpg",
+      "variant": "visually-lossless",
+      "originalBytes": 256870,
+      "flags": [],
+      "timeMs": 0.22462499998800922,
+      "bytes": 256870,
+      "outFormat": "jpeg",
+      "usedOriginal": true,
+      "codec": "original",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "CMYK/YCCK JPEG cannot be converted to RGB faithfully in the browser; original kept"
+      ],
+      "timing": {
+        "probe": 0.1929589999926975,
+        "container": 0.0006250000005820766
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "cmyk.jpg",
+      "variant": "balanced",
+      "originalBytes": 256870,
+      "flags": [],
+      "timeMs": 0.25058399999397807,
+      "bytes": 256870,
+      "outFormat": "jpeg",
+      "usedOriginal": true,
+      "codec": "original",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "CMYK/YCCK JPEG cannot be converted to RGB faithfully in the browser; original kept"
+      ],
+      "timing": {
+        "probe": 0.1945419999974547,
+        "container": 0.0006250000005820766
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "cmyk.jpg",
+      "variant": "balanced-strip",
+      "originalBytes": 256870,
+      "flags": [],
+      "timeMs": 0.2277920000051381,
+      "bytes": 256870,
+      "outFormat": "jpeg",
+      "usedOriginal": true,
+      "codec": "original",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "CMYK/YCCK JPEG cannot be converted to RGB faithfully in the browser; original kept"
+      ],
+      "timing": {
+        "probe": 0.1860000000015134,
+        "container": 0.0007909999985713512
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "cmyk.jpg",
+      "variant": "balanced-1024",
+      "originalBytes": 256870,
+      "flags": [],
+      "timeMs": 0.3095420000026934,
+      "bytes": 256870,
+      "outFormat": "jpeg",
+      "usedOriginal": true,
+      "codec": "original",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "CMYK/YCCK JPEG cannot be converted to RGB faithfully in the browser; original kept"
+      ],
+      "timing": {
+        "probe": 0.2677499999990687,
+        "container": 0.0013329999928828329
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "cmyk.jpg",
+      "variant": "balanced-webp",
+      "originalBytes": 256870,
+      "flags": [],
+      "error": "INCOMPATIBLE_OPTIONS: CMYK/YCCK JPEG cannot be converted to RGB faithfully in the browser; the image cannot be re-encoded"
+    },
+    {
+      "fixture": "photo.avif",
+      "variant": "lossless",
+      "originalBytes": 25578,
+      "flags": [],
+      "timeMs": 30.184500000003027,
+      "bytes": 25578,
+      "outFormat": "avif",
+      "usedOriginal": true,
+      "codec": "original",
+      "category": "photo",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.17999999999301508,
+        "container": 0.0014999999984866008,
+        "decode": 23.088624999989406,
+        "orient": 0.0014590000064345077,
+        "classify": 6.587334000010742
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "photo.avif",
+      "variant": "lossless-strip",
+      "originalBytes": 25578,
+      "flags": [],
+      "timeMs": 28.698959000001196,
+      "bytes": 25578,
+      "outFormat": "avif",
+      "usedOriginal": true,
+      "codec": "original",
+      "category": "photo",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.05199999999604188,
+        "container": 0.0009580000041751191,
+        "decode": 21.610791999992216,
+        "orient": 0.0007079999923007563,
+        "classify": 6.704500000007101
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "photo.avif",
+      "variant": "visually-lossless",
+      "originalBytes": 25578,
+      "flags": [],
+      "timeMs": 1067.4557919999934,
+      "bytes": 25578,
+      "outFormat": "avif",
+      "usedOriginal": true,
+      "codec": "original",
+      "category": "photo",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.04304200000478886,
+        "container": 0.0008330000127898529,
+        "decode": 21.467208000001847,
+        "orient": 0.0008750000124564394,
+        "classify": 6.7647500000020955,
+        "encode": 911.2246660000092,
+        "verify-decode": 84.63116599997738,
+        "ssim": 42.87050000000454
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "photo.avif",
+      "variant": "balanced",
+      "originalBytes": 25578,
+      "flags": [],
+      "timeMs": 688.1396660000028,
+      "bytes": 18676,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9780549654578584,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.02845800000068266,
+        "container": 0.0013329999928828329,
+        "decode": 21.327375000008033,
+        "orient": 0.0016250000044237822,
+        "classify": 6.488041999997222,
+        "encode": 533.5951679999998,
+        "verify-decode": 71.05441599999904,
+        "ssim": 55.18766900000628
+      },
+      "ssimRef": 0.9873214454233271,
+      "psnr": 37.88395344528156
+    },
+    {
+      "fixture": "photo.avif",
+      "variant": "balanced-strip",
+      "originalBytes": 25578,
+      "flags": [],
+      "timeMs": 698.0147500000021,
+      "bytes": 18676,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9780549654578584,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.035499999998137355,
+        "container": 0.0017500000103609636,
+        "decode": 22.403292000002693,
+        "orient": 0.0014579999988200143,
+        "classify": 6.789416999992682,
+        "encode": 539.9601239999902,
+        "verify-decode": 71.90662400002475,
+        "ssim": 56.29208300000755
+      },
+      "ssimRef": 0.9873214454233271,
+      "psnr": 37.88395344528156
+    },
+    {
+      "fixture": "photo.avif",
+      "variant": "balanced-1024",
+      "originalBytes": 25578,
+      "flags": [],
+      "timeMs": 691.5965830000059,
+      "bytes": 18676,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9780549654578584,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.031667000002926216,
+        "container": 0.0014999999984866008,
+        "decode": 22.206500000000233,
+        "orient": 0.0013749999925494194,
+        "classify": 6.679040999995777,
+        "encode": 534.3606240000227,
+        "verify-decode": 72.23041500004183,
+        "ssim": 55.49483199999668
+      },
+      "ssimRef": 0.9873214454233271,
+      "psnr": 37.88395344528156
+    },
+    {
+      "fixture": "photo.avif",
+      "variant": "balanced-webp",
+      "originalBytes": 25578,
+      "flags": [],
+      "timeMs": 162.69095899999957,
+      "bytes": 23534,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp",
+      "category": "photo",
+      "metric": "ssim",
+      "quality": 0.9752965107680734,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.03187500000058208,
+        "decode": 21.966958000004524,
+        "orient": 0.0009580000041751191,
+        "classify": 6.633291000005556,
+        "encode": 94.70179199999257,
+        "verify-decode": 14.20683400001144,
+        "ssim": 24.743416999990586
+      },
+      "ssimRef": 0.9856871931756742,
+      "psnr": 38.404397333538675
+    },
+    {
+      "fixture": "screenshot.png",
+      "variant": "lossless",
+      "originalBytes": 189720,
+      "flags": [],
+      "timeMs": 392.2198749999952,
+      "bytes": 24372,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp-lossless",
+      "category": "screenshot",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.024457999999867752,
+        "container": 0.001791999995475635,
+        "decode": 5.870666999995592,
+        "orient": 0.001959000001079403,
+        "classify": 3.80037500000617,
+        "encode": 372.58587499998976,
+        "verify-decode": 7.583374999987427,
+        "exact-compare": 1.4801670000015292
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "screenshot.png",
+      "variant": "lossless-strip",
+      "originalBytes": 189720,
+      "flags": [],
+      "timeMs": 391.1061250000057,
+      "bytes": 24372,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp-lossless",
+      "category": "screenshot",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.014792000001762062,
+        "container": 0.0009159999899566174,
+        "decode": 6.411625000007916,
+        "orient": 0.0009589999972376972,
+        "classify": 3.921042000001762,
+        "encode": 370.59199999998964,
+        "verify-decode": 7.804416000013589,
+        "exact-compare": 1.4649159999826225
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "screenshot.png",
+      "variant": "visually-lossless",
+      "originalBytes": 189720,
+      "flags": [],
+      "timeMs": 1392.469041999997,
+      "bytes": 24372,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp-lossless",
+      "category": "screenshot",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.0236670000012964,
+        "container": 0.0016670000040903687,
+        "decode": 6.180082999999286,
+        "orient": 0.0010000000038417056,
+        "classify": 3.769165999998222,
+        "encode": 1222.234666999997,
+        "verify-decode": 91.55416699998023,
+        "exact-compare": 1.849541000003228,
+        "ssim": 65.80216700000165
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "screenshot.png",
+      "variant": "balanced",
+      "originalBytes": 189720,
+      "flags": [],
+      "timeMs": 1216.7830839999951,
+      "bytes": 24372,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp-lossless",
+      "category": "screenshot",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.01879200000257697,
+        "container": 0.0012089999945601448,
+        "decode": 5.883916999999201,
+        "orient": 0.0009169999975711107,
+        "classify": 3.7413329999981215,
+        "encode": 1031.6420829999988,
+        "verify-decode": 92.90678999999363,
+        "exact-compare": 2.3911670000088634,
+        "ssim": 79.31000000001222
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "screenshot.png",
+      "variant": "balanced-strip",
+      "originalBytes": 189720,
+      "flags": [],
+      "timeMs": 1216.2291669999977,
+      "bytes": 24372,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp-lossless",
+      "category": "screenshot",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.019541999994544312,
+        "container": 0.001959000001079403,
+        "decode": 6.159791999991285,
+        "orient": 0.0020000000076834112,
+        "classify": 3.6472500000090804,
+        "encode": 1029.4671659999876,
+        "verify-decode": 92.31404299999122,
+        "exact-compare": 1.5700420000066515,
+        "ssim": 81.3221690000064
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "screenshot.png",
+      "variant": "balanced-1024",
+      "originalBytes": 189720,
+      "flags": [],
+      "timeMs": 1260.5067920000001,
+      "bytes": 54659,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "screenshot",
+      "metric": "ssim",
+      "quality": 0.9763566026069714,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.01795799999672454,
+        "decode": 6.018624999996973,
+        "orient": 0.000750000006519258,
+        "resize": 72.1217500000057,
+        "classify": 5.694875000001048,
+        "encode": 1002.4535409999953,
+        "verify-decode": 101.6085410000087,
+        "exact-compare": 1.1006250000064028,
+        "ssim": 70.49408300002688
+      }
+    },
+    {
+      "fixture": "screenshot.png",
+      "variant": "balanced-webp",
+      "originalBytes": 189720,
+      "flags": [],
+      "timeMs": 207.3836250000022,
+      "bytes": 24372,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp-lossless",
+      "category": "screenshot",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.014875000008032657,
+        "decode": 5.946249999993597,
+        "orient": 0.0005410000012489036,
+        "classify": 3.678790999998455,
+        "encode": 147.65533299998788,
+        "verify-decode": 17.382291999994777,
+        "exact-compare": 0.5893750000104774,
+        "ssim": 31.294084000008297
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "transparent.png",
+      "variant": "lossless",
+      "originalBytes": 10123,
+      "flags": [],
+      "timeMs": 132.2509160000045,
+      "bytes": 4036,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp-lossless",
+      "category": "transparent-illustration",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.00900000000547152,
+        "container": 0.001915999993798323,
+        "decode": 1.2680410000029951,
+        "orient": 0.00033299998904112726,
+        "classify": 5.48729099999764,
+        "encode": 122.87645800001337,
+        "verify-decode": 2.13054200001352,
+        "exact-compare": 0.3900830000056885
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "transparent.png",
+      "variant": "lossless-strip",
+      "originalBytes": 10123,
+      "flags": [],
+      "timeMs": 131.98120799999742,
+      "bytes": 4036,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp-lossless",
+      "category": "transparent-illustration",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.011750000005122274,
+        "container": 0.0011669999948935583,
+        "decode": 1.2907500000001164,
+        "orient": 0.0006250000005820766,
+        "classify": 5.540415999988909,
+        "encode": 122.51091700002144,
+        "verify-decode": 2.09970799999428,
+        "exact-compare": 0.43691599999147
+      },
+      "exactIndependent": true
+    },
+    {
+      "fixture": "transparent.png",
+      "variant": "visually-lossless",
+      "originalBytes": 10123,
+      "flags": [],
+      "timeMs": 751.4351250000036,
+      "bytes": 2210,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "transparent-illustration",
+      "metric": "ssim",
+      "quality": 0.9972233827539525,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "JPEG output skipped: the image has transparent pixels and JPEG cannot store alpha"
+      ],
+      "timing": {
+        "probe": 0.01029200000630226,
+        "container": 0.0012500000011641532,
+        "decode": 1.328666000001249,
+        "orient": 0.0006250000005820766,
+        "classify": 5.654332999998587,
+        "encode": 620.5861249999871,
+        "verify-decode": 42.38879299997643,
+        "exact-compare": 0.4525829999911366,
+        "ssim": 80.13649799999257
+      },
+      "ssimRef": 0.9992723760027329,
+      "psnr": 41.5360898401374
+    },
+    {
+      "fixture": "transparent.png",
+      "variant": "balanced",
+      "originalBytes": 10123,
+      "flags": [],
+      "timeMs": 508.73625000000175,
+      "bytes": 2035,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "transparent-illustration",
+      "metric": "ssim",
+      "quality": 0.9952748952853548,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "JPEG output skipped: the image has transparent pixels and JPEG cannot store alpha"
+      ],
+      "timing": {
+        "probe": 0.01245799999742303,
+        "container": 0.0013750000071013346,
+        "decode": 1.4008749999920838,
+        "orient": 0.0008329999982379377,
+        "classify": 5.729624999992666,
+        "encode": 401.52708300000813,
+        "verify-decode": 33.715125000017,
+        "exact-compare": 0.2846260000078473,
+        "ssim": 65.78966800001217
+      },
+      "ssimRef": 0.998708313389962,
+      "psnr": 39.84469765075525
+    },
+    {
+      "fixture": "transparent.png",
+      "variant": "balanced-strip",
+      "originalBytes": 10123,
+      "flags": [],
+      "timeMs": 511.58237499999814,
+      "bytes": 2035,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "transparent-illustration",
+      "metric": "ssim",
+      "quality": 0.9952748952853548,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "JPEG output skipped: the image has transparent pixels and JPEG cannot store alpha"
+      ],
+      "timing": {
+        "probe": 0.009915999995428137,
+        "container": 0.0014579999988200143,
+        "decode": 1.3795000000100117,
+        "orient": 0.0004999999946448952,
+        "classify": 6.2267919999867445,
+        "encode": 403.34725000000617,
+        "verify-decode": 34.23312500001339,
+        "exact-compare": 0.4007920000003651,
+        "ssim": 65.68620799997007
+      },
+      "ssimRef": 0.998708313389962,
+      "psnr": 39.84469765075525
+    },
+    {
+      "fixture": "transparent.png",
+      "variant": "balanced-1024",
+      "originalBytes": 10123,
+      "flags": [],
+      "timeMs": 511.51395800001046,
+      "bytes": 2035,
+      "outFormat": "avif",
+      "usedOriginal": false,
+      "codec": "libavif",
+      "category": "transparent-illustration",
+      "metric": "ssim",
+      "quality": 0.9952748952853548,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [
+        "JPEG output skipped: the image has transparent pixels and JPEG cannot store alpha"
+      ],
+      "timing": {
+        "probe": 0.009374999994179234,
+        "container": 0.0010409999958937988,
+        "decode": 1.2791660000075353,
+        "orient": 0.00041700000292621553,
+        "classify": 5.414209000009578,
+        "encode": 404.927749999988,
+        "verify-decode": 34.25487400000566,
+        "exact-compare": 0.27895899998839013,
+        "ssim": 65.069290000014
+      },
+      "ssimRef": 0.998708313389962,
+      "psnr": 39.84469765075525
+    },
+    {
+      "fixture": "transparent.png",
+      "variant": "balanced-webp",
+      "originalBytes": 10123,
+      "flags": [],
+      "timeMs": 123.81295799999498,
+      "bytes": 4036,
+      "outFormat": "webp",
+      "usedOriginal": false,
+      "codec": "libwebp-lossless",
+      "category": "transparent-illustration",
+      "metric": "exact",
+      "quality": 1,
+      "constraintsMet": true,
+      "metadata": {
+        "exif": "none",
+        "xmp": "none",
+        "iccProfile": "none",
+        "orientation": "none"
+      },
+      "warnings": [],
+      "timing": {
+        "probe": 0.025374999997438863,
+        "decode": 1.3698750000039581,
+        "orient": 0.0010000000038417056,
+        "classify": 5.866792000000714,
+        "encode": 77.70254199998453,
+        "verify-decode": 6.296458999990136,
+        "exact-compare": 0.14054200000828132,
+        "ssim": 32.247541000004276
+      },
+      "exactIndependent": true
+    }
+  ]
+}

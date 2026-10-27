@@ -1,0 +1,398 @@
+{
+  "date": "2026-10-27T12:57:33.948Z",
+  "results": [
+    {
+      "image": "screenshot-code.png",
+      "category": "screenshot",
+      "target": 0.975,
+      "setting": "444 boost0",
+      "q": 43,
+      "bytes": 44179,
+      "ssim": 0.9760001476380874
+    },
+    {
+      "image": "screenshot-code.png",
+      "category": "screenshot",
+      "target": 0.975,
+      "setting": "420 boost0",
+      "q": 35,
+      "bytes": 34155,
+      "ssim": 0.9761097652327395
+    },
+    {
+      "image": "screenshot-code.png",
+      "category": "screenshot",
+      "target": 0.99,
+      "setting": "444 boost0",
+      "q": 60,
+      "bytes": 62705,
+      "ssim": 0.9906980921110784
+    },
+    {
+      "image": "screenshot-code.png",
+      "category": "screenshot",
+      "target": 0.99,
+      "setting": "420 boost0"
+    },
+    {
+      "image": "text-docs.png",
+      "category": "text-graphic",
+      "target": 0.975,
+      "setting": "444 boost0",
+      "q": 44,
+      "bytes": 125824,
+      "ssim": 0.97509367070144
+    },
+    {
+      "image": "text-docs.png",
+      "category": "text-graphic",
+      "target": 0.975,
+      "setting": "420 boost0",
+      "q": 52,
+      "bytes": 145433,
+      "ssim": 0.9752962113605657
+    },
+    {
+      "image": "text-docs.png",
+      "category": "text-graphic",
+      "target": 0.99,
+      "setting": "444 boost0",
+      "q": 77,
+      "bytes": 227044,
+      "ssim": 0.9900005166109435
+    },
+    {
+      "image": "text-docs.png",
+      "category": "text-graphic",
+      "target": 0.99,
+      "setting": "420 boost0",
+      "q": 90,
+      "bytes": 285531,
+      "ssim": 0.9908455569564908
+    },
+    {
+      "image": "text-slide.png",
+      "category": "text-graphic",
+      "target": 0.975,
+      "setting": "444 boost0",
+      "q": 20,
+      "bytes": 6873,
+      "ssim": 0.9952435876695428
+    },
+    {
+      "image": "text-slide.png",
+      "category": "text-graphic",
+      "target": 0.975,
+      "setting": "420 boost0",
+      "q": 20,
+      "bytes": 6529,
+      "ssim": 0.9932582234108656
+    },
+    {
+      "image": "text-slide.png",
+      "category": "text-graphic",
+      "target": 0.99,
+      "setting": "444 boost0",
+      "q": 20,
+      "bytes": 6873,
+      "ssim": 0.9952435876695428
+    },
+    {
+      "image": "text-slide.png",
+      "category": "text-graphic",
+      "target": 0.99,
+      "setting": "420 boost0",
+      "q": 20,
+      "bytes": 6529,
+      "ssim": 0.9932582234108656
+    },
+    {
+      "image": "transparent-illustration-1.png",
+      "category": "transparent-illustration",
+      "target": 0.975,
+      "setting": "444 boost25",
+      "q": 27,
+      "bytes": 9181,
+      "ssim": 0.975539554578221
+    },
+    {
+      "image": "transparent-illustration-1.png",
+      "category": "transparent-illustration",
+      "target": 0.975,
+      "setting": "444 boost0",
+      "q": 33,
+      "bytes": 7555,
+      "ssim": 0.9752003680141024
+    },
+    {
+      "image": "transparent-illustration-1.png",
+      "category": "transparent-illustration",
+      "target": 0.975,
+      "setting": "420 boost25",
+      "q": 30,
+      "bytes": 8956,
+      "ssim": 0.9756361558788145
+    },
+    {
+      "image": "transparent-illustration-1.png",
+      "category": "transparent-illustration",
+      "target": 0.975,
+      "setting": "420 boost0",
+      "q": 38,
+      "bytes": 7314,
+      "ssim": 0.9751639289051728
+    },
+    {
+      "image": "transparent-illustration-1.png",
+      "category": "transparent-illustration",
+      "target": 0.99,
+      "setting": "444 boost25",
+      "q": 49,
+      "bytes": 16102,
+      "ssim": 0.9903634470157385
+    },
+    {
+      "image": "transparent-illustration-1.png",
+      "category": "transparent-illustration",
+      "target": 0.99,
+      "setting": "444 boost0",
+      "q": 57,
+      "bytes": 16317,
+      "ssim": 0.9902936104960719
+    },
+    {
+      "image": "transparent-illustration-1.png",
+      "category": "transparent-illustration",
+      "target": 0.99,
+      "setting": "420 boost25",
+      "q": 63,
+      "bytes": 20452,
+      "ssim": 0.9900771010468706
+    },
+    {
+      "image": "transparent-illustration-1.png",
+      "category": "transparent-illustration",
+      "target": 0.99,
+      "setting": "420 boost0",
+      "q": 70,
+      "bytes": 17623,
+      "ssim": 0.9901419433602485
+    },
+    {
+      "image": "transparent-illustration-2.png",
+      "category": "transparent-illustration",
+      "target": 0.975,
+      "setting": "444 boost25",
+      "q": 27,
+      "bytes": 11715,
+      "ssim": 0.9772024334513328
+    },
+    {
+      "image": "transparent-illustration-2.png",
+      "category": "transparent-illustration",
+      "target": 0.975,
+      "setting": "444 boost0",
+      "q": 35,
+      "bytes": 9938,
+      "ssim": 0.9761392058840977
+    },
+    {
+      "image": "transparent-illustration-2.png",
+      "category": "transparent-illustration",
+      "target": 0.975,
+      "setting": "420 boost25",
+      "q": 28,
+      "bytes": 10900,
+      "ssim": 0.9756327619610875
+    },
+    {
+      "image": "transparent-illustration-2.png",
+      "category": "transparent-illustration",
+      "target": 0.975,
+      "setting": "420 boost0",
+      "q": 39,
+      "bytes": 9966,
+      "ssim": 0.9757490465232214
+    },
+    {
+      "image": "transparent-illustration-2.png",
+      "category": "transparent-illustration",
+      "target": 0.99,
+      "setting": "444 boost25",
+      "q": 51,
+      "bytes": 22217,
+      "ssim": 0.990525668590085
+    },
+    {
+      "image": "transparent-illustration-2.png",
+      "category": "transparent-illustration",
+      "target": 0.99,
+      "setting": "444 boost0",
+      "q": 58,
+      "bytes": 21253,
+      "ssim": 0.9900543761723849
+    },
+    {
+      "image": "transparent-illustration-2.png",
+      "category": "transparent-illustration",
+      "target": 0.99,
+      "setting": "420 boost25",
+      "q": 65,
+      "bytes": 29195,
+      "ssim": 0.9902755592007723
+    },
+    {
+      "image": "transparent-illustration-2.png",
+      "category": "transparent-illustration",
+      "target": 0.99,
+      "setting": "420 boost0",
+      "q": 73,
+      "bytes": 24042,
+      "ssim": 0.9902042857519523
+    },
+    {
+      "image": "transparent-illustration-3.png",
+      "category": "transparent-illustration",
+      "target": 0.975,
+      "setting": "444 boost25",
+      "q": 22,
+      "bytes": 8407,
+      "ssim": 0.975308065026471
+    },
+    {
+      "image": "transparent-illustration-3.png",
+      "category": "transparent-illustration",
+      "target": 0.975,
+      "setting": "444 boost0",
+      "q": 31,
+      "bytes": 7251,
+      "ssim": 0.9762907643119301
+    },
+    {
+      "image": "transparent-illustration-3.png",
+      "category": "transparent-illustration",
+      "target": 0.975,
+      "setting": "420 boost25",
+      "q": 28,
+      "bytes": 8885,
+      "ssim": 0.9753066138858817
+    },
+    {
+      "image": "transparent-illustration-3.png",
+      "category": "transparent-illustration",
+      "target": 0.975,
+      "setting": "420 boost0",
+      "q": 36,
+      "bytes": 7423,
+      "ssim": 0.9770025855027911
+    },
+    {
+      "image": "transparent-illustration-3.png",
+      "category": "transparent-illustration",
+      "target": 0.99,
+      "setting": "444 boost25",
+      "q": 46,
+      "bytes": 15521,
+      "ssim": 0.990317135489349
+    },
+    {
+      "image": "transparent-illustration-3.png",
+      "category": "transparent-illustration",
+      "target": 0.99,
+      "setting": "444 boost0",
+      "q": 55,
+      "bytes": 15195,
+      "ssim": 0.9901991805207342
+    },
+    {
+      "image": "transparent-illustration-3.png",
+      "category": "transparent-illustration",
+      "target": 0.99,
+      "setting": "420 boost25",
+      "q": 57,
+      "bytes": 18842,
+      "ssim": 0.9901551918438334
+    },
+    {
+      "image": "transparent-illustration-3.png",
+      "category": "transparent-illustration",
+      "target": 0.99,
+      "setting": "420 boost0",
+      "q": 65,
+      "bytes": 16908,
+      "ssim": 0.9900745963669684
+    },
+    {
+      "image": "transparent-icon.png",
+      "category": "transparent-illustration",
+      "target": 0.975,
+      "setting": "444 boost25",
+      "q": 20,
+      "bytes": 1752,
+      "ssim": 0.9924814933532156
+    },
+    {
+      "image": "transparent-icon.png",
+      "category": "transparent-illustration",
+      "target": 0.975,
+      "setting": "444 boost0",
+      "q": 20,
+      "bytes": 1455,
+      "ssim": 0.991333104641667
+    },
+    {
+      "image": "transparent-icon.png",
+      "category": "transparent-illustration",
+      "target": 0.975,
+      "setting": "420 boost25",
+      "q": 20,
+      "bytes": 1714,
+      "ssim": 0.9895144453521431
+    },
+    {
+      "image": "transparent-icon.png",
+      "category": "transparent-illustration",
+      "target": 0.975,
+      "setting": "420 boost0",
+      "q": 20,
+      "bytes": 1417,
+      "ssim": 0.9885084384017675
+    },
+    {
+      "image": "transparent-icon.png",
+      "category": "transparent-illustration",
+      "target": 0.99,
+      "setting": "444 boost25",
+      "q": 20,
+      "bytes": 1752,
+      "ssim": 0.9924814933532156
+    },
+    {
+      "image": "transparent-icon.png",
+      "category": "transparent-illustration",
+      "target": 0.99,
+      "setting": "444 boost0",
+      "q": 20,
+      "bytes": 1455,
+      "ssim": 0.991333104641667
+    },
+    {
+      "image": "transparent-icon.png",
+      "category": "transparent-illustration",
+      "target": 0.99,
+      "setting": "420 boost25",
+      "q": 24,
+      "bytes": 1820,
+      "ssim": 0.9911836423696287
+    },
+    {
+      "image": "transparent-icon.png",
+      "category": "transparent-illustration",
+      "target": 0.99,
+      "setting": "420 boost0",
+      "q": 24,
+      "bytes": 1478,
+      "ssim": 0.990178262062844
+    }
+  ]
+}

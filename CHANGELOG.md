@@ -2,6 +2,16 @@
 
 ## 0.1.0-beta.0 (unreleased)
 
+Audit fixes (see docs/audit.md):
+
+- A perceptual mode could return the original although `lossless` mode found a smaller pixel-exact file (P3 photo
+  PNG: 794 KB returned, 472 KB available). Quality ranges now reach JPEG 98 / WebP 99 / AVIF 95, and lossless
+  candidates are added when no re-encode meets the threshold for a losslessly stored input.
+- SSIM is now bounded by the alpha plane's own SSIM for images with transparency.
+- Warning when the output is larger than the input because the original was not an allowed result.
+- SSIM 20–54% faster with numerically identical results.
+- Verified with Vite 7 and Vite 8.
+
 First public beta.
 
 - `compressImage` / `createCompressor`: Web Worker pool, `AbortSignal` cancellation (terminates the worker),

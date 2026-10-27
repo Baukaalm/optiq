@@ -7,8 +7,7 @@ WASM files as separate assets automatically.
 
 | Setup | Status |
 |---|---|
-| Vite 7 (dev server and production build) | Tested in this repository (Chromium) |
-| Plain consumer project installing the packed tarball + Vite build | Tested (`pnpm pack:check`) |
+| Vite 7 and Vite 8 (dev server and production build) | Tested in CI: the packed tarball is installed into a fresh app, typechecked, built and run in Chromium (`VITE_VERSION=8 pnpm pack:check`) |
 | webpack 5, Parcel 2, Next.js | Not tested here; they support the patterns above |
 
 ## Vite

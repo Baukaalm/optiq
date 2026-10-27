@@ -1,0 +1,256 @@
+{
+  "date": "2026-10-27T12:56:12.202Z",
+  "node": "v24.15.0",
+  "initMs": 27.601375000000004,
+  "rows": [
+    {
+      "image": "kodim23 (0.4 MP)",
+      "op": "decode jpeg",
+      "wasmMs": 2.204915999999997,
+      "nativeMs": 1.338916999999995,
+      "ratio": 1.6467906524452265,
+      "note": ""
+    },
+    {
+      "image": "kodim23 (0.4 MP)",
+      "op": "encode jpeg q80 (mozjpeg)",
+      "wasmMs": 34.188500000000005,
+      "nativeMs": 15.78712500000006,
+      "ratio": 2.1655937987442218,
+      "note": ""
+    },
+    {
+      "image": "kodim23 (0.4 MP)",
+      "op": "encode webp q80 m4",
+      "wasmMs": 25.121125000000006,
+      "nativeMs": 18.80499999999995,
+      "ratio": 1.3358747673491131,
+      "note": ""
+    },
+    {
+      "image": "kodim23 (0.4 MP)",
+      "op": "encode avif q50 speed6",
+      "wasmMs": 193.27608299999997,
+      "nativeMs": 77.50395799999978,
+      "ratio": 2.493757583322396,
+      "note": "native effort 3 ≈ libaom speed 6"
+    },
+    {
+      "image": "kodim23 (0.4 MP)",
+      "op": "encode webp lossless m4 q75",
+      "wasmMs": 171.96512500000017,
+      "nativeMs": 0,
+      "note": "345944 B"
+    },
+    {
+      "image": "kodim23 (0.4 MP)",
+      "op": "encode webp lossless m5 q75",
+      "wasmMs": 174.83624999999984,
+      "nativeMs": 0,
+      "note": "345944 B"
+    },
+    {
+      "image": "kodim23 (0.4 MP)",
+      "op": "encode webp lossless m6 q100",
+      "wasmMs": 6234.892541999998,
+      "nativeMs": 0,
+      "note": "342876 B"
+    },
+    {
+      "image": "kodim23 (0.4 MP)",
+      "op": "encode png oxipng level 2",
+      "wasmMs": 311.3509580000027,
+      "nativeMs": 0,
+      "note": "456173 B"
+    },
+    {
+      "image": "kodim23 (0.4 MP)",
+      "op": "encode png oxipng level 3",
+      "wasmMs": 800.9137919999994,
+      "nativeMs": 0,
+      "note": "443547 B"
+    },
+    {
+      "image": "kodim23 (0.4 MP)",
+      "op": "ssim (JS)",
+      "wasmMs": 5.930207999997947,
+      "nativeMs": 0,
+      "note": ""
+    },
+    {
+      "image": "kodim23 (0.4 MP)",
+      "op": "exact compare (JS)",
+      "wasmMs": 0.0008750000051804818,
+      "nativeMs": 0,
+      "note": ""
+    },
+    {
+      "image": "kodim23 (0.4 MP)",
+      "op": "classify (JS)",
+      "wasmMs": 7.750542000001587,
+      "nativeMs": 0,
+      "note": ""
+    },
+    {
+      "image": "kodim23 (0.4 MP)",
+      "op": "RGBA copy (slice)",
+      "wasmMs": 0.09137500000360887,
+      "nativeMs": 0,
+      "note": "cost of one extra buffer copy"
+    },
+    {
+      "image": "screenshot (1 MP)",
+      "op": "decode png",
+      "wasmMs": 6.16795799999818,
+      "nativeMs": 3.6091249999954016,
+      "ratio": 1.7089898521126419,
+      "note": ""
+    },
+    {
+      "image": "screenshot (1 MP)",
+      "op": "encode jpeg q80 (mozjpeg)",
+      "wasmMs": 88.44679200000246,
+      "nativeMs": 41.92091600000276,
+      "ratio": 2.1098487447172345,
+      "note": ""
+    },
+    {
+      "image": "screenshot (1 MP)",
+      "op": "encode webp q80 m4",
+      "wasmMs": 47.93162499999744,
+      "nativeMs": 33.7702500000014,
+      "ratio": 1.4193446894824722,
+      "note": ""
+    },
+    {
+      "image": "screenshot (1 MP)",
+      "op": "encode avif q50 speed6",
+      "wasmMs": 298.560249999995,
+      "nativeMs": 215.74700000000303,
+      "ratio": 1.3838442712992107,
+      "note": "native effort 3 ≈ libaom speed 6"
+    },
+    {
+      "image": "screenshot (1 MP)",
+      "op": "encode webp lossless m4 q75",
+      "wasmMs": 30.770583999998053,
+      "nativeMs": 0,
+      "note": "24372 B"
+    },
+    {
+      "image": "screenshot (1 MP)",
+      "op": "encode webp lossless m5 q75",
+      "wasmMs": 42.36866600000212,
+      "nativeMs": 0,
+      "note": "24372 B"
+    },
+    {
+      "image": "screenshot (1 MP)",
+      "op": "encode webp lossless m6 q100",
+      "wasmMs": 949.7777920000008,
+      "nativeMs": 0,
+      "note": "23678 B"
+    },
+    {
+      "image": "screenshot (1 MP)",
+      "op": "encode png oxipng level 2",
+      "wasmMs": 313.421875,
+      "nativeMs": 0,
+      "note": "140516 B"
+    },
+    {
+      "image": "screenshot (1 MP)",
+      "op": "encode png oxipng level 3",
+      "wasmMs": 965.968667000001,
+      "nativeMs": 0,
+      "note": "140516 B"
+    },
+    {
+      "image": "screenshot (1 MP)",
+      "op": "ssim (JS)",
+      "wasmMs": 15.263833000004524,
+      "nativeMs": 0,
+      "note": ""
+    },
+    {
+      "image": "screenshot (1 MP)",
+      "op": "exact compare (JS)",
+      "wasmMs": 0.05354100000113249,
+      "nativeMs": 0,
+      "note": ""
+    },
+    {
+      "image": "screenshot (1 MP)",
+      "op": "classify (JS)",
+      "wasmMs": 4.213917000000947,
+      "nativeMs": 0,
+      "note": ""
+    },
+    {
+      "image": "screenshot (1 MP)",
+      "op": "RGBA copy (slice)",
+      "wasmMs": 0.2507919999989099,
+      "nativeMs": 0,
+      "note": "cost of one extra buffer copy"
+    },
+    {
+      "image": "phone (12 MP)",
+      "op": "decode jpeg",
+      "wasmMs": 61.89624999999796,
+      "nativeMs": 57.595124999999825,
+      "ratio": 1.0746786294846682,
+      "note": ""
+    },
+    {
+      "image": "phone (12 MP)",
+      "op": "encode jpeg q80 (mozjpeg)",
+      "wasmMs": 1178.4594580000048,
+      "nativeMs": 575.0643750000017,
+      "ratio": 2.0492652809522434,
+      "note": ""
+    },
+    {
+      "image": "phone (12 MP)",
+      "op": "encode webp q80 m4",
+      "wasmMs": 811.3993340000015,
+      "nativeMs": 598.8245000000024,
+      "ratio": 1.3549868684397486,
+      "note": ""
+    },
+    {
+      "image": "phone (12 MP)",
+      "op": "ssim (JS)",
+      "wasmMs": 184.2673749999958,
+      "nativeMs": 0,
+      "note": ""
+    },
+    {
+      "image": "phone (12 MP)",
+      "op": "exact compare (JS)",
+      "wasmMs": 0.000375000003259629,
+      "nativeMs": 0,
+      "note": ""
+    },
+    {
+      "image": "phone (12 MP)",
+      "op": "classify (JS)",
+      "wasmMs": 5.898541999995359,
+      "nativeMs": 0,
+      "note": ""
+    },
+    {
+      "image": "phone (12 MP)",
+      "op": "RGBA copy (slice)",
+      "wasmMs": 3.4777089999988675,
+      "nativeMs": 0,
+      "note": "cost of one extra buffer copy"
+    },
+    {
+      "image": "phone (12 MP)",
+      "op": "tile mosaic (JS)",
+      "wasmMs": 2.27012499999546,
+      "nativeMs": 0,
+      "note": ""
+    }
+  ]
+}

@@ -109,6 +109,10 @@ Node (tests and benchmarks, `src/node.ts`).
   (hence the stricter gradient threshold) and chroma bleeding around coloured text is only weighted 1/8 per chroma
   channel. Butteraugli/SSIMULACRA2 would be better judges but no maintained, licence-compatible WASM build was found
   that fits the bundle budget; they are listed under next steps. Scores from different metrics are never compared.
+- **Alpha-plane bound:** for images with transparency the score is `min(composited score, SSIM of the alpha plane)`;
+  compositing alone let alpha errors of up to 128/255 at shape edges pass (see `docs/audit.md`).
+- **Cost:** windows are 8 rows tall at stride 4; partial sums are kept per 4-row group so each pixel is converted and
+  accumulated once. Numerically identical to the straightforward version (test: |Δ| < 1e-10); 20–54% faster.
 - **Exact:** lossless candidates are verified by full RGBA equality, not a metric.
 
 ## Codecs and why

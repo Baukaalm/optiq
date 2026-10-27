@@ -78,4 +78,4 @@ export async function optimizeInNode(
 export { createWasmBackend };
 export type { CodecBackend, EncodeSettings } from "./codecs/types.js";
 export type { RawImage } from "./pixels.js";
-export type { EngineContext, EngineOutput, EngineReport } from "./engine.js";
+export type { EngineContext, EngineOutput, EngineReport, TimingPhase } from "./engine.js";

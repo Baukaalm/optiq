@@ -23,6 +23,16 @@ describe("SSIM", () => {
     expect(ssim(a, alphaChanged).ssim).toBeLessThan(0.95);
   });
 
+  it("bounds the score by alpha-plane SSIM so alpha errors cannot hide behind compositing", () => {
+    const a = transparentIllustration(96, 96);
+    // Add faint alpha haze where the image is fully transparent, and nowhere else.
+    const hazy = { ...a, data: a.data.map((v, i) => (i % 4 === 3 && v === 0 ? 24 : v)) };
+    const r = ssim(a, hazy);
+    expect(r.alpha).toBeDefined();
+    expect(r.ssim).toBeLessThanOrEqual(r.alpha!);
+    expect(r.alpha!).toBeLessThan(0.99);
+  });
+
   it("handles images smaller than the window", () => {
     const a = photoLike(3, 2);
     expect(ssim(a, a).ssim).toBeCloseTo(1, 10);

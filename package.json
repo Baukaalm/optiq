@@ -101,6 +101,7 @@
     "browser-image-compression": "2.0.2",
     "playwright": "1.64.1",
     "sharp": "0.35.5",
+    "ssim.js": "3.5.0",
     "typescript": "5.9.3",
     "vite": "7.3.7",
     "vitest": "4.1.12"

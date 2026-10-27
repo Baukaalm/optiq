@@ -1,0 +1,136 @@
+phone-12mp-orient6-p3-gps-xmp.jpg    lossless            2525774 ->  2525774 jpeg  exact(libvips:true) 138ms 
+phone-12mp-orient6-p3-gps-xmp.jpg    lossless-strip      2525774 ->  2521150 jpeg  exact(libvips:true) 127ms 
+phone-12mp-orient6-p3-gps-xmp.jpg    visually-lossless   2525774 ->  1583219 jpeg  ssim 0.9926 ref 0.9995 psnr 39.2 3784ms 
+phone-12mp-orient6-p3-gps-xmp.jpg    balanced            2525774 ->  1349314 jpeg  ssim 0.9825 ref 0.9991 psnr 36.2 4554ms 
+phone-12mp-orient6-p3-gps-xmp.jpg    balanced-strip      2525774 ->  1344654 jpeg  ssim 0.9825 ref 0.9991 psnr 36.2 4259ms 
+phone-12mp-orient6-p3-gps-xmp.jpg    balanced-1024       2525774 ->   204836 webp  ssim 0.9797 ref n/a psnr n/a 1281ms 
+phone-12mp-orient6-p3-gps-xmp.jpg    balanced-webp       2525774 ->  1412034 webp  ssim 0.9797 ref 0.9988 psnr 37.0 2193ms 
+photo-srgb-exif.jpg                  lossless              85570 ->    85570 jpeg  exact(libvips:true) 12ms 
+photo-srgb-exif.jpg                  lossless-strip        85570 ->    84864 jpeg  exact(libvips:true) 12ms 
+photo-srgb-exif.jpg                  visually-lossless     85570 ->    85570 jpeg  exact(libvips:true) 423ms 
+photo-srgb-exif.jpg                  balanced              85570 ->    38982 webp  ssim 0.9768 ref 0.9890 psnr 40.1 323ms 
+photo-srgb-exif.jpg                  balanced-strip        85570 ->    30079 avif  ssim 0.9781 ref 0.9891 psnr 39.3 795ms 
+photo-srgb-exif.jpg                  balanced-1024         85570 ->    38982 webp  ssim 0.9768 ref 0.9890 psnr 40.1 330ms 
+photo-srgb-exif.jpg                  balanced-webp         85570 ->    38982 webp  ssim 0.9768 ref 0.9890 psnr 40.1 162ms 
+photo-p3.png                         lossless             793849 ->   471928 webp  exact(libvips:true) 502ms 
+photo-p3.png                         lossless-strip       793849 ->   471740 webp  exact(libvips:true) 401ms 
+photo-p3.png                         visually-lossless    793849 ->   171000 webp  ssim 0.9925 ref 0.9980 psnr 42.6 502ms 
+photo-p3.png                         balanced             793849 ->    88318 webp  ssim 0.9787 ref 0.9929 psnr 38.5 489ms 
+photo-p3.png                         balanced-strip       793849 ->    88130 webp  ssim 0.9787 ref 0.9929 psnr 38.5 489ms 
+photo-p3.png                         balanced-1024        793849 ->    88318 webp  ssim 0.9787 ref 0.9929 psnr 38.5 491ms 
+photo-p3.png                         balanced-webp        793849 ->    88318 webp  ssim 0.9787 ref 0.9929 psnr 38.5 186ms 
+gray.jpg                             lossless              70315 ->    70315 jpeg  exact(libvips:true) 10ms 
+gray.jpg                             lossless-strip        70315 ->    70315 jpeg  exact(libvips:true) 10ms 
+gray.jpg                             visually-lossless     70315 ->    46100 avif  ssim 0.9912 ref 0.9953 psnr 47.0 1111ms 
+gray.jpg                             balanced              70315 ->    24077 avif  ssim 0.9761 ref 0.9858 psnr 41.6 643ms 
+gray.jpg                             balanced-strip        70315 ->    24077 avif  ssim 0.9761 ref 0.9858 psnr 41.6 646ms 
+gray.jpg                             balanced-1024         70315 ->    24077 avif  ssim 0.9761 ref 0.9858 psnr 41.6 642ms 
+gray.jpg                             balanced-webp         70315 ->    33922 webp  ssim 0.9773 ref 0.9884 psnr 41.7 156ms 
+already-compressed-q55.jpg           lossless              22645 ->    22645 jpeg  exact(libvips:true) 9ms 
+already-compressed-q55.jpg           lossless-strip        22645 ->    22645 jpeg  exact(libvips:true) 8ms 
+already-compressed-q55.jpg           visually-lossless     22645 ->    18949 avif  ssim 0.9902 ref 0.9950 psnr 41.5 3224ms 
+already-compressed-q55.jpg           balanced              22645 ->    13358 avif  ssim 0.9758 ref 0.9866 psnr 37.4 1418ms 
+already-compressed-q55.jpg           balanced-strip        22645 ->    13358 avif  ssim 0.9758 ref 0.9866 psnr 37.4 1415ms 
+already-compressed-q55.jpg           balanced-1024         22645 ->    13358 avif  ssim 0.9758 ref 0.9866 psnr 37.4 1422ms 
+already-compressed-q55.jpg           balanced-webp         22645 ->    21656 webp  ssim 0.9762 ref 0.9895 psnr 38.7 138ms 
+palette-alpha.png                    lossless               4901 ->     3250 webp  exact(libvips:true) 142ms 
+palette-alpha.png                    lossless-strip         4901 ->     3250 webp  exact(libvips:true) 135ms 
+palette-alpha.png                    visually-lossless      4901 ->     3301 avif  ssim 0.9907 ref 0.9996 psnr 43.6 704ms 
+palette-alpha.png                    balanced               4901 ->     2257 avif  ssim 0.9816 ref 0.9990 psnr 39.4 480ms 
+palette-alpha.png                    balanced-strip         4901 ->     2257 avif  ssim 0.9816 ref 0.9990 psnr 39.4 475ms 
+palette-alpha.png                    balanced-1024          4901 ->     2257 avif  ssim 0.9816 ref 0.9990 psnr 39.4 477ms 
+palette-alpha.png                    balanced-webp          4901 ->     3396 webp  exact(libvips:true) 130ms 
+rgb16.png                            lossless              75325 ->    44999 png   exact(libvips:true) 628ms 
+rgb16.png                            lossless-strip        75325 ->    44999 png   exact(libvips:true) 615ms 
+rgb16.png                            visually-lossless     75325 ->      497 avif  ssim 0.9965 ref 0.9971 psnr 42.7 5102ms 
+rgb16.png                            balanced              75325 ->      499 avif  ssim 0.9965 ref 0.9980 psnr 43.8 3144ms 
+rgb16.png                            balanced-strip        75325 ->      499 avif  ssim 0.9965 ref 0.9980 psnr 43.8 3144ms 
+rgb16.png                            balanced-1024         75325 ->      477 avif  ssim 0.9971 ref n/a psnr n/a 2149ms 
+rgb16.png                            balanced-webp         75325 ->     6456 webp  ssim 0.9952 ref 0.9963 psnr 45.7 430ms 
+gama.png                             lossless             162025 ->    24372 webp  exact(libvips:true) 368ms 
+gama.png                             lossless-strip       162025 ->    24372 webp  exact(libvips:true) 367ms 
+gama.png                             visually-lossless    162025 ->    24372 webp  exact(libvips:true) 1370ms 
+gama.png                             balanced             162025 ->    24372 webp  exact(libvips:true) 1208ms 
+gama.png                             balanced-strip       162025 ->    24372 webp  exact(libvips:true) 1224ms 
+gama.png                             balanced-1024        162025 ->    54659 avif  ssim 0.9764 ref n/a psnr n/a 1274ms 
+gama.png                             balanced-webp        162025 ->    24372 webp  exact(libvips:true) 217ms 
+tiny-16.png                          lossless                563 ->      404 webp  exact(libvips:true) 2ms 
+tiny-16.png                          lossless-strip          563 ->      404 webp  exact(libvips:true) 1ms 
+tiny-16.png                          visually-lossless       563 ->      310 webp  ssim 0.9902 ref 0.9958 psnr 32.2 9ms 
+tiny-16.png                          balanced                563 ->      246 webp  ssim 0.9801 ref 0.9877 psnr 29.0 9ms 
+tiny-16.png                          balanced-strip          563 ->      246 webp  ssim 0.9801 ref 0.9877 psnr 29.0 8ms 
+tiny-16.png                          balanced-1024           563 ->      246 webp  ssim 0.9801 ref 0.9877 psnr 29.0 8ms 
+tiny-16.png                          balanced-webp           563 ->      246 webp  ssim 0.9801 ref 0.9877 psnr 29.0 1ms 
+lossy-q50.webp                       lossless              16818 ->    16818 webp  exact(libvips:true) 10ms 
+lossy-q50.webp                       lossless-strip        16818 ->    16818 webp  exact(libvips:true) 9ms 
+lossy-q50.webp                       visually-lossless     16818 ->    16818 webp  exact(libvips:true) 358ms 
+lossy-q50.webp                       balanced              16818 ->    13260 avif  ssim 0.9772 ref 0.9851 psnr 37.4 644ms 
+lossy-q50.webp                       balanced-strip        16818 ->    13260 avif  ssim 0.9772 ref 0.9851 psnr 37.4 641ms 
+lossy-q50.webp                       balanced-1024         16818 ->    13260 avif  ssim 0.9772 ref 0.9851 psnr 37.4 639ms 
+lossy-q50.webp                       balanced-webp         16818 ->    14400 webp  ssim 0.9822 ref 0.9865 psnr 39.3 138ms 
+lossless.webp                        lossless              24362 ->    24362 webp  exact(libvips:true) 367ms 
+lossless.webp                        lossless-strip        24362 ->    24362 webp  exact(libvips:true) 365ms 
+lossless.webp                        visually-lossless     24362 ->    24362 webp  exact(libvips:true) 1369ms 
+lossless.webp                        balanced              24362 ->    24362 webp  exact(libvips:true) 1216ms 
+lossless.webp                        balanced-strip        24362 ->    24362 webp  exact(libvips:true) 1219ms 
+lossless.webp                        balanced-1024         24362 ->    54659 avif  ssim 0.9764 ref n/a psnr n/a 1258ms larger-than-original
+lossless.webp                        balanced-webp         24362 ->    24362 webp  exact(libvips:true) 210ms 
+static.gif                           lossless              35744 ->    27898 webp  exact(libvips:true) 65ms 
+static.gif                           lossless-strip        35744 ->    27898 webp  exact(libvips:true) 67ms 
+static.gif                           visually-lossless     35744 ->    15303 avif  ssim 0.9912 ref 0.9979 psnr 43.4 320ms 
+static.gif                           balanced              35744 ->    11787 avif  ssim 0.9829 ref 0.9946 psnr 40.2 205ms 
+static.gif                           balanced-strip        35744 ->    11787 avif  ssim 0.9829 ref 0.9946 psnr 40.2 198ms 
+static.gif                           balanced-1024         35744 ->    11787 avif  ssim 0.9829 ref 0.9946 psnr 40.2 202ms 
+static.gif                           balanced-webp         35744 ->    14496 webp  ssim 0.9771 ref 0.9957 psnr 38.3 51ms 
+animated.gif                         lossless              43250 ->    43250 gif   exact(libvips:n/a) 0ms 
+animated.gif                         lossless-strip        43250 ->    43250 gif   exact(libvips:n/a) 0ms 
+animated.gif                         visually-lossless     43250 ->    43250 gif   exact(libvips:n/a) 0ms 
+animated.gif                         balanced              43250 ->    43250 gif   exact(libvips:n/a) 0ms 
+animated.gif                         balanced-strip        43250 ->    43250 gif   exact(libvips:n/a) 0ms 
+animated.gif                         balanced-1024         43250 ->    43250 gif   exact(libvips:n/a) 0ms 
+animated.gif                         balanced-webp      INCOMPATIBLE_OPTIONS: Animated GIF cannot be converted to WEBP without losing animation; set preserveAnimation
+cmyk.jpg                             lossless             256870 ->   256870 jpeg  exact(libvips:true) 0ms 
+cmyk.jpg                             lossless-strip       256870 ->   256870 jpeg  exact(libvips:true) 0ms 
+cmyk.jpg                             visually-lossless    256870 ->   256870 jpeg  exact(libvips:true) 0ms 
+cmyk.jpg                             balanced             256870 ->   256870 jpeg  exact(libvips:true) 0ms 
+cmyk.jpg                             balanced-strip       256870 ->   256870 jpeg  exact(libvips:true) 0ms 
+cmyk.jpg                             balanced-1024        256870 ->   256870 jpeg  exact(libvips:true) 0ms 
+cmyk.jpg                             balanced-webp      INCOMPATIBLE_OPTIONS: CMYK/YCCK JPEG cannot be converted to RGB faithfully in the browser; the image cannot be
+photo.avif                           lossless              25578 ->    25578 avif  exact(libvips:true) 30ms 
+photo.avif                           lossless-strip        25578 ->    25578 avif  exact(libvips:true) 28ms 
+photo.avif                           visually-lossless     25578 ->    25578 avif  exact(libvips:true) 1072ms 
+photo.avif                           balanced              25578 ->    18676 avif  ssim 0.9781 ref 0.9873 psnr 37.9 684ms 
+photo.avif                           balanced-strip        25578 ->    18676 avif  ssim 0.9781 ref 0.9873 psnr 37.9 682ms 
+photo.avif                           balanced-1024         25578 ->    18676 avif  ssim 0.9781 ref 0.9873 psnr 37.9 684ms 
+photo.avif                           balanced-webp         25578 ->    23534 webp  ssim 0.9753 ref 0.9857 psnr 38.4 165ms 
+screenshot.png                       lossless             189720 ->    24372 webp  exact(libvips:true) 371ms 
+screenshot.png                       lossless-strip       189720 ->    24372 webp  exact(libvips:true) 373ms 
+screenshot.png                       visually-lossless    189720 ->    24372 webp  exact(libvips:true) 1366ms 
+screenshot.png                       balanced             189720 ->    24372 webp  exact(libvips:true) 1222ms 
+screenshot.png                       balanced-strip       189720 ->    24372 webp  exact(libvips:true) 1218ms 
+screenshot.png                       balanced-1024        189720 ->    54659 avif  ssim 0.9764 ref n/a psnr n/a 1268ms 
+screenshot.png                       balanced-webp        189720 ->    24372 webp  exact(libvips:true) 213ms 
+transparent.png                      lossless              10123 ->     4036 webp  exact(libvips:true) 132ms 
+transparent.png                      lossless-strip        10123 ->     4036 webp  exact(libvips:true) 131ms 
+transparent.png                      visually-lossless     10123 ->     2836 avif  ssim 0.9930 ref 0.9995 psnr 43.7 772ms 
+transparent.png                      balanced              10123 ->     2147 avif  ssim 0.9824 ref 0.9988 psnr 40.4 533ms 
+transparent.png                      balanced-strip        10123 ->     2147 avif  ssim 0.9824 ref 0.9988 psnr 40.4 532ms 
+transparent.png                      balanced-1024         10123 ->     2147 avif  ssim 0.9824 ref 0.9988 psnr 40.4 530ms 
+transparent.png                      balanced-webp         10123 ->     4036 webp  exact(libvips:true) 139ms 
+
+Time by phase (all runs):
+  total             77.8 s  100.0%
+  encode            62.1 s   79.8%
+  ssim               7.5 s    9.7%
+  verify-decode      5.3 s    6.8%
+  resize             0.9 s    1.1%
+  decode             0.9 s    1.1%
+  classify           0.6 s    0.8%
+  orient             0.3 s    0.4%
+  exact-compare      0.1 s    0.1%
+  probe              0.0 s    0.1%
+  container          0.0 s    0.0%
+
+Findings: 1
+- larger-than-original (1)
+    lossless.webp / balanced-1024: 24362 -> 54659 (resize)

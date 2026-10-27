@@ -32,6 +32,25 @@ try {
     await page.getByRole("button", { name: /^Screenshot/ }).click();
     await page.waitForFunction(() => document.querySelectorAll('[data-testid="job"][data-status="done"]').length === 2, null, { timeout: 120_000 });
     console.log("sample button: ok");
+    // Settings switches must actually change the options: with AVIF off, the photo sample must not become AVIF.
+    const avif = page.locator('[data-testid="allow-avif"] [role="switch"]');
+    if ((await avif.getAttribute("aria-checked")) !== "true" && !(await avif.isChecked())) throw new Error("AVIF switch should start on");
+    await page.locator('[data-testid="allow-avif"]').getByText("Allow AVIF").click();
+    if (await avif.isChecked()) throw new Error("clicking the Allow AVIF row did not toggle it");
+    await page.locator('[data-testid="keep-metadata"]').getByText("Keep metadata").click();
+    if (await page.locator('[data-testid="keep-metadata"] [role="switch"]').isChecked()) throw new Error("Keep metadata did not toggle");
+    await page.getByRole("button", { name: /^Photo/ }).click();
+    await page.waitForFunction(() => document.querySelectorAll('[data-testid="job"][data-status="done"]').length === 3, null, { timeout: 120_000 });
+    const newest = await page.locator('[data-testid="job"]').first().textContent();
+    if (/→ AVIF/.test(newest)) throw new Error("AVIF disabled but output is AVIF");
+    // Mode select: switch to lossless and check a new sample comes back pixel-exact.
+    await page.locator('[data-testid="mode"] button').first().click();
+    await page.getByRole("option", { name: "Lossless", exact: true }).click();
+    await page.getByRole("button", { name: /^Screenshot/ }).click();
+    await page.waitForFunction(() => document.querySelectorAll('[data-testid="job"][data-status="done"]').length === 4, null, { timeout: 120_000 });
+    if (!/pixel-exact/.test(await page.locator('[data-testid="job"]').first().textContent())) throw new Error("mode select did not switch to lossless");
+    console.log("mode select: lossless -> pixel-exact result");
+    console.log("switches: toggle and take effect (AVIF off ->", newest.match(/JPEG → \w+/)?.[0], ")");
     await page.close();
   }
   for (const scheme of ["light", "dark"]) {

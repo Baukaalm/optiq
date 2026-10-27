@@ -33,7 +33,9 @@ which is one more reason JPEG inputs are only ever rewritten at container level.
 SSIM with uniform 8×8 windows at stride 4, on BT.601 Y, Cb and Cr, weighted 6:1:1:
 
 - **Alpha:** pixels are composited on black and on white and the worse score is used, so colour hidden under fully
-  transparent pixels does not matter but alpha errors do.
+  transparent pixels does not matter. Compositing under-penalises alpha errors, so the score is additionally capped
+  by the SSIM of the alpha plane alone (added after the [audit](/audit) found an icon scoring 0.994 composited but
+  0.972 on alpha).
 - **Active-window pooling:** windows that are perfectly flat and identical in both images are excluded. Without
   this, large untouched backgrounds hide artifacts around text and edges.
 - **Gradients** are held to a stricter threshold (half-way to 1) because banding appears before SSIM drops.
@@ -50,6 +52,8 @@ banding in smooth gradients. Check the thresholds on your own content; `minQuali
 ## Search
 
 Per lossy format, quality is bisected between the highest failing and lowest passing setting, starting from a
-mode-specific prior, until the gap is within 5 (balanced) or 3 (visually-lossless) quality steps. A failing encode
+mode-specific prior, until the gap is within 5 (balanced) or 3 (visually-lossless) quality steps. Ranges reach JPEG
+98, WebP 99 and AVIF 95. If no re-encode meets the threshold and the input is stored losslessly, lossless PNG/WebP
+candidates are added, so a perceptual mode never returns more bytes than `lossless` would. A failing encode
 that is already larger than the best valid candidate ends that format early. `searchStrategy: "fixed"` encodes each
 format once. All encodes count against `maxCandidates`.

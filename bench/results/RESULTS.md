@@ -5,7 +5,7 @@ Corpus: `bench/corpus/manifest.json` (sources, sizes and SHA-256 of every image)
 
 ## Node.js: SmartCompress engine vs libvips (sharp)
 
-Environment: `{"runtime":"node v24.15.0","platform":"darwin-arm64","cpu":"Apple M4 Pro","cores":14,"memGB":24,"sharp":"0.35.5","date":"2026-10-27T12:09:36.746Z","merged":["2026-10-27T12:09:36.746Z: sc-balanced,sc-balanced-nometa"]}`
+Environment: `{"runtime":"node v24.15.0","platform":"darwin-arm64","cpu":"Apple M4 Pro","cores":14,"memGB":24,"sharp":"0.35.5","date":"2026-10-27T13:05:48.482Z","merged":["2026-10-27T12:09:36.746Z: sc-balanced,sc-balanced-nometa","2026-10-27T13:05:48.482Z: sc-balanced,sc-balanced-nometa,sc-visually-lossless,sc-lossless"]}`
 
 ### Perceptual (lossy) results by category
 
@@ -15,9 +15,9 @@ SSIM is SmartCompress's metric (8x8 windows, Y/Cb/Cr 6:1:1, active-window poolin
 
 | Tool | n | Total bytes (in → out) | Total reduction | Median reduction | Median SSIM | Min SSIM | SSIM ≥ 0.975 | SSIM ≥ 0.99 | Median time | Median peak RSS |
 |---|---|---|---|---|---|---|---|---|---|---|
-| `sc-balanced` | 10 | 2.80 MB → 0.61 MB | 78.2% | 65.2% | 0.9770 | 0.9753 | 10/10 | 0/10 | 1.0 s | 214 MB |
-| `sc-balanced-nometa` | 10 | 2.80 MB → 0.61 MB | 78.2% | 65.2% | 0.9770 | 0.9753 | 10/10 | 0/10 | 1.0 s | 216 MB |
-| `sc-visually-lossless` | 10 | 2.80 MB → 0.96 MB | 65.8% | 35.5% | 0.9908 | 0.9902 | 10/10 | 10/10 | 1.7 s | 223 MB |
+| `sc-balanced` | 10 | 2.80 MB → 0.61 MB | 78.3% | 65.2% | 0.9767 | 0.9753 | 10/10 | 0/10 | 1.0 s | 218 MB |
+| `sc-balanced-nometa` | 10 | 2.80 MB → 0.61 MB | 78.3% | 65.2% | 0.9767 | 0.9753 | 10/10 | 0/10 | 1.0 s | 217 MB |
+| `sc-visually-lossless` | 10 | 2.80 MB → 0.98 MB | 65.1% | 36.4% | 0.9909 | 0.9904 | 10/10 | 10/10 | 1.7 s | 226 MB |
 | `sharp-mozjpeg-q80` | 10 | 2.80 MB → 0.66 MB | 76.2% | 51.7% | 0.9649 | 0.9487 | 2/10 | 0/10 | 34 ms | 102 MB |
 | `sharp-webp-q80` | 10 | 2.80 MB → 0.66 MB | 76.5% | 59.0% | 0.9739 | 0.9613 | 4/10 | 0/10 | 35 ms | 102 MB |
 | `sharp-avif-q50` | 10 | 2.80 MB → 0.32 MB | 88.7% | 77.8% | 0.9510 | 0.9279 | 0/10 | 0/10 | 496 ms | 123 MB |
@@ -26,9 +26,9 @@ SSIM is SmartCompress's metric (8x8 windows, Y/Cb/Cr 6:1:1, active-window poolin
 
 | Tool | n | Total bytes (in → out) | Total reduction | Median reduction | Median SSIM | Min SSIM | SSIM ≥ 0.975 | SSIM ≥ 0.99 | Median time | Median peak RSS |
 |---|---|---|---|---|---|---|---|---|---|---|
-| `sc-balanced` | 3 | 7.58 MB → 4.43 MB | 41.5% | 40.0% | 0.9794 | 0.9752 | 3/3 | 0/3 | 3.1 s | 566 MB |
-| `sc-balanced-nometa` | 3 | 7.58 MB → 3.73 MB | 50.8% | 51.6% | 0.9791 | 0.9753 | 3/3 | 0/3 | 10.2 s | 936 MB |
-| `sc-visually-lossless` | 3 | 7.58 MB → 5.30 MB | 30.1% | 29.9% | 0.9933 | 0.9917 | 3/3 | 3/3 | 3.6 s | 588 MB |
+| `sc-balanced` | 3 | 7.58 MB → 4.43 MB | 41.5% | 40.0% | 0.9794 | 0.9752 | 3/3 | 0/3 | 4.0 s | 584 MB |
+| `sc-balanced-nometa` | 3 | 7.58 MB → 3.73 MB | 50.8% | 51.6% | 0.9791 | 0.9753 | 3/3 | 0/3 | 10.3 s | 936 MB |
+| `sc-visually-lossless` | 3 | 7.58 MB → 5.30 MB | 30.1% | 29.9% | 0.9933 | 0.9917 | 3/3 | 3/3 | 3.8 s | 594 MB |
 | `sharp-mozjpeg-q80` | 3 | 7.58 MB → 5.68 MB | 25.0% | 24.8% | 0.9958 | 0.9957 | 3/3 | 3/3 | 790 ms | 194 MB |
 | `sharp-webp-q80` | 3 | 7.58 MB → 5.25 MB | 30.7% | 34.7% | 0.9800 | 0.9793 | 3/3 | 0/3 | 836 ms | 187 MB |
 | `sharp-avif-q50` | 3 | 7.58 MB → 2.82 MB | 62.8% | 63.3% | 0.9732 | 0.9632 | 0/3 | 0/3 | 9.5 s | 540 MB |
@@ -37,9 +37,9 @@ SSIM is SmartCompress's metric (8x8 windows, Y/Cb/Cr 6:1:1, active-window poolin
 
 | Tool | n | Total bytes (in → out) | Total reduction | Median reduction | Median SSIM | Min SSIM | SSIM ≥ 0.975 | SSIM ≥ 0.99 | Median time | Median peak RSS |
 |---|---|---|---|---|---|---|---|---|---|---|
-| `sc-balanced` | 2 | 0.44 MB → 0.04 MB | 90.6% | 90.2% | 0.9910 | 0.9819 | 2/2 | 1/2 | 9.1 s | 713 MB |
-| `sc-balanced-nometa` | 2 | 0.44 MB → 0.04 MB | 90.6% | 90.2% | 0.9910 | 0.9819 | 2/2 | 1/2 | 9.2 s | 716 MB |
-| `sc-visually-lossless` | 2 | 0.44 MB → 0.04 MB | 90.5% | 90.1% | 0.9951 | 0.9902 | 2/2 | 2/2 | 19.9 s | 729 MB |
+| `sc-balanced` | 2 | 0.44 MB → 0.04 MB | 90.6% | 90.2% | 0.9910 | 0.9819 | 2/2 | 1/2 | 9.2 s | 694 MB |
+| `sc-balanced-nometa` | 2 | 0.44 MB → 0.04 MB | 90.6% | 90.2% | 0.9910 | 0.9819 | 2/2 | 1/2 | 9.2 s | 585 MB |
+| `sc-visually-lossless` | 2 | 0.44 MB → 0.04 MB | 90.5% | 90.1% | 0.9951 | 0.9902 | 2/2 | 2/2 | 20.2 s | 665 MB |
 | `sharp-mozjpeg-q80` | 2 | 0.44 MB → 0.24 MB | 45.7% | 46.7% | 0.9619 | 0.9304 | 1/2 | 1/2 | 132 ms | 123 MB |
 | `sharp-webp-q80` | 2 | 0.44 MB → 0.16 MB | 62.8% | 62.6% | 0.9853 | 0.9724 | 1/2 | 1/2 | 134 ms | 115 MB |
 | `sharp-avif-q50` | 2 | 0.44 MB → 0.08 MB | 81.1% | 81.0% | 0.9951 | 0.9915 | 2/2 | 2/2 | 1.4 s | 224 MB |
@@ -48,9 +48,9 @@ SSIM is SmartCompress's metric (8x8 windows, Y/Cb/Cr 6:1:1, active-window poolin
 
 | Tool | n | Total bytes (in → out) | Total reduction | Median reduction | Median SSIM | Min SSIM | SSIM ≥ 0.975 | SSIM ≥ 0.99 | Median time | Median peak RSS |
 |---|---|---|---|---|---|---|---|---|---|---|
-| `sc-balanced` | 2 | 0.40 MB → 0.03 MB | 91.8% | 87.5% | 0.9988 | 0.9977 | 2/2 | 2/2 | 2.2 s | 406 MB |
-| `sc-balanced-nometa` | 2 | 0.40 MB → 0.03 MB | 91.8% | 87.5% | 0.9988 | 0.9977 | 2/2 | 2/2 | 2.2 s | 409 MB |
-| `sc-visually-lossless` | 2 | 0.40 MB → 0.03 MB | 92.0% | 88.2% | 0.9990 | 0.9980 | 2/2 | 2/2 | 2.4 s | 417 MB |
+| `sc-balanced` | 2 | 0.40 MB → 0.03 MB | 91.8% | 87.5% | 0.9988 | 0.9977 | 2/2 | 2/2 | 2.2 s | 407 MB |
+| `sc-balanced-nometa` | 2 | 0.40 MB → 0.03 MB | 91.8% | 87.5% | 0.9988 | 0.9977 | 2/2 | 2/2 | 2.2 s | 403 MB |
+| `sc-visually-lossless` | 2 | 0.40 MB → 0.03 MB | 92.0% | 88.2% | 0.9990 | 0.9980 | 2/2 | 2/2 | 2.4 s | 415 MB |
 | `sharp-mozjpeg-q80` | 2 | 0.40 MB → 0.24 MB | 39.7% | 37.6% | 0.9870 | 0.9778 | 2/2 | 1/2 | 90 ms | 109 MB |
 | `sharp-webp-q80` | 2 | 0.40 MB → 0.21 MB | 46.6% | 46.2% | 0.9853 | 0.9849 | 2/2 | 0/2 | 75 ms | 106 MB |
 | `sharp-avif-q50` | 2 | 0.40 MB → 0.12 MB | 68.6% | 70.6% | 0.9908 | 0.9821 | 2/2 | 1/2 | 786 ms | 163 MB |
@@ -59,9 +59,9 @@ SSIM is SmartCompress's metric (8x8 windows, Y/Cb/Cr 6:1:1, active-window poolin
 
 | Tool | n | Total bytes (in → out) | Total reduction | Median reduction | Median SSIM | Min SSIM | SSIM ≥ 0.975 | SSIM ≥ 0.99 | Median time | Median peak RSS |
 |---|---|---|---|---|---|---|---|---|---|---|
-| `sc-balanced` | 4 | 0.44 MB → 0.03 MB | 92.4% | 92.5% | 0.9786 | 0.9760 | 4/4 | 1/4 | 2.7 s | 301 MB |
-| `sc-balanced-nometa` | 4 | 0.44 MB → 0.03 MB | 92.4% | 92.5% | 0.9786 | 0.9760 | 4/4 | 1/4 | 2.7 s | 298 MB |
-| `sc-visually-lossless` | 4 | 0.44 MB → 0.05 MB | 88.3% | 87.9% | 0.9910 | 0.9902 | 4/4 | 4/4 | 3.9 s | 325 MB |
+| `sc-balanced` | 4 | 0.44 MB → 0.03 MB | 92.4% | 92.5% | 0.9766 | 0.9751 | 4/4 | 0/4 | 2.8 s | 304 MB |
+| `sc-balanced-nometa` | 4 | 0.44 MB → 0.03 MB | 92.4% | 92.5% | 0.9766 | 0.9751 | 4/4 | 0/4 | 2.8 s | 305 MB |
+| `sc-visually-lossless` | 4 | 0.44 MB → 0.06 MB | 87.0% | 86.8% | 0.9912 | 0.9907 | 4/4 | 4/4 | 3.9 s | 327 MB |
 | `sharp-webp-q80` | 4 | 0.44 MB → 0.18 MB | 58.0% | 58.2% | 0.9915 | 0.9904 | 4/4 | 4/4 | 127 ms | 128 MB |
 | `sharp-avif-q50` | 4 | 0.44 MB → 0.06 MB | 87.4% | 87.5% | 0.9944 | 0.9938 | 4/4 | 4/4 | 615 ms | 161 MB |
 
@@ -69,9 +69,9 @@ SSIM is SmartCompress's metric (8x8 windows, Y/Cb/Cr 6:1:1, active-window poolin
 
 | Tool | n | Total bytes (in → out) | Total reduction | Median reduction | Median SSIM | Min SSIM | SSIM ≥ 0.975 | SSIM ≥ 0.99 | Median time | Median peak RSS |
 |---|---|---|---|---|---|---|---|---|---|---|
-| `sc-balanced` | 3 | 1.61 MB → 0.00 MB | 99.8% | 99.8% | 0.9965 | 0.9958 | 3/3 | 3/3 | 4.7 s | 524 MB |
-| `sc-balanced-nometa` | 3 | 1.61 MB → 0.00 MB | 99.8% | 99.8% | 0.9965 | 0.9958 | 3/3 | 3/3 | 4.7 s | 517 MB |
-| `sc-visually-lossless` | 3 | 1.61 MB → 0.00 MB | 99.8% | 99.8% | 0.9965 | 0.9955 | 3/3 | 3/3 | 6.2 s | 553 MB |
+| `sc-balanced` | 3 | 1.61 MB → 0.00 MB | 99.8% | 99.8% | 0.9965 | 0.9958 | 3/3 | 3/3 | 4.7 s | 519 MB |
+| `sc-balanced-nometa` | 3 | 1.61 MB → 0.00 MB | 99.8% | 99.8% | 0.9965 | 0.9958 | 3/3 | 3/3 | 4.7 s | 523 MB |
+| `sc-visually-lossless` | 3 | 1.61 MB → 0.00 MB | 99.8% | 99.8% | 0.9965 | 0.9955 | 3/3 | 3/3 | 6.3 s | 549 MB |
 | `sharp-mozjpeg-q80` | 3 | 1.61 MB → 0.05 MB | 97.1% | 97.1% | 0.9957 | 0.9955 | 3/3 | 3/3 | 70 ms | 115 MB |
 | `sharp-webp-q80` | 3 | 1.61 MB → 0.03 MB | 97.9% | 98.3% | 0.9962 | 0.9955 | 3/3 | 3/3 | 98 ms | 109 MB |
 | `sharp-avif-q50` | 3 | 1.61 MB → 0.01 MB | 99.3% | 99.3% | 0.9967 | 0.9965 | 3/3 | 3/3 | 456 ms | 196 MB |
@@ -80,9 +80,9 @@ SSIM is SmartCompress's metric (8x8 windows, Y/Cb/Cr 6:1:1, active-window poolin
 
 | Tool | n | Total bytes (in → out) | Total reduction | Median reduction | Median SSIM | Min SSIM | SSIM ≥ 0.975 | SSIM ≥ 0.99 | Median time | Median peak RSS |
 |---|---|---|---|---|---|---|---|---|---|---|
-| `sc-balanced` | 24 | 13.25 MB → 5.15 MB | 61.1% | 80.7% | 0.9787 | 0.9752 | 24/24 | 7/24 | 1.8 s | 301 MB |
-| `sc-balanced-nometa` | 24 | 13.25 MB → 4.45 MB | 66.4% | 80.7% | 0.9787 | 0.9753 | 24/24 | 7/24 | 1.8 s | 298 MB |
-| `sc-visually-lossless` | 24 | 13.25 MB → 6.38 MB | 51.8% | 80.2% | 0.9915 | 0.9902 | 24/24 | 24/24 | 2.3 s | 325 MB |
+| `sc-balanced` | 24 | 13.25 MB → 5.15 MB | 61.2% | 80.1% | 0.9784 | 0.9751 | 24/24 | 6/24 | 1.8 s | 304 MB |
+| `sc-balanced-nometa` | 24 | 13.25 MB → 4.45 MB | 66.5% | 80.1% | 0.9784 | 0.9751 | 24/24 | 6/24 | 1.8 s | 305 MB |
+| `sc-visually-lossless` | 24 | 13.25 MB → 6.41 MB | 51.7% | 76.2% | 0.9915 | 0.9902 | 24/24 | 24/24 | 2.3 s | 327 MB |
 | `sharp-mozjpeg-q80` | 20 | 12.82 MB → 6.87 MB | 46.4% | 49.8% | 0.9766 | 0.9304 | 11/20 | 8/20 | 54 ms | 106 MB |
 | `sharp-webp-q80` | 24 | 13.25 MB → 6.50 MB | 51.0% | 58.6% | 0.9805 | 0.9613 | 17/24 | 8/24 | 59 ms | 105 MB |
 | `sharp-avif-q50` | 24 | 13.25 MB → 3.41 MB | 74.3% | 78.1% | 0.9740 | 0.9279 | 11/24 | 10/24 | 590 ms | 151 MB |
@@ -103,7 +103,7 @@ Pixel-exact = output decodes to exactly the reference pixels (RGBA) with the sam
 
 | Tool | n | Total bytes (in → out) | Total reduction | Median reduction | Pixel-exact | Median time | Median peak RSS |
 |---|---|---|---|---|---|---|---|
-| `sc-lossless` | 3 | 7.58 MB → 7.58 MB | 0.0% | 0.0% | 3/3 | 97 ms | 210 MB |
+| `sc-lossless` | 3 | 7.58 MB → 7.58 MB | 0.0% | 0.0% | 3/3 | 94 ms | 209 MB |
 | `sharp-png-max` | 3 | 7.58 MB → 24.12 MB | -218.4% | -219.2% | 0/3 | 4.4 s | 252 MB |
 | `sharp-webp-lossless` | 3 | 7.58 MB → 32.13 MB | -324.0% | -328.9% | 3/3 | 5.0 s | 552 MB |
 
@@ -111,7 +111,7 @@ Pixel-exact = output decodes to exactly the reference pixels (RGBA) with the sam
 
 | Tool | n | Total bytes (in → out) | Total reduction | Median reduction | Pixel-exact | Median time | Median peak RSS |
 |---|---|---|---|---|---|---|---|
-| `sc-lossless` | 2 | 0.44 MB → 0.10 MB | 76.2% | 77.5% | 2/2 | 2.3 s | 321 MB |
+| `sc-lossless` | 2 | 0.44 MB → 0.10 MB | 76.2% | 77.5% | 2/2 | 2.4 s | 323 MB |
 | `sharp-png-max` | 2 | 0.44 MB → 0.19 MB | 56.4% | 56.8% | 0/2 | 216 ms | 137 MB |
 | `sharp-webp-lossless` | 2 | 0.44 MB → 0.10 MB | 77.1% | 78.3% | 2/2 | 532 ms | 196 MB |
 
@@ -119,7 +119,7 @@ Pixel-exact = output decodes to exactly the reference pixels (RGBA) with the sam
 
 | Tool | n | Total bytes (in → out) | Total reduction | Median reduction | Pixel-exact | Median time | Median peak RSS |
 |---|---|---|---|---|---|---|---|
-| `sc-lossless` | 2 | 0.40 MB → 0.04 MB | 90.7% | 83.4% | 2/2 | 785 ms | 217 MB |
+| `sc-lossless` | 2 | 0.40 MB → 0.04 MB | 90.7% | 83.4% | 2/2 | 800 ms | 219 MB |
 | `sharp-png-max` | 2 | 0.40 MB → 0.14 MB | 64.8% | 61.7% | 2/2 | 100 ms | 136 MB |
 | `sharp-webp-lossless` | 2 | 0.40 MB → 0.04 MB | 90.8% | 83.4% | 2/2 | 55 ms | 145 MB |
 
@@ -127,7 +127,7 @@ Pixel-exact = output decodes to exactly the reference pixels (RGBA) with the sam
 
 | Tool | n | Total bytes (in → out) | Total reduction | Median reduction | Pixel-exact | Median time | Median peak RSS |
 |---|---|---|---|---|---|---|---|
-| `sc-lossless` | 4 | 0.44 MB → 0.25 MB | 42.3% | 42.6% | 4/4 | 983 ms | 176 MB |
+| `sc-lossless` | 4 | 0.44 MB → 0.25 MB | 42.3% | 42.6% | 4/4 | 996 ms | 178 MB |
 | `sharp-png-max` | 4 | 0.44 MB → 0.17 MB | 60.1% | 60.1% | 0/4 | 151 ms | 113 MB |
 | `sharp-webp-lossless` | 4 | 0.44 MB → 0.25 MB | 43.3% | 43.9% | 4/4 | 467 ms | 124 MB |
 
@@ -135,7 +135,7 @@ Pixel-exact = output decodes to exactly the reference pixels (RGBA) with the sam
 
 | Tool | n | Total bytes (in → out) | Total reduction | Median reduction | Pixel-exact | Median time | Median peak RSS |
 |---|---|---|---|---|---|---|---|
-| `sc-lossless` | 3 | 1.61 MB → 0.54 MB | 66.3% | 56.6% | 3/3 | 2.8 s | 273 MB |
+| `sc-lossless` | 3 | 1.61 MB → 0.54 MB | 66.3% | 56.6% | 3/3 | 2.9 s | 276 MB |
 | `sharp-png-max` | 3 | 1.61 MB → 0.39 MB | 75.8% | 64.8% | 0/3 | 209 ms | 147 MB |
 | `sharp-webp-lossless` | 3 | 1.61 MB → 0.64 MB | 60.0% | 55.9% | 3/3 | 662 ms | 175 MB |
 
@@ -143,7 +143,7 @@ Pixel-exact = output decodes to exactly the reference pixels (RGBA) with the sam
 
 | Tool | n | Total bytes (in → out) | Total reduction | Median reduction | Pixel-exact | Median time | Median peak RSS |
 |---|---|---|---|---|---|---|---|
-| `sc-lossless` | 24 | 13.25 MB → 10.55 MB | 20.4% | 39.7% | 24/24 | 381 ms | 176 MB |
+| `sc-lossless` | 24 | 13.25 MB → 10.55 MB | 20.4% | 39.7% | 24/24 | 379 ms | 178 MB |
 | `sharp-png-max` | 24 | 13.25 MB → 27.83 MB | -110.0% | 50.6% | 2/24 | 231 ms | 113 MB |
 | `sharp-webp-lossless` | 24 | 13.25 MB → 37.22 MB | -180.8% | 36.8% | 24/24 | 307 ms | 131 MB |
 
@@ -169,16 +169,16 @@ Pixel-exact = output decodes to exactly the reference pixels (RGBA) with the sam
 |---|---|---|---|---|---|---|
 | photo-kodim01.jpg | sc-balanced | 80520 | 52.0% | 0.9767 | avif | 1.1 s |
 | photo-kodim01.jpg | sc-balanced-nometa | 80520 | 52.0% | 0.9767 | avif | 1.1 s |
-| photo-kodim01.jpg | sc-visually-lossless | 112366 | 33.0% | 0.9911 | avif | 1.7 s |
+| photo-kodim01.jpg | sc-visually-lossless | 112366 | 33.0% | 0.9911 | avif | 1.8 s |
 | photo-kodim01.jpg | sc-lossless | 167760 | 0.0% | 1.0000 (exact) | jpeg | 18 ms |
 | photo-kodim01.jpg | sharp-mozjpeg-q80 | 86173 | 48.6% | 0.9566 | jpeg | 42 ms |
 | photo-kodim01.jpg | sharp-webp-q80 | 94870 | 43.4% | 0.9792 | webp | 40 ms |
 | photo-kodim01.jpg | sharp-avif-q50 | 41843 | 75.1% | 0.9338 | avif | 589 ms |
 | photo-kodim01.jpg | sharp-png-max | 345361 | -105.9% | 0.9923 | png | 216 ms |
 | photo-kodim01.jpg | sharp-webp-lossless | 431354 | -157.1% | 1.0000 (exact) | webp | 295 ms |
-| photo-kodim03.jpg | sc-balanced | 29735 | 65.8% | 0.9767 | avif | 826 ms |
-| photo-kodim03.jpg | sc-balanced-nometa | 29735 | 65.8% | 0.9767 | avif | 841 ms |
-| photo-kodim03.jpg | sc-visually-lossless | 56948 | 34.5% | 0.9919 | avif | 1.2 s |
+| photo-kodim03.jpg | sc-balanced | 29735 | 65.8% | 0.9767 | avif | 844 ms |
+| photo-kodim03.jpg | sc-balanced-nometa | 29735 | 65.8% | 0.9767 | avif | 840 ms |
+| photo-kodim03.jpg | sc-visually-lossless | 53589 | 38.4% | 0.9908 | avif | 1.2 s |
 | photo-kodim03.jpg | sc-lossless | 86969 | 0.0% | 1.0000 (exact) | jpeg | 17 ms |
 | photo-kodim03.jpg | sharp-mozjpeg-q80 | 42583 | 51.0% | 0.9715 | jpeg | 29 ms |
 | photo-kodim03.jpg | sharp-webp-q80 | 32648 | 62.5% | 0.9731 | webp | 30 ms |
@@ -187,16 +187,16 @@ Pixel-exact = output decodes to exactly the reference pixels (RGBA) with the sam
 | photo-kodim03.jpg | sharp-webp-lossless | 281922 | -224.2% | 1.0000 (exact) | webp | 336 ms |
 | photo-kodim05.jpg | sc-balanced | 78288 | 54.9% | 0.9765 | avif | 1.1 s |
 | photo-kodim05.jpg | sc-balanced-nometa | 78288 | 54.9% | 0.9765 | avif | 1.1 s |
-| photo-kodim05.jpg | sc-visually-lossless | 113870 | 34.4% | 0.9909 | avif | 1.7 s |
-| photo-kodim05.jpg | sc-lossless | 173611 | 0.0% | 1.0000 (exact) | jpeg | 17 ms |
+| photo-kodim05.jpg | sc-visually-lossless | 113870 | 34.4% | 0.9909 | avif | 1.6 s |
+| photo-kodim05.jpg | sc-lossless | 173611 | 0.0% | 1.0000 (exact) | jpeg | 19 ms |
 | photo-kodim05.jpg | sharp-mozjpeg-q80 | 95451 | 45.0% | 0.9711 | jpeg | 43 ms |
 | photo-kodim05.jpg | sharp-webp-q80 | 96962 | 44.1% | 0.9801 | webp | 38 ms |
 | photo-kodim05.jpg | sharp-avif-q50 | 45199 | 74.0% | 0.9526 | avif | 649 ms |
 | photo-kodim05.jpg | sharp-png-max | 313227 | -80.4% | 0.9813 | png | 563 ms |
 | photo-kodim05.jpg | sharp-webp-lossless | 511768 | -194.8% | 1.0000 (exact) | webp | 301 ms |
-| photo-kodim07.jpg | sc-balanced | 29628 | 70.2% | 0.9756 | avif | 905 ms |
-| photo-kodim07.jpg | sc-balanced-nometa | 29628 | 70.2% | 0.9756 | avif | 913 ms |
-| photo-kodim07.jpg | sc-visually-lossless | 53730 | 45.9% | 0.9903 | avif | 1.3 s |
+| photo-kodim07.jpg | sc-balanced | 29628 | 70.2% | 0.9756 | avif | 900 ms |
+| photo-kodim07.jpg | sc-balanced-nometa | 29628 | 70.2% | 0.9756 | avif | 901 ms |
+| photo-kodim07.jpg | sc-visually-lossless | 56370 | 43.3% | 0.9910 | avif | 1.3 s |
 | photo-kodim07.jpg | sc-lossless | 99340 | 0.0% | 1.0000 (exact) | jpeg | 18 ms |
 | photo-kodim07.jpg | sharp-mozjpeg-q80 | 52104 | 47.5% | 0.9805 | jpeg | 31 ms |
 | photo-kodim07.jpg | sharp-webp-q80 | 40390 | 59.3% | 0.9803 | webp | 31 ms |
@@ -205,34 +205,34 @@ Pixel-exact = output decodes to exactly the reference pixels (RGBA) with the sam
 | photo-kodim07.jpg | sharp-webp-lossless | 329526 | -231.7% | 1.0000 (exact) | webp | 302 ms |
 | photo-kodim13.jpg | sc-balanced | 110720 | 45.0% | 0.9789 | avif | 1.2 s |
 | photo-kodim13.jpg | sc-balanced-nometa | 110720 | 45.0% | 0.9789 | avif | 1.2 s |
-| photo-kodim13.jpg | sc-visually-lossless | 139224 | 30.9% | 0.9904 | avif | 2.3 s |
-| photo-kodim13.jpg | sc-lossless | 201392 | 0.0% | 1.0000 (exact) | jpeg | 19 ms |
+| photo-kodim13.jpg | sc-visually-lossless | 139224 | 30.9% | 0.9904 | avif | 2.4 s |
+| photo-kodim13.jpg | sc-lossless | 201392 | 0.0% | 1.0000 (exact) | jpeg | 17 ms |
 | photo-kodim13.jpg | sharp-mozjpeg-q80 | 104241 | 48.2% | 0.9487 | jpeg | 51 ms |
 | photo-kodim13.jpg | sharp-webp-q80 | 127866 | 36.5% | 0.9808 | webp | 44 ms |
 | photo-kodim13.jpg | sharp-avif-q50 | 58958 | 70.7% | 0.9279 | avif | 702 ms |
 | photo-kodim13.jpg | sharp-png-max | 356077 | -76.8% | 0.9877 | png | 388 ms |
 | photo-kodim13.jpg | sharp-webp-lossless | 523214 | -159.8% | 1.0000 (exact) | webp | 293 ms |
-| photo-kodim15.jpg | sc-balanced | 47134 | 54.2% | 0.9786 | avif | 988 ms |
+| photo-kodim15.jpg | sc-balanced | 47134 | 54.2% | 0.9786 | avif | 1.0 s |
 | photo-kodim15.jpg | sc-balanced-nometa | 47134 | 54.2% | 0.9786 | avif | 1.0 s |
-| photo-kodim15.jpg | sc-visually-lossless | 72941 | 29.1% | 0.9917 | avif | 1.4 s |
+| photo-kodim15.jpg | sc-visually-lossless | 69356 | 32.6% | 0.9904 | avif | 1.4 s |
 | photo-kodim15.jpg | sc-lossless | 102888 | 0.0% | 1.0000 (exact) | jpeg | 17 ms |
 | photo-kodim15.jpg | sharp-mozjpeg-q80 | 48942 | 52.4% | 0.9602 | jpeg | 28 ms |
 | photo-kodim15.jpg | sharp-webp-q80 | 42636 | 58.6% | 0.9660 | webp | 31 ms |
 | photo-kodim15.jpg | sharp-avif-q50 | 23189 | 77.5% | 0.9495 | avif | 472 ms |
 | photo-kodim15.jpg | sharp-png-max | 254599 | -147.5% | 0.9797 | png | 358 ms |
 | photo-kodim15.jpg | sharp-webp-lossless | 339170 | -229.6% | 1.0000 (exact) | webp | 308 ms |
-| photo-kodim20.jpg | sc-balanced | 27632 | 68.1% | 0.9753 | avif | 811 ms |
-| photo-kodim20.jpg | sc-balanced-nometa | 27632 | 68.1% | 0.9753 | avif | 833 ms |
-| photo-kodim20.jpg | sc-visually-lossless | 48756 | 43.6% | 0.9906 | avif | 1.9 s |
-| photo-kodim20.jpg | sc-lossless | 86487 | 0.0% | 1.0000 (exact) | jpeg | 18 ms |
+| photo-kodim20.jpg | sc-balanced | 27632 | 68.1% | 0.9753 | avif | 808 ms |
+| photo-kodim20.jpg | sc-balanced-nometa | 27632 | 68.1% | 0.9753 | avif | 798 ms |
+| photo-kodim20.jpg | sc-visually-lossless | 51201 | 40.8% | 0.9913 | avif | 1.9 s |
+| photo-kodim20.jpg | sc-lossless | 86487 | 0.0% | 1.0000 (exact) | jpeg | 19 ms |
 | photo-kodim20.jpg | sharp-mozjpeg-q80 | 41242 | 52.3% | 0.9696 | jpeg | 28 ms |
 | photo-kodim20.jpg | sharp-webp-q80 | 36664 | 57.6% | 0.9746 | webp | 29 ms |
 | photo-kodim20.jpg | sharp-avif-q50 | 19040 | 78.0% | 0.9608 | avif | 482 ms |
 | photo-kodim20.jpg | sharp-png-max | 201888 | -133.4% | 0.9911 | png | 205 ms |
 | photo-kodim20.jpg | sharp-webp-lossless | 275162 | -218.2% | 1.0000 (exact) | webp | 276 ms |
-| photo-kodim23.jpg | sc-balanced | 30117 | 64.5% | 0.9782 | avif | 874 ms |
-| photo-kodim23.jpg | sc-balanced-nometa | 30117 | 64.5% | 0.9782 | avif | 855 ms |
-| photo-kodim23.jpg | sc-visually-lossless | 53956 | 36.4% | 0.9902 | avif | 1.2 s |
+| photo-kodim23.jpg | sc-balanced | 30117 | 64.5% | 0.9782 | avif | 857 ms |
+| photo-kodim23.jpg | sc-balanced-nometa | 30117 | 64.5% | 0.9782 | avif | 853 ms |
+| photo-kodim23.jpg | sc-visually-lossless | 58731 | 30.8% | 0.9917 | avif | 1.3 s |
 | photo-kodim23.jpg | sc-lossless | 84887 | 0.0% | 1.0000 (exact) | jpeg | 18 ms |
 | photo-kodim23.jpg | sharp-mozjpeg-q80 | 40196 | 52.6% | 0.9753 | jpeg | 27 ms |
 | photo-kodim23.jpg | sharp-webp-q80 | 30072 | 64.6% | 0.9711 | webp | 30 ms |
@@ -241,44 +241,44 @@ Pixel-exact = output decodes to exactly the reference pixels (RGBA) with the sam
 | photo-kodim23.jpg | sharp-webp-lossless | 343038 | -304.1% | 1.0000 (exact) | webp | 295 ms |
 | photo-kodim08.png | sc-balanced | 101867 | 89.8% | 0.9774 | avif | 1.4 s |
 | photo-kodim08.png | sc-balanced-nometa | 101867 | 89.8% | 0.9774 | avif | 1.4 s |
-| photo-kodim08.png | sc-visually-lossless | 163585 | 83.6% | 0.9905 | avif | 2.2 s |
-| photo-kodim08.png | sc-lossless | 552370 | 44.5% | 1.0000 (exact) | webp | 490 ms |
+| photo-kodim08.png | sc-visually-lossless | 163585 | 83.6% | 0.9905 | avif | 2.3 s |
+| photo-kodim08.png | sc-lossless | 552370 | 44.5% | 1.0000 (exact) | webp | 485 ms |
 | photo-kodim08.png | sharp-mozjpeg-q80 | 93847 | 90.6% | 0.9572 | jpeg | 49 ms |
 | photo-kodim08.png | sharp-webp-q80 | 98826 | 90.1% | 0.9724 | webp | 42 ms |
 | photo-kodim08.png | sharp-avif-q50 | 42885 | 95.7% | 0.9424 | avif | 677 ms |
 | photo-kodim08.png | sharp-png-max | 323360 | 67.5% | 0.9870 | png | 299 ms |
 | photo-kodim08.png | sharp-webp-lossless | 547446 | 45.0% | 1.0000 (exact) | webp | 299 ms |
-| photo-kodim19.png | sc-balanced | 74670 | 90.7% | 0.9772 | avif | 1.1 s |
-| photo-kodim19.png | sc-balanced-nometa | 74670 | 90.7% | 0.9772 | avif | 1.1 s |
-| photo-kodim19.png | sc-visually-lossless | 141333 | 82.3% | 0.9913 | avif | 2.3 s |
-| photo-kodim19.png | sc-lossless | 486068 | 39.1% | 1.0000 (exact) | webp | 510 ms |
+| photo-kodim19.png | sc-balanced | 70744 | 91.1% | 0.9758 | avif | 1.1 s |
+| photo-kodim19.png | sc-balanced-nometa | 70744 | 91.1% | 0.9758 | avif | 1.1 s |
+| photo-kodim19.png | sc-visually-lossless | 157150 | 80.3% | 0.9927 | avif | 2.0 s |
+| photo-kodim19.png | sc-lossless | 486068 | 39.1% | 1.0000 (exact) | webp | 509 ms |
 | photo-kodim19.png | sharp-mozjpeg-q80 | 59452 | 92.6% | 0.9531 | jpeg | 38 ms |
 | photo-kodim19.png | sharp-webp-q80 | 57400 | 92.8% | 0.9613 | webp | 39 ms |
 | photo-kodim19.png | sharp-avif-q50 | 26685 | 96.7% | 0.9403 | avif | 509 ms |
 | photo-kodim19.png | sharp-png-max | 328557 | 58.9% | 0.9891 | png | 169 ms |
 | photo-kodim19.png | sharp-webp-lossless | 483668 | 39.4% | 1.0000 (exact) | webp | 307 ms |
-| large-picsum1015.jpg | sc-balanced | 1371351 | 40.0% | 0.9842 | jpeg | 3.1 s |
-| large-picsum1015.jpg | sc-balanced-nometa | 1106887 | 51.6% | 0.9791 | avif | 8.4 s |
-| large-picsum1015.jpg | sc-visually-lossless | 1601997 | 29.9% | 0.9936 | jpeg | 3.6 s |
-| large-picsum1015.jpg | sc-lossless | 2285854 | 0.0% | 1.0000 (exact) | jpeg | 97 ms |
+| large-picsum1015.jpg | sc-balanced | 1371351 | 40.0% | 0.9842 | jpeg | 4.5 s |
+| large-picsum1015.jpg | sc-balanced-nometa | 1106887 | 51.6% | 0.9791 | avif | 8.5 s |
+| large-picsum1015.jpg | sc-visually-lossless | 1601997 | 29.9% | 0.9936 | jpeg | 3.8 s |
+| large-picsum1015.jpg | sc-lossless | 2285854 | 0.0% | 1.0000 (exact) | jpeg | 94 ms |
 | large-picsum1015.jpg | sharp-mozjpeg-q80 | 1695509 | 25.8% | 0.9958 | jpeg | 790 ms |
 | large-picsum1015.jpg | sharp-webp-q80 | 1493726 | 34.7% | 0.9800 | webp | 836 ms |
 | large-picsum1015.jpg | sharp-avif-q50 | 813262 | 64.4% | 0.9732 | avif | 9.5 s |
 | large-picsum1015.jpg | sharp-png-max | 7295526 | -219.2% | 0.9498 | png | 5.0 s |
 | large-picsum1015.jpg | sharp-webp-lossless | 9874632 | -332.0% | 1.0000 (exact) | webp | 5.1 s |
-| large-picsum1043.jpg | sc-balanced | 2044901 | 37.9% | 0.9794 | jpeg | 3.9 s |
-| large-picsum1043.jpg | sc-balanced-nometa | 1823943 | 44.6% | 0.9797 | avif | 11.5 s |
-| large-picsum1043.jpg | sc-visually-lossless | 2352615 | 28.6% | 0.9933 | jpeg | 4.5 s |
-| large-picsum1043.jpg | sc-lossless | 3293882 | 0.0% | 1.0000 (exact) | jpeg | 102 ms |
+| large-picsum1043.jpg | sc-balanced | 2044901 | 37.9% | 0.9794 | jpeg | 4.0 s |
+| large-picsum1043.jpg | sc-balanced-nometa | 1823943 | 44.6% | 0.9797 | avif | 11.7 s |
+| large-picsum1043.jpg | sc-visually-lossless | 2352615 | 28.6% | 0.9933 | jpeg | 4.4 s |
+| large-picsum1043.jpg | sc-lossless | 3293882 | 0.0% | 1.0000 (exact) | jpeg | 103 ms |
 | large-picsum1043.jpg | sharp-mozjpeg-q80 | 2482091 | 24.6% | 0.9957 | jpeg | 960 ms |
 | large-picsum1043.jpg | sharp-webp-q80 | 2481406 | 24.7% | 0.9793 | webp | 984 ms |
 | large-picsum1043.jpg | sharp-avif-q50 | 1271025 | 61.4% | 0.9632 | avif | 10.6 s |
 | large-picsum1043.jpg | sharp-png-max | 9879830 | -199.9% | 0.9728 | png | 4.4 s |
 | large-picsum1043.jpg | sharp-webp-lossless | 13685602 | -315.5% | 1.0000 (exact) | webp | 5.0 s |
 | large-picsum1050.jpg | sc-balanced | 1014978 | 49.2% | 0.9752 | webp | 3.1 s |
-| large-picsum1050.jpg | sc-balanced-nometa | 797663 | 60.1% | 0.9753 | avif | 10.2 s |
+| large-picsum1050.jpg | sc-balanced-nometa | 797663 | 60.1% | 0.9753 | avif | 10.3 s |
 | large-picsum1050.jpg | sc-visually-lossless | 1343631 | 32.7% | 0.9917 | jpeg | 3.4 s |
-| large-picsum1050.jpg | sc-lossless | 1997063 | 0.0% | 1.0000 (exact) | jpeg | 87 ms |
+| large-picsum1050.jpg | sc-lossless | 1997063 | 0.0% | 1.0000 (exact) | jpeg | 90 ms |
 | large-picsum1050.jpg | sharp-mozjpeg-q80 | 1502153 | 24.8% | 0.9964 | jpeg | 730 ms |
 | large-picsum1050.jpg | sharp-webp-q80 | 1275176 | 36.1% | 0.9819 | webp | 785 ms |
 | large-picsum1050.jpg | sharp-avif-q50 | 732025 | 63.3% | 0.9747 | avif | 8.2 s |
@@ -286,8 +286,8 @@ Pixel-exact = output decodes to exactly the reference pixels (RGBA) with the sam
 | large-picsum1050.jpg | sharp-webp-lossless | 8566208 | -328.9% | 1.0000 (exact) | webp | 4.7 s |
 | screenshot-dashboard.png | sc-balanced | 17121 | 93.2% | 0.9819 | avif | 16.6 s |
 | screenshot-dashboard.png | sc-balanced-nometa | 17121 | 93.2% | 0.9819 | avif | 16.7 s |
-| screenshot-dashboard.png | sc-visually-lossless | 17346 | 93.1% | 0.9902 | avif | 37.9 s |
-| screenshot-dashboard.png | sc-lossless | 80542 | 67.9% | 1.0000 (exact) | webp | 3.9 s |
+| screenshot-dashboard.png | sc-visually-lossless | 17346 | 93.1% | 0.9902 | avif | 38.6 s |
+| screenshot-dashboard.png | sc-lossless | 80542 | 67.9% | 1.0000 (exact) | webp | 4.1 s |
 | screenshot-dashboard.png | sharp-mozjpeg-q80 | 150726 | 39.9% | 0.9934 | jpeg | 200 ms |
 | screenshot-dashboard.png | sharp-webp-q80 | 90152 | 64.0% | 0.9982 | webp | 209 ms |
 | screenshot-dashboard.png | sharp-avif-q50 | 45836 | 81.7% | 0.9987 | avif | 2.1 s |
@@ -296,7 +296,7 @@ Pixel-exact = output decodes to exactly the reference pixels (RGBA) with the sam
 | screenshot-code.png | sc-balanced | 24372 | 87.2% | 1.0000 (exact) | webp | 1.7 s |
 | screenshot-code.png | sc-balanced-nometa | 24372 | 87.2% | 1.0000 (exact) | webp | 1.7 s |
 | screenshot-code.png | sc-visually-lossless | 24372 | 87.2% | 1.0000 (exact) | webp | 1.9 s |
-| screenshot-code.png | sc-lossless | 24372 | 87.2% | 1.0000 (exact) | webp | 661 ms |
+| screenshot-code.png | sc-lossless | 24372 | 87.2% | 1.0000 (exact) | webp | 665 ms |
 | screenshot-code.png | sharp-mozjpeg-q80 | 88273 | 53.5% | 0.9304 | jpeg | 64 ms |
 | screenshot-code.png | sharp-webp-q80 | 73548 | 61.2% | 0.9724 | webp | 59 ms |
 | screenshot-code.png | sharp-avif-q50 | 37527 | 80.2% | 0.9915 | avif | 615 ms |
@@ -305,66 +305,66 @@ Pixel-exact = output decodes to exactly the reference pixels (RGBA) with the sam
 | text-docs.png | sc-balanced | 22230 | 93.5% | 1.0000 (exact) | webp | 2.6 s |
 | text-docs.png | sc-balanced-nometa | 22230 | 93.5% | 1.0000 (exact) | webp | 2.6 s |
 | text-docs.png | sc-visually-lossless | 22230 | 93.5% | 1.0000 (exact) | webp | 1.7 s |
-| text-docs.png | sc-lossless | 22230 | 93.5% | 1.0000 (exact) | webp | 909 ms |
+| text-docs.png | sc-lossless | 22230 | 93.5% | 1.0000 (exact) | webp | 928 ms |
 | text-docs.png | sharp-mozjpeg-q80 | 202724 | 40.6% | 0.9778 | jpeg | 120 ms |
 | text-docs.png | sharp-webp-q80 | 181650 | 46.7% | 0.9856 | webp | 91 ms |
 | text-docs.png | sharp-avif-q50 | 109850 | 67.8% | 0.9821 | avif | 1.3 s |
 | text-docs.png | sharp-png-max | 115961 | 66.0% | 1.0000 (exact) | png | 125 ms |
 | text-docs.png | sharp-webp-lossless | 21586 | 93.7% | 1.0000 (exact) | webp | 63 ms |
 | text-slide.png | sc-balanced | 10195 | 81.5% | 0.9977 | avif | 1.9 s |
-| text-slide.png | sc-balanced-nometa | 10195 | 81.5% | 0.9977 | avif | 1.9 s |
+| text-slide.png | sc-balanced-nometa | 10195 | 81.5% | 0.9977 | avif | 1.8 s |
 | text-slide.png | sc-visually-lossless | 9434 | 82.8% | 0.9980 | avif | 3.0 s |
-| text-slide.png | sc-lossless | 14676 | 73.3% | 1.0000 (exact) | webp | 660 ms |
+| text-slide.png | sc-lossless | 14676 | 73.3% | 1.0000 (exact) | webp | 672 ms |
 | text-slide.png | sharp-mozjpeg-q80 | 35945 | 34.6% | 0.9963 | jpeg | 60 ms |
 | text-slide.png | sharp-webp-q80 | 29932 | 45.6% | 0.9849 | webp | 58 ms |
 | text-slide.png | sharp-avif-q50 | 14595 | 73.5% | 0.9995 | avif | 317 ms |
 | text-slide.png | sharp-png-max | 23467 | 57.3% | 1.0000 (exact) | png | 76 ms |
 | text-slide.png | sharp-webp-lossless | 14736 | 73.2% | 1.0000 (exact) | webp | 46 ms |
-| transparent-illustration-1.png | sc-balanced | 9328 | 92.8% | 0.9760 | avif | 2.7 s |
-| transparent-illustration-1.png | sc-balanced-nometa | 9328 | 92.8% | 0.9760 | avif | 2.7 s |
-| transparent-illustration-1.png | sc-visually-lossless | 14366 | 88.8% | 0.9902 | avif | 4.1 s |
-| transparent-illustration-1.png | sc-lossless | 74432 | 42.2% | 1.0000 (exact) | webp | 969 ms |
+| transparent-illustration-1.png | sc-balanced | 9328 | 92.8% | 0.9751 | avif | 2.8 s |
+| transparent-illustration-1.png | sc-balanced-nometa | 9328 | 92.8% | 0.9751 | avif | 2.8 s |
+| transparent-illustration-1.png | sc-visually-lossless | 15701 | 87.8% | 0.9907 | avif | 3.8 s |
+| transparent-illustration-1.png | sc-lossless | 74432 | 42.2% | 1.0000 (exact) | webp | 975 ms |
 | transparent-illustration-1.png | sharp-webp-q80 | 54376 | 57.8% | 0.9904 | webp | 129 ms |
 | transparent-illustration-1.png | sharp-avif-q50 | 16236 | 87.4% | 0.9944 | avif | 591 ms |
 | transparent-illustration-1.png | sharp-png-max | 51996 | 59.6% | 0.9935 | png | 142 ms |
 | transparent-illustration-1.png | sharp-webp-lossless | 72962 | 43.3% | 1.0000 (exact) | webp | 461 ms |
-| transparent-illustration-2.png | sc-balanced | 11976 | 92.2% | 0.9780 | avif | 2.8 s |
-| transparent-illustration-2.png | sc-balanced-nometa | 11976 | 92.2% | 0.9780 | avif | 2.7 s |
-| transparent-illustration-2.png | sc-visually-lossless | 19979 | 87.0% | 0.9910 | avif | 3.8 s |
-| transparent-illustration-2.png | sc-lossless | 87370 | 43.1% | 1.0000 (exact) | webp | 996 ms |
+| transparent-illustration-2.png | sc-balanced | 11976 | 92.2% | 0.9762 | avif | 2.9 s |
+| transparent-illustration-2.png | sc-balanced-nometa | 11976 | 92.2% | 0.9762 | avif | 2.9 s |
+| transparent-illustration-2.png | sc-visually-lossless | 21801 | 85.8% | 0.9913 | avif | 4.0 s |
+| transparent-illustration-2.png | sc-lossless | 87370 | 43.1% | 1.0000 (exact) | webp | 1.0 s |
 | transparent-illustration-2.png | sharp-webp-q80 | 63646 | 58.5% | 0.9920 | webp | 126 ms |
 | transparent-illustration-2.png | sharp-avif-q50 | 19146 | 87.5% | 0.9938 | avif | 645 ms |
 | transparent-illustration-2.png | sharp-png-max | 60469 | 60.6% | 0.9948 | png | 161 ms |
 | transparent-illustration-2.png | sharp-webp-lossless | 85216 | 44.5% | 1.0000 (exact) | webp | 473 ms |
-| transparent-illustration-3.png | sc-balanced | 9623 | 93.3% | 0.9792 | avif | 2.8 s |
-| transparent-illustration-3.png | sc-balanced-nometa | 9623 | 93.3% | 0.9792 | avif | 2.8 s |
-| transparent-illustration-3.png | sc-visually-lossless | 14286 | 90.1% | 0.9910 | avif | 3.9 s |
+| transparent-illustration-3.png | sc-balanced | 9623 | 93.3% | 0.9770 | avif | 2.8 s |
+| transparent-illustration-3.png | sc-balanced-nometa | 9623 | 93.3% | 0.9770 | avif | 2.8 s |
+| transparent-illustration-3.png | sc-visually-lossless | 16193 | 88.7% | 0.9911 | avif | 4.0 s |
 | transparent-illustration-3.png | sc-lossless | 85724 | 40.3% | 1.0000 (exact) | webp | 1.0 s |
 | transparent-illustration-3.png | sharp-webp-q80 | 59310 | 58.7% | 0.9911 | webp | 127 ms |
 | transparent-illustration-3.png | sharp-avif-q50 | 16459 | 88.5% | 0.9944 | avif | 639 ms |
 | transparent-illustration-3.png | sharp-png-max | 56233 | 60.9% | 0.9946 | png | 167 ms |
 | transparent-illustration-3.png | sharp-webp-lossless | 85228 | 40.7% | 1.0000 (exact) | webp | 503 ms |
-| transparent-icon.png | sc-balanced | 2035 | 79.9% | 0.9953 | avif | 765 ms |
-| transparent-icon.png | sc-balanced-nometa | 2035 | 79.9% | 0.9953 | avif | 757 ms |
-| transparent-icon.png | sc-visually-lossless | 2210 | 78.2% | 0.9972 | avif | 1.0 s |
-| transparent-icon.png | sc-lossless | 4036 | 60.1% | 1.0000 (exact) | webp | 272 ms |
+| transparent-icon.png | sc-balanced | 2147 | 78.8% | 0.9824 | avif | 803 ms |
+| transparent-icon.png | sc-balanced-nometa | 2147 | 78.8% | 0.9824 | avif | 823 ms |
+| transparent-icon.png | sc-visually-lossless | 2836 | 72.0% | 0.9930 | avif | 1.1 s |
+| transparent-icon.png | sc-lossless | 4036 | 60.1% | 1.0000 (exact) | webp | 274 ms |
 | transparent-icon.png | sharp-webp-q80 | 5730 | 43.4% | 0.9970 | webp | 24 ms |
 | transparent-icon.png | sharp-avif-q50 | 3248 | 67.9% | 0.9997 | avif | 115 ms |
 | transparent-icon.png | sharp-png-max | 5345 | 47.2% | 1.0000 | png | 29 ms |
 | transparent-icon.png | sharp-webp-lossless | 3972 | 60.8% | 1.0000 (exact) | webp | 21 ms |
 | gradient-linear.png | sc-balanced | 1413 | 99.8% | 0.9965 | avif | 4.7 s |
 | gradient-linear.png | sc-balanced-nometa | 1413 | 99.8% | 0.9965 | avif | 4.7 s |
-| gradient-linear.png | sc-visually-lossless | 1257 | 99.8% | 0.9966 | avif | 6.2 s |
-| gradient-linear.png | sc-lossless | 120770 | 84.8% | 1.0000 (exact) | webp | 2.8 s |
+| gradient-linear.png | sc-visually-lossless | 1257 | 99.8% | 0.9966 | avif | 6.3 s |
+| gradient-linear.png | sc-lossless | 120770 | 84.8% | 1.0000 (exact) | webp | 2.9 s |
 | gradient-linear.png | sharp-mozjpeg-q80 | 10930 | 98.6% | 0.9970 | jpeg | 70 ms |
 | gradient-linear.png | sharp-webp-q80 | 11860 | 98.5% | 0.9964 | webp | 99 ms |
 | gradient-linear.png | sharp-avif-q50 | 4184 | 99.5% | 0.9970 | avif | 456 ms |
 | gradient-linear.png | sharp-png-max | 60759 | 92.3% | 0.9987 | png | 209 ms |
 | gradient-linear.png | sharp-webp-lossless | 112122 | 85.8% | 1.0000 (exact) | webp | 662 ms |
 | gradient-radial.png | sc-balanced | 1936 | 99.8% | 0.9958 | avif | 7.4 s |
-| gradient-radial.png | sc-balanced-nometa | 1936 | 99.8% | 0.9958 | avif | 7.6 s |
+| gradient-radial.png | sc-balanced-nometa | 1936 | 99.8% | 0.9958 | avif | 7.5 s |
 | gradient-radial.png | sc-visually-lossless | 1825 | 99.8% | 0.9955 | avif | 9.7 s |
-| gradient-radial.png | sc-lossless | 406828 | 48.1% | 1.0000 (exact) | png | 3.7 s |
+| gradient-radial.png | sc-lossless | 406828 | 48.1% | 1.0000 (exact) | png | 3.8 s |
 | gradient-radial.png | sharp-mozjpeg-q80 | 22807 | 97.1% | 0.9955 | jpeg | 72 ms |
 | gradient-radial.png | sharp-webp-q80 | 13266 | 98.3% | 0.9955 | webp | 98 ms |
 | gradient-radial.png | sharp-avif-q50 | 5440 | 99.3% | 0.9965 | avif | 495 ms |
@@ -384,7 +384,7 @@ Pixel-exact = output decodes to exactly the reference pixels (RGBA) with the sam
 
 ## Browser (Chromium): SmartCompress vs browser-image-compression and canvas
 
-Environment: `{"runtime":"Chromium 156.0.8078.4 (Playwright, headless)","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36","platform":"darwin-arm64","date":"2026-10-27T12:10:41.567Z","memory":"not measured in the browser (see Node benchmark for peak RSS)","merged":["2026-10-27T12:10:41.567Z: sc-balanced"]}`
+Environment: `{"runtime":"Chromium 156.0.8078.4 (Playwright, headless)","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36","platform":"darwin-arm64","date":"2026-10-27T13:08:44.960Z","memory":"not measured in the browser (see Node benchmark for peak RSS)","merged":["2026-10-27T12:10:41.567Z: sc-balanced","2026-10-27T13:08:44.960Z: sc-balanced,sc-visually-lossless,sc-lossless"]}`
 
 ### Perceptual (lossy) results by category
 
@@ -394,8 +394,8 @@ SSIM is SmartCompress's metric (8x8 windows, Y/Cb/Cr 6:1:1, active-window poolin
 
 | Tool | n | Total bytes (in → out) | Total reduction | Median reduction | Median SSIM | Min SSIM | SSIM ≥ 0.975 | SSIM ≥ 0.99 | Median time |
 |---|---|---|---|---|---|---|---|---|---|
-| `sc-balanced` | 10 | 2.80 MB → 0.61 MB | 78.2% | 65.2% | 0.9770 | 0.9753 | 10/10 | 0/10 | 887 ms |
-| `sc-visually-lossless` | 10 | 2.80 MB → 0.96 MB | 65.8% | 35.5% | 0.9908 | 0.9902 | 10/10 | 10/10 | 1.5 s |
+| `sc-balanced` | 10 | 2.80 MB → 0.61 MB | 78.3% | 65.2% | 0.9767 | 0.9753 | 10/10 | 0/10 | 910 ms |
+| `sc-visually-lossless` | 10 | 2.80 MB → 0.98 MB | 65.1% | 36.4% | 0.9909 | 0.9904 | 10/10 | 10/10 | 1.6 s |
 | `bic-maxsize-1mb` | 10 | 2.80 MB → 2.25 MB | 19.4% | 3.5% | 0.9962 | 0.9944 | 10/10 | 10/10 | 11 ms |
 | `bic-quality-0.8` | 10 | 2.80 MB → 1.83 MB | 34.4% | 39.7% | 0.9748 | 0.9574 | 5/10 | 2/10 | 4 ms |
 | `bic-webp-0.8` | 10 | 2.80 MB → 0.66 MB | 76.3% | 58.5% | 0.9742 | 0.9611 | 5/10 | 0/10 | 22 ms |
@@ -406,8 +406,8 @@ SSIM is SmartCompress's metric (8x8 windows, Y/Cb/Cr 6:1:1, active-window poolin
 
 | Tool | n | Total bytes (in → out) | Total reduction | Median reduction | Median SSIM | Min SSIM | SSIM ≥ 0.975 | SSIM ≥ 0.99 | Median time |
 |---|---|---|---|---|---|---|---|---|---|
-| `sc-balanced` | 3 | 7.58 MB → 4.43 MB | 41.5% | 40.0% | 0.9794 | 0.9752 | 3/3 | 0/3 | 3.2 s |
-| `sc-visually-lossless` | 3 | 7.58 MB → 5.30 MB | 30.1% | 29.9% | 0.9933 | 0.9917 | 3/3 | 3/3 | 3.4 s |
+| `sc-balanced` | 3 | 7.58 MB → 4.43 MB | 41.5% | 40.0% | 0.9794 | 0.9752 | 3/3 | 0/3 | 3.8 s |
+| `sc-visually-lossless` | 3 | 7.58 MB → 5.30 MB | 30.1% | 29.9% | 0.9933 | 0.9917 | 3/3 | 3/3 | 3.6 s |
 | `bic-maxsize-1mb` | 3 | 7.58 MB → 2.80 MB | 63.0% | 60.0% | – | – | 0/3 | 0/3 | 405 ms |
 | `bic-quality-0.8` | 3 | 7.58 MB → 6.33 MB | 16.5% | 16.5% | 0.9963 | 0.9957 | 3/3 | 3/3 | 70 ms |
 | `bic-webp-0.8` | 3 | 7.58 MB → 5.24 MB | 30.8% | 34.7% | 0.9799 | 0.9792 | 3/3 | 0/3 | 616 ms |
@@ -418,8 +418,8 @@ SSIM is SmartCompress's metric (8x8 windows, Y/Cb/Cr 6:1:1, active-window poolin
 
 | Tool | n | Total bytes (in → out) | Total reduction | Median reduction | Median SSIM | Min SSIM | SSIM ≥ 0.975 | SSIM ≥ 0.99 | Median time |
 |---|---|---|---|---|---|---|---|---|---|
-| `sc-balanced` | 2 | 0.44 MB → 0.04 MB | 90.6% | 90.2% | 0.9910 | 0.9819 | 2/2 | 1/2 | 8.4 s |
-| `sc-visually-lossless` | 2 | 0.44 MB → 0.04 MB | 90.5% | 90.1% | 0.9951 | 0.9902 | 2/2 | 2/2 | 17.7 s |
+| `sc-balanced` | 2 | 0.44 MB → 0.04 MB | 90.6% | 90.2% | 0.9910 | 0.9819 | 2/2 | 1/2 | 8.2 s |
+| `sc-visually-lossless` | 2 | 0.44 MB → 0.04 MB | 90.5% | 90.1% | 0.9951 | 0.9902 | 2/2 | 2/2 | 17.2 s |
 | `bic-maxsize-1mb` | 2 | 0.44 MB → 0.38 MB | 14.7% | 15.9% | 1.0000 | 1.0000 | 2/2 | 2/2 | 275 ms |
 | `bic-quality-0.8` | 2 | 0.44 MB → 0.38 MB | 14.8% | 15.9% | 1.0000 | 1.0000 | 2/2 | 2/2 | 189 ms |
 | `bic-webp-0.8` | 2 | 0.44 MB → 0.16 MB | 62.6% | 62.4% | 0.9853 | 0.9723 | 1/2 | 1/2 | 89 ms |
@@ -430,7 +430,7 @@ SSIM is SmartCompress's metric (8x8 windows, Y/Cb/Cr 6:1:1, active-window poolin
 
 | Tool | n | Total bytes (in → out) | Total reduction | Median reduction | Median SSIM | Min SSIM | SSIM ≥ 0.975 | SSIM ≥ 0.99 | Median time |
 |---|---|---|---|---|---|---|---|---|---|
-| `sc-balanced` | 2 | 0.40 MB → 0.03 MB | 91.8% | 87.5% | 0.9988 | 0.9977 | 2/2 | 2/2 | 1.8 s |
+| `sc-balanced` | 2 | 0.40 MB → 0.03 MB | 91.8% | 87.5% | 0.9988 | 0.9977 | 2/2 | 2/2 | 1.7 s |
 | `sc-visually-lossless` | 2 | 0.40 MB → 0.03 MB | 92.0% | 88.2% | 0.9990 | 0.9980 | 2/2 | 2/2 | 1.9 s |
 | `bic-maxsize-1mb` | 2 | 0.40 MB → 0.14 MB | 64.4% | 61.3% | 1.0000 | 1.0000 | 2/2 | 2/2 | 100 ms |
 | `bic-quality-0.8` | 2 | 0.40 MB → 0.14 MB | 64.4% | 61.3% | 1.0000 | 1.0000 | 2/2 | 2/2 | 77 ms |
@@ -442,8 +442,8 @@ SSIM is SmartCompress's metric (8x8 windows, Y/Cb/Cr 6:1:1, active-window poolin
 
 | Tool | n | Total bytes (in → out) | Total reduction | Median reduction | Median SSIM | Min SSIM | SSIM ≥ 0.975 | SSIM ≥ 0.99 | Median time |
 |---|---|---|---|---|---|---|---|---|---|
-| `sc-balanced` | 4 | 0.44 MB → 0.03 MB | 92.4% | 92.5% | 0.9786 | 0.9760 | 4/4 | 1/4 | 2.2 s |
-| `sc-visually-lossless` | 4 | 0.44 MB → 0.05 MB | 88.3% | 87.9% | 0.9910 | 0.9902 | 4/4 | 4/4 | 3.3 s |
+| `sc-balanced` | 4 | 0.44 MB → 0.03 MB | 92.4% | 92.5% | 0.9766 | 0.9751 | 4/4 | 0/4 | 2.2 s |
+| `sc-visually-lossless` | 4 | 0.44 MB → 0.06 MB | 87.0% | 86.8% | 0.9912 | 0.9907 | 4/4 | 4/4 | 3.3 s |
 | `bic-maxsize-1mb` | 4 | 0.44 MB → 0.34 MB | 22.1% | 23.2% | 0.9998 | 0.9998 | 4/4 | 4/4 | 132 ms |
 | `bic-quality-0.8` | 4 | 0.44 MB → 0.33 MB | 24.5% | 25.4% | 0.9997 | 0.9997 | 4/4 | 4/4 | 103 ms |
 | `bic-webp-0.8` | 4 | 0.44 MB → 0.21 MB | 52.8% | 52.8% | 0.9915 | 0.9903 | 4/4 | 4/4 | 74 ms |
@@ -453,7 +453,7 @@ SSIM is SmartCompress's metric (8x8 windows, Y/Cb/Cr 6:1:1, active-window poolin
 
 | Tool | n | Total bytes (in → out) | Total reduction | Median reduction | Median SSIM | Min SSIM | SSIM ≥ 0.975 | SSIM ≥ 0.99 | Median time |
 |---|---|---|---|---|---|---|---|---|---|
-| `sc-balanced` | 3 | 1.61 MB → 0.00 MB | 99.8% | 99.8% | 0.9965 | 0.9958 | 3/3 | 3/3 | 3.9 s |
+| `sc-balanced` | 3 | 1.61 MB → 0.00 MB | 99.8% | 99.8% | 0.9965 | 0.9958 | 3/3 | 3/3 | 4.0 s |
 | `sc-visually-lossless` | 3 | 1.61 MB → 0.00 MB | 99.8% | 99.8% | 0.9965 | 0.9955 | 3/3 | 3/3 | 5.4 s |
 | `bic-maxsize-1mb` | 3 | 1.61 MB → 1.22 MB | 23.9% | 12.1% | 1.0000 | 0.9999 | 3/3 | 3/3 | 323 ms |
 | `bic-quality-0.8` | 3 | 1.61 MB → 1.20 MB | 25.1% | 12.1% | 1.0000 | 0.9999 | 3/3 | 3/3 | 318 ms |
@@ -465,8 +465,8 @@ SSIM is SmartCompress's metric (8x8 windows, Y/Cb/Cr 6:1:1, active-window poolin
 
 | Tool | n | Total bytes (in → out) | Total reduction | Median reduction | Median SSIM | Min SSIM | SSIM ≥ 0.975 | SSIM ≥ 0.99 | Median time |
 |---|---|---|---|---|---|---|---|---|---|
-| `sc-balanced` | 24 | 13.25 MB → 5.15 MB | 61.1% | 80.7% | 0.9787 | 0.9752 | 24/24 | 7/24 | 1.4 s |
-| `sc-visually-lossless` | 24 | 13.25 MB → 6.38 MB | 51.8% | 80.2% | 0.9915 | 0.9902 | 24/24 | 24/24 | 2.1 s |
+| `sc-balanced` | 24 | 13.25 MB → 5.15 MB | 61.2% | 80.1% | 0.9784 | 0.9751 | 24/24 | 6/24 | 1.3 s |
+| `sc-visually-lossless` | 24 | 13.25 MB → 6.41 MB | 51.7% | 76.2% | 0.9915 | 0.9902 | 24/24 | 24/24 | 2.2 s |
 | `bic-maxsize-1mb` | 24 | 13.25 MB → 7.14 MB | 46.1% | 20.5% | 0.9998 | 0.9944 | 21/24 | 21/24 | 128 ms |
 | `bic-quality-0.8` | 24 | 13.25 MB → 10.21 MB | 22.9% | 35.6% | 0.9977 | 0.9574 | 19/24 | 16/24 | 78 ms |
 | `bic-webp-0.8` | 24 | 13.25 MB → 6.52 MB | 50.8% | 55.5% | 0.9804 | 0.9611 | 18/24 | 8/24 | 37 ms |
@@ -487,25 +487,25 @@ Pixel-exact = output decodes to exactly the reference pixels (RGBA) with the sam
 
 | Tool | n | Total bytes (in → out) | Total reduction | Median reduction | Pixel-exact | Median time |
 |---|---|---|---|---|---|---|
-| `sc-lossless` | 3 | 7.58 MB → 7.58 MB | 0.0% | 0.0% | 3/3 | 103 ms |
+| `sc-lossless` | 3 | 7.58 MB → 7.58 MB | 0.0% | 0.0% | 3/3 | 104 ms |
 
 #### screenshot
 
 | Tool | n | Total bytes (in → out) | Total reduction | Median reduction | Pixel-exact | Median time |
 |---|---|---|---|---|---|---|
-| `sc-lossless` | 2 | 0.44 MB → 0.10 MB | 76.2% | 77.5% | 2/2 | 1.5 s |
+| `sc-lossless` | 2 | 0.44 MB → 0.10 MB | 76.2% | 77.5% | 2/2 | 1.4 s |
 
 #### text-graphic
 
 | Tool | n | Total bytes (in → out) | Total reduction | Median reduction | Pixel-exact | Median time |
 |---|---|---|---|---|---|---|
-| `sc-lossless` | 2 | 0.40 MB → 0.04 MB | 90.7% | 83.4% | 2/2 | 552 ms |
+| `sc-lossless` | 2 | 0.40 MB → 0.04 MB | 90.7% | 83.4% | 2/2 | 538 ms |
 
 #### transparent-illustration
 
 | Tool | n | Total bytes (in → out) | Total reduction | Median reduction | Pixel-exact | Median time |
 |---|---|---|---|---|---|---|
-| `sc-lossless` | 4 | 0.44 MB → 0.25 MB | 42.3% | 42.6% | 4/4 | 661 ms |
+| `sc-lossless` | 4 | 0.44 MB → 0.25 MB | 42.3% | 42.6% | 4/4 | 647 ms |
 
 #### gradient
 
@@ -517,7 +517,7 @@ Pixel-exact = output decodes to exactly the reference pixels (RGBA) with the sam
 
 | Tool | n | Total bytes (in → out) | Total reduction | Median reduction | Pixel-exact | Median time |
 |---|---|---|---|---|---|---|
-| `sc-lossless` | 24 | 13.25 MB → 10.55 MB | 20.4% | 39.7% | 24/24 | 252 ms |
+| `sc-lossless` | 24 | 13.25 MB → 10.55 MB | 20.4% | 39.7% | 24/24 | 248 ms |
 
 ### Head-to-head per image
 
@@ -529,43 +529,43 @@ Pixel-exact = output decodes to exactly the reference pixels (RGBA) with the sam
 | `sc-balanced` | `bic-quality-0.8` | 24 | 9 | 0 | 15 |
 | `sc-balanced` | `bic-webp-0.8` | 24 | 10 | 0 | 14 |
 | `sc-balanced` | `canvas-webp-0.8` | 24 | 10 | 0 | 14 |
-| `sc-balanced` | `canvas-jpeg-0.8` | 20 | 13 | 0 | 7 |
+| `sc-balanced` | `canvas-jpeg-0.8` | 20 | 14 | 0 | 6 |
 | `sc-visually-lossless` | `bic-maxsize-1mb` | 21 | 2 | 0 | 19 |
-| `sc-visually-lossless` | `bic-quality-0.8` | 24 | 4 | 0 | 20 |
-| `sc-visually-lossless` | `bic-webp-0.8` | 24 | 7 | 0 | 17 |
-| `sc-visually-lossless` | `canvas-webp-0.8` | 24 | 7 | 0 | 17 |
-| `sc-visually-lossless` | `canvas-jpeg-0.8` | 20 | 6 | 0 | 14 |
+| `sc-visually-lossless` | `bic-quality-0.8` | 24 | 3 | 0 | 21 |
+| `sc-visually-lossless` | `bic-webp-0.8` | 24 | 8 | 0 | 16 |
+| `sc-visually-lossless` | `canvas-webp-0.8` | 24 | 8 | 0 | 16 |
+| `sc-visually-lossless` | `canvas-jpeg-0.8` | 20 | 5 | 0 | 15 |
 
 <details><summary>Per-image rows</summary>
 
 | Image | Tool | Bytes | Reduction | SSIM | Format | Time |
 |---|---|---|---|---|---|---|
-| photo-kodim01.jpg | sc-balanced | 80520 | 52.0% | 0.9767 | avif | 986 ms |
-| photo-kodim01.jpg | sc-visually-lossless | 112366 | 33.0% | 0.9911 | avif | 1.6 s |
-| photo-kodim01.jpg | sc-lossless | 167760 | 0.0% | 1.0000 (exact) | jpeg | 13 ms |
+| photo-kodim01.jpg | sc-balanced | 80520 | 52.0% | 0.9767 | avif | 989 ms |
+| photo-kodim01.jpg | sc-visually-lossless | 112366 | 33.0% | 0.9911 | avif | 1.7 s |
+| photo-kodim01.jpg | sc-lossless | 167760 | 0.0% | 1.0000 (exact) | jpeg | 14 ms |
 | photo-kodim01.jpg | bic-maxsize-1mb | 161883 | 3.5% | 0.9953 | jpeg | 19 ms |
 | photo-kodim01.jpg | bic-quality-0.8 | 100249 | 40.2% | 0.9633 | jpeg | 4 ms |
 | photo-kodim01.jpg | bic-webp-0.8 | 95310 | 43.2% | 0.9791 | webp | 28 ms |
 | photo-kodim01.jpg | canvas-webp-0.8 | 95310 | 43.2% | 0.9791 | webp | 27 ms |
 | photo-kodim01.jpg | canvas-jpeg-0.8 | 100249 | 40.2% | 0.9633 | jpeg | 3 ms |
-| photo-kodim03.jpg | sc-balanced | 29735 | 65.8% | 0.9767 | avif | 722 ms |
-| photo-kodim03.jpg | sc-visually-lossless | 56948 | 34.5% | 0.9919 | avif | 1.0 s |
-| photo-kodim03.jpg | sc-lossless | 86969 | 0.0% | 1.0000 (exact) | jpeg | 12 ms |
+| photo-kodim03.jpg | sc-balanced | 29735 | 65.8% | 0.9767 | avif | 713 ms |
+| photo-kodim03.jpg | sc-visually-lossless | 53589 | 38.4% | 0.9908 | avif | 1.1 s |
+| photo-kodim03.jpg | sc-lossless | 86969 | 0.0% | 1.0000 (exact) | jpeg | 10 ms |
 | photo-kodim03.jpg | bic-maxsize-1mb | 84173 | 3.2% | 0.9962 | jpeg | 9 ms |
 | photo-kodim03.jpg | bic-quality-0.8 | 50906 | 41.5% | 0.9763 | jpeg | 3 ms |
 | photo-kodim03.jpg | bic-webp-0.8 | 33034 | 62.0% | 0.9728 | webp | 20 ms |
 | photo-kodim03.jpg | canvas-webp-0.8 | 33034 | 62.0% | 0.9728 | webp | 19 ms |
 | photo-kodim03.jpg | canvas-jpeg-0.8 | 50906 | 41.5% | 0.9763 | jpeg | 3 ms |
-| photo-kodim05.jpg | sc-balanced | 78288 | 54.9% | 0.9765 | avif | 957 ms |
+| photo-kodim05.jpg | sc-balanced | 78288 | 54.9% | 0.9765 | avif | 939 ms |
 | photo-kodim05.jpg | sc-visually-lossless | 113870 | 34.4% | 0.9909 | avif | 1.5 s |
-| photo-kodim05.jpg | sc-lossless | 173611 | 0.0% | 1.0000 (exact) | jpeg | 11 ms |
+| photo-kodim05.jpg | sc-lossless | 173611 | 0.0% | 1.0000 (exact) | jpeg | 12 ms |
 | photo-kodim05.jpg | bic-maxsize-1mb | 167535 | 3.5% | 0.9958 | jpeg | 12 ms |
 | photo-kodim05.jpg | bic-quality-0.8 | 109512 | 36.9% | 0.9732 | jpeg | 4 ms |
 | photo-kodim05.jpg | bic-webp-0.8 | 97434 | 43.9% | 0.9800 | webp | 27 ms |
 | photo-kodim05.jpg | canvas-webp-0.8 | 97434 | 43.9% | 0.9800 | webp | 27 ms |
 | photo-kodim05.jpg | canvas-jpeg-0.8 | 109512 | 36.9% | 0.9732 | jpeg | 4 ms |
-| photo-kodim07.jpg | sc-balanced | 29628 | 70.2% | 0.9756 | avif | 785 ms |
-| photo-kodim07.jpg | sc-visually-lossless | 53730 | 45.9% | 0.9903 | avif | 1.2 s |
+| photo-kodim07.jpg | sc-balanced | 29628 | 70.2% | 0.9756 | avif | 764 ms |
+| photo-kodim07.jpg | sc-visually-lossless | 56370 | 43.3% | 0.9910 | avif | 1.2 s |
 | photo-kodim07.jpg | sc-lossless | 99340 | 0.0% | 1.0000 (exact) | jpeg | 11 ms |
 | photo-kodim07.jpg | bic-maxsize-1mb | 96358 | 3.0% | 0.9968 | jpeg | 10 ms |
 | photo-kodim07.jpg | bic-quality-0.8 | 60362 | 39.2% | 0.9814 | jpeg | 3 ms |
@@ -573,88 +573,88 @@ Pixel-exact = output decodes to exactly the reference pixels (RGBA) with the sam
 | photo-kodim07.jpg | canvas-webp-0.8 | 40760 | 59.0% | 0.9801 | webp | 20 ms |
 | photo-kodim07.jpg | canvas-jpeg-0.8 | 60362 | 39.2% | 0.9814 | jpeg | 3 ms |
 | photo-kodim13.jpg | sc-balanced | 110720 | 45.0% | 0.9789 | avif | 1.1 s |
-| photo-kodim13.jpg | sc-visually-lossless | 139224 | 30.9% | 0.9904 | avif | 2.1 s |
+| photo-kodim13.jpg | sc-visually-lossless | 139224 | 30.9% | 0.9904 | avif | 2.2 s |
 | photo-kodim13.jpg | sc-lossless | 201392 | 0.0% | 1.0000 (exact) | jpeg | 11 ms |
 | photo-kodim13.jpg | bic-maxsize-1mb | 193401 | 4.0% | 0.9944 | jpeg | 16 ms |
 | photo-kodim13.jpg | bic-quality-0.8 | 123703 | 38.6% | 0.9574 | jpeg | 4 ms |
 | photo-kodim13.jpg | bic-webp-0.8 | 128256 | 36.3% | 0.9807 | webp | 29 ms |
 | photo-kodim13.jpg | canvas-webp-0.8 | 128256 | 36.3% | 0.9807 | webp | 29 ms |
 | photo-kodim13.jpg | canvas-jpeg-0.8 | 123703 | 38.6% | 0.9574 | jpeg | 4 ms |
-| photo-kodim15.jpg | sc-balanced | 47134 | 54.2% | 0.9786 | avif | 816 ms |
-| photo-kodim15.jpg | sc-visually-lossless | 72941 | 29.1% | 0.9917 | avif | 1.2 s |
-| photo-kodim15.jpg | sc-lossless | 102888 | 0.0% | 1.0000 (exact) | jpeg | 10 ms |
+| photo-kodim15.jpg | sc-balanced | 47134 | 54.2% | 0.9786 | avif | 882 ms |
+| photo-kodim15.jpg | sc-visually-lossless | 69356 | 32.6% | 0.9904 | avif | 1.3 s |
+| photo-kodim15.jpg | sc-lossless | 102888 | 0.0% | 1.0000 (exact) | jpeg | 11 ms |
 | photo-kodim15.jpg | bic-maxsize-1mb | 99200 | 3.6% | 0.9950 | jpeg | 10 ms |
 | photo-kodim15.jpg | bic-quality-0.8 | 57683 | 43.9% | 0.9645 | jpeg | 4 ms |
 | photo-kodim15.jpg | bic-webp-0.8 | 43088 | 58.1% | 0.9664 | webp | 20 ms |
 | photo-kodim15.jpg | canvas-webp-0.8 | 43088 | 58.1% | 0.9664 | webp | 20 ms |
 | photo-kodim15.jpg | canvas-jpeg-0.8 | 57683 | 43.9% | 0.9645 | jpeg | 3 ms |
-| photo-kodim20.jpg | sc-balanced | 27632 | 68.1% | 0.9753 | avif | 675 ms |
-| photo-kodim20.jpg | sc-visually-lossless | 48756 | 43.6% | 0.9906 | avif | 1.7 s |
-| photo-kodim20.jpg | sc-lossless | 86487 | 0.0% | 1.0000 (exact) | jpeg | 9 ms |
+| photo-kodim20.jpg | sc-balanced | 27632 | 68.1% | 0.9753 | avif | 672 ms |
+| photo-kodim20.jpg | sc-visually-lossless | 51201 | 40.8% | 0.9913 | avif | 1.8 s |
+| photo-kodim20.jpg | sc-lossless | 86487 | 0.0% | 1.0000 (exact) | jpeg | 10 ms |
 | photo-kodim20.jpg | bic-maxsize-1mb | 83674 | 3.3% | 0.9962 | jpeg | 10 ms |
 | photo-kodim20.jpg | bic-quality-0.8 | 49624 | 42.6% | 0.9727 | jpeg | 3 ms |
 | photo-kodim20.jpg | bic-webp-0.8 | 37106 | 57.1% | 0.9756 | webp | 18 ms |
 | photo-kodim20.jpg | canvas-webp-0.8 | 37106 | 57.1% | 0.9756 | webp | 18 ms |
 | photo-kodim20.jpg | canvas-jpeg-0.8 | 49624 | 42.6% | 0.9727 | jpeg | 2 ms |
-| photo-kodim23.jpg | sc-balanced | 30117 | 64.5% | 0.9782 | avif | 718 ms |
-| photo-kodim23.jpg | sc-visually-lossless | 53956 | 36.4% | 0.9902 | avif | 1.0 s |
-| photo-kodim23.jpg | sc-lossless | 84887 | 0.0% | 1.0000 (exact) | jpeg | 10 ms |
+| photo-kodim23.jpg | sc-balanced | 30117 | 64.5% | 0.9782 | avif | 717 ms |
+| photo-kodim23.jpg | sc-visually-lossless | 58731 | 30.8% | 0.9917 | avif | 1.2 s |
+| photo-kodim23.jpg | sc-lossless | 84887 | 0.0% | 1.0000 (exact) | jpeg | 9 ms |
 | photo-kodim23.jpg | bic-maxsize-1mb | 82458 | 2.9% | 0.9962 | jpeg | 9 ms |
 | photo-kodim23.jpg | bic-quality-0.8 | 47346 | 44.2% | 0.9773 | jpeg | 3 ms |
 | photo-kodim23.jpg | bic-webp-0.8 | 30576 | 64.0% | 0.9713 | webp | 19 ms |
 | photo-kodim23.jpg | canvas-webp-0.8 | 30576 | 64.0% | 0.9713 | webp | 20 ms |
 | photo-kodim23.jpg | canvas-jpeg-0.8 | 47346 | 44.2% | 0.9773 | jpeg | 2 ms |
-| photo-kodim08.png | sc-balanced | 101867 | 89.8% | 0.9774 | avif | 1.2 s |
-| photo-kodim08.png | sc-visually-lossless | 163585 | 83.6% | 0.9905 | avif | 2.0 s |
-| photo-kodim08.png | sc-lossless | 552370 | 44.5% | 1.0000 (exact) | webp | 381 ms |
+| photo-kodim08.png | sc-balanced | 101867 | 89.8% | 0.9774 | avif | 1.3 s |
+| photo-kodim08.png | sc-visually-lossless | 163585 | 83.6% | 0.9905 | avif | 2.2 s |
+| photo-kodim08.png | sc-lossless | 552370 | 44.5% | 1.0000 (exact) | webp | 397 ms |
 | photo-kodim08.png | bic-maxsize-1mb | 683137 | 31.3% | 0.9977 | png | 306 ms |
 | photo-kodim08.png | bic-quality-0.8 | 653365 | 34.3% | 0.9972 | png | 276 ms |
 | photo-kodim08.png | bic-webp-0.8 | 99204 | 90.0% | 0.9722 | webp | 28 ms |
 | photo-kodim08.png | canvas-webp-0.8 | 99204 | 90.0% | 0.9722 | webp | 27 ms |
 | photo-kodim08.png | canvas-jpeg-0.8 | 114041 | 88.5% | 0.9624 | jpeg | 5 ms |
-| photo-kodim19.png | sc-balanced | 74670 | 90.7% | 0.9772 | avif | 972 ms |
-| photo-kodim19.png | sc-visually-lossless | 141333 | 82.3% | 0.9913 | avif | 2.1 s |
-| photo-kodim19.png | sc-lossless | 486068 | 39.1% | 1.0000 (exact) | webp | 390 ms |
+| photo-kodim19.png | sc-balanced | 70744 | 91.1% | 0.9758 | avif | 985 ms |
+| photo-kodim19.png | sc-visually-lossless | 157150 | 80.3% | 0.9927 | avif | 1.9 s |
+| photo-kodim19.png | sc-lossless | 486068 | 39.1% | 1.0000 (exact) | webp | 399 ms |
 | photo-kodim19.png | bic-maxsize-1mb | 602938 | 24.5% | 0.9986 | png | 227 ms |
 | photo-kodim19.png | bic-quality-0.8 | 581179 | 27.2% | 0.9982 | png | 214 ms |
 | photo-kodim19.png | bic-webp-0.8 | 57706 | 92.8% | 0.9611 | webp | 24 ms |
 | photo-kodim19.png | canvas-webp-0.8 | 57706 | 92.8% | 0.9611 | webp | 23 ms |
 | photo-kodim19.png | canvas-jpeg-0.8 | 74127 | 90.7% | 0.9596 | jpeg | 5 ms |
-| large-picsum1015.jpg | sc-balanced | 1371351 | 40.0% | 0.9842 | jpeg | 2.9 s |
-| large-picsum1015.jpg | sc-visually-lossless | 1601997 | 29.9% | 0.9936 | jpeg | 3.4 s |
-| large-picsum1015.jpg | sc-lossless | 2285854 | 0.0% | 1.0000 (exact) | jpeg | 103 ms |
+| large-picsum1015.jpg | sc-balanced | 1371351 | 40.0% | 0.9842 | jpeg | 4.3 s |
+| large-picsum1015.jpg | sc-visually-lossless | 1601997 | 29.9% | 0.9936 | jpeg | 3.6 s |
+| large-picsum1015.jpg | sc-lossless | 2285854 | 0.0% | 1.0000 (exact) | jpeg | 104 ms |
 | large-picsum1015.jpg | bic-maxsize-1mb | 914605 | 60.0% | n/a | jpeg | 405 ms |
 | large-picsum1015.jpg | bic-quality-0.8 | 1898949 | 16.9% | 0.9963 | jpeg | 70 ms |
 | large-picsum1015.jpg | bic-webp-0.8 | 1492218 | 34.7% | 0.9799 | webp | 616 ms |
 | large-picsum1015.jpg | canvas-webp-0.8 | 1492218 | 34.7% | 0.9799 | webp | 611 ms |
 | large-picsum1015.jpg | canvas-jpeg-0.8 | 1898949 | 16.9% | 0.9963 | jpeg | 70 ms |
-| large-picsum1043.jpg | sc-balanced | 2044901 | 37.9% | 0.9794 | jpeg | 4.2 s |
-| large-picsum1043.jpg | sc-visually-lossless | 2352615 | 28.6% | 0.9933 | jpeg | 4.3 s |
-| large-picsum1043.jpg | sc-lossless | 3293882 | 0.0% | 1.0000 (exact) | jpeg | 112 ms |
+| large-picsum1043.jpg | sc-balanced | 2044901 | 37.9% | 0.9794 | jpeg | 3.8 s |
+| large-picsum1043.jpg | sc-visually-lossless | 2352615 | 28.6% | 0.9933 | jpeg | 4.2 s |
+| large-picsum1043.jpg | sc-lossless | 3293882 | 0.0% | 1.0000 (exact) | jpeg | 113 ms |
 | large-picsum1043.jpg | bic-maxsize-1mb | 855267 | 74.0% | n/a | jpeg | 526 ms |
 | large-picsum1043.jpg | bic-quality-0.8 | 2761314 | 16.2% | 0.9957 | jpeg | 85 ms |
 | large-picsum1043.jpg | bic-webp-0.8 | 2475888 | 24.8% | 0.9792 | webp | 755 ms |
 | large-picsum1043.jpg | canvas-webp-0.8 | 2475888 | 24.8% | 0.9792 | webp | 758 ms |
 | large-picsum1043.jpg | canvas-jpeg-0.8 | 2761314 | 16.2% | 0.9957 | jpeg | 83 ms |
-| large-picsum1050.jpg | sc-balanced | 1014978 | 49.2% | 0.9752 | webp | 3.2 s |
-| large-picsum1050.jpg | sc-visually-lossless | 1343631 | 32.7% | 0.9917 | jpeg | 3.3 s |
-| large-picsum1050.jpg | sc-lossless | 1997063 | 0.0% | 1.0000 (exact) | jpeg | 103 ms |
+| large-picsum1050.jpg | sc-balanced | 1014978 | 49.2% | 0.9752 | webp | 3.0 s |
+| large-picsum1050.jpg | sc-visually-lossless | 1343631 | 32.7% | 0.9917 | jpeg | 3.2 s |
+| large-picsum1050.jpg | sc-lossless | 1997063 | 0.0% | 1.0000 (exact) | jpeg | 100 ms |
 | large-picsum1050.jpg | bic-maxsize-1mb | 1034853 | 48.2% | n/a | jpeg | 363 ms |
 | large-picsum1050.jpg | bic-quality-0.8 | 1668231 | 16.5% | 0.9964 | jpeg | 68 ms |
 | large-picsum1050.jpg | bic-webp-0.8 | 1273684 | 36.2% | 0.9818 | webp | 594 ms |
 | large-picsum1050.jpg | canvas-webp-0.8 | 1273684 | 36.2% | 0.9818 | webp | 588 ms |
 | large-picsum1050.jpg | canvas-jpeg-0.8 | 1668231 | 16.5% | 0.9964 | jpeg | 68 ms |
-| screenshot-dashboard.png | sc-balanced | 17121 | 93.2% | 0.9819 | avif | 15.5 s |
-| screenshot-dashboard.png | sc-visually-lossless | 17346 | 93.1% | 0.9902 | avif | 34.0 s |
+| screenshot-dashboard.png | sc-balanced | 17121 | 93.2% | 0.9819 | avif | 15.2 s |
+| screenshot-dashboard.png | sc-visually-lossless | 17346 | 93.1% | 0.9902 | avif | 33.1 s |
 | screenshot-dashboard.png | sc-lossless | 80542 | 67.9% | 1.0000 (exact) | webp | 2.5 s |
 | screenshot-dashboard.png | bic-maxsize-1mb | 231623 | 7.6% | 1.0000 | png | 426 ms |
 | screenshot-dashboard.png | bic-quality-0.8 | 231608 | 7.6% | 1.0000 | png | 281 ms |
 | screenshot-dashboard.png | bic-webp-0.8 | 90548 | 63.9% | 0.9982 | webp | 140 ms |
 | screenshot-dashboard.png | canvas-webp-0.8 | 90548 | 63.9% | 0.9982 | webp | 140 ms |
 | screenshot-dashboard.png | canvas-jpeg-0.8 | 218398 | 12.9% | 0.9923 | jpeg | 26 ms |
-| screenshot-code.png | sc-balanced | 24372 | 87.2% | 1.0000 (exact) | webp | 1.3 s |
-| screenshot-code.png | sc-visually-lossless | 24372 | 87.2% | 1.0000 (exact) | webp | 1.4 s |
-| screenshot-code.png | sc-lossless | 24372 | 87.2% | 1.0000 (exact) | webp | 374 ms |
+| screenshot-code.png | sc-balanced | 24372 | 87.2% | 1.0000 (exact) | webp | 1.2 s |
+| screenshot-code.png | sc-visually-lossless | 24372 | 87.2% | 1.0000 (exact) | webp | 1.3 s |
+| screenshot-code.png | sc-lossless | 24372 | 87.2% | 1.0000 (exact) | webp | 362 ms |
 | screenshot-code.png | bic-maxsize-1mb | 143773 | 24.2% | 1.0000 | png | 125 ms |
 | screenshot-code.png | bic-quality-0.8 | 143763 | 24.2% | 1.0000 | png | 96 ms |
 | screenshot-code.png | bic-webp-0.8 | 74006 | 61.0% | 0.9723 | webp | 39 ms |
@@ -662,49 +662,49 @@ Pixel-exact = output decodes to exactly the reference pixels (RGBA) with the sam
 | screenshot-code.png | canvas-jpeg-0.8 | 113286 | 40.3% | 0.9321 | jpeg | 6 ms |
 | text-docs.png | sc-balanced | 22230 | 93.5% | 1.0000 (exact) | webp | 2.1 s |
 | text-docs.png | sc-visually-lossless | 22230 | 93.5% | 1.0000 (exact) | webp | 1.3 s |
-| text-docs.png | sc-lossless | 22230 | 93.5% | 1.0000 (exact) | webp | 661 ms |
+| text-docs.png | sc-lossless | 22230 | 93.5% | 1.0000 (exact) | webp | 641 ms |
 | text-docs.png | bic-maxsize-1mb | 117407 | 65.6% | 1.0000 | png | 124 ms |
 | text-docs.png | bic-quality-0.8 | 117402 | 65.6% | 1.0000 | png | 86 ms |
 | text-docs.png | bic-webp-0.8 | 182110 | 46.6% | 0.9855 | webp | 63 ms |
 | text-docs.png | canvas-webp-0.8 | 182110 | 46.6% | 0.9855 | webp | 62 ms |
 | text-docs.png | canvas-jpeg-0.8 | 270394 | 20.7% | 0.9708 | jpeg | 10 ms |
 | text-slide.png | sc-balanced | 10195 | 81.5% | 0.9977 | avif | 1.4 s |
-| text-slide.png | sc-visually-lossless | 9434 | 82.8% | 0.9980 | avif | 2.5 s |
-| text-slide.png | sc-lossless | 14676 | 73.3% | 1.0000 (exact) | webp | 443 ms |
+| text-slide.png | sc-visually-lossless | 9434 | 82.8% | 0.9980 | avif | 2.4 s |
+| text-slide.png | sc-lossless | 14676 | 73.3% | 1.0000 (exact) | webp | 436 ms |
 | text-slide.png | bic-maxsize-1mb | 23681 | 56.9% | 1.0000 (exact) | png | 77 ms |
 | text-slide.png | bic-quality-0.8 | 23681 | 56.9% | 1.0000 (exact) | png | 69 ms |
 | text-slide.png | bic-webp-0.8 | 30438 | 44.6% | 0.9849 | webp | 35 ms |
 | text-slide.png | canvas-webp-0.8 | 30438 | 44.6% | 0.9849 | webp | 35 ms |
 | text-slide.png | canvas-jpeg-0.8 | 51663 | 6.0% | 0.9961 | jpeg | 5 ms |
-| transparent-illustration-1.png | sc-balanced | 9328 | 92.8% | 0.9760 | avif | 2.2 s |
-| transparent-illustration-1.png | sc-visually-lossless | 14366 | 88.8% | 0.9902 | avif | 3.3 s |
-| transparent-illustration-1.png | sc-lossless | 74432 | 42.2% | 1.0000 (exact) | webp | 655 ms |
+| transparent-illustration-1.png | sc-balanced | 9328 | 92.8% | 0.9751 | avif | 2.2 s |
+| transparent-illustration-1.png | sc-visually-lossless | 15701 | 87.8% | 0.9907 | avif | 3.2 s |
+| transparent-illustration-1.png | sc-lossless | 74432 | 42.2% | 1.0000 (exact) | webp | 630 ms |
 | transparent-illustration-1.png | bic-maxsize-1mb | 99735 | 22.5% | 0.9999 | png | 142 ms |
 | transparent-illustration-1.png | bic-quality-0.8 | 96692 | 24.9% | 0.9997 | png | 115 ms |
 | transparent-illustration-1.png | bic-webp-0.8 | 62314 | 51.6% | 0.9903 | webp | 74 ms |
 | transparent-illustration-1.png | canvas-webp-0.8 | 62314 | 51.6% | 0.9903 | webp | 73 ms |
-| transparent-illustration-2.png | sc-balanced | 11976 | 92.2% | 0.9780 | avif | 2.3 s |
-| transparent-illustration-2.png | sc-visually-lossless | 19979 | 87.0% | 0.9910 | avif | 3.3 s |
-| transparent-illustration-2.png | sc-lossless | 87370 | 43.1% | 1.0000 (exact) | webp | 674 ms |
+| transparent-illustration-2.png | sc-balanced | 11976 | 92.2% | 0.9762 | avif | 2.3 s |
+| transparent-illustration-2.png | sc-visually-lossless | 21801 | 85.8% | 0.9913 | avif | 3.4 s |
+| transparent-illustration-2.png | sc-lossless | 87370 | 43.1% | 1.0000 (exact) | webp | 664 ms |
 | transparent-illustration-2.png | bic-maxsize-1mb | 117019 | 23.8% | 0.9998 | png | 133 ms |
 | transparent-illustration-2.png | bic-quality-0.8 | 113683 | 25.9% | 0.9997 | png | 103 ms |
 | transparent-illustration-2.png | bic-webp-0.8 | 70726 | 53.9% | 0.9920 | webp | 77 ms |
 | transparent-illustration-2.png | canvas-webp-0.8 | 70726 | 53.9% | 0.9920 | webp | 77 ms |
-| transparent-illustration-3.png | sc-balanced | 9623 | 93.3% | 0.9792 | avif | 2.3 s |
-| transparent-illustration-3.png | sc-visually-lossless | 14286 | 90.1% | 0.9910 | avif | 3.3 s |
-| transparent-illustration-3.png | sc-lossless | 85724 | 40.3% | 1.0000 (exact) | webp | 667 ms |
+| transparent-illustration-3.png | sc-balanced | 9623 | 93.3% | 0.9770 | avif | 2.3 s |
+| transparent-illustration-3.png | sc-visually-lossless | 16193 | 88.7% | 0.9911 | avif | 3.5 s |
+| transparent-illustration-3.png | sc-lossless | 85724 | 40.3% | 1.0000 (exact) | webp | 693 ms |
 | transparent-illustration-3.png | bic-maxsize-1mb | 117051 | 18.5% | 0.9998 | png | 131 ms |
 | transparent-illustration-3.png | bic-quality-0.8 | 112819 | 21.5% | 0.9997 | png | 102 ms |
 | transparent-illustration-3.png | bic-webp-0.8 | 66168 | 54.0% | 0.9911 | webp | 74 ms |
 | transparent-illustration-3.png | canvas-webp-0.8 | 66168 | 54.0% | 0.9911 | webp | 75 ms |
-| transparent-icon.png | sc-balanced | 2035 | 79.9% | 0.9953 | avif | 512 ms |
-| transparent-icon.png | sc-visually-lossless | 2210 | 78.2% | 0.9972 | avif | 756 ms |
-| transparent-icon.png | sc-lossless | 4036 | 60.1% | 1.0000 (exact) | webp | 130 ms |
+| transparent-icon.png | sc-balanced | 2147 | 78.8% | 0.9824 | avif | 547 ms |
+| transparent-icon.png | sc-visually-lossless | 2836 | 72.0% | 0.9930 | avif | 774 ms |
+| transparent-icon.png | sc-lossless | 4036 | 60.1% | 1.0000 (exact) | webp | 134 ms |
 | transparent-icon.png | bic-maxsize-1mb | 6095 | 39.8% | 1.0000 | png | 24 ms |
 | transparent-icon.png | bic-quality-0.8 | 6095 | 39.8% | 1.0000 | png | 16 ms |
 | transparent-icon.png | bic-webp-0.8 | 6548 | 35.3% | 0.9970 | webp | 9 ms |
 | transparent-icon.png | canvas-webp-0.8 | 6548 | 35.3% | 0.9970 | webp | 9 ms |
-| gradient-linear.png | sc-balanced | 1413 | 99.8% | 0.9965 | avif | 3.9 s |
+| gradient-linear.png | sc-balanced | 1413 | 99.8% | 0.9965 | avif | 4.0 s |
 | gradient-linear.png | sc-visually-lossless | 1257 | 99.8% | 0.9966 | avif | 5.4 s |
 | gradient-linear.png | sc-lossless | 120770 | 84.8% | 1.0000 (exact) | webp | 2.4 s |
 | gradient-linear.png | bic-maxsize-1mb | 425438 | 46.3% | 1.0000 | png | 323 ms |
@@ -713,16 +713,16 @@ Pixel-exact = output decodes to exactly the reference pixels (RGBA) with the sam
 | gradient-linear.png | canvas-webp-0.8 | 12380 | 98.4% | 0.9964 | webp | 59 ms |
 | gradient-linear.png | canvas-jpeg-0.8 | 17966 | 97.7% | 0.9969 | jpeg | 9 ms |
 | gradient-radial.png | sc-balanced | 1936 | 99.8% | 0.9958 | avif | 6.3 s |
-| gradient-radial.png | sc-visually-lossless | 1825 | 99.8% | 0.9955 | avif | 8.5 s |
-| gradient-radial.png | sc-lossless | 406828 | 48.1% | 1.0000 (exact) | png | 3.1 s |
+| gradient-radial.png | sc-visually-lossless | 1825 | 99.8% | 0.9955 | avif | 8.4 s |
+| gradient-radial.png | sc-lossless | 406828 | 48.1% | 1.0000 (exact) | png | 3.2 s |
 | gradient-radial.png | bic-maxsize-1mb | 770935 | 1.6% | 0.9999 | png | 3.9 s |
 | gradient-radial.png | bic-quality-0.8 | 750416 | 4.3% | 0.9999 | png | 3.4 s |
 | gradient-radial.png | bic-webp-0.8 | 13628 | 98.3% | 0.9955 | webp | 51 ms |
 | gradient-radial.png | canvas-webp-0.8 | 13628 | 98.3% | 0.9955 | webp | 50 ms |
 | gradient-radial.png | canvas-jpeg-0.8 | 30640 | 96.1% | 0.9956 | jpeg | 9 ms |
-| gradient-sky.png | sc-balanced | 499 | 98.4% | 0.9965 | avif | 3.1 s |
-| gradient-sky.png | sc-visually-lossless | 497 | 98.4% | 0.9965 | avif | 5.1 s |
-| gradient-sky.png | sc-lossless | 13730 | 56.6% | 1.0000 (exact) | webp | 748 ms |
+| gradient-sky.png | sc-balanced | 499 | 98.4% | 0.9965 | avif | 3.0 s |
+| gradient-sky.png | sc-visually-lossless | 497 | 98.4% | 0.9965 | avif | 5.0 s |
+| gradient-sky.png | sc-lossless | 13730 | 56.6% | 1.0000 (exact) | webp | 756 ms |
 | gradient-sky.png | bic-maxsize-1mb | 27780 | 12.1% | 1.0000 (exact) | png | 191 ms |
 | gradient-sky.png | bic-quality-0.8 | 27780 | 12.1% | 1.0000 (exact) | png | 189 ms |
 | gradient-sky.png | bic-webp-0.8 | 8896 | 71.8% | 0.9962 | webp | 45 ms |
@@ -737,41 +737,41 @@ v0 searched quality with full-resolution encodes. v1 searches on a 3x3 mosaic of
 
 | Image | Tool | Bytes v0 → v1 | SSIM v0 → v1 | Time v0 → v1 | Peak RSS v0 → v1 |
 |---|---|---|---|---|---|
-| photo-kodim13.jpg | sc-visually-lossless | 139224 → 139224 (0.0%) | 0.9904 → 0.9904 | 2.2 s → 2.3 s | 220 MB → 219 MB |
-| photo-kodim08.png | sc-visually-lossless | 163585 → 163585 (0.0%) | 0.9905 → 0.9905 | 2.1 s → 2.2 s | 225 MB → 221 MB |
-| photo-kodim19.png | sc-visually-lossless | 141333 → 141333 (0.0%) | 0.9913 → 0.9913 | 2.3 s → 2.3 s | 232 MB → 229 MB |
-| large-picsum1015.jpg | sc-balanced | 1298804 → 1371351 (5.6%) | 0.9757 → 0.9842 | 9.9 s → 3.1 s | 769 MB → 566 MB |
-| large-picsum1015.jpg | sc-balanced-nometa | 1089255 → 1106887 (1.6%) | 0.9775 → 0.9791 | 17.6 s → 8.4 s | 1373 MB → 931 MB |
-| large-picsum1015.jpg | sc-visually-lossless | 1601997 → 1601997 (0.0%) | 0.9936 → 0.9936 | 11.1 s → 3.6 s | 883 MB → 586 MB |
-| large-picsum1043.jpg | sc-balanced | 2044901 → 2044901 (0.0%) | 0.9794 → 0.9794 | 10.6 s → 3.9 s | 821 MB → 583 MB |
-| large-picsum1043.jpg | sc-balanced-nometa | 1786000 → 1823943 (2.1%) | 0.9753 → 0.9797 | 20.2 s → 11.5 s | 1412 MB → 993 MB |
-| large-picsum1043.jpg | sc-visually-lossless | 2352615 → 2352615 (0.0%) | 0.9933 → 0.9933 | 13.2 s → 4.5 s | 932 MB → 606 MB |
-| large-picsum1050.jpg | sc-balanced | 1014978 → 1014978 (0.0%) | 0.9752 → 0.9752 | 9.6 s → 3.1 s | 763 MB → 545 MB |
-| large-picsum1050.jpg | sc-balanced-nometa | 1045781 → 797663 (-23.7%) | 0.9760 → 0.9753 | 20.0 s → 10.2 s | 1339 MB → 936 MB |
-| large-picsum1050.jpg | sc-visually-lossless | 1343631 → 1343631 (0.0%) | 0.9917 → 0.9917 | 10.8 s → 3.4 s | 868 MB → 588 MB |
-| screenshot-dashboard.png | sc-balanced | 45068 → 17121 (-62.0%) | 0.9787 → 0.9819 | 7.9 s → 16.6 s | 947 MB → 1091 MB |
-| screenshot-dashboard.png | sc-balanced-nometa | 45068 → 17121 (-62.0%) | 0.9787 → 0.9819 | 7.9 s → 16.7 s | 947 MB → 1088 MB |
-| screenshot-dashboard.png | sc-visually-lossless | 17346 → 17346 (0.0%) | 0.9902 → 0.9902 | 56.4 s → 37.9 s | 1129 MB → 1112 MB |
-| text-docs.png | sc-balanced | 22230 → 22230 (0.0%) | 1.0000 → 1.0000 | 2.3 s → 2.6 s | 407 MB → 410 MB |
-| text-docs.png | sc-balanced-nometa | 22230 → 22230 (0.0%) | 1.0000 → 1.0000 | 2.3 s → 2.6 s | 411 MB → 414 MB |
-| text-slide.png | sc-visually-lossless | 9434 → 9434 (0.0%) | 0.9980 → 0.9980 | 3.0 s → 3.0 s | 419 MB → 422 MB |
-| transparent-illustration-1.png | sc-balanced | 11941 → 9328 (-21.9%) | 0.9755 → 0.9760 | 2.4 s → 2.7 s | 301 MB → 297 MB |
-| transparent-illustration-1.png | sc-balanced-nometa | 11941 → 9328 (-21.9%) | 0.9755 → 0.9760 | 2.4 s → 2.7 s | 300 MB → 299 MB |
-| transparent-illustration-1.png | sc-visually-lossless | 14366 → 14366 (0.0%) | 0.9902 → 0.9902 | 3.7 s → 4.1 s | 314 MB → 322 MB |
-| transparent-illustration-2.png | sc-balanced | 14416 → 11976 (-16.9%) | 0.9774 → 0.9780 | 2.4 s → 2.8 s | 301 MB → 306 MB |
-| transparent-illustration-2.png | sc-balanced-nometa | 14416 → 11976 (-16.9%) | 0.9774 → 0.9780 | 2.4 s → 2.7 s | 303 MB → 309 MB |
-| transparent-illustration-2.png | sc-visually-lossless | 19979 → 19979 (0.0%) | 0.9910 → 0.9910 | 3.9 s → 3.8 s | 322 MB → 327 MB |
-| transparent-illustration-3.png | sc-balanced | 10809 → 9623 (-11.0%) | 0.9761 → 0.9792 | 2.5 s → 2.8 s | 299 MB → 305 MB |
-| transparent-illustration-3.png | sc-balanced-nometa | 10809 → 9623 (-11.0%) | 0.9761 → 0.9792 | 2.4 s → 2.8 s | 298 MB → 296 MB |
-| transparent-illustration-3.png | sc-visually-lossless | 14286 → 14286 (0.0%) | 0.9910 → 0.9910 | 3.9 s → 3.9 s | 322 MB → 328 MB |
-| gradient-linear.png | sc-balanced | 1343 → 1413 (5.2%) | 0.9966 → 0.9965 | 4.3 s → 4.7 s | 470 MB → 486 MB |
-| gradient-linear.png | sc-balanced-nometa | 1343 → 1413 (5.2%) | 0.9966 → 0.9965 | 4.2 s → 4.7 s | 476 MB → 475 MB |
-| gradient-linear.png | sc-visually-lossless | 1257 → 1257 (0.0%) | 0.9966 → 0.9966 | 6.3 s → 6.2 s | 492 MB → 504 MB |
-| gradient-radial.png | sc-balanced | 2011 → 1936 (-3.7%) | 0.9957 → 0.9958 | 4.9 s → 7.4 s | 459 MB → 628 MB |
-| gradient-radial.png | sc-balanced-nometa | 2011 → 1936 (-3.7%) | 0.9957 → 0.9958 | 5.0 s → 7.6 s | 464 MB → 622 MB |
-| gradient-radial.png | sc-visually-lossless | 1825 → 1825 (0.0%) | 0.9955 → 0.9955 | 9.8 s → 9.7 s | 628 MB → 628 MB |
-| gradient-sky.png | sc-balanced | 788 → 499 (-36.7%) | 0.9964 → 0.9965 | 2.2 s → 4.0 s | 405 MB → 524 MB |
-| gradient-sky.png | sc-balanced-nometa | 788 → 499 (-36.7%) | 0.9964 → 0.9965 | 2.3 s → 4.0 s | 397 MB → 517 MB |
-| gradient-sky.png | sc-visually-lossless | 497 → 497 (0.0%) | 0.9965 → 0.9965 | 6.2 s → 6.0 s | 543 MB → 553 MB |
+| photo-kodim13.jpg | sc-visually-lossless | 139224 → 139224 (0.0%) | 0.9904 → 0.9904 | 2.2 s → 2.4 s | 220 MB → 223 MB |
+| photo-kodim08.png | sc-visually-lossless | 163585 → 163585 (0.0%) | 0.9905 → 0.9905 | 2.1 s → 2.3 s | 225 MB → 227 MB |
+| photo-kodim19.png | sc-visually-lossless | 141333 → 157150 (11.2%) | 0.9913 → 0.9927 | 2.3 s → 2.0 s | 232 MB → 237 MB |
+| large-picsum1015.jpg | sc-balanced | 1298804 → 1371351 (5.6%) | 0.9757 → 0.9842 | 9.9 s → 4.5 s | 769 MB → 772 MB |
+| large-picsum1015.jpg | sc-balanced-nometa | 1089255 → 1106887 (1.6%) | 0.9775 → 0.9791 | 17.6 s → 8.5 s | 1373 MB → 929 MB |
+| large-picsum1015.jpg | sc-visually-lossless | 1601997 → 1601997 (0.0%) | 0.9936 → 0.9936 | 11.1 s → 3.8 s | 883 MB → 594 MB |
+| large-picsum1043.jpg | sc-balanced | 2044901 → 2044901 (0.0%) | 0.9794 → 0.9794 | 10.6 s → 4.0 s | 821 MB → 584 MB |
+| large-picsum1043.jpg | sc-balanced-nometa | 1786000 → 1823943 (2.1%) | 0.9753 → 0.9797 | 20.2 s → 11.7 s | 1412 MB → 971 MB |
+| large-picsum1043.jpg | sc-visually-lossless | 2352615 → 2352615 (0.0%) | 0.9933 → 0.9933 | 13.2 s → 4.4 s | 932 MB → 613 MB |
+| large-picsum1050.jpg | sc-balanced | 1014978 → 1014978 (0.0%) | 0.9752 → 0.9752 | 9.6 s → 3.1 s | 763 MB → 534 MB |
+| large-picsum1050.jpg | sc-balanced-nometa | 1045781 → 797663 (-23.7%) | 0.9760 → 0.9753 | 20.0 s → 10.3 s | 1339 MB → 936 MB |
+| large-picsum1050.jpg | sc-visually-lossless | 1343631 → 1343631 (0.0%) | 0.9917 → 0.9917 | 10.8 s → 3.4 s | 868 MB → 590 MB |
+| screenshot-dashboard.png | sc-balanced | 45068 → 17121 (-62.0%) | 0.9787 → 0.9819 | 7.9 s → 16.6 s | 947 MB → 1041 MB |
+| screenshot-dashboard.png | sc-balanced-nometa | 45068 → 17121 (-62.0%) | 0.9787 → 0.9819 | 7.9 s → 16.7 s | 947 MB → 837 MB |
+| screenshot-dashboard.png | sc-visually-lossless | 17346 → 17346 (0.0%) | 0.9902 → 0.9902 | 56.4 s → 38.6 s | 1129 MB → 978 MB |
+| text-docs.png | sc-balanced | 22230 → 22230 (0.0%) | 1.0000 → 1.0000 | 2.3 s → 2.6 s | 407 MB → 416 MB |
+| text-docs.png | sc-balanced-nometa | 22230 → 22230 (0.0%) | 1.0000 → 1.0000 | 2.3 s → 2.6 s | 411 MB → 412 MB |
+| text-slide.png | sc-visually-lossless | 9434 → 9434 (0.0%) | 0.9980 → 0.9980 | 3.0 s → 3.0 s | 419 MB → 424 MB |
+| transparent-illustration-1.png | sc-balanced | 11941 → 9328 (-21.9%) | 0.9755 → 0.9751 | 2.4 s → 2.8 s | 301 MB → 301 MB |
+| transparent-illustration-1.png | sc-balanced-nometa | 11941 → 9328 (-21.9%) | 0.9755 → 0.9751 | 2.4 s → 2.8 s | 300 MB → 302 MB |
+| transparent-illustration-1.png | sc-visually-lossless | 14366 → 15701 (9.3%) | 0.9902 → 0.9907 | 3.7 s → 3.8 s | 314 MB → 326 MB |
+| transparent-illustration-2.png | sc-balanced | 14416 → 11976 (-16.9%) | 0.9774 → 0.9762 | 2.4 s → 2.9 s | 301 MB → 306 MB |
+| transparent-illustration-2.png | sc-balanced-nometa | 14416 → 11976 (-16.9%) | 0.9774 → 0.9762 | 2.4 s → 2.9 s | 303 MB → 309 MB |
+| transparent-illustration-2.png | sc-visually-lossless | 19979 → 21801 (9.1%) | 0.9910 → 0.9913 | 3.9 s → 4.0 s | 322 MB → 327 MB |
+| transparent-illustration-3.png | sc-balanced | 10809 → 9623 (-11.0%) | 0.9761 → 0.9770 | 2.5 s → 2.8 s | 299 MB → 312 MB |
+| transparent-illustration-3.png | sc-balanced-nometa | 10809 → 9623 (-11.0%) | 0.9761 → 0.9770 | 2.4 s → 2.8 s | 298 MB → 308 MB |
+| transparent-illustration-3.png | sc-visually-lossless | 14286 → 16193 (13.3%) | 0.9910 → 0.9911 | 3.9 s → 4.0 s | 322 MB → 330 MB |
+| gradient-linear.png | sc-balanced | 1343 → 1413 (5.2%) | 0.9966 → 0.9965 | 4.3 s → 4.7 s | 470 MB → 491 MB |
+| gradient-linear.png | sc-balanced-nometa | 1343 → 1413 (5.2%) | 0.9966 → 0.9965 | 4.2 s → 4.7 s | 476 MB → 487 MB |
+| gradient-linear.png | sc-visually-lossless | 1257 → 1257 (0.0%) | 0.9966 → 0.9966 | 6.3 s → 6.3 s | 492 MB → 509 MB |
+| gradient-radial.png | sc-balanced | 2011 → 1936 (-3.7%) | 0.9957 → 0.9958 | 4.9 s → 7.4 s | 459 MB → 629 MB |
+| gradient-radial.png | sc-balanced-nometa | 2011 → 1936 (-3.7%) | 0.9957 → 0.9958 | 5.0 s → 7.5 s | 464 MB → 628 MB |
+| gradient-radial.png | sc-visually-lossless | 1825 → 1825 (0.0%) | 0.9955 → 0.9955 | 9.8 s → 9.7 s | 628 MB → 631 MB |
+| gradient-sky.png | sc-balanced | 788 → 499 (-36.7%) | 0.9964 → 0.9965 | 2.2 s → 4.0 s | 405 MB → 519 MB |
+| gradient-sky.png | sc-balanced-nometa | 788 → 499 (-36.7%) | 0.9964 → 0.9965 | 2.3 s → 4.0 s | 397 MB → 523 MB |
+| gradient-sky.png | sc-visually-lossless | 497 → 497 (0.0%) | 0.9965 → 0.9965 | 6.2 s → 6.0 s | 543 MB → 549 MB |
 
-Listed runs: total time 280.7 s → 220.5 s, total output 14.32 MB → 14.13 MB.
+Listed runs: total time 280.7 s → 223.6 s, total output 14.32 MB → 14.15 MB.

@@ -1,0 +1,36 @@
+kodim23 (0.4 MP)   decode jpeg                        wasm/js      2.1 ms   native      1.3 ms  1.67x 
+kodim23 (0.4 MP)   encode jpeg q80 (mozjpeg)          wasm/js     34.0 ms   native     15.2 ms  2.23x 
+kodim23 (0.4 MP)   encode webp q80 m4                 wasm/js     25.1 ms   native     18.0 ms  1.39x 
+kodim23 (0.4 MP)   encode avif q50 speed6             wasm/js    188.7 ms   native     74.8 ms  2.52x native effort 3 ≈ libaom speed 6
+kodim23 (0.4 MP)   encode webp lossless m4 q75        wasm/js    165.5 ms   native        –      345944 B
+kodim23 (0.4 MP)   encode webp lossless m5 q75        wasm/js    165.4 ms   native        –      345944 B
+kodim23 (0.4 MP)   encode webp lossless m6 q100       wasm/js   6140.2 ms   native        –      342876 B
+kodim23 (0.4 MP)   encode png oxipng level 2          wasm/js    303.5 ms   native        –      456173 B
+kodim23 (0.4 MP)   encode png oxipng level 3          wasm/js    796.2 ms   native        –      443547 B
+kodim23 (0.4 MP)   ssim (JS)                          wasm/js     12.7 ms   native        –      
+kodim23 (0.4 MP)   exact compare (JS)                 wasm/js      0.0 ms   native        –      
+kodim23 (0.4 MP)   classify (JS)                      wasm/js      7.6 ms   native        –      
+kodim23 (0.4 MP)   RGBA copy (slice)                  wasm/js      0.1 ms   native        –      cost of one extra buffer copy
+screenshot (1 MP)  decode png                         wasm/js      6.2 ms   native      3.1 ms  1.97x 
+screenshot (1 MP)  encode jpeg q80 (mozjpeg)          wasm/js     87.0 ms   native     41.6 ms  2.09x 
+screenshot (1 MP)  encode webp q80 m4                 wasm/js     48.2 ms   native     33.4 ms  1.44x 
+screenshot (1 MP)  encode avif q50 speed6             wasm/js    297.5 ms   native    213.0 ms  1.40x native effort 3 ≈ libaom speed 6
+screenshot (1 MP)  encode webp lossless m4 q75        wasm/js     30.5 ms   native        –      24372 B
+screenshot (1 MP)  encode webp lossless m5 q75        wasm/js     42.3 ms   native        –      24372 B
+screenshot (1 MP)  encode webp lossless m6 q100       wasm/js    952.1 ms   native        –      23678 B
+screenshot (1 MP)  encode png oxipng level 2          wasm/js    309.1 ms   native        –      140516 B
+screenshot (1 MP)  encode png oxipng level 3          wasm/js    957.7 ms   native        –      140516 B
+screenshot (1 MP)  ssim (JS)                          wasm/js     19.7 ms   native        –      
+screenshot (1 MP)  exact compare (JS)                 wasm/js      0.1 ms   native        –      
+screenshot (1 MP)  classify (JS)                      wasm/js      4.6 ms   native        –      
+screenshot (1 MP)  RGBA copy (slice)                  wasm/js      0.3 ms   native        –      cost of one extra buffer copy
+phone (12 MP)      decode jpeg                        wasm/js     60.8 ms   native     55.3 ms  1.10x 
+phone (12 MP)      encode jpeg q80 (mozjpeg)          wasm/js   1169.2 ms   native    565.7 ms  2.07x 
+phone (12 MP)      encode webp q80 m4                 wasm/js    804.5 ms   native    588.0 ms  1.37x 
+phone (12 MP)      ssim (JS)                          wasm/js    231.1 ms   native        –      
+phone (12 MP)      exact compare (JS)                 wasm/js      0.0 ms   native        –      
+phone (12 MP)      classify (JS)                      wasm/js      6.6 ms   native        –      
+phone (12 MP)      RGBA copy (slice)                  wasm/js      2.9 ms   native        –      cost of one extra buffer copy
+phone (12 MP)      tile mosaic (JS)                   wasm/js      2.5 ms   native        –      
+
+WASM module compile+init (all codecs, Node): 40 ms
