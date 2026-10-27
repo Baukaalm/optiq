@@ -7,8 +7,8 @@ pnpm add optiq-image   # npm i optiq-image / yarn add optiq-image
 ```
 
 Requirements: an ES2022 browser with module Web Workers and WebAssembly — Chrome/Edge 80+, Firefox 114+,
-Safari 15+. The automated browser tests in this repository run in **Chromium only**; Firefox and Safari are
-expected to work but are not covered yet.
+Safari 15+. The browser test suite runs in CI on Chromium, Firefox and WebKit (Safari's engine, via Playwright);
+the demo and documentation-site end-to-end tests run on Chromium.
 
 ## Configure Vite
 

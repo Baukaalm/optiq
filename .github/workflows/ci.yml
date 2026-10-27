@@ -34,6 +34,11 @@ jobs:
         run: VITE_VERSION=7 node scripts/pack-check.mjs
       - name: Package check with Vite 8
         run: VITE_VERSION=8 node scripts/pack-check.mjs
+      - name: Browser tests in Firefox and WebKit (Safari engine)
+        run: |
+          pnpm exec playwright install --with-deps firefox webkit
+          BROWSER=firefox node test/browser/run.mjs
+          BROWSER=webkit node test/browser/run.mjs
       - if: always()
         uses: actions/upload-artifact@v7
         with:

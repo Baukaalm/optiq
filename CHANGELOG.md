@@ -23,4 +23,4 @@ First public beta.
 - `optiq-image/upload`: presigned PUT/POST upload with progress and original-file fallback.
 - `optiq-image/node`: Node.js codec initialisation for tests, benchmarks and server-side use.
 
-Known limitations: tested in Chromium only; no AVIF metadata writer; HEIC unsupported.
+Tested in Chromium, Firefox and WebKit. Known limitations: no AVIF metadata writer; HEIC unsupported.

@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="brand/logo-white.svg" />
-    <img src="brand/logo-black.svg" width="96" height="96" alt="Optiq" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Baukaalm/optiq/main/brand/logo-white.svg" />
+    <img src="https://raw.githubusercontent.com/Baukaalm/optiq/main/brand/logo-black.svg" width="96" height="96" alt="Optiq" />
   </picture>
 </p>
 
@@ -123,7 +123,7 @@ const out = await compressAndUpload(file, { requestPresignedUpload: (req) => fet
 ```
 
 Compression is optional and never blocks the upload: if it fails or does not help, the original is uploaded.
-Presigned URLs must come from your backend — see [docs/guide/s3.md](docs/guide/s3.md) for the contract and a backend sketch.
+Presigned URLs must come from your backend — see [docs/guide/s3.md](https://github.com/Baukaalm/optiq/blob/main/docs/guide/s3.md) for the contract and a backend sketch.
 
 ## Supported formats
 
@@ -172,7 +172,7 @@ libwebp (BSD-3), libavif (BSD-2) with libaom (BSD-2 + AOMedia patent licence), R
 24 images (`bench/corpus/manifest.json`): 10 Kodak photos (8 JPEG q92, 2 PNG), 3 phone-style 12 MP JPEGs,
 2 screenshots, 2 text graphics, 4 transparent illustrations, 3 gradients. Apple M4 Pro (14 cores, 24 GB), macOS arm64, Node 24.15 and
 headless Chromium 156. Every output is decoded with the same decoders and scored with the same SSIM against the
-input. Full tables, per-image rows and the optimisation log: [`bench/results/RESULTS.md`](bench/results/RESULTS.md).
+input. Full tables, per-image rows and the optimisation log: [`bench/results/RESULTS.md`](https://github.com/Baukaalm/optiq/blob/main/bench/results/RESULTS.md).
 
 **Perceptual, all 24 images (Node; same encoders as the browser)**
 
@@ -237,4 +237,4 @@ pnpm bench:report     # writes bench/results/RESULTS.md
 ```
 
 Documentation site (guides, API reference generated from the TSDoc comments, benchmarks, architecture):
-`pnpm docs:dev`, or read the Markdown in [`docs/`](docs/). Design notes: [docs/architecture.md](docs/architecture.md).
+`pnpm docs:dev`, or read the Markdown in [`docs/`](https://github.com/Baukaalm/optiq/blob/main/docs/). Design notes: [docs/architecture.md](https://github.com/Baukaalm/optiq/blob/main/docs/architecture.md).

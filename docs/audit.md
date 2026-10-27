@@ -132,6 +132,6 @@ quality range changes the bisection path; all still meet SSIM ≥ 0.99. `lossles
 
 ## Not covered
 
-- Firefox and Safari (all browser runs are Chromium).
+- Firefox and Safari for the audit itself (the audit runs in Node; the browser test suite covers Chromium, Firefox and WebKit).
 - Peak memory in the browser (measured in Node only, see benchmarks).
 - Perceptual metrics beyond SSIM/PSNR (Butteraugli, SSIMULACRA2).

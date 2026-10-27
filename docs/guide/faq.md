@@ -34,8 +34,10 @@ implementation, but it under-weights banding and chroma bleeding. Tune `minQuali
 
 ## Does it work in Firefox and Safari?
 
-It uses only standard APIs (module workers, WebAssembly, OffscreenCanvas for the fallback). The automated tests
-run in Chromium; Firefox and Safari are not covered yet.
+Yes. The browser suite (compression in a worker, lossless pixel equality, alpha, AVIF output, MIME sniffing,
+cancellation, a 12 MP image, and the CSP/no-WASM fallback) runs in CI on Chromium, Firefox and WebKit, Safari's
+engine. WebKit in Playwright is not identical to shipping Safari on iOS; real-device testing is still recommended.
+Under the canvas fallback Safari cannot encode WebP, so Optiq falls back to JPEG/PNG there and reports it.
 
 ## Does anything get uploaded or logged?
 

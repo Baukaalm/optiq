@@ -5,7 +5,7 @@ import { readFile } from "node:fs/promises";
 import { extname, join, normalize } from "node:path";
 import { fileURLToPath } from "node:url";
 import { build } from "vite";
-import { chromium } from "playwright";
+import { chromium, firefox, webkit } from "playwright";
 
 const here = fileURLToPath(new URL(".", import.meta.url));
 const outDir = fileURLToPath(new URL("../../test-results/browser-app", import.meta.url));
@@ -27,7 +27,9 @@ function serve(csp) {
   return new Promise((r) => server.listen(0, "127.0.0.1", () => r(server)));
 }
 
-const browser = await chromium.launch();
+// BROWSER=chromium (default) | firefox | webkit (Safari's engine).
+const engine = { chromium, firefox, webkit }[process.env.BROWSER ?? "chromium"];
+const browser = await engine.launch();
 let failed = 0;
 const runs = [
   { label: "default", csp: undefined, only: process.env.ONLY },
