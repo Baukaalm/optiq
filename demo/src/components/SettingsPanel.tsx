@@ -47,7 +47,7 @@ export function SettingsPanel({ value, onChange }: { value: Settings; onChange: 
     <Card className="lg:sticky lg:top-6">
       <Card.Header>
         <Card.Title>Settings</Card.Title>
-        <Card.Description>Applied to newly added files. Use “Re-run” on a file to apply changes.</Card.Description>
+        <Card.Description>Changes apply immediately to every image below.</Card.Description>
       </Card.Header>
       <Card.Content className="flex flex-col gap-5">
         <Select selectedKey={value.mode} onSelectionChange={(k) => onChange({ ...value, mode: k as CompressionMode })} data-testid="mode">

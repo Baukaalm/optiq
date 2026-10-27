@@ -24,6 +24,21 @@ export function App() {
   const embedded = new URLSearchParams(location.search).has("embed");
   const [settings, setSettings] = useState<Settings>({ mode: "balanced", maxSide: "none", keepMetadata: true, allowAvif: true });
   const { jobs, add, run, cancel, remove, upload } = useJobs();
+  // Settings apply to every image: when they change, re-run all jobs (running ones are aborted and restarted).
+  // A short debounce turns several quick toggles into one re-run.
+  const jobsRef = useRef(jobs);
+  jobsRef.current = jobs;
+  const firstSettings = useRef(true);
+  useEffect(() => {
+    if (firstSettings.current) {
+      firstSettings.current = false;
+      return;
+    }
+    const t = setTimeout(() => {
+      for (const j of jobsRef.current) void run(j.id, j.file, toOptions(settings));
+    }, 250);
+    return () => clearTimeout(t);
+  }, [settings, run]);
   const [sampleError, setSampleError] = useState<string>();
   const addSample = async (name: string) => {
     try {
@@ -102,7 +117,7 @@ export function App() {
               job={job}
               onCancel={() => cancel(job.id)}
               onRemove={() => remove(job.id)}
-              onRerun={() => run(job.id, job.file, toOptions(settings))}
+              onRetry={() => run(job.id, job.file, toOptions(settings))}
               onUpload={(which) => upload(job.id, which)}
             />
           ))}

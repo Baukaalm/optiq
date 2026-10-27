@@ -39,6 +39,12 @@ try {
     if (await avif.isChecked()) throw new Error("clicking the Allow AVIF row did not toggle it");
     await page.locator('[data-testid="keep-metadata"]').getByText("Keep metadata").click();
     if (await page.locator('[data-testid="keep-metadata"] [role="switch"]').isChecked()) throw new Error("Keep metadata did not toggle");
+    // Settings apply to images already on the page: they re-run by themselves, no button needed.
+    await page.waitForFunction(() => document.querySelectorAll('[data-testid="job"][data-status="compressing"]').length > 0, null, { timeout: 5_000 });
+    await page.waitForFunction(() => [...document.querySelectorAll('[data-testid="job"]')].every((j) => j.getAttribute("data-status") === "done"), null, { timeout: 120_000 });
+    const existing = await page.locator('[data-testid="job"]').allTextContents();
+    if (existing.some((t) => /→ AVIF/.test(t))) throw new Error("existing images were not re-run without AVIF");
+    console.log("settings change re-ran existing images:", existing.length);
     await page.getByRole("button", { name: /^Photo/ }).click();
     await page.waitForFunction(() => document.querySelectorAll('[data-testid="job"][data-status="done"]').length === 3, null, { timeout: 120_000 });
     const newest = await page.locator('[data-testid="job"]').first().textContent();

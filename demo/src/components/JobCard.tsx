@@ -29,7 +29,7 @@ function Section({ title, children, testId, open }: { title: string; children: R
   );
 }
 
-export function JobCard({ job, onCancel, onRemove, onRerun, onUpload }: { job: Job; onCancel: () => void; onRemove: () => void; onRerun: () => void; onUpload: (which: "optimized" | "original") => void }) {
+export function JobCard({ job, onCancel, onRemove, onRetry, onUpload }: { job: Job; onCancel: () => void; onRemove: () => void; onRetry: () => void; onUpload: (which: "optimized" | "original") => void }) {
   const r = job.result;
   const p = job.progress;
   const busy = job.upload.state === "uploading";
@@ -200,9 +200,11 @@ export function JobCard({ job, onCancel, onRemove, onRerun, onUpload }: { job: J
                 Download
               </a>
             )}
-            <Button variant="ghost" onPress={onRerun}>
-              Re-run with current settings
-            </Button>
+            {(job.status === "cancelled" || job.status === "failed") && (
+              <Button variant="ghost" onPress={onRetry} data-testid="retry">
+                Retry
+              </Button>
+            )}
           </>
         )}
       </Card.Footer>
