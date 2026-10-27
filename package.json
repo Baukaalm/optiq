@@ -1,0 +1,108 @@
+{
+  "name": "smartcompress",
+  "version": "0.1.0-beta.0",
+  "description": "Browser-side image optimizer: picks the smallest encoding that satisfies lossless or perceptual (SSIM) quality constraints, in a Web Worker.",
+  "license": "Apache-2.0",
+  "author": "Bauyrzhan (https://github.com/Baukaalm)",
+  "homepage": "https://baukaalm.github.io/smartcompress/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Baukaalm/smartcompress.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Baukaalm/smartcompress/issues"
+  },
+  "keywords": [
+    "image",
+    "compression",
+    "optimization",
+    "webp",
+    "avif",
+    "mozjpeg",
+    "oxipng",
+    "wasm",
+    "web-worker",
+    "upload",
+    "s3",
+    "browser"
+  ],
+  "type": "module",
+  "sideEffects": [
+    "./dist/worker.js"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./engine": {
+      "types": "./dist/engine.d.ts",
+      "import": "./dist/engine.js"
+    },
+    "./upload": {
+      "types": "./dist/upload.d.ts",
+      "import": "./dist/upload.js"
+    },
+    "./worker": {
+      "types": "./dist/worker.d.ts",
+      "import": "./dist/worker.js"
+    },
+    "./node": {
+      "types": "./dist/node.d.ts",
+      "import": "./dist/node.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "NOTICE",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@11.1.3",
+  "publishConfig": {
+    "access": "public",
+    "tag": "beta"
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "test:browser": "pnpm build && node test/browser/run.mjs",
+    "demo": "pnpm build && pnpm --filter smartcompress-demo dev",
+    "demo:build": "pnpm build && pnpm --filter smartcompress-demo build",
+    "bench:corpus": "node bench/corpus/build.mjs",
+    "bench:node": "node bench/node/run.mjs",
+    "bench:browser": "pnpm build && node bench/browser/run.mjs",
+    "bench:report": "node bench/report.mjs",
+    "test:demo": "pnpm build && node test/browser/demo-e2e.mjs",
+    "prepublishOnly": "pnpm typecheck && pnpm test && pnpm build",
+    "pack:check": "pnpm build && node scripts/pack-check.mjs",
+    "docs:dev": "pnpm --filter smartcompress-docs dev",
+    "docs:build": "pnpm --filter smartcompress-docs build",
+    "site:build": "pnpm build && node scripts/build-site.mjs",
+    "test:site": "pnpm site:build && node test/browser/site-e2e.mjs"
+  },
+  "dependencies": {
+    "@jsquash/avif": "2.1.1",
+    "@jsquash/jpeg": "1.6.0",
+    "@jsquash/oxipng": "2.3.0",
+    "@jsquash/png": "3.1.1",
+    "@jsquash/resize": "2.1.1",
+    "@jsquash/webp": "1.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "browser-image-compression": "2.0.2",
+    "playwright": "1.64.1",
+    "sharp": "0.35.5",
+    "typescript": "5.9.3",
+    "vite": "7.3.7",
+    "vitest": "4.1.12"
+  }
+}

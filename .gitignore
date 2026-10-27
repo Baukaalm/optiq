@@ -1,0 +1,7 @@
+node_modules
+dist
+bench/corpus/images
+bench/corpus/downloads
+bench/results/raw
+demo/dist
+test-results

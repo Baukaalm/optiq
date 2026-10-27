@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      - run: pnpm test
+      - run: pnpm build
+      - run: pnpm exec playwright install --with-deps chromium chromium-headless-shell
+      - name: Browser tests (Chromium, incl. CSP/no-WASM fallback)
+        run: node test/browser/run.mjs
+      - name: Demo end-to-end
+        run: node test/browser/demo-e2e.mjs
+      - name: Documentation site + embedded demo
+        run: node scripts/build-site.mjs && node test/browser/site-e2e.mjs
+      - name: Package check (pack, install into a fresh app, run; does not publish)
+        run: node scripts/pack-check.mjs
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: screenshots
+          path: test-results/*.png
+          if-no-files-found: ignore

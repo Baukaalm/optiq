@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SmartCompress demo</title>
+  <script>
+    // Follow the OS theme; HeroUI v3 switches on the `dark` class.
+    if (matchMedia("(prefers-color-scheme: dark)").matches) document.documentElement.classList.add("dark");
+  </script>
+</head>
+<body class="bg-background text-foreground antialiased">
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+</html>

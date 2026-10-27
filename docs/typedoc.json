@@ -1,0 +1,28 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": [
+    "../src/index.ts",
+    "../src/upload.ts",
+    "../src/node.ts"
+  ],
+  "tsconfig": "../tsconfig.build.json",
+  "out": "api",
+  "plugin": [
+    "typedoc-plugin-markdown",
+    "typedoc-vitepress-theme"
+  ],
+  "docsRoot": ".",
+  "readme": "none",
+  "excludePrivate": true,
+  "excludeInternal": true,
+  "hideGenerator": true,
+  "entryFileName": "overview",
+  "outputFileStrategy": "modules",
+  "parametersFormat": "table",
+  "interfacePropertiesFormat": "table",
+  "typeDeclarationFormat": "table",
+  "useCodeBlocks": true,
+  "sanitizeComments": true,
+  "disableSources": true,
+  "excludeExternals": true
+}

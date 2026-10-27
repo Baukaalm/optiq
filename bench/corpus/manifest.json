@@ -1,0 +1,246 @@
+{
+  "generatedBy": "bench/corpus/build.mjs",
+  "platform": "darwin-arm64",
+  "images": [
+    {
+      "file": "photo-kodim01.jpg",
+      "category": "photo",
+      "source": "Kodak kodim01, JPEG q92 4:2:0 (sharp/libjpeg-turbo)",
+      "bytes": 167760,
+      "width": 768,
+      "height": 512,
+      "format": "jpeg",
+      "sha256": "e6ff1f81de6459676bfca39ad44e5a5c44e9fb43097613eece411bbbeaabbd25"
+    },
+    {
+      "file": "photo-kodim03.jpg",
+      "category": "photo",
+      "source": "Kodak kodim03, JPEG q92 4:2:0 (sharp/libjpeg-turbo)",
+      "bytes": 86969,
+      "width": 768,
+      "height": 512,
+      "format": "jpeg",
+      "sha256": "07a4eaa5a4d64912305a433d91585136dad24fd65975b20c243d352932b5267a"
+    },
+    {
+      "file": "photo-kodim05.jpg",
+      "category": "photo",
+      "source": "Kodak kodim05, JPEG q92 4:2:0 (sharp/libjpeg-turbo)",
+      "bytes": 173611,
+      "width": 768,
+      "height": 512,
+      "format": "jpeg",
+      "sha256": "e862449c92be011aa1a807b02f97c6df5902a14c508e2bed88a75c7631c2724d"
+    },
+    {
+      "file": "photo-kodim07.jpg",
+      "category": "photo",
+      "source": "Kodak kodim07, JPEG q92 4:2:0 (sharp/libjpeg-turbo)",
+      "bytes": 99340,
+      "width": 768,
+      "height": 512,
+      "format": "jpeg",
+      "sha256": "2692e6ba2c516bd23a6f411c47b73b5ac76a16a8570d69ea5be1cb942bc4558e"
+    },
+    {
+      "file": "photo-kodim13.jpg",
+      "category": "photo",
+      "source": "Kodak kodim13, JPEG q92 4:2:0 (sharp/libjpeg-turbo)",
+      "bytes": 201392,
+      "width": 768,
+      "height": 512,
+      "format": "jpeg",
+      "sha256": "d18300db5fbc0d32af9a1b975566a66f6c47da8ab3b0fccfc74f5030008459c0"
+    },
+    {
+      "file": "photo-kodim15.jpg",
+      "category": "photo",
+      "source": "Kodak kodim15, JPEG q92 4:2:0 (sharp/libjpeg-turbo)",
+      "bytes": 102888,
+      "width": 768,
+      "height": 512,
+      "format": "jpeg",
+      "sha256": "12025c58898e68990e25165e2171d0529b74bce20ba9173cae55dc49549623ac"
+    },
+    {
+      "file": "photo-kodim20.jpg",
+      "category": "photo",
+      "source": "Kodak kodim20, JPEG q92 4:2:0 (sharp/libjpeg-turbo)",
+      "bytes": 86487,
+      "width": 768,
+      "height": 512,
+      "format": "jpeg",
+      "sha256": "922aee018edfc86928652321bfaf0ebbe56a6c189b012dab96edc8137f34bf46"
+    },
+    {
+      "file": "photo-kodim23.jpg",
+      "category": "photo",
+      "source": "Kodak kodim23, JPEG q92 4:2:0 (sharp/libjpeg-turbo)",
+      "bytes": 84887,
+      "width": 768,
+      "height": 512,
+      "format": "jpeg",
+      "sha256": "ba3520f5abda7ec253572b7fefb8929ae756a218be9cda86473c726edfce979b"
+    },
+    {
+      "file": "photo-kodim08.png",
+      "category": "photo",
+      "source": "Kodak kodim08, original PNG",
+      "bytes": 994528,
+      "width": 768,
+      "height": 512,
+      "format": "png",
+      "sha256": "e3eb4011452c846b48c91b35282d8ae1d649de12a2cfcfe022a8f6478e6a1592"
+    },
+    {
+      "file": "photo-kodim19.png",
+      "category": "photo",
+      "source": "Kodak kodim19, original PNG",
+      "bytes": 798639,
+      "width": 512,
+      "height": 768,
+      "format": "png",
+      "sha256": "367048c8ffeb473803a61f34002d0deb8d9934458926c2c9ba16eff46ea9db43"
+    },
+    {
+      "file": "large-picsum1015.jpg",
+      "category": "photo-large",
+      "source": "picsum.photos id 1015 (Unsplash), 4032x3024 JPEG q92 + sRGB ICC + EXIF",
+      "bytes": 2285854,
+      "width": 4032,
+      "height": 3024,
+      "format": "jpeg",
+      "sha256": "39e2f4c51ea1fc2c3683e40f75f85379c0a4753d123ac4903e048af60919f199"
+    },
+    {
+      "file": "large-picsum1043.jpg",
+      "category": "photo-large",
+      "source": "picsum.photos id 1043 (Unsplash), 4032x3024 JPEG q92 + sRGB ICC + EXIF",
+      "bytes": 3293882,
+      "width": 4032,
+      "height": 3024,
+      "format": "jpeg",
+      "sha256": "a3681b0f33dd93df918548fb262e3ea86568a57033d5658668254ec4f6f5289a"
+    },
+    {
+      "file": "large-picsum1050.jpg",
+      "category": "photo-large",
+      "source": "picsum.photos id 1050 (Unsplash), 4032x3024 JPEG q92 + sRGB ICC + EXIF",
+      "bytes": 1997063,
+      "width": 4032,
+      "height": 3024,
+      "format": "jpeg",
+      "sha256": "bfc5f92588939c5522cb41052bbb63ba6cc3e3bbf3c092db97d06b0bb93577b8"
+    },
+    {
+      "file": "screenshot-dashboard.png",
+      "category": "screenshot",
+      "source": "Playwright render of an HTML dashboard, 1440x900 @2x",
+      "bytes": 250605,
+      "width": 2880,
+      "height": 1800,
+      "format": "png",
+      "sha256": "616351d78186163f1c3fabe150a6745bab776ff34b7f45326bb72e3888c77563"
+    },
+    {
+      "file": "screenshot-code.png",
+      "category": "screenshot",
+      "source": "Playwright render of a dark code editor, 1280x800",
+      "bytes": 189720,
+      "width": 1280,
+      "height": 800,
+      "format": "png",
+      "sha256": "89b48aa32fd661a629e2d944265ff5c760e0b5bbf8239009270d8d33b07bc85d"
+    },
+    {
+      "file": "text-docs.png",
+      "category": "text-graphic",
+      "source": "Playwright render of a text document, 1100x1400",
+      "bytes": 341086,
+      "width": 1100,
+      "height": 1400,
+      "format": "png",
+      "sha256": "11ffe2699424c8e66adc4608f1cfcac4e39672413c9e464803c805297aa7a773"
+    },
+    {
+      "file": "text-slide.png",
+      "category": "text-graphic",
+      "source": "Playwright render of a presentation slide, 1600x900",
+      "bytes": 54989,
+      "width": 1600,
+      "height": 900,
+      "format": "png",
+      "sha256": "9b72161878c62bf720dd2e3878f6b54c691d9fbe9d87e15fb97113fb97d6091d"
+    },
+    {
+      "file": "transparent-illustration-1.png",
+      "category": "transparent-illustration",
+      "source": "Playwright render of SVG shapes with alpha and drop shadows (seed 7), transparent background",
+      "bytes": 128735,
+      "width": 1000,
+      "height": 800,
+      "format": "png",
+      "sha256": "556e1ab3f0614e234fb61484d2698560db3fc41a32ed0f77e33822f880320eaf"
+    },
+    {
+      "file": "transparent-illustration-2.png",
+      "category": "transparent-illustration",
+      "source": "Playwright render of SVG shapes with alpha and drop shadows (seed 42), transparent background",
+      "bytes": 153516,
+      "width": 1000,
+      "height": 800,
+      "format": "png",
+      "sha256": "148d6631442d12a08a24afc9be76f3adf8d6d991524f9cc0a71f5301c2f07e42"
+    },
+    {
+      "file": "transparent-illustration-3.png",
+      "category": "transparent-illustration",
+      "source": "Playwright render of SVG shapes with alpha and drop shadows (seed 1234), transparent background",
+      "bytes": 143695,
+      "width": 1000,
+      "height": 800,
+      "format": "png",
+      "sha256": "bc598d9d050313b7d0c4aae1ef36c1a00204128202dc2d1cb6d3cfea56f3609f"
+    },
+    {
+      "file": "transparent-icon.png",
+      "category": "transparent-illustration",
+      "source": "Playwright render of an app icon, 512x512, transparent corners",
+      "bytes": 10123,
+      "width": 512,
+      "height": 512,
+      "format": "png",
+      "sha256": "442a66a76174841df7e5a7ee943c4602b6d81cd4cb1a61c519402e615a9d0f64"
+    },
+    {
+      "file": "gradient-linear.png",
+      "category": "gradient",
+      "source": "Playwright render of CSS linear-gradient, 1920x1080",
+      "bytes": 792201,
+      "width": 1920,
+      "height": 1080,
+      "format": "png",
+      "sha256": "491401af0809684a79b485ab33ec376b1e5aeceada0ff90a50603ddfee3a971f"
+    },
+    {
+      "file": "gradient-radial.png",
+      "category": "gradient",
+      "source": "Playwright render of CSS radial-gradient, 1600x1200",
+      "bytes": 783802,
+      "width": 1600,
+      "height": 1200,
+      "format": "png",
+      "sha256": "97acf9b974464425d88a4f1dc4431a1f2f19f5802783505b76b3665ccc6c938c"
+    },
+    {
+      "file": "gradient-sky.png",
+      "category": "gradient",
+      "source": "Playwright render of CSS linear-gradient, 1280x1280",
+      "bytes": 31601,
+      "width": 1280,
+      "height": 1280,
+      "format": "png",
+      "sha256": "fdbdda70dc3fddb43c77ed0501bec328f7ffb4a3039d371260f170e31f0428ee"
+    }
+  ]
+}

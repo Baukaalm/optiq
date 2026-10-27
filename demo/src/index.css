@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@import "@heroui/styles";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+body {
+  min-height: 100dvh;
+}
+
+.checkerboard {
+  background-image: repeating-conic-gradient(color-mix(in oklab, currentColor 10%, transparent) 0 25%, transparent 0 50%);
+  background-size: 16px 16px;
+}

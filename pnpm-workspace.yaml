@@ -1,0 +1,6 @@
+packages:
+  - demo
+  - docs
+allowBuilds:
+  esbuild: true
+  sharp: true

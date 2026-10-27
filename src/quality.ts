@@ -1,0 +1,125 @@
+import { hasTransparentPixels, type RawImage } from "./pixels.js";
+
+export interface SsimResult {
+  /**
+   * Combined score: weighted (6:1:1) mean of Y, Cb, Cr SSIM over *active* windows; for images with alpha, the
+   * minimum over black and white backgrounds.
+   */
+  ssim: number;
+  y: number;
+  cb: number;
+  cr: number;
+  /** Background used for the reported (worst-case) channel scores, if the images have alpha. */
+  background?: "black" | "white";
+  /** Share of windows that were active (not perfectly flat and identical in both images). */
+  activeShare: number;
+}
+
+const C1 = (0.01 * 255) ** 2;
+const C2 = (0.03 * 255) ** 2;
+const WINDOW = 8;
+const STRIDE = 4;
+
+function positions(len: number, k: number): number[] {
+  const p: number[] = [];
+  for (let i = 0; i + k <= len; i += STRIDE) p.push(i);
+  if (p.length === 0 || p[p.length - 1] !== len - k) p.push(len - k);
+  return p;
+}
+
+/**
+ * SSIM with uniform 8x8 windows at stride 4 on BT.601 Y, Cb and Cr planes.
+ * Pixels are composited onto `bg` (0 or 255) before conversion so that colour under transparent pixels is ignored
+ * and alpha errors are visible.
+ *
+ * Pooling: windows that are perfectly flat and identical in both images (all three channels) score exactly 1 and are
+ * excluded from the mean. Otherwise large untouched backgrounds dilute the average and hide artifacts around text and
+ * edges in screenshots and illustrations. A codec that adds noise to a flat area makes that window active again.
+ */
+function channelSsim(a: RawImage, b: RawImage, bg: number | undefined): [number, number, number, number] {
+  const { width: W, height: H } = a;
+  const k = Math.min(WINDOW, W, H);
+  const n = k * k;
+  const xs = positions(W, k);
+  const ys = positions(H, k);
+  // Per column: for each of 3 channels, sums of a, b, a², b², ab over the k rows of the current band.
+  const cols = new Float64Array(W * 15);
+  const totals = [0, 0, 0];
+  let windows = 0;
+  let active = 0;
+  const win = new Float64Array(3);
+  const da = a.data;
+  const db = b.data;
+  for (const y0 of ys) {
+    cols.fill(0);
+    for (let y = y0; y < y0 + k; y++) {
+      let p = y * W * 4;
+      for (let x = 0; x < W; x++, p += 4) {
+        let r1 = da[p], g1 = da[p + 1], b1 = da[p + 2];
+        let r2 = db[p], g2 = db[p + 1], b2 = db[p + 2];
+        if (bg !== undefined) {
+          const a1 = da[p + 3], a2 = db[p + 3];
+          if (a1 !== 255) {
+            const f = a1 / 255, g = bg * (1 - f);
+            r1 = r1 * f + g; g1 = g1 * f + g; b1 = b1 * f + g;
+          }
+          if (a2 !== 255) {
+            const f = a2 / 255, g = bg * (1 - f);
+            r2 = r2 * f + g; g2 = g2 * f + g; b2 = b2 * f + g;
+          }
+        }
+        const Y1 = 0.299 * r1 + 0.587 * g1 + 0.114 * b1;
+        const U1 = 128 - 0.168736 * r1 - 0.331264 * g1 + 0.5 * b1;
+        const V1 = 128 + 0.5 * r1 - 0.418688 * g1 - 0.081312 * b1;
+        const Y2 = 0.299 * r2 + 0.587 * g2 + 0.114 * b2;
+        const U2 = 128 - 0.168736 * r2 - 0.331264 * g2 + 0.5 * b2;
+        const V2 = 128 + 0.5 * r2 - 0.418688 * g2 - 0.081312 * b2;
+        const c = x * 15;
+        cols[c] += Y1; cols[c + 1] += Y2; cols[c + 2] += Y1 * Y1; cols[c + 3] += Y2 * Y2; cols[c + 4] += Y1 * Y2;
+        cols[c + 5] += U1; cols[c + 6] += U2; cols[c + 7] += U1 * U1; cols[c + 8] += U2 * U2; cols[c + 9] += U1 * U2;
+        cols[c + 10] += V1; cols[c + 11] += V2; cols[c + 12] += V1 * V1; cols[c + 13] += V2 * V2; cols[c + 14] += V1 * V2;
+      }
+    }
+    for (const x0 of xs) {
+      let isActive = false;
+      for (let ch = 0; ch < 3; ch++) {
+        let sa = 0, sb = 0, saa = 0, sbb = 0, sab = 0;
+        for (let x = x0; x < x0 + k; x++) {
+          const c = x * 15 + ch * 5;
+          sa += cols[c]; sb += cols[c + 1]; saa += cols[c + 2]; sbb += cols[c + 3]; sab += cols[c + 4];
+        }
+        const ma = sa / n, mb = sb / n;
+        const va = Math.max(0, saa / n - ma * ma);
+        const vb = Math.max(0, sbb / n - mb * mb);
+        const cov = sab / n - ma * mb;
+        if (va > 1e-9 || vb > 1e-9 || Math.abs(ma - mb) > 1e-9) isActive = true;
+        win[ch] = ((2 * ma * mb + C1) * (2 * cov + C2)) / ((ma * ma + mb * mb + C1) * (va + vb + C2));
+      }
+      windows++;
+      if (isActive) {
+        active++;
+        totals[0] += win[0];
+        totals[1] += win[1];
+        totals[2] += win[2];
+      }
+    }
+  }
+  if (active === 0) return [1, 1, 1, 0];
+  return [totals[0] / active, totals[1] / active, totals[2] / active, active / windows];
+}
+
+export function ssim(reference: RawImage, test: RawImage): SsimResult {
+  if (reference.width !== test.width || reference.height !== test.height) {
+    throw new Error(`SSIM requires equal dimensions (${reference.width}x${reference.height} vs ${test.width}x${test.height})`);
+  }
+  const alpha = hasTransparentPixels(reference) || hasTransparentPixels(test);
+  const backgrounds: (number | undefined)[] = alpha ? [0, 255] : [undefined];
+  let worst: SsimResult | undefined;
+  for (const bg of backgrounds) {
+    const [y, cb, cr, activeShare] = channelSsim(reference, test, bg);
+    const r: SsimResult = { ssim: (6 * y + cb + cr) / 8, y, cb, cr, activeShare };
+    if (bg !== undefined) r.background = bg === 0 ? "black" : "white";
+    if (!worst || r.ssim < worst.ssim) worst = r;
+  }
+  return worst!;
+}
