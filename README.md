@@ -197,7 +197,7 @@ input. Full tables, per-image rows and the optimisation log: [`bench/results/RES
 | Tool | Total output | Reduction | Meets SSIM ≥ 0.975 | Median time | Median peak RSS |
 |---|---|---|---|---|---|
 | Optiq `balanced` | 13.25 → 5.15 MB | 61.1% | 24/24 | 1.8 s | 301 MB |
-| Optiq `fast` (no AVIF, ≤ 5 encodes) | 13.25 → 5.97 MB | 54.9% | 24/24 | 521 ms | 184 MB |
+| Optiq `fast` (no AVIF, ≤ 5 encodes) | 13.25 → 5.49 MB | 58.5% | 24/24 | 434 ms | 173 MB |
 | Optiq `balanced`, `preserveMetadata: false` | 13.25 → 4.73 MB | 64.3% | 24/24 | 1.5 s | 297 MB |
 | Optiq `visually-lossless` | 13.25 → 6.38 MB | 51.8% | 24/24 (≥ 0.99: 24/24) | 2.3 s | 325 MB |
 | libvips WebP q80 | 13.25 → 6.50 MB | 51.0% | 17/24 | 59 ms | 105 MB |
@@ -209,7 +209,7 @@ input. Full tables, per-image rows and the optimisation log: [`bench/results/RES
 | Tool | Total output | Reduction | Meets SSIM ≥ 0.975 | Median time |
 |---|---|---|---|---|
 | Optiq `balanced` | 13.25 → 5.15 MB | 61.1% | 24/24 | 1.4 s |
-| Optiq `fast` | 13.25 → 5.97 MB | 54.9% | 24/24 | 405 ms |
+| Optiq `fast` | 13.25 → 5.49 MB | 58.5% | 24/24 | 349 ms |
 | browser-image-compression `initialQuality: 0.8` | 13.25 → 10.21 MB | 22.9% | 19/24 | 78 ms |
 | browser-image-compression `fileType: webp, 0.8` | 13.25 → 6.52 MB | 50.8% | 18/24 | 37 ms |
 | browser-image-compression `maxSizeMB: 1` | 13.25 → 7.14 MB | 46.1% | 21/24 (3 large photos were downscaled, not scored) | 128 ms |

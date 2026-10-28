@@ -21,6 +21,7 @@ export interface ResolvedOptions {
   /** Quality search tolerance (codec quality units). */
   qualityTolerance: number;
   avifSpeed: number;
+  searchStart: "fixed" | "category" | "model";
 }
 
 export const OUTPUT_FORMATS: readonly OutputFormat[] = ["jpeg", "png", "webp", "avif"];
@@ -88,5 +89,8 @@ export function resolveOptions(o: OptiqOptions = {}): ResolvedOptions {
     onUnmetConstraints: o.onUnmetConstraints ?? "best-effort",
     qualityTolerance: d.qualityTolerance,
     avifSpeed: d.avifSpeed,
+    // Measured (bench/predictor/compare.mjs): the feature-based start is a clean win only in `fast` (fewer encodes,
+    // smaller files on both the held-out split and the independent corpus); in `balanced` it traded size for speed.
+    searchStart: o.searchStart ?? (mode === "fast" ? "model" : "fixed"),
   };
 }

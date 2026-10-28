@@ -13,8 +13,8 @@ Perceptual modes never claim to be lossless: the result reports `qualityMetricNa
 ## Which one?
 
 - **User photos for a feed or profile** — `balanced`, optionally with `maxWidthOrHeight`.
-- **Phones, batches of many photos, slow networks** — `fast`: same quality bar, about 3× faster and ~40% less
-  memory than `balanced` in the benchmark, at the cost of larger files (no AVIF: transparent illustrations end up
+- **Phones, batches of many photos, slow networks** — `fast`: same quality bar, about 3.5× faster and ~40% less
+  memory than `balanced` in the benchmark (its search starts from a [predicted quality](/architecture#quality-predictor-search-start)), at the cost of larger files (no AVIF: transparent illustrations end up
   ~5× larger than with `balanced`).
 - **Product images, artwork, anything people zoom into** — `visually-lossless`.
 - **Archival, medical, design source files, screenshots used as evidence** — `lossless`.

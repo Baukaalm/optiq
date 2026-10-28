@@ -94,6 +94,36 @@ Node (tests and benchmarks, `src/node.ts`).
     (APP1/APP2, multi-segment ICC), PNG (`eXIf`, `iTXt`, `iCCP`) or WebP (`VP8X` + `ICCP/EXIF/XMP`). AVIF output's
     `nclx` box is patched in place from “unspecified” to BT.709/sRGB (fixed size, so item offsets stay valid).
 
+## Quality predictor (search start)
+
+The quality search can start from a prediction instead of a fixed point. A ridge regression over ten cheap image
+features (texture energy, gradients, luma/chroma spread, flat/edge shares, colour count, transparency; computed in
+the classifier's existing patch pass) predicts the quality each codec needs. The prediction only chooses where the
+search starts and how far the first downward probe goes — **every result is still encoded, decoded and verified**,
+so a bad prediction costs encodes, never quality.
+
+Fitted on `bench/predictor/` (317 images: 207 Unsplash photos via picsum.photos, 110 rendered screenshots,
+documents, slides, transparent illustrations, icons and gradients; 70/30 train/test split by file-name hash), then
+measured with real engine runs on the held-out split **and** on the independent 24-image benchmark corpus:
+
+| Set / mode | Start | Encodes | Time (sum) | Bytes |
+|---|---|---|---|---|
+| held-out 91 / `fast` | fixed | 4.95 | 39.6 s | — |
+| | **model** | **4.16** | **34.2 s (−14%)** | **−4.2%** |
+| benchmark 24 / `fast` | fixed | 5.08 | 21.5 s | — |
+| | **model** | **4.00** | **16.5 s (−23%)** | **−8.0%** |
+| held-out 91 / `balanced` | fixed | 9.64 | 156.3 s | — |
+| | model | 8.33 | 140.6 s (−10%) | −1.2% |
+| benchmark 24 / `balanced` | fixed | 8.96 | 85.4 s | — |
+| | model | 7.33 | 77.3 s (−9%) | **+4.3%** |
+
+Decision: on by default in `fast` (fewer encodes *and* smaller files on both sets); off in `balanced`, where it traded
+size for speed (per image 41 smaller / 18 larger on the held-out split, up to +29%; +5% on 12 MP tile-searched
+photos). A first version that galloped upwards with growing steps overshot and exhausted the budget (kodim19:
++81%); upward moves now keep the original bisection. Data: `bench/results/predictor-compare*.json`.
+Limitations: the graphics in the fitting corpus are synthetic (same generator for train and test), and the model was
+fitted for the `balanced`/`fast` thresholds only.
+
 ## Quality metric
 
 - **SSIM** with uniform 8×8 windows at stride 4, on BT.601 Y, Cb, Cr; channel weights 6:1:1.

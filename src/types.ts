@@ -61,6 +61,11 @@ export interface OptiqOptions {
   maxInputBytes?: number;
   /** Reject inputs whose header declares more pixels than this (decompression-bomb guard). Default 50 MP. */
   maxInputPixels?: number;
+  /**
+   * Where each codec's quality search starts. Only affects speed, never the quality guarantee.
+   * @internal Benchmarking switch; the default is chosen from measurements (see docs/audit.md).
+   */
+  searchStart?: "fixed" | "category" | "model";
   /** What to do when no candidate meets all constraints. Default `best-effort` (result lists `unmetConstraints`). */
   onUnmetConstraints?: "best-effort" | "throw";
 }

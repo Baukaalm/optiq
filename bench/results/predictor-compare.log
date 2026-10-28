@@ -1,0 +1,20 @@
+
+== predictor-test / balanced
+  fixed     encodes  9.64  time sum  156.3 s  median  1568 ms  bytes 3.983 MB (0.0%)  min quality 0.9751  constraints met 91/91
+  category  encodes  8.04  time sum  136.5 s  median  1453 ms  bytes 3.984 MB (0.0%)  min quality 0.9751  constraints met 91/91
+  model     encodes  8.33  time sum  140.6 s  median  1402 ms  bytes 3.933 MB (-1.2%)  min quality 0.9750  constraints met 91/91
+
+== predictor-test / fast
+  fixed     encodes  4.95  time sum   39.6 s  median   411 ms  bytes 5.086 MB (0.0%)  min quality 0.9750  constraints met 91/91
+  category  encodes  4.29  time sum   35.1 s  median   377 ms  bytes 5.099 MB (0.3%)  min quality 0.9751  constraints met 91/91
+  model     encodes  4.16  time sum   34.2 s  median   358 ms  bytes 4.872 MB (-4.2%)  min quality 0.9752  constraints met 91/91
+
+== benchmark-24 / balanced
+  fixed     encodes  8.96  time sum   85.4 s  median  1561 ms  bytes 4.446 MB (0.0%)  min quality 0.9751  constraints met 24/24
+  category  encodes  7.38  time sum   75.9 s  median  1186 ms  bytes 4.572 MB (2.8%)  min quality 0.9753  constraints met 24/24
+  model     encodes  7.33  time sum   77.3 s  median  1331 ms  bytes 4.636 MB (4.3%)  min quality 0.9753  constraints met 24/24
+
+== benchmark-24 / fast
+  fixed     encodes  5.08  time sum   21.5 s  median   545 ms  bytes 5.970 MB (0.0%)  min quality 0.9756  constraints met 24/24
+  category  encodes  4.38  time sum   21.3 s  median   365 ms  bytes 5.744 MB (-3.8%)  min quality 0.9752  constraints met 24/24
+  model     encodes  4.00  time sum   16.5 s  median   371 ms  bytes 5.491 MB (-8.0%)  min quality 0.9752  constraints met 24/24

@@ -1,0 +1,26 @@
+photo-kodim01.jpg                sc-fast                    94870 B    43.4%  ssim=0.9792 webp  292 ms
+photo-kodim03.jpg                sc-fast                    37610 B    56.8%  ssim=0.9768 webp  217 ms
+photo-kodim05.jpg                sc-fast                    96962 B    44.1%  ssim=0.9801 webp  348 ms
+photo-kodim07.jpg                sc-fast                    40390 B    59.3%  ssim=0.9803 webp  222 ms
+photo-kodim13.jpg                sc-fast                   131122 B    34.9%  ssim=0.9821 webp  335 ms
+photo-kodim15.jpg                sc-fast                    61022 B    40.7%  ssim=0.9787 webp  228 ms
+photo-kodim20.jpg                sc-fast                    38504 B    55.5%  ssim=0.9786 webp  168 ms
+photo-kodim23.jpg                sc-fast                    50799 B    40.2%  ssim=0.9781 jpeg  203 ms
+photo-kodim08.png                sc-fast                   108162 B    89.1%  ssim=0.9762 webp  316 ms
+photo-kodim19.png                sc-fast                   110418 B    86.2%  ssim=0.9837 webp  270 ms
+large-picsum1015.jpg             sc-fast                  1247055 B    45.4%  ssim=0.9779 jpeg  2470 ms
+large-picsum1043.jpg             sc-fast                  2133327 B    35.2%  ssim=0.9857 jpeg  2827 ms
+large-picsum1050.jpg             sc-fast                  1014978 B    49.2%  ssim=0.9752 webp  2295 ms
+screenshot-dashboard.png         sc-fast                    77404 B    69.1%  ssim=1.0000 webp  1443 ms
+screenshot-code.png              sc-fast                    24372 B    87.2%  ssim=1.0000 webp  292 ms
+text-docs.png                    sc-fast                    22230 B    93.5%  ssim=1.0000 webp  470 ms
+text-slide.png                   sc-fast                    14734 B    73.2%  ssim=1.0000 webp  349 ms
+transparent-illustration-1.png   sc-fast                    49228 B    61.8%  ssim=0.9864 webp  352 ms
+transparent-illustration-2.png   sc-fast                    57814 B    62.3%  ssim=0.9868 webp  503 ms
+transparent-illustration-3.png   sc-fast                    54976 B    61.7%  ssim=0.9885 webp  350 ms
+transparent-icon.png             sc-fast                     4036 B    60.1%  ssim=1.0000 webp  49 ms
+gradient-linear.png              sc-fast                     8297 B    99.0%  ssim=0.9953 jpeg  734 ms
+gradient-radial.png              sc-fast                     8890 B    98.9%  ssim=0.9946 webp  829 ms
+gradient-sky.png                 sc-fast                     6456 B    79.6%  ssim=0.9952 webp  480 ms
+
+wrote bench/results/browser.json

@@ -5,3 +5,6 @@ bench/corpus/downloads
 bench/results/raw
 demo/dist
 test-results
+bench/predictor/images
+bench/predictor/downloads
+bench/predictor/labels.jsonl

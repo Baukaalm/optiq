@@ -1,0 +1,26 @@
+photo-kodim01.jpg                sc-fast                    94870 B    43.4%  ssim=0.9792 webp  302 ms  peak 147 MB
+photo-kodim03.jpg                sc-fast                    37610 B    56.8%  ssim=0.9768 webp  269 ms  peak 148 MB
+photo-kodim05.jpg                sc-fast                    96962 B    44.1%  ssim=0.9801 webp  416 ms  peak 150 MB
+photo-kodim07.jpg                sc-fast                    40390 B    59.3%  ssim=0.9803 webp  289 ms  peak 146 MB
+photo-kodim13.jpg                sc-fast                   131122 B    34.9%  ssim=0.9821 webp  391 ms  peak 151 MB
+photo-kodim15.jpg                sc-fast                    61022 B    40.7%  ssim=0.9787 webp  294 ms  peak 147 MB
+photo-kodim20.jpg                sc-fast                    38504 B    55.5%  ssim=0.9786 webp  224 ms  peak 145 MB
+photo-kodim23.jpg                sc-fast                    50799 B    40.2%  ssim=0.9781 jpeg  259 ms  peak 148 MB
+photo-kodim08.png                sc-fast                   108162 B    89.1%  ssim=0.9762 webp  382 ms  peak 154 MB
+photo-kodim19.png                sc-fast                   110418 B    86.2%  ssim=0.9837 webp  324 ms  peak 151 MB
+large-picsum1015.jpg             sc-fast                  1247055 B    45.4%  ssim=0.9779 jpeg  2567 ms  peak 551 MB
+large-picsum1043.jpg             sc-fast                  2133327 B    35.2%  ssim=0.9857 jpeg  2916 ms  peak 571 MB
+large-picsum1050.jpg             sc-fast                  1014978 B    49.2%  ssim=0.9752 webp  2428 ms  peak 528 MB
+screenshot-dashboard.png         sc-fast                    77404 B    69.1%  ssim=1.0000 webp  1424 ms  peak 466 MB
+screenshot-code.png              sc-fast                    24372 B    87.2%  ssim=1.0000 webp  341 ms  peak 239 MB
+text-docs.png                    sc-fast                    22230 B    93.5%  ssim=1.0000 webp  540 ms  peak 276 MB
+text-slide.png                   sc-fast                    14734 B    73.2%  ssim=1.0000 webp  470 ms  peak 274 MB
+transparent-illustration-1.png   sc-fast                    49228 B    61.8%  ssim=0.9864 webp  434 ms  peak 172 MB
+transparent-illustration-2.png   sc-fast                    57814 B    62.3%  ssim=0.9868 webp  592 ms  peak 180 MB
+transparent-illustration-3.png   sc-fast                    54976 B    61.7%  ssim=0.9885 webp  446 ms  peak 173 MB
+transparent-icon.png             sc-fast                     4036 B    60.1%  ssim=1.0000 webp  100 ms  peak 173 MB
+gradient-linear.png              sc-fast                     8297 B    99.0%  ssim=0.9953 jpeg  935 ms  peak 319 MB
+gradient-radial.png              sc-fast                     8890 B    98.9%  ssim=0.9946 webp  1090 ms  peak 305 MB
+gradient-sky.png                 sc-fast                     6456 B    79.6%  ssim=0.9952 webp  635 ms  peak 277 MB
+
+wrote bench/results/node.json

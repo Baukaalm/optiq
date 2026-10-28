@@ -1,0 +1,176 @@
+{
+  "avif:photo": {
+    "n_train": 139,
+    "n_test": 49,
+    "startMAE": {
+      "currentStart": 8.39,
+      "trainMedian": 8.41,
+      "model": 7.77
+    },
+    "current": {
+      "encodes": 4,
+      "overshoot": 1.96,
+      "failed": 0
+    },
+    "medianStartBisect": {
+      "encodes": 4,
+      "overshoot": 1.41,
+      "failed": 0
+    },
+    "predictedBisect": {
+      "encodes": 3.9,
+      "overshoot": 2.64,
+      "failed": 0
+    },
+    "predictedGallop": {
+      "encodes": 3.49,
+      "overshoot": 2.41,
+      "failed": 0
+    }
+  },
+  "avif:graphic": {
+    "n_train": 87,
+    "n_test": 42,
+    "startMAE": {
+      "currentStart": 22.33,
+      "trainMedian": 9.05,
+      "model": 3.9
+    },
+    "current": {
+      "encodes": 4,
+      "overshoot": 2.17,
+      "failed": 0
+    },
+    "medianStartBisect": {
+      "encodes": 3,
+      "overshoot": 4,
+      "failed": 0
+    },
+    "predictedBisect": {
+      "encodes": 3.17,
+      "overshoot": 2.76,
+      "failed": 0
+    },
+    "predictedGallop": {
+      "encodes": 2.62,
+      "overshoot": 1.76,
+      "failed": 0
+    }
+  },
+  "webp:photo": {
+    "n_train": 138,
+    "n_test": 49,
+    "startMAE": {
+      "currentStart": 9.43,
+      "trainMedian": 9.43,
+      "model": 8.17
+    },
+    "current": {
+      "encodes": 4,
+      "overshoot": 1.37,
+      "failed": 0
+    },
+    "medianStartBisect": {
+      "encodes": 4,
+      "overshoot": 1.37,
+      "failed": 0
+    },
+    "predictedBisect": {
+      "encodes": 3.69,
+      "overshoot": 2.01,
+      "failed": 0
+    },
+    "predictedGallop": {
+      "encodes": 3.31,
+      "overshoot": 2.29,
+      "failed": 0
+    }
+  },
+  "webp:graphic": {
+    "n_train": 87,
+    "n_test": 42,
+    "startMAE": {
+      "currentStart": 32,
+      "trainMedian": 4,
+      "model": 3.16
+    },
+    "current": {
+      "encodes": 4,
+      "overshoot": 2.74,
+      "failed": 0
+    },
+    "medianStartBisect": {
+      "encodes": 1.86,
+      "overshoot": 0.9,
+      "failed": 0
+    },
+    "predictedBisect": {
+      "encodes": 2.95,
+      "overshoot": 3.14,
+      "failed": 0
+    },
+    "predictedGallop": {
+      "encodes": 1.95,
+      "overshoot": 1.86,
+      "failed": 0
+    }
+  },
+  "jpeg:photo": {
+    "n_train": 139,
+    "n_test": 49,
+    "startMAE": {
+      "currentStart": 12.08,
+      "trainMedian": 7.94,
+      "model": 6.31
+    },
+    "current": {
+      "encodes": 4,
+      "overshoot": 2.24,
+      "failed": 0
+    },
+    "medianStartBisect": {
+      "encodes": 4,
+      "overshoot": 1.08,
+      "failed": 0
+    },
+    "predictedBisect": {
+      "encodes": 3.76,
+      "overshoot": 1.89,
+      "failed": 0
+    },
+    "predictedGallop": {
+      "encodes": 2.86,
+      "overshoot": 2.33,
+      "failed": 0
+    }
+  },
+  "jpeg:graphic": {
+    "n_train": 68,
+    "n_test": 31,
+    "startMAE": {
+      "currentStart": 23.81,
+      "trainMedian": 12.45,
+      "model": 8.4
+    },
+    "current": {
+      "encodes": 4,
+      "overshoot": 1.77,
+      "failed": 0
+    },
+    "medianStartBisect": {
+      "encodes": 3.48,
+      "overshoot": 2.13,
+      "failed": 0
+    },
+    "predictedBisect": {
+      "encodes": 2.84,
+      "overshoot": 2.27,
+      "failed": 0
+    },
+    "predictedGallop": {
+      "encodes": 2.84,
+      "overshoot": 1.87,
+      "failed": 0
+    }
+  }
+}

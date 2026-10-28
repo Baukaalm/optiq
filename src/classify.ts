@@ -15,6 +15,12 @@ export interface ImageFeatures {
   smoothStepShare: number;
   /** Pixels with alpha < 255. */
   transparentShare: number;
+  /** Texture features used by the quality predictor (see src/predictor.ts). */
+  lumaStd: number;
+  chromaRms: number;
+  meanGrad: number;
+  edgeShare16: number;
+  hfEnergy: number;
 }
 
 const PATCH = 16;
@@ -33,6 +39,9 @@ export function extractFeatures(img: RawImage): ImageFeatures {
   const ny = Math.min(MAX_PATCHES_PER_AXIS, Math.max(1, Math.floor(H / ph)));
   const counts = new Map<number, number>();
   let sampled = 0, pairs = 0, flat = 0, hard = 0, smooth = 0, transparent = 0;
+  // Texture statistics (float BT.601 luma/chroma; must match bench/predictor/features.mjs used for fitting).
+  let sumY = 0, sumY2 = 0, sumC2 = 0, grad = 0, gradN = 0, edges16 = 0, lap = 0, lapN = 0;
+  const Yf = (o: number) => 0.299 * data[o] + 0.587 * data[o + 1] + 0.114 * data[o + 2];
   const luma = (o: number) => (data[o] * 77 + data[o + 1] * 150 + data[o + 2] * 29) >> 8;
   const word = (o: number) => ((data[o] << 24) | (data[o + 1] << 16) | (data[o + 2] << 8) | data[o + 3]) >>> 0;
   const pair = (a: number, b: number) => {
@@ -58,6 +67,23 @@ export function extractFeatures(img: RawImage): ImageFeatures {
           if (counts.size < UNIQUE_CAP || counts.has(w)) counts.set(w, (counts.get(w) ?? 0) + 1);
           if (x + 1 < x0 + pw) pair(o, o + 4);
           if (y + 1 < y0 + ph) pair(o, o + W * 4);
+          const yy = Yf(o);
+          const cb = -0.168736 * data[o] - 0.331264 * data[o + 1] + 0.5 * data[o + 2];
+          const cr = 0.5 * data[o] - 0.418688 * data[o + 1] - 0.081312 * data[o + 2];
+          sumY += yy;
+          sumY2 += yy * yy;
+          sumC2 += cb * cb + cr * cr;
+          if (x + 1 < x0 + pw) {
+            const d = Math.abs(yy - Yf(o + 4));
+            grad += d;
+            gradN++;
+            if (d > 16) edges16++;
+          }
+          if (x > x0 && x + 1 < x0 + pw && y > y0 && y + 1 < y0 + ph) {
+            const l = 4 * yy - Yf(o - 4) - Yf(o + 4) - Yf(o - W * 4) - Yf(o + W * 4);
+            lap += l * l;
+            lapN++;
+          }
         }
       }
     }
@@ -72,6 +98,11 @@ export function extractFeatures(img: RawImage): ImageFeatures {
     hardEdgeShare: pairs ? hard / pairs : 0,
     smoothStepShare: pairs ? smooth / pairs : 0,
     transparentShare: transparent / sampled,
+    lumaStd: Math.sqrt(Math.max(0, sumY2 / sampled - (sumY / sampled) ** 2)) / 255,
+    chromaRms: Math.sqrt(sumC2 / (2 * sampled)) / 128,
+    meanGrad: gradN ? grad / gradN / 255 : 0,
+    edgeShare16: gradN ? edges16 / gradN : 0,
+    hfEnergy: Math.sqrt(lap / Math.max(1, lapN)) / 255,
   };
 }
 

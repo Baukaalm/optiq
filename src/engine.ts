@@ -10,6 +10,7 @@ import { OptiqError, throwIfAborted } from "./errors.js";
 import { OUTPUT_FORMATS, resolveOptions, type ResolvedOptions } from "./options.js";
 import { applyOrientation, hasTransparentPixels, pixelsEqual, targetSize, tileMosaic, type RawImage } from "./pixels.js";
 import { effectiveMinQuality, losslessPlans, planCandidates, type FormatPlan, type PlanInput } from "./plan.js";
+import { predictStart } from "./predictor.js";
 import { displayDimensions, probe, type ProbeInfo } from "./probe.js";
 import { ssim } from "./quality.js";
 import type {
@@ -345,7 +346,7 @@ export async function optimize(input: Uint8Array, options: OptiqOptions | undefi
   }
 
   emit("analyzing", 0.12);
-  const { category } = await timed("classify", () => classify(reference));
+  const { category, features } = await timed("classify", () => classify(reference));
   minQuality = effectiveMinQuality(category, opts);
   const planInput: PlanInput = {
     category,
@@ -457,6 +458,13 @@ export async function optimize(input: Uint8Array, options: OptiqOptions | undefi
     let hi = hi0; // search upper bound
     let passQ: number | undefined;
     let q = plan.start;
+    // The predictor was fitted for the balanced thresholds and settings (shared by `fast`).
+    const predicted =
+      opts.searchStart !== "fixed" && (opts.mode === "balanced" || opts.mode === "fast") && plan.format !== "png"
+        ? predictStart(plan.format, category, features, opts.searchStart)
+        : undefined;
+    if (predicted) q = Math.max(lo0, Math.min(hi0, predicted.start));
+    let steppedDown = false;
     while (share > 0 && lo <= hi) {
       const c = await tryEvaluate(plan, { ...plan.settings, quality: q }, useProxy);
       if (!c) break;
@@ -472,8 +480,18 @@ export async function optimize(input: Uint8Array, options: OptiqOptions | undefi
       }
       if (passQ !== undefined && passQ - lo < opts.qualityTolerance) break;
       if (passQ === undefined && q >= hi0) break;
-      // Next probe: bisect the open interval; if nothing passed yet, move up towards the top of the range.
-      q = passQ === undefined ? Math.min(hi, Math.ceil((lo + hi0) / 2)) : Math.floor((lo + hi) / 2);
+      if (predicted && passQ !== undefined && lo === lo0 && !steppedDown) {
+        // The predicted start passed and nothing has failed yet: probe one typical-error step lower before bisecting.
+        // (Upward moves keep the original bisection towards the top of the range: growing upward jumps overshot
+        // and exhausted the budget in the first comparison run — kodim19 +81% bytes.)
+        {
+          steppedDown = true;
+          q = Math.max(lo0, passQ - predicted.step);
+        }
+      } else {
+        // Next probe: bisect the open interval; if nothing passed yet, move up towards the top of the range.
+        q = passQ === undefined ? Math.min(hi, Math.ceil((lo + hi0) / 2)) : Math.floor((lo + hi) / 2);
+      }
       if (passQ === undefined && share === 0) break;
     }
   }

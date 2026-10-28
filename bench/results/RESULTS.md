@@ -5,7 +5,7 @@ Corpus: `bench/corpus/manifest.json` (sources, sizes and SHA-256 of every image)
 
 ## Node.js: Optiq engine vs libvips (sharp)
 
-Environment: `{"runtime":"node v24.15.0","platform":"darwin-arm64","cpu":"Apple M4 Pro","cores":14,"memGB":24,"sharp":"0.35.5","date":"2026-10-27T14:22:30.306Z","merged":["2026-10-27T12:09:36.746Z: sc-balanced,sc-balanced-nometa","2026-10-27T13:05:48.482Z: sc-balanced,sc-balanced-nometa,sc-visually-lossless,sc-lossless","2026-10-27T14:22:30.306Z: sc-fast"]}`
+Environment: `{"runtime":"node v24.15.0","platform":"darwin-arm64","cpu":"Apple M4 Pro","cores":14,"memGB":24,"sharp":"0.35.5","date":"2026-10-28T05:27:34.642Z","merged":["2026-10-27T12:09:36.746Z: sc-balanced,sc-balanced-nometa","2026-10-27T13:05:48.482Z: sc-balanced,sc-balanced-nometa,sc-visually-lossless,sc-lossless","2026-10-27T14:22:30.306Z: sc-fast","2026-10-28T05:27:34.642Z: sc-fast"]}`
 
 ### Perceptual (lossy) results by category
 
@@ -21,7 +21,7 @@ SSIM is Optiq's metric (8x8 windows, Y/Cb/Cr 6:1:1, active-window pooling), comp
 | `sharp-mozjpeg-q80` | 10 | 2.80 MB → 0.66 MB | 76.2% | 51.7% | 0.9649 | 0.9487 | 2/10 | 0/10 | 34 ms | 102 MB |
 | `sharp-webp-q80` | 10 | 2.80 MB → 0.66 MB | 76.5% | 59.0% | 0.9739 | 0.9613 | 4/10 | 0/10 | 35 ms | 102 MB |
 | `sharp-avif-q50` | 10 | 2.80 MB → 0.32 MB | 88.7% | 77.8% | 0.9510 | 0.9279 | 0/10 | 0/10 | 496 ms | 123 MB |
-| `sc-fast` | 10 | 2.80 MB → 0.74 MB | 73.4% | 49.4% | 0.9784 | 0.9756 | 10/10 | 0/10 | 285 ms | 149 MB |
+| `sc-fast` | 10 | 2.80 MB → 0.77 MB | 72.5% | 49.8% | 0.9789 | 0.9762 | 10/10 | 0/10 | 298 ms | 148 MB |
 
 #### photo-large (3 images)
 
@@ -33,7 +33,7 @@ SSIM is Optiq's metric (8x8 windows, Y/Cb/Cr 6:1:1, active-window pooling), comp
 | `sharp-mozjpeg-q80` | 3 | 7.58 MB → 5.68 MB | 25.0% | 24.8% | 0.9958 | 0.9957 | 3/3 | 3/3 | 790 ms | 194 MB |
 | `sharp-webp-q80` | 3 | 7.58 MB → 5.25 MB | 30.7% | 34.7% | 0.9800 | 0.9793 | 3/3 | 0/3 | 836 ms | 187 MB |
 | `sharp-avif-q50` | 3 | 7.58 MB → 2.82 MB | 62.8% | 63.3% | 0.9732 | 0.9632 | 0/3 | 0/3 | 9.5 s | 540 MB |
-| `sc-fast` | 3 | 7.58 MB → 4.90 MB | 35.4% | 38.7% | 0.9781 | 0.9756 | 3/3 | 0/3 | 2.4 s | 535 MB |
+| `sc-fast` | 3 | 7.58 MB → 4.40 MB | 42.0% | 45.4% | 0.9779 | 0.9752 | 3/3 | 0/3 | 2.6 s | 551 MB |
 
 #### screenshot (2 images)
 
@@ -45,7 +45,7 @@ SSIM is Optiq's metric (8x8 windows, Y/Cb/Cr 6:1:1, active-window pooling), comp
 | `sharp-mozjpeg-q80` | 2 | 0.44 MB → 0.24 MB | 45.7% | 46.7% | 0.9619 | 0.9304 | 1/2 | 1/2 | 132 ms | 123 MB |
 | `sharp-webp-q80` | 2 | 0.44 MB → 0.16 MB | 62.8% | 62.6% | 0.9853 | 0.9724 | 1/2 | 1/2 | 134 ms | 115 MB |
 | `sharp-avif-q50` | 2 | 0.44 MB → 0.08 MB | 81.1% | 81.0% | 0.9951 | 0.9915 | 2/2 | 2/2 | 1.4 s | 224 MB |
-| `sc-fast` | 2 | 0.44 MB → 0.10 MB | 76.9% | 78.1% | 1.0000 | 1.0000 | 2/2 | 2/2 | 1.1 s | 351 MB |
+| `sc-fast` | 2 | 0.44 MB → 0.10 MB | 76.9% | 78.1% | 1.0000 | 1.0000 | 2/2 | 2/2 | 883 ms | 352 MB |
 
 #### text-graphic (2 images)
 
@@ -57,7 +57,7 @@ SSIM is Optiq's metric (8x8 windows, Y/Cb/Cr 6:1:1, active-window pooling), comp
 | `sharp-mozjpeg-q80` | 2 | 0.40 MB → 0.24 MB | 39.7% | 37.6% | 0.9870 | 0.9778 | 2/2 | 1/2 | 90 ms | 109 MB |
 | `sharp-webp-q80` | 2 | 0.40 MB → 0.21 MB | 46.6% | 46.2% | 0.9853 | 0.9849 | 2/2 | 0/2 | 75 ms | 106 MB |
 | `sharp-avif-q50` | 2 | 0.40 MB → 0.12 MB | 68.6% | 70.6% | 0.9908 | 0.9821 | 2/2 | 1/2 | 786 ms | 163 MB |
-| `sc-fast` | 2 | 0.40 MB → 0.04 MB | 90.7% | 83.3% | 1.0000 | 1.0000 | 2/2 | 2/2 | 747 ms | 263 MB |
+| `sc-fast` | 2 | 0.40 MB → 0.04 MB | 90.7% | 83.3% | 1.0000 | 1.0000 | 2/2 | 2/2 | 505 ms | 275 MB |
 
 #### transparent-illustration (4 images)
 
@@ -68,7 +68,7 @@ SSIM is Optiq's metric (8x8 windows, Y/Cb/Cr 6:1:1, active-window pooling), comp
 | `sc-visually-lossless` | 4 | 0.44 MB → 0.06 MB | 87.0% | 86.8% | 0.9912 | 0.9907 | 4/4 | 4/4 | 3.9 s | 327 MB |
 | `sharp-webp-q80` | 4 | 0.44 MB → 0.18 MB | 58.0% | 58.2% | 0.9915 | 0.9904 | 4/4 | 4/4 | 127 ms | 128 MB |
 | `sharp-avif-q50` | 4 | 0.44 MB → 0.06 MB | 87.4% | 87.5% | 0.9944 | 0.9938 | 4/4 | 4/4 | 615 ms | 161 MB |
-| `sc-fast` | 4 | 0.44 MB → 0.17 MB | 62.1% | 62.1% | 0.9884 | 0.9851 | 4/4 | 1/4 | 874 ms | 184 MB |
+| `sc-fast` | 4 | 0.44 MB → 0.17 MB | 61.9% | 61.8% | 0.9876 | 0.9864 | 4/4 | 1/4 | 440 ms | 173 MB |
 
 #### gradient (3 images)
 
@@ -80,7 +80,7 @@ SSIM is Optiq's metric (8x8 windows, Y/Cb/Cr 6:1:1, active-window pooling), comp
 | `sharp-mozjpeg-q80` | 3 | 1.61 MB → 0.05 MB | 97.1% | 97.1% | 0.9957 | 0.9955 | 3/3 | 3/3 | 70 ms | 115 MB |
 | `sharp-webp-q80` | 3 | 1.61 MB → 0.03 MB | 97.9% | 98.3% | 0.9962 | 0.9955 | 3/3 | 3/3 | 98 ms | 109 MB |
 | `sharp-avif-q50` | 3 | 1.61 MB → 0.01 MB | 99.3% | 99.3% | 0.9967 | 0.9965 | 3/3 | 3/3 | 456 ms | 196 MB |
-| `sc-fast` | 3 | 1.61 MB → 0.03 MB | 98.4% | 98.8% | 0.9956 | 0.9947 | 3/3 | 3/3 | 1.1 s | 300 MB |
+| `sc-fast` | 3 | 1.61 MB → 0.02 MB | 98.5% | 98.9% | 0.9952 | 0.9946 | 3/3 | 3/3 | 935 ms | 305 MB |
 
 #### All categories
 
@@ -92,7 +92,7 @@ SSIM is Optiq's metric (8x8 windows, Y/Cb/Cr 6:1:1, active-window pooling), comp
 | `sharp-mozjpeg-q80` | 20 | 12.82 MB → 6.87 MB | 46.4% | 49.8% | 0.9766 | 0.9304 | 11/20 | 8/20 | 54 ms | 106 MB |
 | `sharp-webp-q80` | 24 | 13.25 MB → 6.50 MB | 51.0% | 58.6% | 0.9805 | 0.9613 | 17/24 | 8/24 | 59 ms | 105 MB |
 | `sharp-avif-q50` | 24 | 13.25 MB → 3.41 MB | 74.3% | 78.1% | 0.9740 | 0.9279 | 11/24 | 10/24 | 590 ms | 151 MB |
-| `sc-fast` | 24 | 13.25 MB → 5.97 MB | 54.9% | 62.1% | 0.9836 | 0.9756 | 24/24 | 8/24 | 521 ms | 184 MB |
+| `sc-fast` | 24 | 13.25 MB → 5.49 MB | 58.5% | 60.9% | 0.9847 | 0.9752 | 24/24 | 8/24 | 425 ms | 173 MB |
 
 ### Lossless results by category
 
@@ -170,7 +170,7 @@ Pixel-exact = output decodes to exactly the reference pixels (RGBA) with the sam
 | `sc-visually-lossless` | `sharp-webp-q80` | 24 | 7 | 0 | 17 |
 | `sc-visually-lossless` | `sharp-avif-q50` | 24 | 2 | 1 | 21 |
 | `sc-fast` | `sharp-mozjpeg-q80` | 20 | 6 | 0 | 14 |
-| `sc-fast` | `sharp-webp-q80` | 24 | 5 | 0 | 19 |
+| `sc-fast` | `sharp-webp-q80` | 24 | 7 | 2 | 15 |
 | `sc-fast` | `sharp-avif-q50` | 24 | 2 | 6 | 16 |
 
 <details><summary>Per-image rows</summary>
@@ -389,36 +389,36 @@ Pixel-exact = output decodes to exactly the reference pixels (RGBA) with the sam
 | gradient-sky.png | sharp-avif-q50 | 957 | 97.0% | 0.9967 | avif | 415 ms |
 | gradient-sky.png | sharp-png-max | 11117 | 64.8% | 0.9986 | png | 143 ms |
 | gradient-sky.png | sharp-webp-lossless | 13944 | 55.9% | 1.0000 (exact) | webp | 467 ms |
-| photo-kodim01.jpg | sc-fast | 88056 | 47.5% | 0.9756 | webp | 336 ms |
-| photo-kodim03.jpg | sc-fast | 37610 | 56.8% | 0.9768 | webp | 204 ms |
-| photo-kodim05.jpg | sc-fast | 90946 | 47.6% | 0.9773 | webp | 332 ms |
-| photo-kodim07.jpg | sc-fast | 37506 | 62.2% | 0.9785 | webp | 241 ms |
-| photo-kodim13.jpg | sc-fast | 121486 | 39.7% | 0.9782 | webp | 369 ms |
-| photo-kodim15.jpg | sc-fast | 69674 | 32.3% | 0.9836 | webp | 267 ms |
-| photo-kodim20.jpg | sc-fast | 42140 | 51.3% | 0.9812 | webp | 259 ms |
-| photo-kodim23.jpg | sc-fast | 52510 | 38.1% | 0.9837 | webp | 255 ms |
-| photo-kodim08.png | sc-fast | 111312 | 88.8% | 0.9778 | webp | 364 ms |
-| photo-kodim19.png | sc-fast | 92954 | 88.4% | 0.9789 | webp | 303 ms |
-| large-picsum1015.jpg | sc-fast | 1401390 | 38.7% | 0.9781 | webp | 2.4 s |
-| large-picsum1043.jpg | sc-fast | 2314064 | 29.7% | 0.9756 | webp | 4.4 s |
-| large-picsum1050.jpg | sc-fast | 1182584 | 40.8% | 0.9796 | webp | 2.3 s |
-| screenshot-dashboard.png | sc-fast | 77404 | 69.1% | 1.0000 (exact) | webp | 1.8 s |
-| screenshot-code.png | sc-fast | 24372 | 87.2% | 1.0000 (exact) | webp | 435 ms |
-| text-docs.png | sc-fast | 22230 | 93.5% | 1.0000 (exact) | webp | 886 ms |
-| text-slide.png | sc-fast | 14734 | 73.2% | 1.0000 (exact) | webp | 607 ms |
-| transparent-illustration-1.png | sc-fast | 48710 | 62.2% | 0.9851 | webp | 883 ms |
-| transparent-illustration-2.png | sc-fast | 58260 | 62.0% | 0.9883 | webp | 866 ms |
-| transparent-illustration-3.png | sc-fast | 54426 | 62.1% | 0.9886 | webp | 890 ms |
-| transparent-icon.png | sc-fast | 4036 | 60.1% | 1.0000 (exact) | webp | 187 ms |
-| gradient-linear.png | sc-fast | 8998 | 98.9% | 0.9961 | jpeg | 1.1 s |
-| gradient-radial.png | sc-fast | 9686 | 98.8% | 0.9947 | webp | 1.3 s |
-| gradient-sky.png | sc-fast | 6844 | 78.3% | 0.9956 | webp | 830 ms |
+| photo-kodim01.jpg | sc-fast | 94870 | 43.4% | 0.9792 | webp | 302 ms |
+| photo-kodim03.jpg | sc-fast | 37610 | 56.8% | 0.9768 | webp | 269 ms |
+| photo-kodim05.jpg | sc-fast | 96962 | 44.1% | 0.9801 | webp | 416 ms |
+| photo-kodim07.jpg | sc-fast | 40390 | 59.3% | 0.9803 | webp | 289 ms |
+| photo-kodim13.jpg | sc-fast | 131122 | 34.9% | 0.9821 | webp | 391 ms |
+| photo-kodim15.jpg | sc-fast | 61022 | 40.7% | 0.9787 | webp | 294 ms |
+| photo-kodim20.jpg | sc-fast | 38504 | 55.5% | 0.9786 | webp | 224 ms |
+| photo-kodim23.jpg | sc-fast | 50799 | 40.2% | 0.9781 | jpeg | 259 ms |
+| photo-kodim08.png | sc-fast | 108162 | 89.1% | 0.9762 | webp | 382 ms |
+| photo-kodim19.png | sc-fast | 110418 | 86.2% | 0.9837 | webp | 324 ms |
+| large-picsum1015.jpg | sc-fast | 1247055 | 45.4% | 0.9779 | jpeg | 2.6 s |
+| large-picsum1043.jpg | sc-fast | 2133327 | 35.2% | 0.9857 | jpeg | 2.9 s |
+| large-picsum1050.jpg | sc-fast | 1014978 | 49.2% | 0.9752 | webp | 2.4 s |
+| screenshot-dashboard.png | sc-fast | 77404 | 69.1% | 1.0000 (exact) | webp | 1.4 s |
+| screenshot-code.png | sc-fast | 24372 | 87.2% | 1.0000 (exact) | webp | 341 ms |
+| text-docs.png | sc-fast | 22230 | 93.5% | 1.0000 (exact) | webp | 540 ms |
+| text-slide.png | sc-fast | 14734 | 73.2% | 1.0000 (exact) | webp | 470 ms |
+| transparent-illustration-1.png | sc-fast | 49228 | 61.8% | 0.9864 | webp | 434 ms |
+| transparent-illustration-2.png | sc-fast | 57814 | 62.3% | 0.9868 | webp | 592 ms |
+| transparent-illustration-3.png | sc-fast | 54976 | 61.7% | 0.9885 | webp | 446 ms |
+| transparent-icon.png | sc-fast | 4036 | 60.1% | 1.0000 (exact) | webp | 100 ms |
+| gradient-linear.png | sc-fast | 8297 | 99.0% | 0.9953 | jpeg | 935 ms |
+| gradient-radial.png | sc-fast | 8890 | 98.9% | 0.9946 | webp | 1.1 s |
+| gradient-sky.png | sc-fast | 6456 | 79.6% | 0.9952 | webp | 635 ms |
 
 </details>
 
 ## Browser (Chromium): Optiq vs browser-image-compression and canvas
 
-Environment: `{"runtime":"Chromium 156.0.8078.4 (Playwright, headless)","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36","platform":"darwin-arm64","date":"2026-10-27T14:22:54.348Z","memory":"not measured in the browser (see Node benchmark for peak RSS)","merged":["2026-10-27T12:10:41.567Z: sc-balanced","2026-10-27T13:08:44.960Z: sc-balanced,sc-visually-lossless,sc-lossless","2026-10-27T14:22:54.348Z: sc-fast"]}`
+Environment: `{"runtime":"Chromium 156.0.8078.4 (Playwright, headless)","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36","platform":"darwin-arm64","date":"2026-10-28T05:27:54.789Z","memory":"not measured in the browser (see Node benchmark for peak RSS)","merged":["2026-10-27T12:10:41.567Z: sc-balanced","2026-10-27T13:08:44.960Z: sc-balanced,sc-visually-lossless,sc-lossless","2026-10-27T14:22:54.348Z: sc-fast","2026-10-28T05:27:54.789Z: sc-fast"]}`
 
 ### Perceptual (lossy) results by category
 
@@ -435,7 +435,7 @@ SSIM is Optiq's metric (8x8 windows, Y/Cb/Cr 6:1:1, active-window pooling), comp
 | `bic-webp-0.8` | 10 | 2.80 MB → 0.66 MB | 76.3% | 58.5% | 0.9742 | 0.9611 | 5/10 | 0/10 | 22 ms |
 | `canvas-webp-0.8` | 10 | 2.80 MB → 0.66 MB | 76.3% | 58.5% | 0.9742 | 0.9611 | 5/10 | 0/10 | 22 ms |
 | `canvas-jpeg-0.8` | 10 | 2.80 MB → 0.79 MB | 71.8% | 42.0% | 0.9686 | 0.9574 | 3/10 | 0/10 | 3 ms |
-| `sc-fast` | 10 | 2.80 MB → 0.74 MB | 73.4% | 49.4% | 0.9784 | 0.9756 | 10/10 | 0/10 | 240 ms |
+| `sc-fast` | 10 | 2.80 MB → 0.77 MB | 72.5% | 49.8% | 0.9789 | 0.9762 | 10/10 | 0/10 | 249 ms |
 
 #### photo-large (3 images)
 
@@ -448,7 +448,7 @@ SSIM is Optiq's metric (8x8 windows, Y/Cb/Cr 6:1:1, active-window pooling), comp
 | `bic-webp-0.8` | 3 | 7.58 MB → 5.24 MB | 30.8% | 34.7% | 0.9799 | 0.9792 | 3/3 | 0/3 | 616 ms |
 | `canvas-webp-0.8` | 3 | 7.58 MB → 5.24 MB | 30.8% | 34.7% | 0.9799 | 0.9792 | 3/3 | 0/3 | 611 ms |
 | `canvas-jpeg-0.8` | 3 | 7.58 MB → 6.33 MB | 16.5% | 16.5% | 0.9963 | 0.9957 | 3/3 | 3/3 | 70 ms |
-| `sc-fast` | 3 | 7.58 MB → 4.90 MB | 35.4% | 38.7% | 0.9781 | 0.9756 | 3/3 | 0/3 | 2.3 s |
+| `sc-fast` | 3 | 7.58 MB → 4.40 MB | 42.0% | 45.4% | 0.9779 | 0.9752 | 3/3 | 0/3 | 2.5 s |
 
 #### screenshot (2 images)
 
@@ -461,7 +461,7 @@ SSIM is Optiq's metric (8x8 windows, Y/Cb/Cr 6:1:1, active-window pooling), comp
 | `bic-webp-0.8` | 2 | 0.44 MB → 0.16 MB | 62.6% | 62.4% | 0.9853 | 0.9723 | 1/2 | 1/2 | 89 ms |
 | `canvas-webp-0.8` | 2 | 0.44 MB → 0.16 MB | 62.6% | 62.4% | 0.9853 | 0.9723 | 1/2 | 1/2 | 89 ms |
 | `canvas-jpeg-0.8` | 2 | 0.44 MB → 0.33 MB | 24.7% | 26.6% | 0.9622 | 0.9321 | 1/2 | 1/2 | 16 ms |
-| `sc-fast` | 2 | 0.44 MB → 0.10 MB | 76.9% | 78.1% | 1.0000 | 1.0000 | 2/2 | 2/2 | 1.0 s |
+| `sc-fast` | 2 | 0.44 MB → 0.10 MB | 76.9% | 78.1% | 1.0000 | 1.0000 | 2/2 | 2/2 | 867 ms |
 
 #### text-graphic (2 images)
 
@@ -474,7 +474,7 @@ SSIM is Optiq's metric (8x8 windows, Y/Cb/Cr 6:1:1, active-window pooling), comp
 | `bic-webp-0.8` | 2 | 0.40 MB → 0.21 MB | 46.3% | 45.6% | 0.9852 | 0.9849 | 2/2 | 0/2 | 49 ms |
 | `canvas-webp-0.8` | 2 | 0.40 MB → 0.21 MB | 46.3% | 45.6% | 0.9852 | 0.9849 | 2/2 | 0/2 | 49 ms |
 | `canvas-jpeg-0.8` | 2 | 0.40 MB → 0.32 MB | 18.7% | 13.4% | 0.9834 | 0.9708 | 1/2 | 1/2 | 7 ms |
-| `sc-fast` | 2 | 0.40 MB → 0.04 MB | 90.7% | 83.3% | 1.0000 | 1.0000 | 2/2 | 2/2 | 606 ms |
+| `sc-fast` | 2 | 0.40 MB → 0.04 MB | 90.7% | 83.3% | 1.0000 | 1.0000 | 2/2 | 2/2 | 410 ms |
 
 #### transparent-illustration (4 images)
 
@@ -486,7 +486,7 @@ SSIM is Optiq's metric (8x8 windows, Y/Cb/Cr 6:1:1, active-window pooling), comp
 | `bic-quality-0.8` | 4 | 0.44 MB → 0.33 MB | 24.5% | 25.4% | 0.9997 | 0.9997 | 4/4 | 4/4 | 103 ms |
 | `bic-webp-0.8` | 4 | 0.44 MB → 0.21 MB | 52.8% | 52.8% | 0.9915 | 0.9903 | 4/4 | 4/4 | 74 ms |
 | `canvas-webp-0.8` | 4 | 0.44 MB → 0.21 MB | 52.8% | 52.8% | 0.9915 | 0.9903 | 4/4 | 4/4 | 74 ms |
-| `sc-fast` | 4 | 0.44 MB → 0.17 MB | 62.1% | 62.1% | 0.9884 | 0.9851 | 4/4 | 1/4 | 786 ms |
+| `sc-fast` | 4 | 0.44 MB → 0.17 MB | 61.9% | 61.8% | 0.9876 | 0.9864 | 4/4 | 1/4 | 351 ms |
 
 #### gradient (3 images)
 
@@ -499,7 +499,7 @@ SSIM is Optiq's metric (8x8 windows, Y/Cb/Cr 6:1:1, active-window pooling), comp
 | `bic-webp-0.8` | 3 | 1.61 MB → 0.03 MB | 97.8% | 98.3% | 0.9962 | 0.9955 | 3/3 | 3/3 | 51 ms |
 | `canvas-webp-0.8` | 3 | 1.61 MB → 0.03 MB | 97.8% | 98.3% | 0.9962 | 0.9955 | 3/3 | 3/3 | 50 ms |
 | `canvas-jpeg-0.8` | 3 | 1.61 MB → 0.07 MB | 95.5% | 96.1% | 0.9961 | 0.9956 | 3/3 | 3/3 | 9 ms |
-| `sc-fast` | 3 | 1.61 MB → 0.03 MB | 98.4% | 98.8% | 0.9956 | 0.9947 | 3/3 | 3/3 | 923 ms |
+| `sc-fast` | 3 | 1.61 MB → 0.02 MB | 98.5% | 98.9% | 0.9952 | 0.9946 | 3/3 | 3/3 | 734 ms |
 
 #### All categories
 
@@ -512,7 +512,7 @@ SSIM is Optiq's metric (8x8 windows, Y/Cb/Cr 6:1:1, active-window pooling), comp
 | `bic-webp-0.8` | 24 | 13.25 MB → 6.52 MB | 50.8% | 55.5% | 0.9804 | 0.9611 | 18/24 | 8/24 | 37 ms |
 | `canvas-webp-0.8` | 24 | 13.25 MB → 6.52 MB | 50.8% | 55.5% | 0.9804 | 0.9611 | 18/24 | 8/24 | 36 ms |
 | `canvas-jpeg-0.8` | 20 | 12.82 MB → 7.84 MB | 38.8% | 39.7% | 0.9768 | 0.9321 | 11/20 | 8/20 | 5 ms |
-| `sc-fast` | 24 | 13.25 MB → 5.97 MB | 54.9% | 62.1% | 0.9836 | 0.9756 | 24/24 | 8/24 | 405 ms |
+| `sc-fast` | 24 | 13.25 MB → 5.49 MB | 58.5% | 60.9% | 0.9847 | 0.9752 | 24/24 | 8/24 | 349 ms |
 
 ### Lossless results by category
 
@@ -577,10 +577,10 @@ Pixel-exact = output decodes to exactly the reference pixels (RGBA) with the sam
 | `sc-visually-lossless` | `canvas-webp-0.8` | 24 | 8 | 0 | 16 |
 | `sc-visually-lossless` | `canvas-jpeg-0.8` | 20 | 5 | 0 | 15 |
 | `sc-fast` | `bic-maxsize-1mb` | 21 | 5 | 0 | 16 |
-| `sc-fast` | `bic-quality-0.8` | 24 | 10 | 0 | 14 |
-| `sc-fast` | `bic-webp-0.8` | 24 | 5 | 0 | 19 |
-| `sc-fast` | `canvas-webp-0.8` | 24 | 5 | 0 | 19 |
-| `sc-fast` | `canvas-jpeg-0.8` | 20 | 10 | 0 | 10 |
+| `sc-fast` | `bic-quality-0.8` | 24 | 9 | 0 | 15 |
+| `sc-fast` | `bic-webp-0.8` | 24 | 9 | 0 | 15 |
+| `sc-fast` | `canvas-webp-0.8` | 24 | 9 | 0 | 15 |
+| `sc-fast` | `canvas-jpeg-0.8` | 20 | 9 | 0 | 11 |
 
 <details><summary>Per-image rows</summary>
 
@@ -774,30 +774,30 @@ Pixel-exact = output decodes to exactly the reference pixels (RGBA) with the sam
 | gradient-sky.png | bic-webp-0.8 | 8896 | 71.8% | 0.9962 | webp | 45 ms |
 | gradient-sky.png | canvas-webp-0.8 | 8896 | 71.8% | 0.9962 | webp | 45 ms |
 | gradient-sky.png | canvas-jpeg-0.8 | 23224 | 26.5% | 0.9961 | jpeg | 6 ms |
-| photo-kodim01.jpg | sc-fast | 88056 | 47.5% | 0.9756 | webp | 317 ms |
-| photo-kodim03.jpg | sc-fast | 37610 | 56.8% | 0.9768 | webp | 162 ms |
-| photo-kodim05.jpg | sc-fast | 90946 | 47.6% | 0.9773 | webp | 296 ms |
-| photo-kodim07.jpg | sc-fast | 37506 | 62.2% | 0.9785 | webp | 197 ms |
-| photo-kodim13.jpg | sc-fast | 121486 | 39.7% | 0.9782 | webp | 319 ms |
-| photo-kodim15.jpg | sc-fast | 69674 | 32.3% | 0.9836 | webp | 226 ms |
-| photo-kodim20.jpg | sc-fast | 42140 | 51.3% | 0.9812 | webp | 206 ms |
-| photo-kodim23.jpg | sc-fast | 52510 | 38.1% | 0.9837 | webp | 204 ms |
-| photo-kodim08.png | sc-fast | 111312 | 88.8% | 0.9778 | webp | 307 ms |
-| photo-kodim19.png | sc-fast | 92954 | 88.4% | 0.9789 | webp | 254 ms |
-| large-picsum1015.jpg | sc-fast | 1401390 | 38.7% | 0.9781 | webp | 2.3 s |
-| large-picsum1043.jpg | sc-fast | 2314064 | 29.7% | 0.9756 | webp | 4.2 s |
-| large-picsum1050.jpg | sc-fast | 1182584 | 40.8% | 0.9796 | webp | 2.2 s |
-| screenshot-dashboard.png | sc-fast | 77404 | 69.1% | 1.0000 (exact) | webp | 1.7 s |
-| screenshot-code.png | sc-fast | 24372 | 87.2% | 1.0000 (exact) | webp | 344 ms |
-| text-docs.png | sc-fast | 22230 | 93.5% | 1.0000 (exact) | webp | 746 ms |
-| text-slide.png | sc-fast | 14734 | 73.2% | 1.0000 (exact) | webp | 467 ms |
-| transparent-illustration-1.png | sc-fast | 48710 | 62.2% | 0.9851 | webp | 795 ms |
-| transparent-illustration-2.png | sc-fast | 58260 | 62.0% | 0.9883 | webp | 787 ms |
-| transparent-illustration-3.png | sc-fast | 54426 | 62.1% | 0.9886 | webp | 785 ms |
-| transparent-icon.png | sc-fast | 4036 | 60.1% | 1.0000 (exact) | webp | 137 ms |
-| gradient-linear.png | sc-fast | 8998 | 98.9% | 0.9961 | jpeg | 923 ms |
-| gradient-radial.png | sc-fast | 9686 | 98.8% | 0.9947 | webp | 1.0 s |
-| gradient-sky.png | sc-fast | 6844 | 78.3% | 0.9956 | webp | 657 ms |
+| photo-kodim01.jpg | sc-fast | 94870 | 43.4% | 0.9792 | webp | 292 ms |
+| photo-kodim03.jpg | sc-fast | 37610 | 56.8% | 0.9768 | webp | 217 ms |
+| photo-kodim05.jpg | sc-fast | 96962 | 44.1% | 0.9801 | webp | 348 ms |
+| photo-kodim07.jpg | sc-fast | 40390 | 59.3% | 0.9803 | webp | 222 ms |
+| photo-kodim13.jpg | sc-fast | 131122 | 34.9% | 0.9821 | webp | 335 ms |
+| photo-kodim15.jpg | sc-fast | 61022 | 40.7% | 0.9787 | webp | 228 ms |
+| photo-kodim20.jpg | sc-fast | 38504 | 55.5% | 0.9786 | webp | 168 ms |
+| photo-kodim23.jpg | sc-fast | 50799 | 40.2% | 0.9781 | jpeg | 203 ms |
+| photo-kodim08.png | sc-fast | 108162 | 89.1% | 0.9762 | webp | 316 ms |
+| photo-kodim19.png | sc-fast | 110418 | 86.2% | 0.9837 | webp | 270 ms |
+| large-picsum1015.jpg | sc-fast | 1247055 | 45.4% | 0.9779 | jpeg | 2.5 s |
+| large-picsum1043.jpg | sc-fast | 2133327 | 35.2% | 0.9857 | jpeg | 2.8 s |
+| large-picsum1050.jpg | sc-fast | 1014978 | 49.2% | 0.9752 | webp | 2.3 s |
+| screenshot-dashboard.png | sc-fast | 77404 | 69.1% | 1.0000 (exact) | webp | 1.4 s |
+| screenshot-code.png | sc-fast | 24372 | 87.2% | 1.0000 (exact) | webp | 292 ms |
+| text-docs.png | sc-fast | 22230 | 93.5% | 1.0000 (exact) | webp | 470 ms |
+| text-slide.png | sc-fast | 14734 | 73.2% | 1.0000 (exact) | webp | 349 ms |
+| transparent-illustration-1.png | sc-fast | 49228 | 61.8% | 0.9864 | webp | 352 ms |
+| transparent-illustration-2.png | sc-fast | 57814 | 62.3% | 0.9868 | webp | 503 ms |
+| transparent-illustration-3.png | sc-fast | 54976 | 61.7% | 0.9885 | webp | 350 ms |
+| transparent-icon.png | sc-fast | 4036 | 60.1% | 1.0000 (exact) | webp | 49 ms |
+| gradient-linear.png | sc-fast | 8297 | 99.0% | 0.9953 | jpeg | 734 ms |
+| gradient-radial.png | sc-fast | 8890 | 98.9% | 0.9946 | webp | 829 ms |
+| gradient-sky.png | sc-fast | 6456 | 79.6% | 0.9952 | webp | 480 ms |
 
 </details>
 
