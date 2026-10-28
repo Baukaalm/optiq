@@ -1,4 +1,5 @@
-// End-to-end: launch dist/index.js over stdio with the official MCP client and call both tools.
+// End-to-end: launch the server over stdio with the official MCP client and call both tools.
+// OPTIQ_MCP_BIN points at another build (the release workflow sets it to the packed tarball, installed from npm).
 import assert from "node:assert/strict";
 import { cp, mkdir, mkdtemp, readFile, readdir } from "node:fs/promises";
 import { tmpdir } from "node:os";
@@ -18,7 +19,7 @@ before(async () => {
   await cp(join(samples, "parrots.jpg"), join(dir, "img/parrots.jpg"));
   await cp(join(samples, "code-screenshot.png"), join(dir, "img/nested/code.png"));
   client = new Client({ name: "optiq-mcp-test", version: "0.0.0" });
-  await client.connect(new StdioClientTransport({ command: process.execPath, args: [join(here, "../dist/index.js")] }));
+  await client.connect(new StdioClientTransport({ command: process.execPath, args: [process.env.OPTIQ_MCP_BIN ?? join(here, "../dist/index.js")] }));
 });
 after(() => client?.close());
 

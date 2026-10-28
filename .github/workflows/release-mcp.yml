@@ -1,0 +1,89 @@
+name: Release optiq-mcp
+
+# Push a tag that matches mcp/package.json, e.g. `git tag mcp-v0.1.0-beta.0 && git push origin mcp-v0.1.0-beta.0`.
+# The optiq-image version it depends on must already be on npm (release that first with a `v*` tag).
+on:
+  push:
+    tags: ["mcp-v*"]
+
+permissions:
+  contents: write # GitHub release
+  id-token: write # npm provenance + MCP Registry login (GitHub OIDC)
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      MCP_PUBLISHER_VERSION: v1.8.1
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+      - run: pnpm install --frozen-lockfile
+      - name: Tag, package.json and server.json versions must match
+        run: |
+          v=$(node -p "require('./mcp/package.json').version")
+          [ "mcp-v$v" = "$GITHUB_REF_NAME" ] || { echo "tag $GITHUB_REF_NAME != mcp/package.json $v"; exit 1; }
+          node -e '
+            const s = require("./mcp/server.json"), p = require("./mcp/package.json");
+            if (s.version !== p.version || s.packages[0].version !== p.version) throw new Error("server.json version mismatch");
+            if (s.name !== p.mcpName) throw new Error("server.json name != mcpName");'
+          echo "VERSION=$v" >> "$GITHUB_ENV"
+      - name: The optiq-image version it depends on is published
+        run: npm view "optiq-image@$(node -p "require('./package.json').version")" version
+      - run: pnpm build
+      - run: pnpm --filter optiq-mcp test
+      # pnpm pack rewrites `workspace:^` to the real optiq-image version range.
+      - name: Pack and test the tarball as users install it
+        run: |
+          cd mcp && pnpm pack --pack-destination "$RUNNER_TEMP" && cd ..
+          tgz=$(ls "$RUNNER_TEMP"/optiq-mcp-*.tgz)
+          tar -xOzf "$tgz" package/package.json | node -e '
+            const p = JSON.parse(require("fs").readFileSync(0, "utf8"));
+            if (Object.values(p.dependencies).some((v) => v.startsWith("workspace:"))) throw new Error("workspace: range leaked");
+            console.log("dependencies", p.dependencies)'
+          mkdir "$RUNNER_TEMP/consumer" && cd "$RUNNER_TEMP/consumer" && npm init -y >/dev/null && npm i "$tgz"
+          cd "$GITHUB_WORKSPACE"
+          OPTIQ_MCP_BIN="$RUNNER_TEMP/consumer/node_modules/optiq-mcp/dist/index.js" node --test mcp/test/*.test.mjs
+          echo "TGZ=$tgz" >> "$GITHUB_ENV"
+      # Same dist-tag policy as optiq-image: every release is "latest", prereleases also "beta".
+      - name: Publish to npm
+        run: |
+          npm publish "$TGZ" --provenance --access public --tag latest
+          case "$VERSION" in *-*) npm dist-tag add "optiq-mcp@$VERSION" beta ;; esac
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: GitHub release
+        run: |
+          flags=""
+          case "$VERSION" in *-*) flags="--prerelease" ;; esac
+          gh release create "$GITHUB_REF_NAME" --title "optiq-mcp $VERSION" --notes "npm: https://www.npmjs.com/package/optiq-mcp/v/$VERSION · MCP server for Optiq (mcp/README.md)" $flags
+        env:
+          GH_TOKEN: ${{ github.token }}
+      # Official MCP Registry (registry.modelcontextprotocol.io); namespace io.github.<owner> via GitHub OIDC.
+      - uses: sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6 # v4.1.2
+      - name: Download and verify mcp-publisher
+        run: |
+          set -euo pipefail
+          os="$(uname -s | tr '[:upper:]' '[:lower:]')"
+          arch="$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/')"
+          archive="mcp-publisher_${os}_${arch}.tar.gz"
+          base_url="https://github.com/modelcontextprotocol/registry/releases/download/${MCP_PUBLISHER_VERSION}"
+          curl --fail --location --silent --show-error --output "$archive" "$base_url/$archive"
+          curl --fail --location --silent --show-error --output "$archive.sigstore.json" "$base_url/$archive.sigstore.json"
+          cosign verify-blob \
+            --bundle "$archive.sigstore.json" \
+            --certificate-identity "https://github.com/modelcontextprotocol/registry/.github/workflows/release.yml@refs/tags/${MCP_PUBLISHER_VERSION}" \
+            --certificate-oidc-issuer "https://token.actions.githubusercontent.com" \
+            "$archive"
+          tar xzf "$archive" mcp-publisher
+          rm -f "$archive" "$archive.sigstore.json"
+      - name: Publish to the MCP Registry
+        run: |
+          ./mcp-publisher login github-oidc
+          cd mcp && ../mcp-publisher publish

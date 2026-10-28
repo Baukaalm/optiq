@@ -1,0 +1,19 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.Baukaalm/optiq-mcp",
+  "description": "Optimise project images locally with verified quality (SSIM or pixel-exact): JPEG, PNG, WebP, AVIF.",
+  "repository": {
+    "url": "https://github.com/Baukaalm/optiq",
+    "source": "github",
+    "subfolder": "mcp"
+  },
+  "version": "0.1.0-beta.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "optiq-mcp",
+      "version": "0.1.0-beta.0",
+      "transport": { "type": "stdio" }
+    }
+  ]
+}

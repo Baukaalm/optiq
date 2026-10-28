@@ -105,6 +105,8 @@ export async function main(argv = process.argv.slice(2)): Promise<number> {
     const { before, after, errors, seconds } = totals;
     process.stdout.write(`\n${files.length} files, ${kb(before)} → ${kb(after)} (${before ? ((1 - after / before) * 100).toFixed(1) : 0}% smaller) in ${seconds.toFixed(1)} s${errors ? `, ${errors} failed` : ""}\n`);
     if (!a.out && !a["in-place"]) process.stdout.write("Dry run: nothing written. Use --out <dir> or --in-place.\n");
+    // For people at a terminal only: not in --json output, pipes, CI logs or agent tool results.
+    if (process.stdout.isTTY && after < before) process.stdout.write("\nIf Optiq helped, a ⭐ on GitHub helps others find it: https://github.com/Baukaalm/optiq\n");
   }
   return totals.errors ? 2 : 0;
 }
