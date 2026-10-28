@@ -1,6 +1,7 @@
 packages:
   - demo
   - docs
+  - mcp
 allowBuilds:
   esbuild: true
   sharp: true

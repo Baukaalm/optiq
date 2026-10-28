@@ -43,6 +43,7 @@ export default defineConfig({
             { text: "Uploading to S3", link: "/guide/s3" },
             { text: "React hook", link: "/guide/react" },
             { text: "CLI and Vite plugin (static images)", link: "/guide/static" },
+            { text: "AI agents (MCP, skill, llms.txt)", link: "/guide/agents" },
             { text: "Limitations and FAQ", link: "/guide/faq" },
           ],
         },

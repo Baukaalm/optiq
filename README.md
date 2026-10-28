@@ -133,6 +133,16 @@ import { optiq } from "optiq-image/vite";               // optimises build outpu
 export default defineConfig({ plugins: [optiq()] });
 ```
 
+## AI agents
+
+```sh
+claude mcp add optiq -- npx -y optiq-mcp     # MCP server: analyze_images (read-only) + optimize_images
+```
+
+The MCP server works with Claude Code, Claude Desktop, Cursor, VS Code and any other MCP client. There is also an
+[Agent Skill](https://github.com/Baukaalm/optiq/blob/main/skills/optiq/SKILL.md) for agents that drive the CLI, and
+[llms.txt](https://baukaalm.github.io/optiq/llms.txt). See the [agents guide](https://baukaalm.github.io/optiq/guide/agents).
+
 ## Uploading to S3
 
 ```ts

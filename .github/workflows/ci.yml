@@ -23,6 +23,8 @@ jobs:
       - run: pnpm typecheck
       - run: pnpm test
       - run: pnpm build
+      - name: MCP server end-to-end (official MCP client over stdio)
+        run: pnpm --filter optiq-mcp test
       - run: pnpm exec playwright install --with-deps chromium chromium-headless-shell
       - name: Browser tests (Chromium, incl. CSP/no-WASM fallback)
         run: node test/browser/run.mjs

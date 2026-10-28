@@ -57,6 +57,27 @@ describe("optiq-image CLI", () => {
     expect((await readdir(join(dir, "in"))).sort()).toEqual(["code-screenshot.png", "nested", "parrots.jpg"]);
   });
 
+  it("--min-saving keeps originals whose gain is below the threshold", async () => {
+    const dir = await fixtureDir();
+    const before = await readFile(join(dir, "in/parrots.jpg"));
+    const { stdout } = await run("node", [cli, join(dir, "in"), "--in-place", "--min-saving", "0.99", "--json"]);
+    const report = JSON.parse(stdout);
+    expect(report.files.every((f: { usedOriginal: boolean }) => f.usedOriginal)).toBe(true);
+    expect(Buffer.compare(await readFile(join(dir, "in/parrots.jpg")), before)).toBe(0);
+    await expect(run("node", [cli, join(dir, "in"), "--min-saving", "1.5"])).rejects.toMatchObject({ code: 1 });
+  });
+
+  it("a second --in-place run does not re-encode lossy outputs of the first", async () => {
+    const dir = await fixtureDir();
+    await run("node", [cli, join(dir, "in"), "--in-place", "--json"]);
+    const once = await readFile(join(dir, "in/parrots.jpg"));
+    const { stdout } = await run("node", [cli, join(dir, "in"), "--in-place", "--json"]);
+    const parrots = JSON.parse(stdout).files.find((f: { file: string }) => f.file.endsWith("parrots.jpg"));
+    expect(parrots.usedOriginal).toBe(true);
+    expect(parrots.warnings.join(" ")).toMatch(/already an Optiq lossy output/);
+    expect(Buffer.compare(await readFile(join(dir, "in/parrots.jpg")), once)).toBe(0);
+  });
+
   it("exits non-zero with a clear message for bad arguments and reports per-file errors", async () => {
     await expect(run("node", [cli])).rejects.toMatchObject({ code: 1 });
     const dir = await fixtureDir();

@@ -3,9 +3,9 @@ import type { CodecBackend, EncodeSettings } from "./codecs/types.js";
 import { buildOrientationExif, withOrientation } from "./container/exif.js";
 import { decodeGifFirstFrame } from "./container/gif.js";
 import { tagAvifSrgb } from "./container/isobmff.js";
-import { injectJpegMetadata, rewriteJpegMetadata } from "./container/jpeg.js";
+import { injectJpegMetadata, markJpeg, rewriteJpegMetadata } from "./container/jpeg.js";
 import { injectPngMetadata, rewritePngMetadata } from "./container/png.js";
-import { extractFirstWebpFrame, injectWebpMetadata, probeWebp, rewriteWebpMetadata } from "./container/webp.js";
+import { extractFirstWebpFrame, injectWebpMetadata, markWebp, probeWebp, rewriteWebpMetadata } from "./container/webp.js";
 import { OptiqError, throwIfAborted } from "./errors.js";
 import { OUTPUT_FORMATS, resolveOptions, type ResolvedOptions } from "./options.js";
 import { applyOrientation, hasTransparentPixels, pixelsEqual, targetSize, tileMosaic, type RawImage } from "./pixels.js";
@@ -263,6 +263,10 @@ export async function optimize(input: Uint8Array, options: OptiqOptions | undefi
   if (info.reencodeBlocker) {
     if ((explicit && explicit !== info.format) || needsResize) incompatible(`${info.reencodeBlocker}; the image cannot be re-encoded`);
     if (allowed.length) warnings.push(`${info.reencodeBlocker}; original kept`);
+    allowed = [];
+  }
+  if (info.optiqMarked && !opts.reoptimize && opts.mode !== "lossless" && !needsResize && (!explicit || explicit === info.format) && allowed.length) {
+    warnings.push("Input is already an Optiq lossy output; not re-encoded to avoid compounding the loss (set reoptimize: true to override)");
     allowed = [];
   }
   if (opts.mode === "lossless" && allowed.includes("jpeg")) {
@@ -595,6 +599,10 @@ export async function optimize(input: Uint8Array, options: OptiqOptions | undefi
       if (i >= 0) warnings.splice(i, 1);
     }
     const outFormat = chosen.report.format;
+    if (opts.markOutput && !chosen.container && chosen.report.qualityMetric === "ssim" && (outFormat === "jpeg" || outFormat === "webp")) {
+      const marked = outFormat === "jpeg" ? markJpeg(chosen.bytes) : markWebp(chosen.bytes);
+      chosen = { ...chosen, bytes: marked, report: { ...chosen.report, bytes: marked.length } };
+    }
     const metadata: MetadataReport = {
       exif: !info.exif ? "none" : chosen.container ? (opts.preserveMetadata || chosen.isOriginal ? "kept" : "removed") : meta.pixel.exif ? "kept" : "removed",
       xmp: !info.xmp ? "none" : chosen.container ? (opts.preserveMetadata || chosen.isOriginal ? "kept" : "removed") : meta.pixel.xmp ? "kept" : "removed",

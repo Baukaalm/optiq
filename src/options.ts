@@ -15,6 +15,8 @@ export interface ResolvedOptions {
   preserveAnimation: boolean;
   allowFormatConversion: boolean;
   minSavingsRatio: number;
+  markOutput: boolean;
+  reoptimize: boolean;
   maxInputBytes: number;
   maxInputPixels: number;
   onUnmetConstraints: "best-effort" | "throw";
@@ -84,6 +86,8 @@ export function resolveOptions(o: OptiqOptions = {}): ResolvedOptions {
     preserveAnimation: o.preserveAnimation ?? true,
     allowFormatConversion,
     minSavingsRatio: o.minSavingsRatio ?? 0.02,
+    markOutput: o.markOutput ?? false,
+    reoptimize: o.reoptimize ?? false,
     maxInputBytes: positiveInt("maxInputBytes", o.maxInputBytes) ?? 100 * 1024 * 1024,
     maxInputPixels: positiveInt("maxInputPixels", o.maxInputPixels) ?? 50_000_000,
     onUnmetConstraints: o.onUnmetConstraints ?? "best-effort",

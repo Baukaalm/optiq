@@ -79,3 +79,5 @@ export { createWasmBackend };
 export type { CodecBackend, EncodeSettings } from "./codecs/types.js";
 export type { RawImage } from "./pixels.js";
 export type { EngineContext, EngineOutput, EngineReport, TimingPhase } from "./engine.js";
+export { collectImages, IMAGE_EXTENSIONS, optimizeFilesOnDisk } from "./files.js";
+export type { DiskFileResult, DiskOptions, DiskResult } from "./files.js";

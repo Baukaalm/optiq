@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.4.0-beta.0 (unreleased)
+
+- Generation-loss guard: `markOutput` tags lossy JPEG/WebP outputs with a ~20-byte comment/chunk, and inputs with
+  that tag are not re-encoded again in perceptual modes unless `reoptimize: true` (or they are resized). Without it,
+  three `--in-place` runs over the benchmark corpus took 11 JPEGs to SSIM 0.92–0.95 against the originals; with it,
+  runs two and three change nothing. The CLI enables the tag (`--no-marker`, `--reoptimize`).
+- CLI: `--min-saving`; invalid option values fail before any file is processed (exit 1).
+- `optiq-image/node`: `optimizeFilesOnDisk()` and `collectImages()` (what the CLI uses); `optimizeFiles()` accepts
+  an `AbortSignal`.
+- New package `optiq-mcp`: an MCP server with `analyze_images` (read-only) and `optimize_images` tools for AI
+  agents. `llms.txt` on the documentation site and an Agent Skill in `skills/optiq/`.
+
 ## 0.3.0-beta.0 (2026-10-28)
 
 - `fast` mode starts each codec's quality search from a prediction (ridge regression on cheap image features,

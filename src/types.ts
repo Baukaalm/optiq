@@ -57,6 +57,17 @@ export interface OptiqOptions {
   allowFormatConversion?: boolean;
   /** Return the original when the best candidate saves less than this fraction. Default 0.02. */
   minSavingsRatio?: number;
+  /**
+   * Mark lossy JPEG/WebP outputs with a small comment/chunk (~20 bytes) so a later run recognises them and does not
+   * re-encode them again (each lossy pass is checked against its own input, so repeated passes compound the loss).
+   * Default `false` in the library; the CLI enables it. AVIF and lossless outputs are not marked.
+   */
+  markOutput?: boolean;
+  /**
+   * Re-encode inputs that carry the Optiq marker anyway. Default `false`: in perceptual modes a marked input is only
+   * optimised at container level (metadata), unless it is resized or converted to an explicitly requested format.
+   */
+  reoptimize?: boolean;
   /** Reject inputs larger than this many bytes before reading them. Default 100 MiB. */
   maxInputBytes?: number;
   /** Reject inputs whose header declares more pixels than this (decompression-bomb guard). Default 50 MP. */

@@ -1,0 +1,56 @@
+{
+  "name": "optiq-mcp",
+  "version": "0.1.0-beta.0",
+  "description": "MCP server for Optiq: lets AI agents optimise images in a project with verified quality (SSIM or pixel-exact).",
+  "license": "Apache-2.0",
+  "author": "Bauyrzhan (https://github.com/Baukaalm)",
+  "homepage": "https://baukaalm.github.io/optiq/guide/agents",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Baukaalm/optiq.git",
+    "directory": "mcp"
+  },
+  "bugs": {
+    "url": "https://github.com/Baukaalm/optiq/issues"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "image",
+    "compression",
+    "optimization",
+    "webp",
+    "avif",
+    "mozjpeg",
+    "oxipng",
+    "ai-agent"
+  ],
+  "type": "module",
+  "bin": {
+    "optiq-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.json",
+    "test": "pnpm build && node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "2.3.1",
+    "optiq-image": "workspace:^",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "2.3.1",
+    "@types/node": "24.19.2",
+    "typescript": "5.9.3"
+  }
+}

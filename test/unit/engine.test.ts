@@ -206,6 +206,40 @@ describe("audit regressions", () => {
   });
 });
 
+describe("generation-loss guard (Optiq marker)", () => {
+  it("marked lossy outputs are recognised, decode identically, and are not re-encoded again", async () => {
+    const img = photoLike(256, 192);
+    for (const format of ["jpeg", "webp"] as const) {
+      const src = await toPng(img);
+      const first = await run(src, { targetFormat: format, markOutput: true });
+      const out = first.bytes!;
+      expect(first.report.outputBytes).toBe(out.length);
+      expect((await probe(out)).optiqMarked).toBe(true);
+      const unmarked = await run(src, { targetFormat: format });
+      expect((await probe(unmarked.bytes!)).optiqMarked).toBeFalsy();
+      expect(pixelsEqual(await wasm.decode(format, out), await wasm.decode(format, unmarked.bytes!))).toBe(true);
+
+      const again = await run(out, { allowFormatConversion: false, markOutput: true });
+      expect(again.report.usedOriginal).toBe(true);
+      expect(again.report.warnings.join(" ")).toMatch(/already an Optiq lossy output/);
+      expect(again.report.candidates.every((c) => c.codec === "original")).toBe(true);
+      // Stripping metadata keeps the marker; reoptimize and resizing bypass the guard.
+      const stripped = await run(out, { preserveMetadata: false });
+      expect((await probe(outBytes(out, stripped))).optiqMarked).toBe(true);
+      const forced = await run(out, { allowFormatConversion: false, reoptimize: true });
+      expect(forced.report.candidates.some((c) => c.qualityMetric === "ssim")).toBe(true);
+      const resized = await run(out, { maxWidthOrHeight: 128 });
+      expect(resized.report.width).toBe(128);
+    }
+  });
+
+  it("lossless outputs are never marked", async () => {
+    const png = await toPng(screenshotLike(160, 100));
+    const r = await run(png, { mode: "lossless", markOutput: true });
+    expect((await probe(outBytes(png, r))).optiqMarked).toBeFalsy();
+  });
+});
+
 describe("orientation, animation, metadata", () => {
   it("EXIF orientation is baked into re-encoded pixels and kept in passthrough", async () => {
     const img = photoLike(120, 80);

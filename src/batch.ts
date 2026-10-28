@@ -4,7 +4,7 @@
 import { availableParallelism } from "node:os";
 import { Worker } from "node:worker_threads";
 import type { EngineReport } from "./engine.js";
-import { deserializeError, type OptiqError, type SerializedError } from "./errors.js";
+import { deserializeError, OptiqError, type SerializedError } from "./errors.js";
 import type { OptiqOptions } from "./types.js";
 
 export interface BatchItemResult {
@@ -18,7 +18,10 @@ export interface BatchItemResult {
 export interface BatchOptions {
   /** Worker threads. Default: available cores − 1 (at least 1). Each holds a few copies of one decoded image. */
   concurrency?: number;
-  onResult?: (r: BatchItemResult, done: number, total: number) => void;
+  /** `index` is the position of `r.path` in the input list. */
+  onResult?: (r: BatchItemResult, done: number, total: number, index: number) => void;
+  /** Aborting terminates the workers and rejects with an `ABORTED` error. */
+  signal?: AbortSignal;
 }
 
 type Reply = { id: number; ok: true; bytes?: ArrayBuffer; report: EngineReport } | { id: number; ok: false; error: SerializedError };
@@ -27,14 +30,24 @@ export async function optimizeFiles(paths: string[], options: OptiqOptions, batc
   const n = Math.max(1, Math.min(paths.length, batch.concurrency ?? Math.max(1, availableParallelism() - 1)));
   const results: BatchItemResult[] = new Array(paths.length);
   if (!paths.length) return results;
+  batch.signal?.throwIfAborted();
   let next = 0;
   let done = 0;
   await new Promise<void>((resolve, reject) => {
     const workers: Worker[] = [];
-    const finish = () => {
+    const stop = () => {
       for (const w of workers) void w.terminate();
+      batch.signal?.removeEventListener("abort", onAbort);
+    };
+    const finish = () => {
+      stop();
       resolve();
     };
+    const onAbort = () => {
+      stop();
+      reject(new OptiqError("ABORTED", "Batch aborted"));
+    };
+    batch.signal?.addEventListener("abort", onAbort, { once: true });
     const feed = (w: Worker) => {
       if (next >= paths.length) return;
       const id = next++;
@@ -49,12 +62,12 @@ export async function optimizeFiles(paths: string[], options: OptiqOptions, batc
           : { path: paths[m.id], error: deserializeError(m.error) };
         results[m.id] = r;
         done++;
-        batch.onResult?.(r, done, paths.length);
+        batch.onResult?.(r, done, paths.length, m.id);
         if (done === paths.length) finish();
         else feed(w);
       });
       w.on("error", (e) => {
-        for (const x of workers) void x.terminate();
+        stop();
         reject(e);
       });
       feed(w);

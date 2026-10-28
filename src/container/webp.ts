@@ -38,7 +38,12 @@ export interface WebpInfo {
   exif?: Uint8Array;
   xmp?: Uint8Array;
   icc?: Uint8Array;
+  /** Carries the Optiq marker chunk (a lossy Optiq output). */
+  optiqMarked: boolean;
 }
+
+/** Unknown-to-decoders chunk marking a lossy Optiq output; the WebP container spec says readers ignore such chunks. */
+export const OPTIQ_CHUNK = "OPTQ";
 
 function vp8Dims(d: Uint8Array): { width: number; height: number } {
   if (d.length < 10 || d[3] !== 0x9d || d[4] !== 0x01 || d[5] !== 0x2a) throw new Error("Invalid VP8 frame header");
@@ -71,12 +76,13 @@ export function probeWebp(b: Uint8Array): WebpInfo {
       exif: find("EXIF"),
       xmp: find("XMP "),
       icc: find("ICCP"),
+      optiqMarked: !!find(OPTIQ_CHUNK),
     };
   }
-  if (first.fourcc === "VP8 ") return { ...vp8Dims(first.data), hasAlpha: false, animated: false, lossless: false };
+  if (first.fourcc === "VP8 ") return { ...vp8Dims(first.data), hasAlpha: false, animated: false, lossless: false, optiqMarked: false };
   if (first.fourcc === "VP8L") {
     const { width, height, alpha } = vp8lDims(first.data);
-    return { width, height, hasAlpha: alpha, animated: false, lossless: true };
+    return { width, height, hasAlpha: alpha, animated: false, lossless: true, optiqMarked: false };
   }
   throw new Error(`Unexpected WebP chunk ${first.fourcc}`);
 }
@@ -122,9 +128,10 @@ export function rewriteWebpMetadata(b: Uint8Array, meta: WebpMetadata, keepIcc: 
   // Chunk order per spec: VP8X, ICCP, ANIM/ANMF or ALPH+bitstream, EXIF, XMP.
   const out: Uint8Array[] = [chunk("VP8X", vp8x)];
   if (icc) out.push(chunk("ICCP", icc));
-  for (const c of imageChunks) out.push(b.subarray(c.start, c.end));
+  for (const c of imageChunks) if (c.fourcc !== OPTIQ_CHUNK) out.push(b.subarray(c.start, c.end));
   if (meta.exif) out.push(chunk("EXIF", meta.exif));
   if (meta.xmp) out.push(chunk("XMP ", meta.xmp));
+  if (info.optiqMarked) out.push(chunk(OPTIQ_CHUNK, asciiBytes("optiq-image")));
   return riff(out);
 }
 
@@ -160,4 +167,14 @@ export function extractFirstWebpFrame(b: Uint8Array): { still: Uint8Array; x: nu
     parts.unshift(chunk("VP8X", vp8x), d.subarray(alph.start, alph.end));
   }
   return { still: riff(parts), x, y, canvasWidth: info.width, canvasHeight: info.height };
+}
+
+/** Append the Optiq marker chunk (at the end, where the spec allows unknown chunks). Needs the extended format. */
+export function markWebp(b: Uint8Array): Uint8Array {
+  const info = probeWebp(b);
+  const chunks = parseWebpChunks(b);
+  const marker = chunk(OPTIQ_CHUNK, asciiBytes("optiq-image"));
+  if (chunks[0].fourcc === "VP8X") return riff([...chunks.map((c) => b.subarray(c.start, c.end)), marker]);
+  const vp8x = concat([new Uint8Array([info.hasAlpha ? 0x10 : 0, 0, 0, 0]), le24(info.width - 1), le24(info.height - 1)]);
+  return riff([chunk("VP8X", vp8x), ...chunks.map((c) => b.subarray(c.start, c.end)), marker]);
 }

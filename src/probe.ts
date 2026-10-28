@@ -24,6 +24,8 @@ export interface ProbeInfo {
   xmp?: Uint8Array;
   icc?: Uint8Array;
   iccInfo?: IccInfo;
+  /** A lossy Optiq output (JPEG COM / WebP chunk marker): re-encoding it again would compound the loss. */
+  optiqMarked?: boolean;
   /** Set when pixels cannot be faithfully decoded and re-encoded; only container-level operations are allowed. */
   reencodeBlocker?: string;
   warnings: string[];
@@ -58,7 +60,7 @@ export async function probe(b: Uint8Array): Promise<ProbeInfo> {
     switch (format) {
       case "jpeg": {
         const j = probeJpeg(b);
-        info = { ...base, width: j.width, height: j.height, bitDepth: j.precision, exif: j.exif, xmp: j.xmp, icc: j.icc, orientation: readOrientation(j.exif) };
+        info = { ...base, width: j.width, height: j.height, bitDepth: j.precision, exif: j.exif, xmp: j.xmp, icc: j.icc, orientation: readOrientation(j.exif), optiqMarked: j.optiqMarked };
         if (j.components === 4) info.reencodeBlocker = "CMYK/YCCK JPEG cannot be converted to RGB faithfully in the browser";
         else if (j.precision !== 8) info.reencodeBlocker = `${j.precision}-bit JPEG is not supported by the decoder`;
         break;
@@ -81,7 +83,7 @@ export async function probe(b: Uint8Array): Promise<ProbeInfo> {
       }
       case "webp": {
         const w = probeWebp(b);
-        info = { ...base, width: w.width, height: w.height, hasAlpha: w.hasAlpha, animated: w.animated, exif: w.exif, xmp: w.xmp, icc: w.icc, orientation: readOrientation(w.exif) };
+        info = { ...base, width: w.width, height: w.height, hasAlpha: w.hasAlpha, animated: w.animated, exif: w.exif, xmp: w.xmp, icc: w.icc, orientation: readOrientation(w.exif), optiqMarked: w.optiqMarked };
         break;
       }
       case "gif": {

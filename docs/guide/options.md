@@ -17,6 +17,8 @@
 | `preserveMetadata` | `true` | Keep EXIF/XMP/ICC; `false` removes EXIF (incl. GPS) and XMP |
 | `preserveAnimation` | `true` | `false` permits flattening animations to the first frame |
 | `minSavingsRatio` | `0.02` | Return the original unless re-encoding saves at least this share |
+| `markOutput` | `false` | Tag lossy JPEG/WebP outputs (~20 bytes) so later runs do not re-encode them. The CLI and MCP server turn it on |
+| `reoptimize` | `false` | Re-encode inputs that carry that tag anyway (each lossy pass loses a little more) |
 | `maxInputBytes` | 100 MiB | Checked before the file is read |
 | `maxInputPixels` | 50 MP | Checked from the header before decoding |
 | `onUnmetConstraints` | `"best-effort"` | `throw` rejects with `CONSTRAINTS_UNSATISFIABLE` |

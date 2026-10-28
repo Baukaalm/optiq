@@ -21,6 +21,9 @@ const EXIF_ID = asciiBytes("Exif\0\0");
 const XMP_ID = asciiBytes("http://ns.adobe.com/xap/1.0/\0");
 const ICC_ID = asciiBytes("ICC_PROFILE\0");
 const ICC_CHUNK_MAX = 65535 - 2 - ICC_ID.length - 2;
+/** COM payload marking a lossy Optiq output, so later runs do not re-encode it (generation loss). */
+export const OPTIQ_MARKER = "optiq-image";
+const isOptiqMarker = (marker: number, data: Uint8Array) => marker === 0xfe && startsWith(data, OPTIQ_MARKER);
 
 function isStandalone(m: number): boolean {
   return m === 0x01 || (m >= 0xd0 && m <= 0xd8);
@@ -74,6 +77,8 @@ export interface JpegInfo {
   hasTrailingData: boolean;
   /** Bytes in APPn/COM segments other than ICC, plus trailing data. */
   strippableBytes: number;
+  /** Carries the Optiq COM marker (a lossy Optiq output). */
+  optiqMarked: boolean;
 }
 
 export function probeJpeg(b: Uint8Array): JpegInfo {
@@ -82,6 +87,7 @@ export function probeJpeg(b: Uint8Array): JpegInfo {
   let exif: Uint8Array | undefined;
   let xmp: Uint8Array | undefined;
   let adobeTransform: number | undefined;
+  let optiqMarked = false;
   const iccChunks: { seq: number; data: Uint8Array }[] = [];
   let strippable = b.length - eoiEnd;
   for (const s of segments) {
@@ -98,6 +104,8 @@ export function probeJpeg(b: Uint8Array): JpegInfo {
       iccChunks.push({ seq: data[ICC_ID.length], data: data.subarray(ICC_ID.length + 2) });
     } else if (s.marker === 0xee && startsWith(data, "Adobe") && data.length >= 12) {
       adobeTransform = data[11];
+    } else if (isOptiqMarker(s.marker, data)) {
+      optiqMarked = true;
     } else if ((s.marker >= 0xe0 && s.marker <= 0xef) || s.marker === 0xfe) {
       strippable += s.end - s.start;
     }
@@ -118,6 +126,7 @@ export function probeJpeg(b: Uint8Array): JpegInfo {
     icc: iccChunks.length ? concat(iccChunks.map((c) => c.data)) : undefined,
     hasTrailingData: eoiEnd < b.length,
     strippableBytes: strippable,
+    optiqMarked,
   };
 }
 
@@ -175,6 +184,10 @@ export function rewriteJpegMetadata(b: Uint8Array, meta: JpegMetadata, keepIcc: 
       parts.push(b.subarray(s.start, s.end)); // Adobe: affects colour transform, never strip
       continue;
     }
+    if (isOptiqMarker(s.marker, data)) {
+      parts.push(b.subarray(s.start, s.end)); // keeps protecting the file from repeated lossy re-encoding
+      continue;
+    }
     if (isApp || s.marker === 0xfe) continue;
     insert();
     parts.push(b.subarray(s.start, s.end));
@@ -191,4 +204,11 @@ export function injectJpegMetadata(encoded: Uint8Array, meta: JpegMetadata): Uin
   let at = 2;
   if (encoded[2] === 0xff && encoded[3] === 0xe0) at = 4 + u16be(encoded, 4);
   return concat([encoded.subarray(0, at), ...segs, encoded.subarray(at)]);
+}
+
+/** Add the Optiq COM marker after SOI/JFIF. Pixels are unchanged. */
+export function markJpeg(b: Uint8Array): Uint8Array {
+  let at = 2;
+  if (b[2] === 0xff && b[3] === 0xe0) at = 4 + u16be(b, 4);
+  return concat([b.subarray(0, at), segment(0xfe, asciiBytes(OPTIQ_MARKER)), b.subarray(at)]);
 }

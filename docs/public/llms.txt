@@ -1,0 +1,50 @@
+# Optiq
+
+> Optiq (npm package `optiq-image`) optimises images with verified quality. For every image it encodes a bounded set
+> of candidates with WASM codecs (MozJPEG, libwebp, libavif, oxipng), measures each against the input, and returns
+> the smallest output that meets the constraint: pixel-exact (`lossless`), SSIM >= 0.99 (`visually-lossless`),
+> SSIM >= 0.975 (`balanced`, default) or `fast` (balanced threshold, no AVIF, <= 5 encodes). Runs in the browser
+> (Web Worker) and in Node. Apache-2.0. Nothing is uploaded anywhere.
+
+Key facts:
+- Inputs: JPEG, PNG, WebP, AVIF, GIF (static; animated kept as is). SVG is passed through unchanged. HEIC/HEIF is
+  rejected with `UNSUPPORTED_FORMAT`.
+- Formats are detected from content, not extensions. Transparency, EXIF orientation and ICC profiles are kept;
+  JPEG is never chosen for images with alpha.
+- Metadata (EXIF, XMP) is kept by default; `preserveMetadata: false` / `--strip-metadata` removes it, including GPS.
+- SSIM is a proxy for perception, not a guarantee of invisible change.
+- Typical cost: 0.3-3 s per image (several encodes each); large screenshots in visually-lossless can take tens of
+  seconds. Much slower than a single canvas encode.
+- Lossy outputs written by the CLI/MCP server carry a ~20-byte marker; marked files are not re-encoded again
+  (repeated lossy passes compound loss). `--reoptimize` overrides.
+
+## For agents
+
+- MCP server: `npx -y optiq-mcp` (stdio). Tools: `analyze_images` (read-only dry run) and `optimize_images`
+  (`write: "in-place"` keeps formats and names; `write: "out-dir"` may change formats). Claude Code:
+  `claude mcp add optiq -- npx -y optiq-mcp`.
+- CLI: `npx -y optiq-image <files|folders> --json` is a dry run; add `--in-place` (keeps format, atomic, only if
+  smaller) or `--out <dir>`. Options: `--mode`, `--formats webp,jpeg`, `--max-size <px>`, `--strip-metadata`,
+  `--min-quality <ssim>`, `--min-saving <ratio>`, `--reoptimize`, `--concurrency <n>`. Exit 0 ok, 1 usage error,
+  2 some files failed (others processed).
+- Agent Skill: https://github.com/Baukaalm/optiq/blob/main/skills/optiq/SKILL.md
+
+## Docs
+
+- [Getting started](https://baukaalm.github.io/optiq/guide/getting-started): browser usage, `compressImage(file, options)`
+- [Modes and quality](https://baukaalm.github.io/optiq/guide/modes)
+- [Options and results](https://baukaalm.github.io/optiq/guide/options)
+- [Formats, metadata, colour](https://baukaalm.github.io/optiq/guide/formats)
+- [Errors](https://baukaalm.github.io/optiq/guide/errors): `OptiqError` codes
+- [Bundlers](https://baukaalm.github.io/optiq/guide/bundlers): Vite, webpack, workers and WASM
+- [Uploading to S3](https://baukaalm.github.io/optiq/guide/s3): `compressAndUpload` with presigned URLs
+- [React hook](https://baukaalm.github.io/optiq/guide/react): `useOptiq` from `optiq-image/react`
+- [CLI and Vite plugin](https://baukaalm.github.io/optiq/guide/static)
+- [AI agents](https://baukaalm.github.io/optiq/guide/agents): MCP server, skill
+- [Benchmarks](https://baukaalm.github.io/optiq/benchmarks): 24-image corpus, balanced -61% total, all >= SSIM 0.975
+
+## Optional
+
+- [Architecture](https://baukaalm.github.io/optiq/architecture)
+- [Audit](https://baukaalm.github.io/optiq/audit)
+- [Source](https://github.com/Baukaalm/optiq)
