@@ -1,0 +1,53 @@
+name: Publish optiq-mcp to the MCP Registry
+
+# Called by release-mcp.yml after the npm publish; can also be run by hand (Actions → Run workflow) to retry.
+# Publishes mcp/server.json to registry.modelcontextprotocol.io; namespace io.github.<owner> via GitHub OIDC.
+on:
+  workflow_call:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  registry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      MCP_PUBLISHER_VERSION: v1.8.1
+    steps:
+      - uses: actions/checkout@v7
+      # The registry checks mcpName in the npm package. npm can take several minutes to serve a new version.
+      - name: Wait until npm serves this version
+        run: |
+          v=$(node -p "require('./mcp/package.json').version")
+          url="https://registry.npmjs.org/optiq-mcp/-/optiq-mcp-$v.tgz"
+          for i in $(seq 1 40); do
+            [ "$(curl -s -o /dev/null -w '%{http_code}' "$url")" = "200" ] && { echo "npm serves optiq-mcp@$v"; exit 0; }
+            echo "waiting for npm ($i)"; sleep 30
+          done
+          echo "optiq-mcp@$v is not available on npm"; exit 1
+      - uses: sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6 # v4.1.2
+      - name: Download and verify mcp-publisher
+        run: |
+          set -euo pipefail
+          os="$(uname -s | tr '[:upper:]' '[:lower:]')"
+          arch="$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/')"
+          archive="mcp-publisher_${os}_${arch}.tar.gz"
+          base_url="https://github.com/modelcontextprotocol/registry/releases/download/${MCP_PUBLISHER_VERSION}"
+          curl --fail --location --silent --show-error --output "$archive" "$base_url/$archive"
+          curl --fail --location --silent --show-error --output "$archive.sigstore.json" "$base_url/$archive.sigstore.json"
+          cosign verify-blob \
+            --bundle "$archive.sigstore.json" \
+            --certificate-identity "https://github.com/modelcontextprotocol/registry/.github/workflows/release.yml@refs/tags/${MCP_PUBLISHER_VERSION}" \
+            --certificate-oidc-issuer "https://token.actions.githubusercontent.com" \
+            "$archive"
+          tar xzf "$archive" mcp-publisher
+          rm -f "$archive" "$archive.sigstore.json"
+      - name: Publish
+        run: |
+          ./mcp-publisher login github-oidc
+          cd mcp
+          for i in 1 2 3; do ../mcp-publisher publish && exit 0; echo "retry $i"; sleep 60; done
+          exit 1
