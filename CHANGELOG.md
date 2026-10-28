@@ -1,13 +1,13 @@
 # Changelog
 
-## Unreleased
+## 0.3.0-beta.0 (2026-10-28)
 
 - `fast` mode starts each codec's quality search from a prediction (ridge regression on cheap image features,
   fitted on a 317-image corpus in `bench/predictor/`). Benchmark: −8.0% bytes and −18% time vs the fixed start;
   quality still verified for every output. Not enabled for `balanced`, where it traded size for speed.
 - Demo: settings apply to all loaded images immediately; compare and candidates sections expanded by default.
 
-## 0.2.0-beta.0 (unreleased)
+## 0.2.0-beta.0 (2026-10-27)
 
 - `mode: "fast"`: SSIM ≥ 0.975 like `balanced`, no AVIF, no oxipng, ≤ 5 encodes. Benchmark: −54.9% total
   (balanced −61.2%), median 405 ms in Chromium (balanced 1.3 s), median peak RSS 184 MB (balanced 304 MB).
@@ -16,7 +16,7 @@
 - `optiq-image/react`: `useOptiq(file, options)` hook.
 - `optimizeFiles()` batch API for Node (worker_threads pool).
 
-## 0.1.0-beta.0 (unreleased)
+## 0.1.0-beta.0 (2026-10-27)
 
 Audit fixes (see docs/audit.md):
 
