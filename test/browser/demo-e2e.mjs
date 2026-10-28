@@ -71,7 +71,10 @@ try {
     if (scheme === "light") {
       // Open the comparison for the photo, then upload it.
       const photo = page.locator('[data-testid="job"]', { hasText: "parrots" });
-      await photo.getByRole("button", { name: /Compare before/ }).click();
+      // Both sections are expanded by default: the slider and the candidates table are visible without a click.
+      await photo.getByLabel("Comparison position").waitFor({ state: "visible" });
+      await photo.getByRole("grid", { name: "Candidates tried" }).or(photo.getByRole("table", { name: "Candidates tried" })).first().waitFor({ state: "visible" });
+      console.log("compare + candidates expanded by default");
       await photo.locator('[data-testid="upload"]').click();
       await photo.locator('[data-testid="uploaded"]').waitFor({ timeout: 60_000 });
       const href = await photo.locator('[data-testid="uploaded-link"]').getAttribute("href");

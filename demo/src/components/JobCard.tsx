@@ -133,11 +133,11 @@ export function JobCard({ job, onCancel, onRemove, onRetry, onUpload }: { job: J
               </ul>
             )}
             {job.outputUrl && !r.usedOriginal && r.outputFormat !== "svg" && (
-              <Section title="Compare before / after" testId="compare" open={job.sample}>
+              <Section title="Compare before / after" testId="compare" open>
                 <CompareSlider before={job.originalUrl} after={job.outputUrl} label={job.file.name} />
               </Section>
             )}
-            <Section title={`Candidates tried (${r.candidates.length})`}>
+            <Section title={`Candidates tried (${r.candidates.length})`} testId="candidates" open>
               <CandidatesTable candidates={r.candidates} chosen={chosen} />
             </Section>
           </>
