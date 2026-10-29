@@ -17,7 +17,12 @@ output that satisfies your constraint:
 - `visually-lossless` — pixels may differ; SSIM ≥ 0.99 against the input (configurable);
 - `balanced` (default) — SSIM ≥ 0.975, smaller search budget, faster AVIF preset.
 
-Work runs in a Web Worker; the main thread only posts a `Blob` and receives an `ArrayBuffer`. Results carry the
+The same engine also runs in Node and powers:
+- a CLI (`npx optiq-image`);
+- a Vite plugin;
+- an MCP server for AI agents ([`optiq-mcp`](#mcp-server-optiq-mcp), source in `mcp/`).
+
+In the browser, work runs in a Web Worker; the main thread only posts a `Blob` and receives an `ArrayBuffer`. Results carry the
 chosen codec/settings, every candidate tried, the measured quality, warnings, fallbacks and unmet constraints.
 
 > Benchmarks: see [Benchmark results](#benchmark-results) and `bench/results/RESULTS.md`. Optiq is not
@@ -133,14 +138,35 @@ import { optiq } from "optiq-image/vite";               // optimises build outpu
 export default defineConfig({ plugins: [optiq()] });
 ```
 
-## AI agents
+## MCP server (`optiq-mcp`)
+
+This repository contains an MCP server, published on npm as
+[`optiq-mcp`](https://www.npmjs.com/package/optiq-mcp) and in the official MCP Registry as
+`io.github.Baukaalm/optiq-mcp`. Its source is in [`mcp/`](https://github.com/Baukaalm/optiq/tree/main/mcp):
+- [`mcp/src/index.ts`](https://github.com/Baukaalm/optiq/blob/main/mcp/src/index.ts) is the implementation;
+- [`mcp/test/`](https://github.com/Baukaalm/optiq/tree/main/mcp/test) holds end-to-end tests that run it with the
+  official MCP client;
+- [`mcp/server.json`](https://github.com/Baukaalm/optiq/blob/main/mcp/server.json) is the registry entry.
+
+It is a local stdio server built on the TypeScript MCP SDK, and it gives AI agents two tools for the images in a
+project:
+
+| Tool | Writes | What it does |
+|---|---|---|
+| `analyze_images` | no (`readOnlyHint`) | Dry run. Per image it reports the format Optiq would choose, the bytes before and after, and the measured quality |
+| `optimize_images` | yes (`idempotentHint`) | `write: "in-place"` keeps formats and names. `write: "out-dir"` writes to a folder and may change formats |
 
 ```sh
-claude mcp add optiq -- npx -y optiq-mcp     # MCP server: analyze_images (read-only) + optimize_images
+claude mcp add optiq -- npx -y optiq-mcp                                    # Claude Code
+```
+```json
+{ "mcpServers": { "optiq": { "command": "npx", "args": ["-y", "optiq-mcp"] } } }
 ```
 
-The MCP server works with Claude Code, Claude Desktop, Cursor, VS Code and any other MCP client. There is also an
-[Agent Skill](https://github.com/Baukaalm/optiq/blob/main/skills/optiq/SKILL.md) for agents that drive the CLI, and
+The JSON config works for Claude Desktop, Cursor and other MCP clients.
+
+For agents that drive the CLI instead, there is an
+[Agent Skill](https://github.com/Baukaalm/optiq/blob/main/skills/optiq/SKILL.md). The documentation site also has an
 [llms.txt](https://baukaalm.github.io/optiq/llms.txt). See the [agents guide](https://baukaalm.github.io/optiq/guide/agents).
 
 ## Uploading to S3
