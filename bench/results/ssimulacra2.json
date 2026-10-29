@@ -1,0 +1,4041 @@
+{
+  "date": "2026-10-29T07:04:14.127Z",
+  "tool": "ssimulacra2 (libjxl, jpeg-xl 0.12.0_1)",
+  "rows": [
+    {
+      "env": "browser",
+      "image": "gradient-linear.png",
+      "category": "gradient",
+      "tool": "bic-maxsize-1mb",
+      "bytes": 425438,
+      "reduction": 0.46296710052120615,
+      "s2": 96.00128304
+    },
+    {
+      "env": "browser",
+      "image": "gradient-radial.png",
+      "category": "gradient",
+      "tool": "bic-maxsize-1mb",
+      "bytes": 770935,
+      "reduction": 0.016416135707742474,
+      "s2": 92.06298235
+    },
+    {
+      "env": "browser",
+      "image": "gradient-sky.png",
+      "category": "gradient",
+      "tool": "bic-maxsize-1mb",
+      "bytes": 27780,
+      "reduction": 0.12091389512990092,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "large-picsum1015.jpg",
+      "category": "photo-large",
+      "tool": "bic-maxsize-1mb",
+      "bytes": 914605,
+      "reduction": 0.5998847695434617,
+      "s2": null,
+      "note": "resized to 3118x2337, not scored"
+    },
+    {
+      "env": "browser",
+      "image": "large-picsum1043.jpg",
+      "category": "photo-large",
+      "tool": "bic-maxsize-1mb",
+      "bytes": 855267,
+      "reduction": 0.7403468005229088,
+      "s2": null,
+      "note": "resized to 2813x2109, not scored"
+    },
+    {
+      "env": "browser",
+      "image": "large-picsum1050.jpg",
+      "category": "photo-large",
+      "tool": "bic-maxsize-1mb",
+      "bytes": 1034853,
+      "reduction": 0.4818125417175122,
+      "s2": null,
+      "note": "resized to 3283x2461, not scored"
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim01.jpg",
+      "category": "photo",
+      "tool": "bic-maxsize-1mb",
+      "bytes": 161883,
+      "reduction": 0.03503218884120174,
+      "s2": 91.24432895
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim03.jpg",
+      "category": "photo",
+      "tool": "bic-maxsize-1mb",
+      "bytes": 84173,
+      "reduction": 0.03214938656302824,
+      "s2": 91.38847464
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim05.jpg",
+      "category": "photo",
+      "tool": "bic-maxsize-1mb",
+      "bytes": 167535,
+      "reduction": 0.03499778239858076,
+      "s2": 90.81748722
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim07.jpg",
+      "category": "photo",
+      "tool": "bic-maxsize-1mb",
+      "bytes": 96358,
+      "reduction": 0.03001811958928935,
+      "s2": 91.454371
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim08.png",
+      "category": "photo",
+      "tool": "bic-maxsize-1mb",
+      "bytes": 682890,
+      "reduction": 0.31335266578718746,
+      "s2": 93.30553233
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim13.jpg",
+      "category": "photo",
+      "tool": "bic-maxsize-1mb",
+      "bytes": 193401,
+      "reduction": 0.03967883530626837,
+      "s2": 90.4705818
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim15.jpg",
+      "category": "photo",
+      "tool": "bic-maxsize-1mb",
+      "bytes": 99200,
+      "reduction": 0.035844802114921026,
+      "s2": 89.00788877
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim19.png",
+      "category": "photo",
+      "tool": "bic-maxsize-1mb",
+      "bytes": 602741,
+      "reduction": 0.2452897992710098,
+      "s2": 93.24515757
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim20.jpg",
+      "category": "photo",
+      "tool": "bic-maxsize-1mb",
+      "bytes": 83674,
+      "reduction": 0.03252511938210367,
+      "s2": 89.73840871
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim23.jpg",
+      "category": "photo",
+      "tool": "bic-maxsize-1mb",
+      "bytes": 82458,
+      "reduction": 0.028614511055874314,
+      "s2": 91.45221208
+    },
+    {
+      "env": "browser",
+      "image": "screenshot-code.png",
+      "category": "screenshot",
+      "tool": "bic-maxsize-1mb",
+      "bytes": 143773,
+      "reduction": 0.24218321737297066,
+      "s2": 97.86809196
+    },
+    {
+      "env": "browser",
+      "image": "screenshot-dashboard.png",
+      "category": "screenshot",
+      "tool": "bic-maxsize-1mb",
+      "bytes": 231623,
+      "reduction": 0.07574469783124838,
+      "s2": 91.75313836
+    },
+    {
+      "env": "browser",
+      "image": "text-docs.png",
+      "category": "text-graphic",
+      "tool": "bic-maxsize-1mb",
+      "bytes": 117407,
+      "reduction": 0.6557847580961986,
+      "s2": 93.59986448
+    },
+    {
+      "env": "browser",
+      "image": "text-slide.png",
+      "category": "text-graphic",
+      "tool": "bic-maxsize-1mb",
+      "bytes": 23681,
+      "reduction": 0.5693502336831002,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "transparent-icon.png",
+      "category": "transparent-illustration",
+      "tool": "bic-maxsize-1mb",
+      "bytes": 6095,
+      "reduction": 0.39790575916230364,
+      "s2": 96.27624939
+    },
+    {
+      "env": "browser",
+      "image": "transparent-illustration-1.png",
+      "category": "transparent-illustration",
+      "tool": "bic-maxsize-1mb",
+      "bytes": 99735,
+      "reduction": 0.22526896337437374,
+      "s2": 93.6939172
+    },
+    {
+      "env": "browser",
+      "image": "transparent-illustration-2.png",
+      "category": "transparent-illustration",
+      "tool": "bic-maxsize-1mb",
+      "bytes": 117019,
+      "reduction": 0.23774069152401056,
+      "s2": 92.36839903
+    },
+    {
+      "env": "browser",
+      "image": "transparent-illustration-3.png",
+      "category": "transparent-illustration",
+      "tool": "bic-maxsize-1mb",
+      "bytes": 117051,
+      "reduction": 0.18542050871637838,
+      "s2": 93.17052723
+    },
+    {
+      "env": "browser",
+      "image": "gradient-linear.png",
+      "category": "gradient",
+      "tool": "bic-quality-0.8",
+      "bytes": 425438,
+      "reduction": 0.46296710052120615,
+      "s2": 96.00128304
+    },
+    {
+      "env": "browser",
+      "image": "gradient-radial.png",
+      "category": "gradient",
+      "tool": "bic-quality-0.8",
+      "bytes": 750416,
+      "reduction": 0.04259494106930062,
+      "s2": 92.12557999
+    },
+    {
+      "env": "browser",
+      "image": "gradient-sky.png",
+      "category": "gradient",
+      "tool": "bic-quality-0.8",
+      "bytes": 27780,
+      "reduction": 0.12091389512990092,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "large-picsum1015.jpg",
+      "category": "photo-large",
+      "tool": "bic-quality-0.8",
+      "bytes": 1898949,
+      "reduction": 0.16926059144634786,
+      "s2": 85.17464177
+    },
+    {
+      "env": "browser",
+      "image": "large-picsum1043.jpg",
+      "category": "photo-large",
+      "tool": "bic-quality-0.8",
+      "bytes": 2761314,
+      "reduction": 0.16168399475148165,
+      "s2": 87.26916946
+    },
+    {
+      "env": "browser",
+      "image": "large-picsum1050.jpg",
+      "category": "photo-large",
+      "tool": "bic-quality-0.8",
+      "bytes": 1668231,
+      "reduction": 0.16465779997926955,
+      "s2": 84.95197953
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim01.jpg",
+      "category": "photo",
+      "tool": "bic-quality-0.8",
+      "bytes": 100249,
+      "reduction": 0.40242608488316645,
+      "s2": 76.59425426
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim03.jpg",
+      "category": "photo",
+      "tool": "bic-quality-0.8",
+      "bytes": 50906,
+      "reduction": 0.4146649955731353,
+      "s2": 77.74913648
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim05.jpg",
+      "category": "photo",
+      "tool": "bic-quality-0.8",
+      "bytes": 109512,
+      "reduction": 0.3692104762947048,
+      "s2": 78.78286431
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim07.jpg",
+      "category": "photo",
+      "tool": "bic-quality-0.8",
+      "bytes": 60362,
+      "reduction": 0.39236963962150195,
+      "s2": 79.91168139
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim08.png",
+      "category": "photo",
+      "tool": "bic-quality-0.8",
+      "bytes": 655000,
+      "reduction": 0.3413961195662666,
+      "s2": 92.6866682
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim13.jpg",
+      "category": "photo",
+      "tool": "bic-quality-0.8",
+      "bytes": 123703,
+      "reduction": 0.385760109636927,
+      "s2": 75.81834723
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim15.jpg",
+      "category": "photo",
+      "tool": "bic-quality-0.8",
+      "bytes": 57683,
+      "reduction": 0.4393612471814011,
+      "s2": 73.69463181
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim19.png",
+      "category": "photo",
+      "tool": "bic-quality-0.8",
+      "bytes": 581960,
+      "reduction": 0.2713103166762455,
+      "s2": 92.80398645
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim20.jpg",
+      "category": "photo",
+      "tool": "bic-quality-0.8",
+      "bytes": 49624,
+      "reduction": 0.42622590678367844,
+      "s2": 77.74116167
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim23.jpg",
+      "category": "photo",
+      "tool": "bic-quality-0.8",
+      "bytes": 47346,
+      "reduction": 0.44224675156384374,
+      "s2": 80.02911077
+    },
+    {
+      "env": "browser",
+      "image": "screenshot-code.png",
+      "category": "screenshot",
+      "tool": "bic-quality-0.8",
+      "bytes": 143763,
+      "reduction": 0.24223592662871596,
+      "s2": 97.85707022
+    },
+    {
+      "env": "browser",
+      "image": "screenshot-dashboard.png",
+      "category": "screenshot",
+      "tool": "bic-quality-0.8",
+      "bytes": 231608,
+      "reduction": 0.07580455298178412,
+      "s2": 91.5838427
+    },
+    {
+      "env": "browser",
+      "image": "text-docs.png",
+      "category": "text-graphic",
+      "tool": "bic-quality-0.8",
+      "bytes": 117402,
+      "reduction": 0.6557994171557906,
+      "s2": 93.59986448
+    },
+    {
+      "env": "browser",
+      "image": "text-slide.png",
+      "category": "text-graphic",
+      "tool": "bic-quality-0.8",
+      "bytes": 23681,
+      "reduction": 0.5693502336831002,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "transparent-icon.png",
+      "category": "transparent-illustration",
+      "tool": "bic-quality-0.8",
+      "bytes": 6095,
+      "reduction": 0.39790575916230364,
+      "s2": 96.27624939
+    },
+    {
+      "env": "browser",
+      "image": "transparent-illustration-1.png",
+      "category": "transparent-illustration",
+      "tool": "bic-quality-0.8",
+      "bytes": 96692,
+      "reduction": 0.2489066687381054,
+      "s2": 93.58597889
+    },
+    {
+      "env": "browser",
+      "image": "transparent-illustration-2.png",
+      "category": "transparent-illustration",
+      "tool": "bic-quality-0.8",
+      "bytes": 113683,
+      "reduction": 0.25947132546444673,
+      "s2": 92.3788104
+    },
+    {
+      "env": "browser",
+      "image": "transparent-illustration-3.png",
+      "category": "transparent-illustration",
+      "tool": "bic-quality-0.8",
+      "bytes": 112819,
+      "reduction": 0.2148717770277323,
+      "s2": 92.91735584
+    },
+    {
+      "env": "browser",
+      "image": "gradient-linear.png",
+      "category": "gradient",
+      "tool": "bic-webp-0.8",
+      "bytes": 12380,
+      "reduction": 0.9843726528999585,
+      "s2": 79.41558694
+    },
+    {
+      "env": "browser",
+      "image": "gradient-radial.png",
+      "category": "gradient",
+      "tool": "bic-webp-0.8",
+      "bytes": 13628,
+      "reduction": 0.9826129558230268,
+      "s2": 79.64424786
+    },
+    {
+      "env": "browser",
+      "image": "gradient-sky.png",
+      "category": "gradient",
+      "tool": "bic-webp-0.8",
+      "bytes": 8896,
+      "reduction": 0.7184899212050251,
+      "s2": 79.53733957
+    },
+    {
+      "env": "browser",
+      "image": "large-picsum1015.jpg",
+      "category": "photo-large",
+      "tool": "bic-webp-0.8",
+      "bytes": 1492218,
+      "reduction": 0.3471945277344922,
+      "s2": 70.80120323
+    },
+    {
+      "env": "browser",
+      "image": "large-picsum1043.jpg",
+      "category": "photo-large",
+      "tool": "bic-webp-0.8",
+      "bytes": 2475888,
+      "reduction": 0.24833737213415663,
+      "s2": 77.54921305
+    },
+    {
+      "env": "browser",
+      "image": "large-picsum1050.jpg",
+      "category": "photo-large",
+      "tool": "bic-webp-0.8",
+      "bytes": 1273684,
+      "reduction": 0.36222142215843967,
+      "s2": 70.50611465
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim01.jpg",
+      "category": "photo",
+      "tool": "bic-webp-0.8",
+      "bytes": 95310,
+      "reduction": 0.43186695278969955,
+      "s2": 77.82840669
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim03.jpg",
+      "category": "photo",
+      "tool": "bic-webp-0.8",
+      "bytes": 33034,
+      "reduction": 0.620163506536812,
+      "s2": 71.75469181
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim05.jpg",
+      "category": "photo",
+      "tool": "bic-webp-0.8",
+      "bytes": 97434,
+      "reduction": 0.43877980081907253,
+      "s2": 78.9302889
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim07.jpg",
+      "category": "photo",
+      "tool": "bic-webp-0.8",
+      "bytes": 40760,
+      "reduction": 0.5896919669820817,
+      "s2": 77.00464723
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim08.png",
+      "category": "photo",
+      "tool": "bic-webp-0.8",
+      "bytes": 99204,
+      "reduction": 0.900250168924354,
+      "s2": 78.02793561
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim13.jpg",
+      "category": "photo",
+      "tool": "bic-webp-0.8",
+      "bytes": 128256,
+      "reduction": 0.36315245888615233,
+      "s2": 78.88102517
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim15.jpg",
+      "category": "photo",
+      "tool": "bic-webp-0.8",
+      "bytes": 43088,
+      "reduction": 0.5812145245315294,
+      "s2": 70.10601637
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim19.png",
+      "category": "photo",
+      "tool": "bic-webp-0.8",
+      "bytes": 57706,
+      "reduction": 0.9277445754589996,
+      "s2": 72.74930795
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim20.jpg",
+      "category": "photo",
+      "tool": "bic-webp-0.8",
+      "bytes": 37106,
+      "reduction": 0.570964422398742,
+      "s2": 75.02164148
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim23.jpg",
+      "category": "photo",
+      "tool": "bic-webp-0.8",
+      "bytes": 30576,
+      "reduction": 0.6398035034810984,
+      "s2": 72.77740377
+    },
+    {
+      "env": "browser",
+      "image": "screenshot-code.png",
+      "category": "screenshot",
+      "tool": "bic-webp-0.8",
+      "bytes": 74006,
+      "reduction": 0.6099198819312671,
+      "s2": 65.81526765
+    },
+    {
+      "env": "browser",
+      "image": "screenshot-dashboard.png",
+      "category": "screenshot",
+      "tool": "bic-webp-0.8",
+      "bytes": 90548,
+      "reduction": 0.6386823886195407,
+      "s2": 84.36099822
+    },
+    {
+      "env": "browser",
+      "image": "text-docs.png",
+      "category": "text-graphic",
+      "tool": "bic-webp-0.8",
+      "bytes": 182110,
+      "reduction": 0.4660877315398463,
+      "s2": 86.66310256
+    },
+    {
+      "env": "browser",
+      "image": "text-slide.png",
+      "category": "text-graphic",
+      "tool": "bic-webp-0.8",
+      "bytes": 30438,
+      "reduction": 0.44647111240429904,
+      "s2": 87.91823762
+    },
+    {
+      "env": "browser",
+      "image": "transparent-icon.png",
+      "category": "transparent-illustration",
+      "tool": "bic-webp-0.8",
+      "bytes": 6548,
+      "reduction": 0.35315617899832064,
+      "s2": 87.24198453
+    },
+    {
+      "env": "browser",
+      "image": "transparent-illustration-1.png",
+      "category": "transparent-illustration",
+      "tool": "bic-webp-0.8",
+      "bytes": 62314,
+      "reduction": 0.5159513729754923,
+      "s2": 81.40677934
+    },
+    {
+      "env": "browser",
+      "image": "transparent-illustration-2.png",
+      "category": "transparent-illustration",
+      "tool": "bic-webp-0.8",
+      "bytes": 70726,
+      "reduction": 0.5392923213215561,
+      "s2": 79.3065195
+    },
+    {
+      "env": "browser",
+      "image": "transparent-illustration-3.png",
+      "category": "transparent-illustration",
+      "tool": "bic-webp-0.8",
+      "bytes": 66168,
+      "reduction": 0.5395246877066008,
+      "s2": 80.71634893
+    },
+    {
+      "env": "browser",
+      "image": "gradient-linear.png",
+      "category": "gradient",
+      "tool": "canvas-jpeg-0.8",
+      "bytes": 17966,
+      "reduction": 0.9773214121163695,
+      "s2": 80.31358619
+    },
+    {
+      "env": "browser",
+      "image": "gradient-radial.png",
+      "category": "gradient",
+      "tool": "canvas-jpeg-0.8",
+      "bytes": 30640,
+      "reduction": 0.9609084947473979,
+      "s2": 80.27683758
+    },
+    {
+      "env": "browser",
+      "image": "gradient-sky.png",
+      "category": "gradient",
+      "tool": "canvas-jpeg-0.8",
+      "bytes": 23224,
+      "reduction": 0.26508654789405395,
+      "s2": 80.15487741
+    },
+    {
+      "env": "browser",
+      "image": "large-picsum1015.jpg",
+      "category": "photo-large",
+      "tool": "canvas-jpeg-0.8",
+      "bytes": 1898949,
+      "reduction": 0.16926059144634786,
+      "s2": 85.17464177
+    },
+    {
+      "env": "browser",
+      "image": "large-picsum1043.jpg",
+      "category": "photo-large",
+      "tool": "canvas-jpeg-0.8",
+      "bytes": 2761314,
+      "reduction": 0.16168399475148165,
+      "s2": 87.26916946
+    },
+    {
+      "env": "browser",
+      "image": "large-picsum1050.jpg",
+      "category": "photo-large",
+      "tool": "canvas-jpeg-0.8",
+      "bytes": 1668231,
+      "reduction": 0.16465779997926955,
+      "s2": 84.95197953
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim01.jpg",
+      "category": "photo",
+      "tool": "canvas-jpeg-0.8",
+      "bytes": 100249,
+      "reduction": 0.40242608488316645,
+      "s2": 76.59425426
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim03.jpg",
+      "category": "photo",
+      "tool": "canvas-jpeg-0.8",
+      "bytes": 50906,
+      "reduction": 0.4146649955731353,
+      "s2": 77.74913648
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim05.jpg",
+      "category": "photo",
+      "tool": "canvas-jpeg-0.8",
+      "bytes": 109512,
+      "reduction": 0.3692104762947048,
+      "s2": 78.78286431
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim07.jpg",
+      "category": "photo",
+      "tool": "canvas-jpeg-0.8",
+      "bytes": 60362,
+      "reduction": 0.39236963962150195,
+      "s2": 79.91168139
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim08.png",
+      "category": "photo",
+      "tool": "canvas-jpeg-0.8",
+      "bytes": 114041,
+      "reduction": 0.8853315341548956,
+      "s2": 77.75808281
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim13.jpg",
+      "category": "photo",
+      "tool": "canvas-jpeg-0.8",
+      "bytes": 123703,
+      "reduction": 0.385760109636927,
+      "s2": 75.81834723
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim15.jpg",
+      "category": "photo",
+      "tool": "canvas-jpeg-0.8",
+      "bytes": 57683,
+      "reduction": 0.4393612471814011,
+      "s2": 73.69463181
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim19.png",
+      "category": "photo",
+      "tool": "canvas-jpeg-0.8",
+      "bytes": 74127,
+      "reduction": 0.9071833456668157,
+      "s2": 76.73167716
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim20.jpg",
+      "category": "photo",
+      "tool": "canvas-jpeg-0.8",
+      "bytes": 49624,
+      "reduction": 0.42622590678367844,
+      "s2": 77.74116167
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim23.jpg",
+      "category": "photo",
+      "tool": "canvas-jpeg-0.8",
+      "bytes": 47346,
+      "reduction": 0.44224675156384374,
+      "s2": 80.02911077
+    },
+    {
+      "env": "browser",
+      "image": "screenshot-code.png",
+      "category": "screenshot",
+      "tool": "canvas-jpeg-0.8",
+      "bytes": 113286,
+      "reduction": 0.4028779253636938,
+      "s2": 60.09345601
+    },
+    {
+      "env": "browser",
+      "image": "screenshot-dashboard.png",
+      "category": "screenshot",
+      "tool": "canvas-jpeg-0.8",
+      "bytes": 218398,
+      "reduction": 0.12851698888689367,
+      "s2": 81.70233589
+    },
+    {
+      "env": "browser",
+      "image": "text-docs.png",
+      "category": "text-graphic",
+      "tool": "canvas-jpeg-0.8",
+      "bytes": 270394,
+      "reduction": 0.20725564813566077,
+      "s2": 78.91354397
+    },
+    {
+      "env": "browser",
+      "image": "text-slide.png",
+      "category": "text-graphic",
+      "tool": "canvas-jpeg-0.8",
+      "bytes": 51663,
+      "reduction": 0.06048482423757484,
+      "s2": 82.15060499
+    },
+    {
+      "env": "browser",
+      "image": "gradient-linear.png",
+      "category": "gradient",
+      "tool": "canvas-webp-0.8",
+      "bytes": 12380,
+      "reduction": 0.9843726528999585,
+      "s2": 79.41558694
+    },
+    {
+      "env": "browser",
+      "image": "gradient-radial.png",
+      "category": "gradient",
+      "tool": "canvas-webp-0.8",
+      "bytes": 13628,
+      "reduction": 0.9826129558230268,
+      "s2": 79.64424786
+    },
+    {
+      "env": "browser",
+      "image": "gradient-sky.png",
+      "category": "gradient",
+      "tool": "canvas-webp-0.8",
+      "bytes": 8896,
+      "reduction": 0.7184899212050251,
+      "s2": 79.53733957
+    },
+    {
+      "env": "browser",
+      "image": "large-picsum1015.jpg",
+      "category": "photo-large",
+      "tool": "canvas-webp-0.8",
+      "bytes": 1492218,
+      "reduction": 0.3471945277344922,
+      "s2": 70.80120323
+    },
+    {
+      "env": "browser",
+      "image": "large-picsum1043.jpg",
+      "category": "photo-large",
+      "tool": "canvas-webp-0.8",
+      "bytes": 2475888,
+      "reduction": 0.24833737213415663,
+      "s2": 77.54921305
+    },
+    {
+      "env": "browser",
+      "image": "large-picsum1050.jpg",
+      "category": "photo-large",
+      "tool": "canvas-webp-0.8",
+      "bytes": 1273684,
+      "reduction": 0.36222142215843967,
+      "s2": 70.50611465
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim01.jpg",
+      "category": "photo",
+      "tool": "canvas-webp-0.8",
+      "bytes": 95310,
+      "reduction": 0.43186695278969955,
+      "s2": 77.82840669
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim03.jpg",
+      "category": "photo",
+      "tool": "canvas-webp-0.8",
+      "bytes": 33034,
+      "reduction": 0.620163506536812,
+      "s2": 71.75469181
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim05.jpg",
+      "category": "photo",
+      "tool": "canvas-webp-0.8",
+      "bytes": 97434,
+      "reduction": 0.43877980081907253,
+      "s2": 78.9302889
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim07.jpg",
+      "category": "photo",
+      "tool": "canvas-webp-0.8",
+      "bytes": 40760,
+      "reduction": 0.5896919669820817,
+      "s2": 77.00464723
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim08.png",
+      "category": "photo",
+      "tool": "canvas-webp-0.8",
+      "bytes": 99204,
+      "reduction": 0.900250168924354,
+      "s2": 78.02793561
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim13.jpg",
+      "category": "photo",
+      "tool": "canvas-webp-0.8",
+      "bytes": 128256,
+      "reduction": 0.36315245888615233,
+      "s2": 78.88102517
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim15.jpg",
+      "category": "photo",
+      "tool": "canvas-webp-0.8",
+      "bytes": 43088,
+      "reduction": 0.5812145245315294,
+      "s2": 70.10601637
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim19.png",
+      "category": "photo",
+      "tool": "canvas-webp-0.8",
+      "bytes": 57706,
+      "reduction": 0.9277445754589996,
+      "s2": 72.74930795
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim20.jpg",
+      "category": "photo",
+      "tool": "canvas-webp-0.8",
+      "bytes": 37106,
+      "reduction": 0.570964422398742,
+      "s2": 75.02164148
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim23.jpg",
+      "category": "photo",
+      "tool": "canvas-webp-0.8",
+      "bytes": 30576,
+      "reduction": 0.6398035034810984,
+      "s2": 72.77740377
+    },
+    {
+      "env": "browser",
+      "image": "screenshot-code.png",
+      "category": "screenshot",
+      "tool": "canvas-webp-0.8",
+      "bytes": 74006,
+      "reduction": 0.6099198819312671,
+      "s2": 65.81526765
+    },
+    {
+      "env": "browser",
+      "image": "screenshot-dashboard.png",
+      "category": "screenshot",
+      "tool": "canvas-webp-0.8",
+      "bytes": 90548,
+      "reduction": 0.6386823886195407,
+      "s2": 84.36099822
+    },
+    {
+      "env": "browser",
+      "image": "text-docs.png",
+      "category": "text-graphic",
+      "tool": "canvas-webp-0.8",
+      "bytes": 182110,
+      "reduction": 0.4660877315398463,
+      "s2": 86.66310256
+    },
+    {
+      "env": "browser",
+      "image": "text-slide.png",
+      "category": "text-graphic",
+      "tool": "canvas-webp-0.8",
+      "bytes": 30438,
+      "reduction": 0.44647111240429904,
+      "s2": 87.91823762
+    },
+    {
+      "env": "browser",
+      "image": "transparent-icon.png",
+      "category": "transparent-illustration",
+      "tool": "canvas-webp-0.8",
+      "bytes": 6548,
+      "reduction": 0.35315617899832064,
+      "s2": 87.24198453
+    },
+    {
+      "env": "browser",
+      "image": "transparent-illustration-1.png",
+      "category": "transparent-illustration",
+      "tool": "canvas-webp-0.8",
+      "bytes": 62314,
+      "reduction": 0.5159513729754923,
+      "s2": 81.40677934
+    },
+    {
+      "env": "browser",
+      "image": "transparent-illustration-2.png",
+      "category": "transparent-illustration",
+      "tool": "canvas-webp-0.8",
+      "bytes": 70726,
+      "reduction": 0.5392923213215561,
+      "s2": 79.3065195
+    },
+    {
+      "env": "browser",
+      "image": "transparent-illustration-3.png",
+      "category": "transparent-illustration",
+      "tool": "canvas-webp-0.8",
+      "bytes": 66168,
+      "reduction": 0.5395246877066008,
+      "s2": 80.71634893
+    },
+    {
+      "env": "browser",
+      "image": "gradient-linear.png",
+      "category": "gradient",
+      "tool": "sc-balanced",
+      "bytes": 1413,
+      "reduction": 0.9982163617566754,
+      "s2": 70.92369424
+    },
+    {
+      "env": "browser",
+      "image": "gradient-radial.png",
+      "category": "gradient",
+      "tool": "sc-balanced",
+      "bytes": 4620,
+      "reduction": 0.994105654234105,
+      "s2": 85.197504
+    },
+    {
+      "env": "browser",
+      "image": "gradient-sky.png",
+      "category": "gradient",
+      "tool": "sc-balanced",
+      "bytes": 499,
+      "reduction": 0.9842093604632765,
+      "s2": 70.10102001
+    },
+    {
+      "env": "browser",
+      "image": "large-picsum1015.jpg",
+      "category": "photo-large",
+      "tool": "sc-balanced",
+      "bytes": 1371351,
+      "reduction": 0.4000706081840747,
+      "s2": 76.75223195
+    },
+    {
+      "env": "browser",
+      "image": "large-picsum1043.jpg",
+      "category": "photo-large",
+      "tool": "sc-balanced",
+      "bytes": 2044901,
+      "reduction": 0.3791820714888997,
+      "s2": 78.9521016
+    },
+    {
+      "env": "browser",
+      "image": "large-picsum1050.jpg",
+      "category": "photo-large",
+      "tool": "sc-balanced",
+      "bytes": 1014978,
+      "reduction": 0.49176465639792033,
+      "s2": 65.08556993
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim01.jpg",
+      "category": "photo",
+      "tool": "sc-balanced",
+      "bytes": 95444,
+      "reduction": 0.43106819265617546,
+      "s2": 78.08559003
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim03.jpg",
+      "category": "photo",
+      "tool": "sc-balanced",
+      "bytes": 35908,
+      "reduction": 0.5871172486748152,
+      "s2": 73.91929983
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim05.jpg",
+      "category": "photo",
+      "tool": "sc-balanced",
+      "bytes": 94312,
+      "reduction": 0.45676253232802067,
+      "s2": 79.89949693
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim07.jpg",
+      "category": "photo",
+      "tool": "sc-balanced",
+      "bytes": 34270,
+      "reduction": 0.6550231528085364,
+      "s2": 73.48762817
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim08.png",
+      "category": "photo",
+      "tool": "sc-balanced",
+      "bytes": 108162,
+      "reduction": 0.8912428810450786,
+      "s2": 80.00154202
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim13.jpg",
+      "category": "photo",
+      "tool": "sc-balanced",
+      "bytes": 118747,
+      "reduction": 0.41036883292285686,
+      "s2": 77.75562343
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim15.jpg",
+      "category": "photo",
+      "tool": "sc-balanced",
+      "bytes": 55322,
+      "reduction": 0.46230852966332325,
+      "s2": 79.90928726
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim19.png",
+      "category": "photo",
+      "tool": "sc-balanced",
+      "bytes": 89006,
+      "reduction": 0.8885529006221835,
+      "s2": 82.20898746
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim20.jpg",
+      "category": "photo",
+      "tool": "sc-balanced",
+      "bytes": 34697,
+      "reduction": 0.5988183195162279,
+      "s2": 77.95636087
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim23.jpg",
+      "category": "photo",
+      "tool": "sc-balanced",
+      "bytes": 37443,
+      "reduction": 0.5589077243865375,
+      "s2": 81.49287158
+    },
+    {
+      "env": "browser",
+      "image": "screenshot-code.png",
+      "category": "screenshot",
+      "tool": "sc-balanced",
+      "bytes": 24372,
+      "reduction": 0.8715370018975332,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "screenshot-dashboard.png",
+      "category": "screenshot",
+      "tool": "sc-balanced",
+      "bytes": 21122,
+      "reduction": 0.9157159673589912,
+      "s2": 75.17948917
+    },
+    {
+      "env": "browser",
+      "image": "text-docs.png",
+      "category": "text-graphic",
+      "tool": "sc-balanced",
+      "bytes": 22230,
+      "reduction": 0.9348258210539278,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "text-slide.png",
+      "category": "text-graphic",
+      "tool": "sc-balanced",
+      "bytes": 10195,
+      "reduction": 0.8145992834930622,
+      "s2": 76.05138214
+    },
+    {
+      "env": "browser",
+      "image": "transparent-icon.png",
+      "category": "transparent-illustration",
+      "tool": "sc-balanced",
+      "bytes": 3943,
+      "reduction": 0.6104909611775166,
+      "s2": 88.68040305
+    },
+    {
+      "env": "browser",
+      "image": "transparent-illustration-1.png",
+      "category": "transparent-illustration",
+      "tool": "sc-balanced",
+      "bytes": 20883,
+      "reduction": 0.8377830426845846,
+      "s2": 82.91436122
+    },
+    {
+      "env": "browser",
+      "image": "transparent-illustration-2.png",
+      "category": "transparent-illustration",
+      "tool": "sc-balanced",
+      "bytes": 26677,
+      "reduction": 0.8262265822454988,
+      "s2": 82.42896341
+    },
+    {
+      "env": "browser",
+      "image": "transparent-illustration-3.png",
+      "category": "transparent-illustration",
+      "tool": "sc-balanced",
+      "bytes": 21255,
+      "reduction": 0.8520825359267894,
+      "s2": 83.35039104
+    },
+    {
+      "env": "browser",
+      "image": "gradient-linear.png",
+      "category": "gradient",
+      "tool": "sc-fast",
+      "bytes": 8297,
+      "reduction": 0.989526647908801,
+      "s2": 63.34761531
+    },
+    {
+      "env": "browser",
+      "image": "gradient-radial.png",
+      "category": "gradient",
+      "tool": "sc-fast",
+      "bytes": 8890,
+      "reduction": 0.9886578498141112,
+      "s2": 76.23205534
+    },
+    {
+      "env": "browser",
+      "image": "gradient-sky.png",
+      "category": "gradient",
+      "tool": "sc-fast",
+      "bytes": 6456,
+      "reduction": 0.7957026676371001,
+      "s2": 74.05684046
+    },
+    {
+      "env": "browser",
+      "image": "large-picsum1015.jpg",
+      "category": "photo-large",
+      "tool": "sc-fast",
+      "bytes": 1247055,
+      "reduction": 0.45444678444030107,
+      "s2": 71.30464675
+    },
+    {
+      "env": "browser",
+      "image": "large-picsum1043.jpg",
+      "category": "photo-large",
+      "tool": "sc-fast",
+      "bytes": 2133327,
+      "reduction": 0.3523365439320534,
+      "s2": 81.00579787
+    },
+    {
+      "env": "browser",
+      "image": "large-picsum1050.jpg",
+      "category": "photo-large",
+      "tool": "sc-fast",
+      "bytes": 1014978,
+      "reduction": 0.49176465639792033,
+      "s2": 65.08556993
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim01.jpg",
+      "category": "photo",
+      "tool": "sc-fast",
+      "bytes": 94870,
+      "reduction": 0.4344897472579876,
+      "s2": 77.92805861
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim03.jpg",
+      "category": "photo",
+      "tool": "sc-fast",
+      "bytes": 37610,
+      "reduction": 0.5675470569973209,
+      "s2": 75.1719096
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim05.jpg",
+      "category": "photo",
+      "tool": "sc-fast",
+      "bytes": 96962,
+      "reduction": 0.4414985225590544,
+      "s2": 78.97175536
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim07.jpg",
+      "category": "photo",
+      "tool": "sc-fast",
+      "bytes": 40390,
+      "reduction": 0.5934165492248842,
+      "s2": 77.11835055
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim08.png",
+      "category": "photo",
+      "tool": "sc-fast",
+      "bytes": 108162,
+      "reduction": 0.8912428810450786,
+      "s2": 80.00154202
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim13.jpg",
+      "category": "photo",
+      "tool": "sc-fast",
+      "bytes": 131122,
+      "reduction": 0.34892150631604035,
+      "s2": 79.60589727
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim15.jpg",
+      "category": "photo",
+      "tool": "sc-fast",
+      "bytes": 61022,
+      "reduction": 0.4069084830106524,
+      "s2": 78.13302826
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim19.png",
+      "category": "photo",
+      "tool": "sc-fast",
+      "bytes": 110418,
+      "reduction": 0.8617422890692791,
+      "s2": 85.34279063
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim20.jpg",
+      "category": "photo",
+      "tool": "sc-fast",
+      "bytes": 38504,
+      "reduction": 0.5548001433741487,
+      "s2": 77.77686807
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim23.jpg",
+      "category": "photo",
+      "tool": "sc-fast",
+      "bytes": 50799,
+      "reduction": 0.4015691448631711,
+      "s2": 82.32127694
+    },
+    {
+      "env": "browser",
+      "image": "screenshot-code.png",
+      "category": "screenshot",
+      "tool": "sc-fast",
+      "bytes": 24372,
+      "reduction": 0.8715370018975332,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "screenshot-dashboard.png",
+      "category": "screenshot",
+      "tool": "sc-fast",
+      "bytes": 77404,
+      "reduction": 0.6911314618622932,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "text-docs.png",
+      "category": "text-graphic",
+      "tool": "sc-fast",
+      "bytes": 22230,
+      "reduction": 0.9348258210539278,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "text-slide.png",
+      "category": "text-graphic",
+      "tool": "sc-fast",
+      "bytes": 14734,
+      "reduction": 0.7320555020094928,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "transparent-icon.png",
+      "category": "transparent-illustration",
+      "tool": "sc-fast",
+      "bytes": 4036,
+      "reduction": 0.6013039612763015,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "transparent-illustration-1.png",
+      "category": "transparent-illustration",
+      "tool": "sc-fast",
+      "bytes": 49228,
+      "reduction": 0.6176020507243563,
+      "s2": 74.79882016
+    },
+    {
+      "env": "browser",
+      "image": "transparent-illustration-2.png",
+      "category": "transparent-illustration",
+      "tool": "sc-fast",
+      "bytes": 57814,
+      "reduction": 0.6234008181557622,
+      "s2": 73.98980543
+    },
+    {
+      "env": "browser",
+      "image": "transparent-illustration-3.png",
+      "category": "transparent-illustration",
+      "tool": "sc-fast",
+      "bytes": 54976,
+      "reduction": 0.6174118793277428,
+      "s2": 70.04368767
+    },
+    {
+      "env": "browser",
+      "image": "gradient-linear.png",
+      "category": "gradient",
+      "tool": "sc-lossless",
+      "bytes": 120770,
+      "reduction": 0.8475513158907904,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "gradient-radial.png",
+      "category": "gradient",
+      "tool": "sc-lossless",
+      "bytes": 406828,
+      "reduction": 0.4809556495135251,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "gradient-sky.png",
+      "category": "gradient",
+      "tool": "sc-lossless",
+      "bytes": 13730,
+      "reduction": 0.5655200784785291,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "large-picsum1015.jpg",
+      "category": "photo-large",
+      "tool": "sc-lossless",
+      "bytes": 2285854,
+      "reduction": 0,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "large-picsum1043.jpg",
+      "category": "photo-large",
+      "tool": "sc-lossless",
+      "bytes": 3293882,
+      "reduction": 0,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "large-picsum1050.jpg",
+      "category": "photo-large",
+      "tool": "sc-lossless",
+      "bytes": 1997063,
+      "reduction": 0,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim01.jpg",
+      "category": "photo",
+      "tool": "sc-lossless",
+      "bytes": 167760,
+      "reduction": 0,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim03.jpg",
+      "category": "photo",
+      "tool": "sc-lossless",
+      "bytes": 86969,
+      "reduction": 0,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim05.jpg",
+      "category": "photo",
+      "tool": "sc-lossless",
+      "bytes": 173611,
+      "reduction": 0,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim07.jpg",
+      "category": "photo",
+      "tool": "sc-lossless",
+      "bytes": 99340,
+      "reduction": 0,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim08.png",
+      "category": "photo",
+      "tool": "sc-lossless",
+      "bytes": 552370,
+      "reduction": 0.4445908008623186,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim13.jpg",
+      "category": "photo",
+      "tool": "sc-lossless",
+      "bytes": 201392,
+      "reduction": 0,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim15.jpg",
+      "category": "photo",
+      "tool": "sc-lossless",
+      "bytes": 102888,
+      "reduction": 0,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim19.png",
+      "category": "photo",
+      "tool": "sc-lossless",
+      "bytes": 486068,
+      "reduction": 0.39137958451816157,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim20.jpg",
+      "category": "photo",
+      "tool": "sc-lossless",
+      "bytes": 86487,
+      "reduction": 0,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim23.jpg",
+      "category": "photo",
+      "tool": "sc-lossless",
+      "bytes": 84887,
+      "reduction": 0,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "screenshot-code.png",
+      "category": "screenshot",
+      "tool": "sc-lossless",
+      "bytes": 24372,
+      "reduction": 0.8715370018975332,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "screenshot-dashboard.png",
+      "category": "screenshot",
+      "tool": "sc-lossless",
+      "bytes": 80542,
+      "reduction": 0.678609764370224,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "text-docs.png",
+      "category": "text-graphic",
+      "tool": "sc-lossless",
+      "bytes": 22230,
+      "reduction": 0.9348258210539278,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "text-slide.png",
+      "category": "text-graphic",
+      "tool": "sc-lossless",
+      "bytes": 14676,
+      "reduction": 0.7331102584153194,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "transparent-icon.png",
+      "category": "transparent-illustration",
+      "tool": "sc-lossless",
+      "bytes": 4036,
+      "reduction": 0.6013039612763015,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "transparent-illustration-1.png",
+      "category": "transparent-illustration",
+      "tool": "sc-lossless",
+      "bytes": 74432,
+      "reduction": 0.4218200178661592,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "transparent-illustration-2.png",
+      "category": "transparent-illustration",
+      "tool": "sc-lossless",
+      "bytes": 87370,
+      "reduction": 0.43087365486333673,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "transparent-illustration-3.png",
+      "category": "transparent-illustration",
+      "tool": "sc-lossless",
+      "bytes": 85724,
+      "reduction": 0.40343087790111,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "gradient-linear.png",
+      "category": "gradient",
+      "tool": "sc-visually-lossless",
+      "bytes": 8387,
+      "reduction": 0.989413040377379,
+      "s2": 64.39322753
+    },
+    {
+      "env": "browser",
+      "image": "gradient-radial.png",
+      "category": "gradient",
+      "tool": "sc-visually-lossless",
+      "bytes": 11094,
+      "reduction": 0.985845915167351,
+      "s2": 78.17581958
+    },
+    {
+      "env": "browser",
+      "image": "gradient-sky.png",
+      "category": "gradient",
+      "tool": "sc-visually-lossless",
+      "bytes": 6332,
+      "reduction": 0.7996265940951236,
+      "s2": 72.6341572
+    },
+    {
+      "env": "browser",
+      "image": "large-picsum1015.jpg",
+      "category": "photo-large",
+      "tool": "sc-visually-lossless",
+      "bytes": 1601997,
+      "reduction": 0.2991691507856582,
+      "s2": 81.13776787
+    },
+    {
+      "env": "browser",
+      "image": "large-picsum1043.jpg",
+      "category": "photo-large",
+      "tool": "sc-visually-lossless",
+      "bytes": 2352615,
+      "reduction": 0.2857622100609555,
+      "s2": 84.38519679
+    },
+    {
+      "env": "browser",
+      "image": "large-picsum1050.jpg",
+      "category": "photo-large",
+      "tool": "sc-visually-lossless",
+      "bytes": 1343631,
+      "reduction": 0.32719648804269064,
+      "s2": 80.98350248
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim01.jpg",
+      "category": "photo",
+      "tool": "sc-visually-lossless",
+      "bytes": 126607,
+      "reduction": 0.2453087744396757,
+      "s2": 86.24901277
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim03.jpg",
+      "category": "photo",
+      "tool": "sc-visually-lossless",
+      "bytes": 61275,
+      "reduction": 0.2954386045602456,
+      "s2": 87.43421909
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim05.jpg",
+      "category": "photo",
+      "tool": "sc-visually-lossless",
+      "bytes": 128944,
+      "reduction": 0.25728208466053415,
+      "s2": 87.33669911
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim07.jpg",
+      "category": "photo",
+      "tool": "sc-visually-lossless",
+      "bytes": 69960,
+      "reduction": 0.2957519629555063,
+      "s2": 85.20913189
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim08.png",
+      "category": "photo",
+      "tool": "sc-visually-lossless",
+      "bytes": 180836,
+      "reduction": 0.8181690208822677,
+      "s2": 88.82144943
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim13.jpg",
+      "category": "photo",
+      "tool": "sc-visually-lossless",
+      "bytes": 161404,
+      "reduction": 0.19855803606896005,
+      "s2": 87.31952685
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim15.jpg",
+      "category": "photo",
+      "tool": "sc-visually-lossless",
+      "bytes": 86743,
+      "reduction": 0.15691820231708264,
+      "s2": 88.89010958
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim19.png",
+      "category": "photo",
+      "tool": "sc-visually-lossless",
+      "bytes": 173918,
+      "reduction": 0.7822320222278151,
+      "s2": 89.9646376
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim20.jpg",
+      "category": "photo",
+      "tool": "sc-visually-lossless",
+      "bytes": 56719,
+      "reduction": 0.34419045636916534,
+      "s2": 86.62089404
+    },
+    {
+      "env": "browser",
+      "image": "photo-kodim23.jpg",
+      "category": "photo",
+      "tool": "sc-visually-lossless",
+      "bytes": 68827,
+      "reduction": 0.18919269146041207,
+      "s2": 89.75036372
+    },
+    {
+      "env": "browser",
+      "image": "screenshot-code.png",
+      "category": "screenshot",
+      "tool": "sc-visually-lossless",
+      "bytes": 24372,
+      "reduction": 0.8715370018975332,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "screenshot-dashboard.png",
+      "category": "screenshot",
+      "tool": "sc-visually-lossless",
+      "bytes": 21546,
+      "reduction": 0.9140240617705153,
+      "s2": 81.50182656
+    },
+    {
+      "env": "browser",
+      "image": "text-docs.png",
+      "category": "text-graphic",
+      "tool": "sc-visually-lossless",
+      "bytes": 22230,
+      "reduction": 0.9348258210539278,
+      "s2": 100
+    },
+    {
+      "env": "browser",
+      "image": "text-slide.png",
+      "category": "text-graphic",
+      "tool": "sc-visually-lossless",
+      "bytes": 9434,
+      "reduction": 0.8284384149557185,
+      "s2": 77.27582658
+    },
+    {
+      "env": "browser",
+      "image": "transparent-icon.png",
+      "category": "transparent-illustration",
+      "tool": "sc-visually-lossless",
+      "bytes": 3790,
+      "reduction": 0.625605057789193,
+      "s2": 89.26730396
+    },
+    {
+      "env": "browser",
+      "image": "transparent-illustration-1.png",
+      "category": "transparent-illustration",
+      "tool": "sc-visually-lossless",
+      "bytes": 57124,
+      "reduction": 0.5562667495242164,
+      "s2": 85.27423586
+    },
+    {
+      "env": "browser",
+      "image": "transparent-illustration-2.png",
+      "category": "transparent-illustration",
+      "tool": "sc-visually-lossless",
+      "bytes": 64094,
+      "reduction": 0.5824930300424711,
+      "s2": 82.79375472
+    },
+    {
+      "env": "browser",
+      "image": "transparent-illustration-3.png",
+      "category": "transparent-illustration",
+      "tool": "sc-visually-lossless",
+      "bytes": 56264,
+      "reduction": 0.6084484498416786,
+      "s2": 73.8115791
+    },
+    {
+      "env": "node",
+      "image": "gradient-linear.png",
+      "category": "gradient",
+      "tool": "sc-balanced-nometa",
+      "bytes": 1413,
+      "reduction": 0.9982163617566754,
+      "s2": 70.92369424
+    },
+    {
+      "env": "node",
+      "image": "gradient-radial.png",
+      "category": "gradient",
+      "tool": "sc-balanced-nometa",
+      "bytes": 4620,
+      "reduction": 0.994105654234105,
+      "s2": 85.197504
+    },
+    {
+      "env": "node",
+      "image": "gradient-sky.png",
+      "category": "gradient",
+      "tool": "sc-balanced-nometa",
+      "bytes": 499,
+      "reduction": 0.9842093604632765,
+      "s2": 70.10102001
+    },
+    {
+      "env": "node",
+      "image": "large-picsum1015.jpg",
+      "category": "photo-large",
+      "tool": "sc-balanced-nometa",
+      "bytes": 1302062,
+      "reduction": 0.4303826928578991,
+      "s2": 72.81162847
+    },
+    {
+      "env": "node",
+      "image": "large-picsum1043.jpg",
+      "category": "photo-large",
+      "tool": "sc-balanced-nometa",
+      "bytes": 1994649,
+      "reduction": 0.39443823427797353,
+      "s2": 76.02547961
+    },
+    {
+      "env": "node",
+      "image": "large-picsum1050.jpg",
+      "category": "photo-large",
+      "tool": "sc-balanced-nometa",
+      "bytes": 962040,
+      "reduction": 0.5182725832885593,
+      "s2": 66.3212127
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim01.jpg",
+      "category": "photo",
+      "tool": "sc-balanced-nometa",
+      "bytes": 95444,
+      "reduction": 0.43106819265617546,
+      "s2": 78.08559003
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim03.jpg",
+      "category": "photo",
+      "tool": "sc-balanced-nometa",
+      "bytes": 35908,
+      "reduction": 0.5871172486748152,
+      "s2": 73.91929983
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim05.jpg",
+      "category": "photo",
+      "tool": "sc-balanced-nometa",
+      "bytes": 94312,
+      "reduction": 0.45676253232802067,
+      "s2": 79.89949693
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim07.jpg",
+      "category": "photo",
+      "tool": "sc-balanced-nometa",
+      "bytes": 34270,
+      "reduction": 0.6550231528085364,
+      "s2": 73.48762817
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim08.png",
+      "category": "photo",
+      "tool": "sc-balanced-nometa",
+      "bytes": 108162,
+      "reduction": 0.8912428810450786,
+      "s2": 80.00154202
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim13.jpg",
+      "category": "photo",
+      "tool": "sc-balanced-nometa",
+      "bytes": 118747,
+      "reduction": 0.41036883292285686,
+      "s2": 77.75562343
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim15.jpg",
+      "category": "photo",
+      "tool": "sc-balanced-nometa",
+      "bytes": 55322,
+      "reduction": 0.46230852966332325,
+      "s2": 79.90928726
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim19.png",
+      "category": "photo",
+      "tool": "sc-balanced-nometa",
+      "bytes": 89006,
+      "reduction": 0.8885529006221835,
+      "s2": 82.20898746
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim20.jpg",
+      "category": "photo",
+      "tool": "sc-balanced-nometa",
+      "bytes": 34697,
+      "reduction": 0.5988183195162279,
+      "s2": 77.95636087
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim23.jpg",
+      "category": "photo",
+      "tool": "sc-balanced-nometa",
+      "bytes": 37443,
+      "reduction": 0.5589077243865375,
+      "s2": 81.49287158
+    },
+    {
+      "env": "node",
+      "image": "screenshot-code.png",
+      "category": "screenshot",
+      "tool": "sc-balanced-nometa",
+      "bytes": 24372,
+      "reduction": 0.8715370018975332,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "screenshot-dashboard.png",
+      "category": "screenshot",
+      "tool": "sc-balanced-nometa",
+      "bytes": 21122,
+      "reduction": 0.9157159673589912,
+      "s2": 75.17948917
+    },
+    {
+      "env": "node",
+      "image": "text-docs.png",
+      "category": "text-graphic",
+      "tool": "sc-balanced-nometa",
+      "bytes": 22230,
+      "reduction": 0.9348258210539278,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "text-slide.png",
+      "category": "text-graphic",
+      "tool": "sc-balanced-nometa",
+      "bytes": 10195,
+      "reduction": 0.8145992834930622,
+      "s2": 76.05138214
+    },
+    {
+      "env": "node",
+      "image": "transparent-icon.png",
+      "category": "transparent-illustration",
+      "tool": "sc-balanced-nometa",
+      "bytes": 3943,
+      "reduction": 0.6104909611775166,
+      "s2": 88.68040305
+    },
+    {
+      "env": "node",
+      "image": "transparent-illustration-1.png",
+      "category": "transparent-illustration",
+      "tool": "sc-balanced-nometa",
+      "bytes": 20883,
+      "reduction": 0.8377830426845846,
+      "s2": 82.91436122
+    },
+    {
+      "env": "node",
+      "image": "transparent-illustration-2.png",
+      "category": "transparent-illustration",
+      "tool": "sc-balanced-nometa",
+      "bytes": 26677,
+      "reduction": 0.8262265822454988,
+      "s2": 82.42896341
+    },
+    {
+      "env": "node",
+      "image": "transparent-illustration-3.png",
+      "category": "transparent-illustration",
+      "tool": "sc-balanced-nometa",
+      "bytes": 21255,
+      "reduction": 0.8520825359267894,
+      "s2": 83.35039104
+    },
+    {
+      "env": "node",
+      "image": "gradient-linear.png",
+      "category": "gradient",
+      "tool": "sc-balanced",
+      "bytes": 1413,
+      "reduction": 0.9982163617566754,
+      "s2": 70.92369424
+    },
+    {
+      "env": "node",
+      "image": "gradient-radial.png",
+      "category": "gradient",
+      "tool": "sc-balanced",
+      "bytes": 4620,
+      "reduction": 0.994105654234105,
+      "s2": 85.197504
+    },
+    {
+      "env": "node",
+      "image": "gradient-sky.png",
+      "category": "gradient",
+      "tool": "sc-balanced",
+      "bytes": 499,
+      "reduction": 0.9842093604632765,
+      "s2": 70.10102001
+    },
+    {
+      "env": "node",
+      "image": "large-picsum1015.jpg",
+      "category": "photo-large",
+      "tool": "sc-balanced",
+      "bytes": 1371351,
+      "reduction": 0.4000706081840747,
+      "s2": 76.75223195
+    },
+    {
+      "env": "node",
+      "image": "large-picsum1043.jpg",
+      "category": "photo-large",
+      "tool": "sc-balanced",
+      "bytes": 2044901,
+      "reduction": 0.3791820714888997,
+      "s2": 78.9521016
+    },
+    {
+      "env": "node",
+      "image": "large-picsum1050.jpg",
+      "category": "photo-large",
+      "tool": "sc-balanced",
+      "bytes": 1014978,
+      "reduction": 0.49176465639792033,
+      "s2": 65.08556993
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim01.jpg",
+      "category": "photo",
+      "tool": "sc-balanced",
+      "bytes": 95444,
+      "reduction": 0.43106819265617546,
+      "s2": 78.08559003
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim03.jpg",
+      "category": "photo",
+      "tool": "sc-balanced",
+      "bytes": 35908,
+      "reduction": 0.5871172486748152,
+      "s2": 73.91929983
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim05.jpg",
+      "category": "photo",
+      "tool": "sc-balanced",
+      "bytes": 94312,
+      "reduction": 0.45676253232802067,
+      "s2": 79.89949693
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim07.jpg",
+      "category": "photo",
+      "tool": "sc-balanced",
+      "bytes": 34270,
+      "reduction": 0.6550231528085364,
+      "s2": 73.48762817
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim08.png",
+      "category": "photo",
+      "tool": "sc-balanced",
+      "bytes": 108162,
+      "reduction": 0.8912428810450786,
+      "s2": 80.00154202
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim13.jpg",
+      "category": "photo",
+      "tool": "sc-balanced",
+      "bytes": 118747,
+      "reduction": 0.41036883292285686,
+      "s2": 77.75562343
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim15.jpg",
+      "category": "photo",
+      "tool": "sc-balanced",
+      "bytes": 55322,
+      "reduction": 0.46230852966332325,
+      "s2": 79.90928726
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim19.png",
+      "category": "photo",
+      "tool": "sc-balanced",
+      "bytes": 89006,
+      "reduction": 0.8885529006221835,
+      "s2": 82.20898746
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim20.jpg",
+      "category": "photo",
+      "tool": "sc-balanced",
+      "bytes": 34697,
+      "reduction": 0.5988183195162279,
+      "s2": 77.95636087
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim23.jpg",
+      "category": "photo",
+      "tool": "sc-balanced",
+      "bytes": 37443,
+      "reduction": 0.5589077243865375,
+      "s2": 81.49287158
+    },
+    {
+      "env": "node",
+      "image": "screenshot-code.png",
+      "category": "screenshot",
+      "tool": "sc-balanced",
+      "bytes": 24372,
+      "reduction": 0.8715370018975332,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "screenshot-dashboard.png",
+      "category": "screenshot",
+      "tool": "sc-balanced",
+      "bytes": 21122,
+      "reduction": 0.9157159673589912,
+      "s2": 75.17948917
+    },
+    {
+      "env": "node",
+      "image": "text-docs.png",
+      "category": "text-graphic",
+      "tool": "sc-balanced",
+      "bytes": 22230,
+      "reduction": 0.9348258210539278,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "text-slide.png",
+      "category": "text-graphic",
+      "tool": "sc-balanced",
+      "bytes": 10195,
+      "reduction": 0.8145992834930622,
+      "s2": 76.05138214
+    },
+    {
+      "env": "node",
+      "image": "transparent-icon.png",
+      "category": "transparent-illustration",
+      "tool": "sc-balanced",
+      "bytes": 3943,
+      "reduction": 0.6104909611775166,
+      "s2": 88.68040305
+    },
+    {
+      "env": "node",
+      "image": "transparent-illustration-1.png",
+      "category": "transparent-illustration",
+      "tool": "sc-balanced",
+      "bytes": 20883,
+      "reduction": 0.8377830426845846,
+      "s2": 82.91436122
+    },
+    {
+      "env": "node",
+      "image": "transparent-illustration-2.png",
+      "category": "transparent-illustration",
+      "tool": "sc-balanced",
+      "bytes": 26677,
+      "reduction": 0.8262265822454988,
+      "s2": 82.42896341
+    },
+    {
+      "env": "node",
+      "image": "transparent-illustration-3.png",
+      "category": "transparent-illustration",
+      "tool": "sc-balanced",
+      "bytes": 21255,
+      "reduction": 0.8520825359267894,
+      "s2": 83.35039104
+    },
+    {
+      "env": "node",
+      "image": "gradient-linear.png",
+      "category": "gradient",
+      "tool": "sc-fast",
+      "bytes": 8297,
+      "reduction": 0.989526647908801,
+      "s2": 63.34761531
+    },
+    {
+      "env": "node",
+      "image": "gradient-radial.png",
+      "category": "gradient",
+      "tool": "sc-fast",
+      "bytes": 8890,
+      "reduction": 0.9886578498141112,
+      "s2": 76.23205534
+    },
+    {
+      "env": "node",
+      "image": "gradient-sky.png",
+      "category": "gradient",
+      "tool": "sc-fast",
+      "bytes": 6456,
+      "reduction": 0.7957026676371001,
+      "s2": 74.05684046
+    },
+    {
+      "env": "node",
+      "image": "large-picsum1015.jpg",
+      "category": "photo-large",
+      "tool": "sc-fast",
+      "bytes": 1247055,
+      "reduction": 0.45444678444030107,
+      "s2": 71.30464675
+    },
+    {
+      "env": "node",
+      "image": "large-picsum1043.jpg",
+      "category": "photo-large",
+      "tool": "sc-fast",
+      "bytes": 2133327,
+      "reduction": 0.3523365439320534,
+      "s2": 81.00579787
+    },
+    {
+      "env": "node",
+      "image": "large-picsum1050.jpg",
+      "category": "photo-large",
+      "tool": "sc-fast",
+      "bytes": 1014978,
+      "reduction": 0.49176465639792033,
+      "s2": 65.08556993
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim01.jpg",
+      "category": "photo",
+      "tool": "sc-fast",
+      "bytes": 94870,
+      "reduction": 0.4344897472579876,
+      "s2": 77.92805861
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim03.jpg",
+      "category": "photo",
+      "tool": "sc-fast",
+      "bytes": 37610,
+      "reduction": 0.5675470569973209,
+      "s2": 75.1719096
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim05.jpg",
+      "category": "photo",
+      "tool": "sc-fast",
+      "bytes": 96962,
+      "reduction": 0.4414985225590544,
+      "s2": 78.97175536
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim07.jpg",
+      "category": "photo",
+      "tool": "sc-fast",
+      "bytes": 40390,
+      "reduction": 0.5934165492248842,
+      "s2": 77.11835055
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim08.png",
+      "category": "photo",
+      "tool": "sc-fast",
+      "bytes": 108162,
+      "reduction": 0.8912428810450786,
+      "s2": 80.00154202
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim13.jpg",
+      "category": "photo",
+      "tool": "sc-fast",
+      "bytes": 131122,
+      "reduction": 0.34892150631604035,
+      "s2": 79.60589727
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim15.jpg",
+      "category": "photo",
+      "tool": "sc-fast",
+      "bytes": 61022,
+      "reduction": 0.4069084830106524,
+      "s2": 78.13302826
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim19.png",
+      "category": "photo",
+      "tool": "sc-fast",
+      "bytes": 110418,
+      "reduction": 0.8617422890692791,
+      "s2": 85.34279063
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim20.jpg",
+      "category": "photo",
+      "tool": "sc-fast",
+      "bytes": 38504,
+      "reduction": 0.5548001433741487,
+      "s2": 77.77686807
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim23.jpg",
+      "category": "photo",
+      "tool": "sc-fast",
+      "bytes": 50799,
+      "reduction": 0.4015691448631711,
+      "s2": 82.32127694
+    },
+    {
+      "env": "node",
+      "image": "screenshot-code.png",
+      "category": "screenshot",
+      "tool": "sc-fast",
+      "bytes": 24372,
+      "reduction": 0.8715370018975332,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "screenshot-dashboard.png",
+      "category": "screenshot",
+      "tool": "sc-fast",
+      "bytes": 77404,
+      "reduction": 0.6911314618622932,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "text-docs.png",
+      "category": "text-graphic",
+      "tool": "sc-fast",
+      "bytes": 22230,
+      "reduction": 0.9348258210539278,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "text-slide.png",
+      "category": "text-graphic",
+      "tool": "sc-fast",
+      "bytes": 14734,
+      "reduction": 0.7320555020094928,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "transparent-icon.png",
+      "category": "transparent-illustration",
+      "tool": "sc-fast",
+      "bytes": 4036,
+      "reduction": 0.6013039612763015,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "transparent-illustration-1.png",
+      "category": "transparent-illustration",
+      "tool": "sc-fast",
+      "bytes": 49228,
+      "reduction": 0.6176020507243563,
+      "s2": 74.79882016
+    },
+    {
+      "env": "node",
+      "image": "transparent-illustration-2.png",
+      "category": "transparent-illustration",
+      "tool": "sc-fast",
+      "bytes": 57814,
+      "reduction": 0.6234008181557622,
+      "s2": 73.98980543
+    },
+    {
+      "env": "node",
+      "image": "transparent-illustration-3.png",
+      "category": "transparent-illustration",
+      "tool": "sc-fast",
+      "bytes": 54976,
+      "reduction": 0.6174118793277428,
+      "s2": 70.04368767
+    },
+    {
+      "env": "node",
+      "image": "gradient-linear.png",
+      "category": "gradient",
+      "tool": "sc-lossless",
+      "bytes": 120770,
+      "reduction": 0.8475513158907904,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "gradient-radial.png",
+      "category": "gradient",
+      "tool": "sc-lossless",
+      "bytes": 406828,
+      "reduction": 0.4809556495135251,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "gradient-sky.png",
+      "category": "gradient",
+      "tool": "sc-lossless",
+      "bytes": 13730,
+      "reduction": 0.5655200784785291,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "large-picsum1015.jpg",
+      "category": "photo-large",
+      "tool": "sc-lossless",
+      "bytes": 2285854,
+      "reduction": 0,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "large-picsum1043.jpg",
+      "category": "photo-large",
+      "tool": "sc-lossless",
+      "bytes": 3293882,
+      "reduction": 0,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "large-picsum1050.jpg",
+      "category": "photo-large",
+      "tool": "sc-lossless",
+      "bytes": 1997063,
+      "reduction": 0,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim01.jpg",
+      "category": "photo",
+      "tool": "sc-lossless",
+      "bytes": 167760,
+      "reduction": 0,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim03.jpg",
+      "category": "photo",
+      "tool": "sc-lossless",
+      "bytes": 86969,
+      "reduction": 0,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim05.jpg",
+      "category": "photo",
+      "tool": "sc-lossless",
+      "bytes": 173611,
+      "reduction": 0,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim07.jpg",
+      "category": "photo",
+      "tool": "sc-lossless",
+      "bytes": 99340,
+      "reduction": 0,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim08.png",
+      "category": "photo",
+      "tool": "sc-lossless",
+      "bytes": 552370,
+      "reduction": 0.4445908008623186,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim13.jpg",
+      "category": "photo",
+      "tool": "sc-lossless",
+      "bytes": 201392,
+      "reduction": 0,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim15.jpg",
+      "category": "photo",
+      "tool": "sc-lossless",
+      "bytes": 102888,
+      "reduction": 0,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim19.png",
+      "category": "photo",
+      "tool": "sc-lossless",
+      "bytes": 486068,
+      "reduction": 0.39137958451816157,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim20.jpg",
+      "category": "photo",
+      "tool": "sc-lossless",
+      "bytes": 86487,
+      "reduction": 0,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim23.jpg",
+      "category": "photo",
+      "tool": "sc-lossless",
+      "bytes": 84887,
+      "reduction": 0,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "screenshot-code.png",
+      "category": "screenshot",
+      "tool": "sc-lossless",
+      "bytes": 24372,
+      "reduction": 0.8715370018975332,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "screenshot-dashboard.png",
+      "category": "screenshot",
+      "tool": "sc-lossless",
+      "bytes": 80542,
+      "reduction": 0.678609764370224,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "text-docs.png",
+      "category": "text-graphic",
+      "tool": "sc-lossless",
+      "bytes": 22230,
+      "reduction": 0.9348258210539278,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "text-slide.png",
+      "category": "text-graphic",
+      "tool": "sc-lossless",
+      "bytes": 14676,
+      "reduction": 0.7331102584153194,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "transparent-icon.png",
+      "category": "transparent-illustration",
+      "tool": "sc-lossless",
+      "bytes": 4036,
+      "reduction": 0.6013039612763015,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "transparent-illustration-1.png",
+      "category": "transparent-illustration",
+      "tool": "sc-lossless",
+      "bytes": 74432,
+      "reduction": 0.4218200178661592,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "transparent-illustration-2.png",
+      "category": "transparent-illustration",
+      "tool": "sc-lossless",
+      "bytes": 87370,
+      "reduction": 0.43087365486333673,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "transparent-illustration-3.png",
+      "category": "transparent-illustration",
+      "tool": "sc-lossless",
+      "bytes": 85724,
+      "reduction": 0.40343087790111,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "gradient-linear.png",
+      "category": "gradient",
+      "tool": "sc-visually-lossless",
+      "bytes": 8387,
+      "reduction": 0.989413040377379,
+      "s2": 64.39322753
+    },
+    {
+      "env": "node",
+      "image": "gradient-radial.png",
+      "category": "gradient",
+      "tool": "sc-visually-lossless",
+      "bytes": 11094,
+      "reduction": 0.985845915167351,
+      "s2": 78.17581958
+    },
+    {
+      "env": "node",
+      "image": "gradient-sky.png",
+      "category": "gradient",
+      "tool": "sc-visually-lossless",
+      "bytes": 6332,
+      "reduction": 0.7996265940951236,
+      "s2": 72.6341572
+    },
+    {
+      "env": "node",
+      "image": "large-picsum1015.jpg",
+      "category": "photo-large",
+      "tool": "sc-visually-lossless",
+      "bytes": 1601997,
+      "reduction": 0.2991691507856582,
+      "s2": 81.13776787
+    },
+    {
+      "env": "node",
+      "image": "large-picsum1043.jpg",
+      "category": "photo-large",
+      "tool": "sc-visually-lossless",
+      "bytes": 2352615,
+      "reduction": 0.2857622100609555,
+      "s2": 84.38519679
+    },
+    {
+      "env": "node",
+      "image": "large-picsum1050.jpg",
+      "category": "photo-large",
+      "tool": "sc-visually-lossless",
+      "bytes": 1343631,
+      "reduction": 0.32719648804269064,
+      "s2": 80.98350248
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim01.jpg",
+      "category": "photo",
+      "tool": "sc-visually-lossless",
+      "bytes": 126607,
+      "reduction": 0.2453087744396757,
+      "s2": 86.24901277
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim03.jpg",
+      "category": "photo",
+      "tool": "sc-visually-lossless",
+      "bytes": 61275,
+      "reduction": 0.2954386045602456,
+      "s2": 87.43421909
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim05.jpg",
+      "category": "photo",
+      "tool": "sc-visually-lossless",
+      "bytes": 128944,
+      "reduction": 0.25728208466053415,
+      "s2": 87.33669911
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim07.jpg",
+      "category": "photo",
+      "tool": "sc-visually-lossless",
+      "bytes": 69960,
+      "reduction": 0.2957519629555063,
+      "s2": 85.20913189
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim08.png",
+      "category": "photo",
+      "tool": "sc-visually-lossless",
+      "bytes": 180836,
+      "reduction": 0.8181690208822677,
+      "s2": 88.82144943
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim13.jpg",
+      "category": "photo",
+      "tool": "sc-visually-lossless",
+      "bytes": 161404,
+      "reduction": 0.19855803606896005,
+      "s2": 87.31952685
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim15.jpg",
+      "category": "photo",
+      "tool": "sc-visually-lossless",
+      "bytes": 86743,
+      "reduction": 0.15691820231708264,
+      "s2": 88.89010958
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim19.png",
+      "category": "photo",
+      "tool": "sc-visually-lossless",
+      "bytes": 173918,
+      "reduction": 0.7822320222278151,
+      "s2": 89.9646376
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim20.jpg",
+      "category": "photo",
+      "tool": "sc-visually-lossless",
+      "bytes": 56719,
+      "reduction": 0.34419045636916534,
+      "s2": 86.62089404
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim23.jpg",
+      "category": "photo",
+      "tool": "sc-visually-lossless",
+      "bytes": 68827,
+      "reduction": 0.18919269146041207,
+      "s2": 89.75036372
+    },
+    {
+      "env": "node",
+      "image": "screenshot-code.png",
+      "category": "screenshot",
+      "tool": "sc-visually-lossless",
+      "bytes": 24372,
+      "reduction": 0.8715370018975332,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "screenshot-dashboard.png",
+      "category": "screenshot",
+      "tool": "sc-visually-lossless",
+      "bytes": 21546,
+      "reduction": 0.9140240617705153,
+      "s2": 81.50182656
+    },
+    {
+      "env": "node",
+      "image": "text-docs.png",
+      "category": "text-graphic",
+      "tool": "sc-visually-lossless",
+      "bytes": 22230,
+      "reduction": 0.9348258210539278,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "text-slide.png",
+      "category": "text-graphic",
+      "tool": "sc-visually-lossless",
+      "bytes": 9434,
+      "reduction": 0.8284384149557185,
+      "s2": 77.27582658
+    },
+    {
+      "env": "node",
+      "image": "transparent-icon.png",
+      "category": "transparent-illustration",
+      "tool": "sc-visually-lossless",
+      "bytes": 3790,
+      "reduction": 0.625605057789193,
+      "s2": 89.26730396
+    },
+    {
+      "env": "node",
+      "image": "transparent-illustration-1.png",
+      "category": "transparent-illustration",
+      "tool": "sc-visually-lossless",
+      "bytes": 57124,
+      "reduction": 0.5562667495242164,
+      "s2": 85.27423586
+    },
+    {
+      "env": "node",
+      "image": "transparent-illustration-2.png",
+      "category": "transparent-illustration",
+      "tool": "sc-visually-lossless",
+      "bytes": 64094,
+      "reduction": 0.5824930300424711,
+      "s2": 82.79375472
+    },
+    {
+      "env": "node",
+      "image": "transparent-illustration-3.png",
+      "category": "transparent-illustration",
+      "tool": "sc-visually-lossless",
+      "bytes": 56264,
+      "reduction": 0.6084484498416786,
+      "s2": 73.8115791
+    },
+    {
+      "env": "node",
+      "image": "gradient-linear.png",
+      "category": "gradient",
+      "tool": "sharp-avif-q50",
+      "bytes": 4184,
+      "reduction": 0.994718512094784,
+      "s2": 85.61051108
+    },
+    {
+      "env": "node",
+      "image": "gradient-radial.png",
+      "category": "gradient",
+      "tool": "sharp-avif-q50",
+      "bytes": 5440,
+      "reduction": 0.9930594716522795,
+      "s2": 86.26262294
+    },
+    {
+      "env": "node",
+      "image": "gradient-sky.png",
+      "category": "gradient",
+      "tool": "sharp-avif-q50",
+      "bytes": 957,
+      "reduction": 0.9697161482231575,
+      "s2": 85.4082592
+    },
+    {
+      "env": "node",
+      "image": "large-picsum1015.jpg",
+      "category": "photo-large",
+      "tool": "sharp-avif-q50",
+      "bytes": 813262,
+      "reduction": 0.6442196220756007,
+      "s2": 67.39450876
+    },
+    {
+      "env": "node",
+      "image": "large-picsum1043.jpg",
+      "category": "photo-large",
+      "tool": "sharp-avif-q50",
+      "bytes": 1271025,
+      "reduction": 0.6141255211935339,
+      "s2": 66.74377079
+    },
+    {
+      "env": "node",
+      "image": "large-picsum1050.jpg",
+      "category": "photo-large",
+      "tool": "sharp-avif-q50",
+      "bytes": 732025,
+      "reduction": 0.6334492201798341,
+      "s2": 67.64938809
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim01.jpg",
+      "category": "photo",
+      "tool": "sharp-avif-q50",
+      "bytes": 41843,
+      "reduction": 0.7505782069623271,
+      "s2": 60.70090772
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim03.jpg",
+      "category": "photo",
+      "tool": "sharp-avif-q50",
+      "bytes": 19444,
+      "reduction": 0.77642608285711,
+      "s2": 69.47618623
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim05.jpg",
+      "category": "photo",
+      "tool": "sharp-avif-q50",
+      "bytes": 45199,
+      "reduction": 0.7396535933782997,
+      "s2": 66.76264838
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim07.jpg",
+      "category": "photo",
+      "tool": "sharp-avif-q50",
+      "bytes": 21739,
+      "reduction": 0.7811656935776122,
+      "s2": 71.25426665
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim08.png",
+      "category": "photo",
+      "tool": "sharp-avif-q50",
+      "bytes": 42885,
+      "reduction": 0.9568790421184723,
+      "s2": 65.44903686
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim13.jpg",
+      "category": "photo",
+      "tool": "sharp-avif-q50",
+      "bytes": 58958,
+      "reduction": 0.7072475570032573,
+      "s2": 60.87391086
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim15.jpg",
+      "category": "photo",
+      "tool": "sharp-avif-q50",
+      "bytes": 23189,
+      "reduction": 0.7746190031879325,
+      "s2": 65.52853866
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim19.png",
+      "category": "photo",
+      "tool": "sharp-avif-q50",
+      "bytes": 26685,
+      "reduction": 0.9665869059737879,
+      "s2": 62.0459
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim20.jpg",
+      "category": "photo",
+      "tool": "sharp-avif-q50",
+      "bytes": 19040,
+      "reduction": 0.7798513071328639,
+      "s2": 68.96977283
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim23.jpg",
+      "category": "photo",
+      "tool": "sharp-avif-q50",
+      "bytes": 17459,
+      "reduction": 0.7943265753295558,
+      "s2": 71.12554199
+    },
+    {
+      "env": "node",
+      "image": "screenshot-code.png",
+      "category": "screenshot",
+      "tool": "sharp-avif-q50",
+      "bytes": 37527,
+      "reduction": 0.8021979759645794,
+      "s2": 82.73121582
+    },
+    {
+      "env": "node",
+      "image": "screenshot-dashboard.png",
+      "category": "screenshot",
+      "tool": "sharp-avif-q50",
+      "bytes": 45836,
+      "reduction": 0.817098621336366,
+      "s2": 84.70473771
+    },
+    {
+      "env": "node",
+      "image": "text-docs.png",
+      "category": "text-graphic",
+      "tool": "sharp-avif-q50",
+      "bytes": 109850,
+      "reduction": 0.6779404607635611,
+      "s2": 84.93353539
+    },
+    {
+      "env": "node",
+      "image": "text-slide.png",
+      "category": "text-graphic",
+      "tool": "sharp-avif-q50",
+      "bytes": 14595,
+      "reduction": 0.7345832802924221,
+      "s2": 86.62030946
+    },
+    {
+      "env": "node",
+      "image": "transparent-icon.png",
+      "category": "transparent-illustration",
+      "tool": "sharp-avif-q50",
+      "bytes": 3248,
+      "reduction": 0.6791464980736936,
+      "s2": 91.93535228
+    },
+    {
+      "env": "node",
+      "image": "transparent-illustration-1.png",
+      "category": "transparent-illustration",
+      "tool": "sharp-avif-q50",
+      "bytes": 16236,
+      "reduction": 0.8738804520915058,
+      "s2": 86.06264504
+    },
+    {
+      "env": "node",
+      "image": "transparent-illustration-2.png",
+      "category": "transparent-illustration",
+      "tool": "sharp-avif-q50",
+      "bytes": 19146,
+      "reduction": 0.8752833580864535,
+      "s2": 85.27598078
+    },
+    {
+      "env": "node",
+      "image": "transparent-illustration-3.png",
+      "category": "transparent-illustration",
+      "tool": "sharp-avif-q50",
+      "bytes": 16459,
+      "reduction": 0.8854587842304882,
+      "s2": 86.35166113
+    },
+    {
+      "env": "node",
+      "image": "gradient-linear.png",
+      "category": "gradient",
+      "tool": "sharp-mozjpeg-q80",
+      "bytes": 10930,
+      "reduction": 0.9862029964617566,
+      "s2": 80.32572698
+    },
+    {
+      "env": "node",
+      "image": "gradient-radial.png",
+      "category": "gradient",
+      "tool": "sharp-mozjpeg-q80",
+      "bytes": 22807,
+      "reduction": 0.9709020900686653,
+      "s2": 78.9683074
+    },
+    {
+      "env": "node",
+      "image": "gradient-sky.png",
+      "category": "gradient",
+      "tool": "sharp-mozjpeg-q80",
+      "bytes": 12473,
+      "reduction": 0.6052973007183318,
+      "s2": 77.52234391
+    },
+    {
+      "env": "node",
+      "image": "large-picsum1015.jpg",
+      "category": "photo-large",
+      "tool": "sharp-mozjpeg-q80",
+      "bytes": 1695509,
+      "reduction": 0.25826015134824887,
+      "s2": 83.0465579
+    },
+    {
+      "env": "node",
+      "image": "large-picsum1043.jpg",
+      "category": "photo-large",
+      "tool": "sharp-mozjpeg-q80",
+      "bytes": 2482091,
+      "reduction": 0.24645418384750883,
+      "s2": 86.4200454
+    },
+    {
+      "env": "node",
+      "image": "large-picsum1050.jpg",
+      "category": "photo-large",
+      "tool": "sharp-mozjpeg-q80",
+      "bytes": 1502153,
+      "reduction": 0.2478189220870849,
+      "s2": 83.82622912
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim01.jpg",
+      "category": "photo",
+      "tool": "sharp-mozjpeg-q80",
+      "bytes": 86173,
+      "reduction": 0.486331664282308,
+      "s2": 75.03017154
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim03.jpg",
+      "category": "photo",
+      "tool": "sharp-mozjpeg-q80",
+      "bytes": 42583,
+      "reduction": 0.5103657625130793,
+      "s2": 75.24033238
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim05.jpg",
+      "category": "photo",
+      "tool": "sharp-mozjpeg-q80",
+      "bytes": 95451,
+      "reduction": 0.45020188812920836,
+      "s2": 77.92308755
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim07.jpg",
+      "category": "photo",
+      "tool": "sharp-mozjpeg-q80",
+      "bytes": 52104,
+      "reduction": 0.47549828870545596,
+      "s2": 79.44704038
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim08.png",
+      "category": "photo",
+      "tool": "sharp-mozjpeg-q80",
+      "bytes": 93847,
+      "reduction": 0.9056366437144052,
+      "s2": 75.60544023
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim13.jpg",
+      "category": "photo",
+      "tool": "sharp-mozjpeg-q80",
+      "bytes": 104241,
+      "reduction": 0.4823975133073807,
+      "s2": 73.47513651
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim15.jpg",
+      "category": "photo",
+      "tool": "sharp-mozjpeg-q80",
+      "bytes": 48942,
+      "reduction": 0.5243177046885934,
+      "s2": 73.49318864
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim19.png",
+      "category": "photo",
+      "tool": "sharp-mozjpeg-q80",
+      "bytes": 59452,
+      "reduction": 0.925558356153406,
+      "s2": 74.65568907
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim20.jpg",
+      "category": "photo",
+      "tool": "sharp-mozjpeg-q80",
+      "bytes": 41242,
+      "reduction": 0.5231422063431499,
+      "s2": 76.19367615
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim23.jpg",
+      "category": "photo",
+      "tool": "sharp-mozjpeg-q80",
+      "bytes": 40196,
+      "reduction": 0.5264763744743011,
+      "s2": 78.95815022
+    },
+    {
+      "env": "node",
+      "image": "screenshot-code.png",
+      "category": "screenshot",
+      "tool": "sharp-mozjpeg-q80",
+      "bytes": 88273,
+      "reduction": 0.534719586759435,
+      "s2": 61.14106945
+    },
+    {
+      "env": "node",
+      "image": "screenshot-dashboard.png",
+      "category": "screenshot",
+      "tool": "sharp-mozjpeg-q80",
+      "bytes": 150726,
+      "reduction": 0.398551505357036,
+      "s2": 80.27074096
+    },
+    {
+      "env": "node",
+      "image": "text-docs.png",
+      "category": "text-graphic",
+      "tool": "sharp-mozjpeg-q80",
+      "bytes": 202724,
+      "reduction": 0.4056513606539113,
+      "s2": 77.77661103
+    },
+    {
+      "env": "node",
+      "image": "text-slide.png",
+      "category": "text-graphic",
+      "tool": "sharp-mozjpeg-q80",
+      "bytes": 35945,
+      "reduction": 0.34632381021658876,
+      "s2": 80.67392414
+    },
+    {
+      "env": "node",
+      "image": "gradient-linear.png",
+      "category": "gradient",
+      "tool": "sharp-png-max",
+      "bytes": 60759,
+      "reduction": 0.9233035555370417,
+      "s2": 91.66583996
+    },
+    {
+      "env": "node",
+      "image": "gradient-radial.png",
+      "category": "gradient",
+      "tool": "sharp-png-max",
+      "bytes": 317877,
+      "reduction": 0.5944422188256728,
+      "s2": 90.81994853
+    },
+    {
+      "env": "node",
+      "image": "gradient-sky.png",
+      "category": "gradient",
+      "tool": "sharp-png-max",
+      "bytes": 11117,
+      "reduction": 0.648207335210911,
+      "s2": 90.67698664
+    },
+    {
+      "env": "node",
+      "image": "large-picsum1015.jpg",
+      "category": "photo-large",
+      "tool": "sharp-png-max",
+      "bytes": 7295526,
+      "reduction": -2.191597538600453,
+      "s2": 53.45652825
+    },
+    {
+      "env": "node",
+      "image": "large-picsum1043.jpg",
+      "category": "photo-large",
+      "tool": "sharp-png-max",
+      "bytes": 9879830,
+      "reduction": -1.9994486748462754,
+      "s2": 68.43994875
+    },
+    {
+      "env": "node",
+      "image": "large-picsum1050.jpg",
+      "category": "photo-large",
+      "tool": "sharp-png-max",
+      "bytes": 6949339,
+      "reduction": -2.4797795562783946,
+      "s2": 61.9132315
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim01.jpg",
+      "category": "photo",
+      "tool": "sharp-png-max",
+      "bytes": 345361,
+      "reduction": -1.0586611826418695,
+      "s2": 85.05663009
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim03.jpg",
+      "category": "photo",
+      "tool": "sharp-png-max",
+      "bytes": 228512,
+      "reduction": -1.6275109521783624,
+      "s2": 75.94246152
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim05.jpg",
+      "category": "photo",
+      "tool": "sharp-png-max",
+      "bytes": 313227,
+      "reduction": -0.8041886746807518,
+      "s2": 74.62388581
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim07.jpg",
+      "category": "photo",
+      "tool": "sharp-png-max",
+      "bytes": 250974,
+      "reduction": -1.5264143346084156,
+      "s2": 80.53784373
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim08.png",
+      "category": "photo",
+      "tool": "sharp-png-max",
+      "bytes": 323360,
+      "reduction": 0.6748608385083175,
+      "s2": 81.60270221
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim13.jpg",
+      "category": "photo",
+      "tool": "sharp-png-max",
+      "bytes": 356077,
+      "reduction": -0.7680791689838722,
+      "s2": 81.83288192
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim15.jpg",
+      "category": "photo",
+      "tool": "sharp-png-max",
+      "bytes": 254599,
+      "reduction": -1.4745256978462016,
+      "s2": 75.76318763
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim19.png",
+      "category": "photo",
+      "tool": "sharp-png-max",
+      "bytes": 328557,
+      "reduction": 0.5886038623207732,
+      "s2": 82.20101036
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim20.jpg",
+      "category": "photo",
+      "tool": "sharp-png-max",
+      "bytes": 201888,
+      "reduction": -1.3343161399979189,
+      "s2": 82.22729718
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim23.jpg",
+      "category": "photo",
+      "tool": "sharp-png-max",
+      "bytes": 212335,
+      "reduction": -1.5013841931037732,
+      "s2": 66.8726373
+    },
+    {
+      "env": "node",
+      "image": "screenshot-code.png",
+      "category": "screenshot",
+      "tool": "sharp-png-max",
+      "bytes": 76807,
+      "reduction": 0.5951560193970061,
+      "s2": 96.39909873
+    },
+    {
+      "env": "node",
+      "image": "screenshot-dashboard.png",
+      "category": "screenshot",
+      "tool": "sharp-png-max",
+      "bytes": 115208,
+      "reduction": 0.540280521138844,
+      "s2": 90.09193428
+    },
+    {
+      "env": "node",
+      "image": "text-docs.png",
+      "category": "text-graphic",
+      "tool": "sharp-png-max",
+      "bytes": 115961,
+      "reduction": 0.6600241581302076,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "text-slide.png",
+      "category": "text-graphic",
+      "tool": "sharp-png-max",
+      "bytes": 23467,
+      "reduction": 0.573241921111495,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "transparent-icon.png",
+      "category": "transparent-illustration",
+      "tool": "sharp-png-max",
+      "bytes": 5345,
+      "reduction": 0.4719944680430702,
+      "s2": 95.94290289
+    },
+    {
+      "env": "node",
+      "image": "transparent-illustration-1.png",
+      "category": "transparent-illustration",
+      "tool": "sharp-png-max",
+      "bytes": 51996,
+      "reduction": 0.5961005165650367,
+      "s2": 85.16408124
+    },
+    {
+      "env": "node",
+      "image": "transparent-illustration-2.png",
+      "category": "transparent-illustration",
+      "tool": "sharp-png-max",
+      "bytes": 60469,
+      "reduction": 0.6061062039135986,
+      "s2": 85.99144846
+    },
+    {
+      "env": "node",
+      "image": "transparent-illustration-3.png",
+      "category": "transparent-illustration",
+      "tool": "sharp-png-max",
+      "bytes": 56233,
+      "reduction": 0.6086641845575699,
+      "s2": 86.3417245
+    },
+    {
+      "env": "node",
+      "image": "gradient-linear.png",
+      "category": "gradient",
+      "tool": "sharp-webp-lossless",
+      "bytes": 112122,
+      "reduction": 0.8584677373545351,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "gradient-radial.png",
+      "category": "gradient",
+      "tool": "sharp-webp-lossless",
+      "bytes": 516402,
+      "reduction": 0.34115758826846576,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "gradient-sky.png",
+      "category": "gradient",
+      "tool": "sharp-webp-lossless",
+      "bytes": 13944,
+      "reduction": 0.5587481408816177,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "large-picsum1015.jpg",
+      "category": "photo-large",
+      "tool": "sharp-webp-lossless",
+      "bytes": 9874632,
+      "reduction": -3.319887446879809,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "large-picsum1043.jpg",
+      "category": "photo-large",
+      "tool": "sharp-webp-lossless",
+      "bytes": 13685602,
+      "reduction": -3.1548549705180697,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "large-picsum1050.jpg",
+      "category": "photo-large",
+      "tool": "sharp-webp-lossless",
+      "bytes": 8566208,
+      "reduction": -3.289402988288302,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim01.jpg",
+      "category": "photo",
+      "tool": "sharp-webp-lossless",
+      "bytes": 431354,
+      "reduction": -1.5712565569861705,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim03.jpg",
+      "category": "photo",
+      "tool": "sharp-webp-lossless",
+      "bytes": 281922,
+      "reduction": -2.2416378249721167,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim05.jpg",
+      "category": "photo",
+      "tool": "sharp-webp-lossless",
+      "bytes": 511768,
+      "reduction": -1.9477855665827626,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim07.jpg",
+      "category": "photo",
+      "tool": "sharp-webp-lossless",
+      "bytes": 329526,
+      "reduction": -2.3171532111938795,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim08.png",
+      "category": "photo",
+      "tool": "sharp-webp-lossless",
+      "bytes": 547446,
+      "reduction": 0.4495418932398082,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim13.jpg",
+      "category": "photo",
+      "tool": "sharp-webp-lossless",
+      "bytes": 523214,
+      "reduction": -1.59798800349567,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim15.jpg",
+      "category": "photo",
+      "tool": "sharp-webp-lossless",
+      "bytes": 339170,
+      "reduction": -2.2964971619625225,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim19.png",
+      "category": "photo",
+      "tool": "sharp-webp-lossless",
+      "bytes": 483668,
+      "reduction": 0.3943846969657129,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim20.jpg",
+      "category": "photo",
+      "tool": "sharp-webp-lossless",
+      "bytes": 275162,
+      "reduction": -2.181541734595951,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim23.jpg",
+      "category": "photo",
+      "tool": "sharp-webp-lossless",
+      "bytes": 343038,
+      "reduction": -3.0411134802737756,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "screenshot-code.png",
+      "category": "screenshot",
+      "tool": "sharp-webp-lossless",
+      "bytes": 24362,
+      "reduction": 0.8715897111532785,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "screenshot-dashboard.png",
+      "category": "screenshot",
+      "tool": "sharp-webp-lossless",
+      "bytes": 76538,
+      "reduction": 0.6945870992198879,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "text-docs.png",
+      "category": "text-graphic",
+      "tool": "sharp-webp-lossless",
+      "bytes": 21586,
+      "reduction": 0.9367139079293785,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "text-slide.png",
+      "category": "text-graphic",
+      "tool": "sharp-webp-lossless",
+      "bytes": 14736,
+      "reduction": 0.732019131098947,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "transparent-icon.png",
+      "category": "transparent-illustration",
+      "tool": "sharp-webp-lossless",
+      "bytes": 3972,
+      "reduction": 0.6076261977674602,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "transparent-illustration-1.png",
+      "category": "transparent-illustration",
+      "tool": "sharp-webp-lossless",
+      "bytes": 72962,
+      "reduction": 0.4332388239406533,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "transparent-illustration-2.png",
+      "category": "transparent-illustration",
+      "tool": "sharp-webp-lossless",
+      "bytes": 85216,
+      "reduction": 0.4449047656270356,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "transparent-illustration-3.png",
+      "category": "transparent-illustration",
+      "tool": "sharp-webp-lossless",
+      "bytes": 85228,
+      "reduction": 0.4068826333553708,
+      "s2": 100
+    },
+    {
+      "env": "node",
+      "image": "gradient-linear.png",
+      "category": "gradient",
+      "tool": "sharp-webp-q80",
+      "bytes": 11860,
+      "reduction": 0.9850290519703964,
+      "s2": 79.45706284
+    },
+    {
+      "env": "node",
+      "image": "gradient-radial.png",
+      "category": "gradient",
+      "tool": "sharp-webp-q80",
+      "bytes": 13266,
+      "reduction": 0.9830748071579302,
+      "s2": 79.7015511
+    },
+    {
+      "env": "node",
+      "image": "gradient-sky.png",
+      "category": "gradient",
+      "tool": "sharp-webp-q80",
+      "bytes": 8532,
+      "reduction": 0.7300085440334166,
+      "s2": 79.82678515
+    },
+    {
+      "env": "node",
+      "image": "large-picsum1015.jpg",
+      "category": "photo-large",
+      "tool": "sharp-webp-q80",
+      "bytes": 1493726,
+      "reduction": 0.34653481805924613,
+      "s2": 71.04178596
+    },
+    {
+      "env": "node",
+      "image": "large-picsum1043.jpg",
+      "category": "photo-large",
+      "tool": "sharp-webp-q80",
+      "bytes": 2481406,
+      "reduction": 0.24666214515274076,
+      "s2": 77.65333613
+    },
+    {
+      "env": "node",
+      "image": "large-picsum1050.jpg",
+      "category": "photo-large",
+      "tool": "sharp-webp-q80",
+      "bytes": 1275176,
+      "reduction": 0.3614743250463306,
+      "s2": 70.58592945
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim01.jpg",
+      "category": "photo",
+      "tool": "sharp-webp-q80",
+      "bytes": 94870,
+      "reduction": 0.4344897472579876,
+      "s2": 77.92805861
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim03.jpg",
+      "category": "photo",
+      "tool": "sharp-webp-q80",
+      "bytes": 32648,
+      "reduction": 0.6246018696317078,
+      "s2": 72.42694271
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim05.jpg",
+      "category": "photo",
+      "tool": "sharp-webp-q80",
+      "bytes": 96962,
+      "reduction": 0.4414985225590544,
+      "s2": 78.97175536
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim07.jpg",
+      "category": "photo",
+      "tool": "sharp-webp-q80",
+      "bytes": 40390,
+      "reduction": 0.5934165492248842,
+      "s2": 77.11835055
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim08.png",
+      "category": "photo",
+      "tool": "sharp-webp-q80",
+      "bytes": 98826,
+      "reduction": 0.9006302487210013,
+      "s2": 78.1387984
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim13.jpg",
+      "category": "photo",
+      "tool": "sharp-webp-q80",
+      "bytes": 127866,
+      "reduction": 0.36508898069436724,
+      "s2": 79.06426361
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim15.jpg",
+      "category": "photo",
+      "tool": "sharp-webp-q80",
+      "bytes": 42636,
+      "reduction": 0.5856076510380219,
+      "s2": 69.39657292
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim19.png",
+      "category": "photo",
+      "tool": "sharp-webp-q80",
+      "bytes": 57400,
+      "reduction": 0.9281277272960624,
+      "s2": 72.77853946
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim20.jpg",
+      "category": "photo",
+      "tool": "sharp-webp-q80",
+      "bytes": 36664,
+      "reduction": 0.5760750170545863,
+      "s2": 74.16838282
+    },
+    {
+      "env": "node",
+      "image": "photo-kodim23.jpg",
+      "category": "photo",
+      "tool": "sharp-webp-q80",
+      "bytes": 30072,
+      "reduction": 0.6457408083687726,
+      "s2": 72.66920515
+    },
+    {
+      "env": "node",
+      "image": "screenshot-code.png",
+      "category": "screenshot",
+      "tool": "sharp-webp-q80",
+      "bytes": 73548,
+      "reduction": 0.6123339658444023,
+      "s2": 65.84424224
+    },
+    {
+      "env": "node",
+      "image": "screenshot-dashboard.png",
+      "category": "screenshot",
+      "tool": "sharp-webp-q80",
+      "bytes": 90152,
+      "reduction": 0.6402625645936832,
+      "s2": 84.348208
+    },
+    {
+      "env": "node",
+      "image": "text-docs.png",
+      "category": "text-graphic",
+      "tool": "sharp-webp-q80",
+      "bytes": 181650,
+      "reduction": 0.4674363650223111,
+      "s2": 86.78264379
+    },
+    {
+      "env": "node",
+      "image": "text-slide.png",
+      "category": "text-graphic",
+      "tool": "sharp-webp-q80",
+      "bytes": 29932,
+      "reduction": 0.45567295277237263,
+      "s2": 87.91815233
+    },
+    {
+      "env": "node",
+      "image": "transparent-icon.png",
+      "category": "transparent-illustration",
+      "tool": "sharp-webp-q80",
+      "bytes": 5730,
+      "reduction": 0.4339622641509434,
+      "s2": 87.23454191
+    },
+    {
+      "env": "node",
+      "image": "transparent-illustration-1.png",
+      "category": "transparent-illustration",
+      "tool": "sharp-webp-q80",
+      "bytes": 54376,
+      "reduction": 0.5776129257777605,
+      "s2": 81.70166068
+    },
+    {
+      "env": "node",
+      "image": "transparent-illustration-2.png",
+      "category": "transparent-illustration",
+      "tool": "sharp-webp-q80",
+      "bytes": 63646,
+      "reduction": 0.5854112926339925,
+      "s2": 79.43519975
+    },
+    {
+      "env": "node",
+      "image": "transparent-illustration-3.png",
+      "category": "transparent-illustration",
+      "tool": "sharp-webp-q80",
+      "bytes": 59310,
+      "reduction": 0.5872507742092627,
+      "s2": 80.5531482
+    }
+  ]
+}

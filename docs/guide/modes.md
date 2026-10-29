@@ -3,8 +3,8 @@
 | Mode | Constraint | Pixels | Default budget | AVIF preset |
 |---|---|---|---|---|
 | `lossless` | decoded RGBA identical to the input | unchanged (verified) | 4 encodes | not used |
-| `visually-lossless` | SSIM ≥ 0.99 | may differ | 16 encodes | speed 6 |
-| `balanced` (default) | SSIM ≥ 0.975 | may differ | 10 encodes | speed 7 |
+| `visually-lossless` | SSIM ≥ 0.99 (AVIF stricter, see below) | may differ | 16 encodes | speed 6 |
+| `balanced` (default) | SSIM ≥ 0.975 (AVIF stricter, see below) | may differ | 10 encodes | speed 7 |
 | `fast` | SSIM ≥ 0.975 | may differ | 5 encodes | not used (no AVIF, no oxipng) |
 
 Perceptual modes never claim to be lossless: the result reports `qualityMetricName: "ssim"` and the measured
@@ -15,7 +15,7 @@ Perceptual modes never claim to be lossless: the result reports `qualityMetricNa
 - **User photos for a feed or profile** — `balanced`, optionally with `maxWidthOrHeight`.
 - **Phones, batches of many photos, slow networks** — `fast`: same quality bar, about 3.5× faster and ~40% less
   memory than `balanced` in the benchmark (its search starts from a [predicted quality](/architecture#quality-predictor-search-start)), at the cost of larger files (no AVIF: transparent illustrations end up
-  ~5× larger than with `balanced`).
+  about 2× larger than with `balanced`).
 - **Product images, artwork, anything people zoom into** — `visually-lossless`.
 - **Archival, medical, design source files, screenshots used as evidence** — `lossless`.
 
@@ -43,6 +43,12 @@ SSIM with uniform 8×8 windows at stride 4, on BT.601 Y, Cb and Cr, weighted 6:1
 - **Active-window pooling:** windows that are perfectly flat and identical in both images are excluded. Without
   this, large untouched backgrounds hide artifacts around text and edges.
 - **Gradients** are held to a stricter threshold (half-way to 1) because banding appears before SSIM drops.
+- **AVIF** is held to a stricter threshold than JPEG and WebP: `1 − k·(1 − T)`, with k = 0.7 for photos and 0.3
+  for everything else. SSIM tolerates AVIF's smoothing more than JPEG/WebP artefacts. We found this by scoring the
+  outputs with SSIMULACRA2, an independent, perception-tuned metric: at the same SSIM, AVIF scored 3–5 points lower
+  than WebP on the same images, and up to 17 points lower on screenshots and text. k was fitted so that AVIF matches
+  WebP on SSIMULACRA2 in both perceptual modes. It was fitted on the 24 benchmark images and checked on 91 held-out
+  ones. Scripts: `bench/calibrate-s2.mjs` and `bench/calibrate-s2-fit.mjs`.
 - **Large images (> 4 MP):** the quality search runs on a 3×3 mosaic of full-resolution 512 px tiles; the winning
   encoder is then run on the full image and verified there.
 
@@ -50,7 +56,9 @@ Validated against the `ssim.js` reference implementation: luma SSIM agreed withi
 
 ::: warning SSIM is a proxy
 SSIM is not a perceptual model of colour or banding. It under-weights chroma bleeding around coloured text and
-banding in smooth gradients. Check the thresholds on your own content; `minQuality` is configurable.
+banding in smooth gradients. Gradients still score lowest on SSIMULACRA2 in every mode (64–72 on the benchmark),
+for every codec. Check the thresholds on your own content; `minQuality` is configurable. How the outputs score on
+SSIMULACRA2 is published on the [benchmarks](/benchmarks) page.
 :::
 
 ## Search

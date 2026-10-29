@@ -85,6 +85,21 @@ export function planCandidates(input: PlanInput, opts: ResolvedOptions): FormatP
   return plans;
 }
 
+/**
+ * SSIM is more lenient towards AVIF's smoothing than towards JPEG/WebP artefacts: at the same SSIM, AVIF outputs scored
+ * 3-5 points lower on SSIMULACRA2 (median, same images), and graphics up to 17 lower. AVIF must therefore get k times
+ * closer to 1: T_avif = 1 − k·(1 − T). k was fitted so that AVIF matches WebP on SSIMULACRA2 at both perceptual
+ * thresholds (bench/calibrate-s2.mjs, bench/calibrate-s2-fit.mjs; fitted on the benchmark corpus, checked on a
+ * held-out set of 91 images).
+ */
+const AVIF_STRICTNESS: { photo: number; other: number } = { photo: 0.7, other: 0.3 };
+
+/** The SSIM a candidate of `format` must reach, given the category threshold from `effectiveMinQuality`. */
+export function formatMinQuality(threshold: number, format: OutputFormat, category: ImageCategory): number {
+  if (format !== "avif" || threshold >= 1) return threshold;
+  return 1 - (category === "photo" ? AVIF_STRICTNESS.photo : AVIF_STRICTNESS.other) * (1 - threshold);
+}
+
 /** Gradients band visibly before SSIM drops; require a stricter threshold for them. */
 export function effectiveMinQuality(category: ImageCategory, opts: ResolvedOptions): number {
   if (opts.mode === "lossless") return 1;

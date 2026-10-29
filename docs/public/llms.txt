@@ -12,7 +12,8 @@ Key facts:
 - Formats are detected from content, not extensions. Transparency, EXIF orientation and ICC profiles are kept;
   JPEG is never chosen for images with alpha.
 - Metadata (EXIF, XMP) is kept by default; `preserveMetadata: false` / `--strip-metadata` removes it, including GPS.
-- SSIM is a proxy for perception, not a guarantee of invisible change.
+- SSIM is a proxy for perception, not a guarantee of invisible change. AVIF is held to a stricter SSIM threshold,
+  calibrated against SSIMULACRA2. Outputs are also scored with SSIMULACRA2 in the benchmarks.
 - Typical cost: 0.3-3 s per image (several encodes each); large screenshots in visually-lossless can take tens of
   seconds. Much slower than a single canvas encode.
 - Lossy outputs written by the CLI/MCP server carry a ~20-byte marker; marked files are not re-encoded again
@@ -41,7 +42,8 @@ Key facts:
 - [React hook](https://baukaalm.github.io/optiq/guide/react): `useOptiq` from `optiq-image/react`
 - [CLI and Vite plugin](https://baukaalm.github.io/optiq/guide/static)
 - [AI agents](https://baukaalm.github.io/optiq/guide/agents): MCP server, skill
-- [Benchmarks](https://baukaalm.github.io/optiq/benchmarks): 24-image corpus, balanced -61% total, all >= SSIM 0.975
+- [Benchmarks](https://baukaalm.github.io/optiq/benchmarks): 24-image corpus. balanced -60% total with SSIMULACRA2
+  median 79 (WebP q80: -51%, 79). visually-lossless -50% with median 86. Gradients are the weakest category.
 
 ## Optional
 

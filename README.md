@@ -17,6 +17,9 @@ output that satisfies your constraint:
 - `visually-lossless` — pixels may differ; SSIM ≥ 0.99 against the input (configurable);
 - `balanced` (default) — SSIM ≥ 0.975, smaller search budget, faster AVIF preset.
 
+AVIF is held to a stricter SSIM threshold than JPEG and WebP. It was calibrated against the independent SSIMULACRA2
+metric, which showed SSIM is too lenient on AVIF's smoothing.
+
 The same engine also runs in Node and powers:
 - a CLI (`npx optiq-image`);
 - a Vite plugin;
@@ -223,48 +226,71 @@ libwebp (BSD-3), libavif (BSD-2) with libaom (BSD-2 + AOMedia patent licence), R
 
 ## Benchmark results
 
-24 images (`bench/corpus/manifest.json`): 10 Kodak photos (8 JPEG q92, 2 PNG), 3 phone-style 12 MP JPEGs,
-2 screenshots, 2 text graphics, 4 transparent illustrations, 3 gradients. Apple M4 Pro (14 cores, 24 GB), macOS arm64, Node 24.15 and
-headless Chromium 156. Every output is decoded with the same decoders and scored with the same SSIM against the
-input. Full tables, per-image rows and the optimisation log: [`bench/results/RESULTS.md`](https://github.com/Baukaalm/optiq/blob/main/bench/results/RESULTS.md).
+The corpus has 24 images (listed in `bench/corpus/manifest.json`):
+- 10 Kodak photos (8 JPEG q92, 2 PNG);
+- 3 phone-style 12 MP JPEGs;
+- 2 screenshots and 2 text graphics;
+- 4 transparent illustrations;
+- 3 gradients.
+
+Measured on an Apple M4 Pro (14 cores, 24 GB), macOS arm64, Node 24.15 and headless Chromium 156. Every output was
+decoded with the same decoders and scored against the input twice:
+- with SSIM, the metric Optiq uses to choose outputs, so it favours Optiq;
+- independently with **SSIMULACRA2** (libjxl's `ssimulacra2`), a perception-tuned metric that Optiq never sees.
+
+On the SSIMULACRA2 scale, 90 is very high (indistinguishable at 1:1), 80 is high, 70 is medium and 50 is low. Full
+tables and per-image rows are in [`bench/results/RESULTS.md`](https://github.com/Baukaalm/optiq/blob/main/bench/results/RESULTS.md).
 
 **Perceptual, all 24 images (Node; same encoders as the browser)**
 
-| Tool | Total output | Reduction | Meets SSIM ≥ 0.975 | Median time | Median peak RSS |
-|---|---|---|---|---|---|
-| Optiq `balanced` | 13.25 → 5.15 MB | 61.1% | 24/24 | 1.8 s | 301 MB |
-| Optiq `fast` (no AVIF, ≤ 5 encodes) | 13.25 → 5.49 MB | 58.5% | 24/24 | 434 ms | 173 MB |
-| Optiq `balanced`, `preserveMetadata: false` | 13.25 → 4.73 MB | 64.3% | 24/24 | 1.5 s | 297 MB |
-| Optiq `visually-lossless` | 13.25 → 6.38 MB | 51.8% | 24/24 (≥ 0.99: 24/24) | 2.3 s | 325 MB |
-| libvips WebP q80 | 13.25 → 6.50 MB | 51.0% | 17/24 | 59 ms | 105 MB |
-| libvips MozJPEG q80 (opaque only) | 12.82 → 6.87 MB | 46.4% | 11/20 | 54 ms | 106 MB |
-| libvips AVIF q50 | 13.25 → 3.41 MB | 74.3% | 11/24 (photos: 0/10) | 590 ms | 151 MB |
+| Tool | Total output | Reduction | SSIMULACRA2 median | SSIMULACRA2 ≥ 80 | Median time | Median peak RSS |
+|---|---|---|---|---|---|---|
+| Optiq `balanced` | 13.25 → 5.29 MB | 60.1% | 79.4 | 10/24 | 1.6 s | 301 MB |
+| Optiq `fast` (no AVIF, ≤ 5 encodes) | 13.25 → 5.49 MB | 58.5% | 78.0 | 9/24 | 410 ms | 175 MB |
+| Optiq `balanced`, `preserveMetadata: false` | 13.25 → 5.12 MB | 61.4% | 79.0 | 10/24 | 1.6 s | 301 MB |
+| Optiq `visually-lossless` | 13.25 → 6.70 MB | 49.5% | 85.8 | 19/24 | 2.4 s | 322 MB |
+| libvips WebP q80 | 13.25 → 6.50 MB | 51.0% | 78.6 | 6/24 | 59 ms | 105 MB |
+| libvips MozJPEG q80 (opaque only) | 12.82 → 6.87 MB | 46.4% | 77.8 | 6/20 | 54 ms | 106 MB |
+| libvips AVIF q50 | 13.25 → 3.41 MB | 74.3% | 71.2 | 11/24 | 590 ms | 151 MB |
 
 **Browser (Chromium), against browser-image-compression 2.0.2 and canvas**
 
-| Tool | Total output | Reduction | Meets SSIM ≥ 0.975 | Median time |
-|---|---|---|---|---|
-| Optiq `balanced` | 13.25 → 5.15 MB | 61.1% | 24/24 | 1.4 s |
-| Optiq `fast` | 13.25 → 5.49 MB | 58.5% | 24/24 | 349 ms |
-| browser-image-compression `initialQuality: 0.8` | 13.25 → 10.21 MB | 22.9% | 19/24 | 78 ms |
-| browser-image-compression `fileType: webp, 0.8` | 13.25 → 6.52 MB | 50.8% | 18/24 | 37 ms |
-| browser-image-compression `maxSizeMB: 1` | 13.25 → 7.14 MB | 46.1% | 21/24 (3 large photos were downscaled, not scored) | 128 ms |
-| canvas WebP 0.8 | 13.25 → 6.52 MB | 50.8% | 18/24 | 36 ms |
+| Tool | Total output | Reduction | SSIMULACRA2 median | SSIMULACRA2 ≥ 80 | Median time |
+|---|---|---|---|---|---|
+| Optiq `balanced` | 13.25 → 5.29 MB | 60.1% | 79.4 | 10/24 | 1.3 s |
+| Optiq `fast` | 13.25 → 5.49 MB | 58.5% | 78.0 | 9/24 | 331 ms |
+| Optiq `visually-lossless` | 13.25 → 6.70 MB | 49.5% | 85.8 | 19/24 | 2.2 s |
+| browser-image-compression `initialQuality: 0.8` | 13.25 → 10.21 MB | 22.9% | 91.9 | 17/24 | 78 ms |
+| browser-image-compression `fileType: webp, 0.8` | 13.25 → 6.52 MB | 50.8% | 78.5 | 6/24 | 37 ms |
+| browser-image-compression `maxSizeMB: 1` | 13.25 → 7.14 MB | 46.1% | 92.4 | 21/21 (3 large photos were downscaled, not scored) | 128 ms |
+| canvas WebP 0.8 | 13.25 → 6.52 MB | 50.8% | 78.5 | 6/24 | 36 ms |
 
 What the numbers say:
 
-- **Per image, no baseline dominated Optiq `balanced`** (smaller *and* higher SSIM) on any image.
-  `balanced` dominated MozJPEG q80 on 11/20, WebP q80 on 10/24, browser-image-compression WebP 0.8 on 10/24 and
-  AVIF q50 on 2/24; everything else is a trade-off.
-- **AVIF q50 is much smaller on photos, but at SSIM 0.93–0.97**, below the 0.975 constraint on all 10 Kodak photos.
-  Optiq spends bytes to stay above the threshold; whether that threshold is right for you is a product decision.
-- **Category matters.** Screenshots/text: −90.6% / −91.8% vs. −62.8% / −46.6% for WebP q80 (lossless WebP and
-  screen-content AVIF win there). Large 12 MP phone photos: −41.5% with metadata kept (AVIF excluded because EXIF
-  must be preserved), −47.7% with `preserveMetadata: false`, vs. −30.7% for WebP q80.
-- **Optiq is slow and memory-hungry by comparison.** It runs several encodes plus decodes and SSIM per
-  image: 1–4 s typical, 3–4 s for 12 MP photos (8–12 s when AVIF is allowed), 16.6 s for a 5 MP screenshot in
-  `balanced` and 38 s in `visually-lossless`; median peak RSS ≈ 300 MB, up to 1.1 GB. Single canvas/libvips encodes
-  take 5–800 ms. Work runs in a worker, so the UI stays responsive (max main-thread gap 11 ms during a 12 MP job).
+- **`balanced` vs WebP 0.8.** Files are 19% smaller with about the same SSIMULACRA2 (median 79.4 vs 78.5–78.6).
+  Per image, `balanced` is smaller *and* scores higher on 11/24, and is never worse on both. The other 13 are
+  trade-offs.
+- **`visually-lossless` vs WebP 0.8.** About the same total size (6.70 vs 6.50 MB) at clearly higher quality:
+  median 85.8 vs 78.6, and 19/24 images at 80+ vs 6/24.
+- **AVIF q50 is much smaller, at lower quality** (median 71.2). Whether that trade is right is a product decision.
+  Optiq spends bytes to stay above its threshold.
+- **An earlier version claimed more than the data supports.** It said "24/24 meet SSIM 0.975 vs 18/24 for WebP 0.8".
+  SSIMULACRA2 showed that SSIM was too lenient on AVIF: `balanced` then had a median of 73.9, below WebP 0.8.
+  AVIF is now held to a stricter SSIM threshold, calibrated against SSIMULACRA2 on 91 held-out images
+  ([modes](https://baukaalm.github.io/optiq/guide/modes#the-quality-metric)). That costs +2.7% bytes in `balanced`.
+- **Gradients remain the weak spot.** They score 64–72 in every Optiq mode and for every codec, because SSIM
+  under-rates banding.
+- **Category matters.**
+  - Screenshots: −89.7% vs −62.8% for WebP q80.
+  - Text: −91.8% vs −46.6% (lossless WebP and screen-content encodes win there).
+  - Large 12 MP phone photos: −41.5% with metadata kept, −43.8% without, vs −30.7% for WebP q80.
+- **Optiq is slow and memory-hungry by comparison.** It runs several encodes plus decodes and quality checks per
+  image.
+  - Typical: 1–4 s per image, 3–5 s for 12 MP photos.
+  - Worst case, a 5 MP dashboard screenshot: 17 s in `balanced`, 48 s in `visually-lossless`.
+  - Memory: median peak RSS ≈ 300 MB, up to 1.1 GB.
+  - Single canvas/libvips encodes take 5–800 ms.
+  - Work runs in a worker, so the UI stays responsive (max main-thread gap 11 ms during a 12 MP job).
 
 **Lossless** (`sc-lossless`, Node): pixel-exact on 24/24 and never larger than the input (total −20.4%).
 PNG photos −27% (oxipng), screenshots −76% and text −91% (about the same as libvips lossless WebP effort 6),

@@ -1,4 +1,4 @@
-// Turns bench/results/{node,browser}.json into bench/results/RESULTS.md.
+// Turns bench/results/{node,browser,ssimulacra2}.json into bench/results/RESULTS.md.
 // Every number in the report comes from those files; nothing is estimated.
 import { readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
@@ -15,6 +15,7 @@ const load = async (f) => {
 const node = await load("node.json");
 const nodeV0 = await load("node-v0-before-proxy.json");
 const browser = await load("browser.json");
+const s2 = await load("ssimulacra2.json");
 
 const CATEGORIES = ["photo", "photo-large", "screenshot", "text-graphic", "transparent-illustration", "gradient"];
 const LOSSLESS = new Set(["sc-lossless", "sharp-png-max", "sharp-webp-lossless"]);
@@ -101,7 +102,7 @@ function section(title, data, { memory }) {
   const ours = tools.filter((t) => t.startsWith("sc-"));
   const theirs = tools.filter((t) => !t.startsWith("sc-"));
   if (ours.length && theirs.length) {
-    out.push("### Head-to-head per image", "", "`A dominates` = A is no larger *and* has SSIM ≥ B on that image. `trade-off` = one is smaller, the other has higher SSIM.", "");
+    out.push("### Head-to-head per image (by SSIM)", "", "`A dominates` = A is no larger *and* has SSIM ≥ B on that image. `trade-off` = one is smaller, the other has higher SSIM. Optiq selects its outputs by SSIM, so this comparison favours it; see the SSIMULACRA2 section for an independent metric.", "");
     out.push("| A | B | images | A dominates | B dominates | trade-off |", "|---|---|---|---|---|---|");
     for (const a of ours) for (const b of theirs) {
       const h = headToHead(perceptual, a, b);
@@ -113,6 +114,29 @@ function section(title, data, { memory }) {
   out.push("<details><summary>Per-image rows</summary>", "", "| Image | Tool | Bytes | Reduction | SSIM | Format | Time |", "|---|---|---|---|---|---|---|");
   for (const r of data.results.filter((x) => !x.error)) out.push(`| ${r.image} | ${r.tool} | ${r.bytes} | ${pct(r.reduction)} | ${r.ssim === null ? "n/a" : f4(r.ssim)}${r.exact ? " (exact)" : ""} | ${r.outFormat} | ${ms(r.timeMs)} |`);
   out.push("", "</details>", "");
+  return out.join("\n");
+}
+
+function ssimulacra2Section() {
+  if (!s2) return "";
+  const out = [
+    "## Independent check: SSIMULACRA2",
+    "",
+    `Every output above, scored with ${s2.tool} against the same reference. Optiq chooses its outputs by SSIM, so the SSIM columns favour it; SSIMULACRA2 is a separate, perception-tuned metric that Optiq never sees. Scale (from the metric's authors): 90 very high (indistinguishable at 1:1), 80 high, 70 medium, 50 low. Images with transparency are scored on white and on black and the lower score is kept. Script: \`bench/ssimulacra2.mjs\`; data: \`bench/results/ssimulacra2.json\` (${s2.date.slice(0, 10)}).`,
+    "",
+  ];
+  for (const env of ["node", "browser"]) {
+    const rows = s2.rows.filter((r) => r.env === env && r.s2 !== null);
+    if (!rows.length) continue;
+    out.push(`### ${env === "node" ? "Node.js" : "Browser (Chromium)"}`, "", "| Tool | n | Total output | Median SSIMULACRA2 | Min | ≥ 90 | ≥ 80 | ≥ 70 |", "|---|---|---|---|---|---|---|---|");
+    for (const t of [...new Set(rows.map((r) => r.tool))]) {
+      const r = rows.filter((x) => x.tool === t);
+      const v = r.map((x) => x.s2);
+      const n = (th) => `${v.filter((x) => x >= th).length}/${r.length}`;
+      out.push(`| \`${t}\` | ${r.length} | ${(sum(r.map((x) => x.bytes)) / 1e6).toFixed(2)} MB | ${median(v).toFixed(1)} | ${Math.min(...v).toFixed(1)} | ${n(90)} | ${n(80)} | ${n(70)} |`);
+    }
+    out.push("");
+  }
   return out.join("\n");
 }
 
@@ -148,6 +172,7 @@ const md = [
   "",
   section("Node.js: Optiq engine vs libvips (sharp)", node, { memory: true }),
   section("Browser (Chromium): Optiq vs browser-image-compression and canvas", browser, { memory: false }),
+  ssimulacra2Section(),
   beforeAfter(),
 ].join("\n");
 await writeFile(join(dir, "RESULTS.md"), md);

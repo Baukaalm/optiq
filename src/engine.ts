@@ -9,7 +9,7 @@ import { extractFirstWebpFrame, injectWebpMetadata, markWebp, probeWebp, rewrite
 import { OptiqError, throwIfAborted } from "./errors.js";
 import { OUTPUT_FORMATS, resolveOptions, type ResolvedOptions } from "./options.js";
 import { applyOrientation, hasTransparentPixels, pixelsEqual, targetSize, tileMosaic, type RawImage } from "./pixels.js";
-import { effectiveMinQuality, losslessPlans, planCandidates, type FormatPlan, type PlanInput } from "./plan.js";
+import { effectiveMinQuality, formatMinQuality, losslessPlans, planCandidates, type FormatPlan, type PlanInput } from "./plan.js";
 import { predictStart } from "./predictor.js";
 import { displayDimensions, probe, type ProbeInfo } from "./probe.js";
 import { ssim } from "./quality.js";
@@ -401,7 +401,7 @@ export async function optimize(input: Uint8Array, options: OptiqOptions | undefi
     } else {
       metric = "ssim";
       quality = out.width === expected.width && out.height === expected.height ? (await timed("ssim", () => ssim(expected, out))).ssim : 0;
-      passed = quality >= minQuality;
+      passed = quality >= formatMinQuality(minQuality, plan.format, category);
     }
     const c: Candidate = {
       report: {
@@ -569,7 +569,9 @@ export async function optimize(input: Uint8Array, options: OptiqOptions | undefi
         // Nothing met the quality constraint: best-effort is the highest-quality candidate.
         chosen = [...candidates].sort((a, b) => (b.report.quality ?? 0) - (a.report.quality ?? 0) || a.bytes.length - b.bytes.length)[0];
         if (!chosen) throw new OptiqError("CODEC_UNAVAILABLE", `No encoder could produce output: ${warnings.filter((w) => w.includes("unavailable")).join("; ")}`);
-        unmet.push({ constraint: "minQuality", limit: minQuality, actual: chosen.report.quality ?? 0 });
+        const f = chosen.report.format;
+        const limit = cat && (f === "jpeg" || f === "png" || f === "webp" || f === "avif") ? formatMinQuality(minQuality, f, cat) : minQuality;
+        unmet.push({ constraint: "minQuality", limit, actual: chosen.report.quality ?? 0 });
       }
       // Prefer the container candidate unless re-encoding saves at least minSavingsRatio.
       if (baseline && chosen !== baseline && chosen.bytes.length > baseline.bytes.length * (1 - opts.minSavingsRatio)) {

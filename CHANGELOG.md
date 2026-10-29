@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.5.0-beta.0 (unreleased)
+
+- **Quality: AVIF is held to a stricter SSIM threshold.** Scoring the benchmark outputs with the independent
+  SSIMULACRA2 metric (libjxl) showed that SSIM tolerates AVIF's smoothing. `balanced` had a median SSIMULACRA2 of
+  73.9, below WebP q80 (78.6). The AVIF threshold is now `1 − k·(1 − T)`, with k = 0.7 for photos and 0.3 for other
+  images. k was fitted against SSIMULACRA2 on the benchmark corpus and checked on 91 held-out images.
+  - `balanced`: median 79.4 at +2.7% bytes (−60.1% total, 19% smaller than WebP q80).
+  - `visually-lossless`: median 85.8.
+  - `fast` is unchanged, since it does not use AVIF.
+- Benchmarks now include an SSIMULACRA2 table (`bench/ssimulacra2.mjs`). The README no longer presents
+  "24/24 pass SSIM" as a quality comparison.
+
 ## 0.4.0-beta.0 (unreleased)
 
 - Generation-loss guard: `markOutput` tags lossy JPEG/WebP outputs with a ~20-byte comment/chunk, and inputs with

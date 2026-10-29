@@ -13,7 +13,10 @@ pnpm bench:browser   # Optiq vs browser-image-compression and canvas, in Chromiu
 pnpm bench:report    # regenerate bench/results/RESULTS.md
 ```
 
-How to read it: fixed-quality baselines do not target a quality, so compare **size and SSIM together**. The
-head-to-head tables count, per image, which tool is smaller *and* at least as good.
+How to read it: fixed-quality baselines do not target a quality, so compare **size and quality together**.
+- **SSIM columns favour Optiq**, because Optiq chooses its outputs by SSIM.
+- **The SSIMULACRA2 section is the independent check.** It uses a perception-tuned metric from libjxl that Optiq
+  never sees.
+- **The head-to-head tables** count, per image, which tool is smaller *and* at least as good on SSIM.
 
 <!--@include: ../bench/results/RESULTS.md{5,}-->
