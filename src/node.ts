@@ -8,6 +8,7 @@ import { readFile } from "node:fs/promises";
 import { createRequire } from "node:module";
 import { dirname, join } from "node:path";
 import { initJpegli } from "./codecs/jpegli.js";
+import { initSvgRenderer } from "./svg.js";
 import { createWasmBackend } from "./codecs/wasm.js";
 import type { CodecBackend } from "./codecs/types.js";
 import { optimize, type EngineContext, type EngineOutput } from "./engine.js";
@@ -49,6 +50,7 @@ export function initNodeCodecs(): Promise<void> {
       import("@jsquash/oxipng/optimise.js"),
       import("@jsquash/resize"),
     ]);
+    await initSvgRenderer(await WebAssembly.compile(await readFile(require.resolve("@resvg/resvg-wasm/index_bg.wasm"))));
     await initJpegli(await WebAssembly.compile(await readFile(new URL("../vendor/jpegli/jpegli_enc.wasm", import.meta.url))));
     await jd.init(await mod("jpeg", "codec/dec/mozjpeg_dec.wasm"));
     await we.init(await mod("webp", "codec/enc/webp_enc_simd.wasm"));

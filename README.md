@@ -192,7 +192,7 @@ Presigned URLs must come from your backend — see [docs/guide/s3.md](https://gi
 | AVIF | still (animated / rotated: kept as is) | libavif |
 | GIF | static (converted), animated (kept as is) | – |
 | HEIC/HEIF | detected → `UNSUPPORTED_FORMAT` | – |
-| SVG | detected → returned unchanged, never rasterised | – |
+| SVG | SVGO, verified by rendering; never rasterised | SVG |
 
 Formats are detected from file content. Extensions and MIME types are ignored (a `.jpg` that is a PNG is a PNG).
 

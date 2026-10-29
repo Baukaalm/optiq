@@ -1,0 +1,215 @@
+{
+  "date": "2026-10-29T09:26:24.886Z",
+  "rows": [
+    {
+      "file": "Bitmap_VS_SVG.svg",
+      "in": 7108,
+      "balanced": 4899,
+      "balancedCodec": "svgo-markup",
+      "balancedQuality": "exact",
+      "ms": 29,
+      "lossless": 4899,
+      "svgoDefault": 4031,
+      "svgoDefaultRenderSsim": 0.9997540069347157,
+      "warnings": [
+        "SVG contains text (fonts are not available to the verifying renderer); only markup-level clean-up was applied"
+      ]
+    },
+    {
+      "file": "Commons-logo.svg",
+      "in": 932,
+      "balanced": 826,
+      "balancedCodec": "svgo",
+      "balancedQuality": "exact",
+      "ms": 13,
+      "lossless": 826,
+      "svgoDefault": 779,
+      "svgoDefaultRenderSsim": 0.9999887223075227,
+      "warnings": []
+    },
+    {
+      "file": "Firefox_logo,_2019.svg",
+      "in": 10472,
+      "balanced": 10228,
+      "balancedCodec": "svgo",
+      "balancedQuality": 0.9999894736765143,
+      "ms": 48,
+      "lossless": 10472,
+      "svgoDefault": 10228,
+      "svgoDefaultRenderSsim": 0.9999894736765143,
+      "warnings": []
+    },
+    {
+      "file": "Flag_of_Kazakhstan.svg",
+      "in": 9668,
+      "balanced": 9668,
+      "balancedCodec": "original",
+      "balancedQuality": "exact",
+      "ms": 9,
+      "lossless": 9668,
+      "svgoDefault": 9622,
+      "svgoDefaultRenderSsim": 1,
+      "warnings": [
+        "Best re-encode saved less than 2%; kept the original encoding"
+      ]
+    },
+    {
+      "file": "Flag_of_the_United_States.svg",
+      "in": 823,
+      "balanced": 776,
+      "balancedCodec": "svgo",
+      "balancedQuality": "exact",
+      "ms": 3,
+      "lossless": 776,
+      "svgoDefault": 765,
+      "svgoDefaultRenderSsim": 1,
+      "warnings": []
+    },
+    {
+      "file": "Ghostscript_Tiger.svg",
+      "in": 68630,
+      "balanced": 62594,
+      "balancedCodec": "svgo",
+      "balancedQuality": 0.9999258188088344,
+      "ms": 75,
+      "lossless": 66169,
+      "svgoDefault": 68101,
+      "svgoDefaultRenderSsim": 0.999970159188019,
+      "warnings": []
+    },
+    {
+      "file": "Git-logo.svg",
+      "in": 2675,
+      "balanced": 2106,
+      "balancedCodec": "svgo",
+      "balancedQuality": 0.9996226692500073,
+      "ms": 8,
+      "lossless": 2675,
+      "svgoDefault": 2106,
+      "svgoDefaultRenderSsim": 0.9996226692500073,
+      "warnings": []
+    },
+    {
+      "file": "Inkscape_Logo.svg",
+      "in": 23080,
+      "balanced": 19238,
+      "balancedCodec": "svgo",
+      "balancedQuality": 0.999676405928821,
+      "ms": 200,
+      "lossless": 22371,
+      "svgoDefault": 19238,
+      "svgoDefaultRenderSsim": 0.999676405928821,
+      "warnings": []
+    },
+    {
+      "file": "Node.js_logo.svg",
+      "in": 5924,
+      "balanced": 5718,
+      "balancedCodec": "svgo",
+      "balancedQuality": 0.9999982789992129,
+      "ms": 21,
+      "lossless": 5924,
+      "svgoDefault": 5718,
+      "svgoDefaultRenderSsim": 0.9999982789992129,
+      "warnings": []
+    },
+    {
+      "file": "Openstreetmap_logo.svg",
+      "in": 50130,
+      "balanced": 47462,
+      "balancedCodec": "svgo-markup",
+      "balancedQuality": "exact",
+      "ms": 479,
+      "lossless": 47462,
+      "svgoDefault": 46904,
+      "svgoDefaultRenderSsim": 0.999999955518896,
+      "warnings": [
+        "SVG contains text (fonts are not available to the verifying renderer); only markup-level clean-up was applied"
+      ]
+    },
+    {
+      "file": "Python-logo-notext.svg",
+      "in": 2247,
+      "balanced": 1543,
+      "balancedCodec": "svgo",
+      "balancedQuality": 0.9999920728484627,
+      "ms": 18,
+      "lossless": 2007,
+      "svgoDefault": 1515,
+      "svgoDefaultRenderSsim": 0.9999920728484627,
+      "warnings": []
+    },
+    {
+      "file": "SVG_Logo.svg",
+      "in": 4210,
+      "balanced": 2634,
+      "balancedCodec": "svgo-markup",
+      "balancedQuality": "exact",
+      "ms": 31,
+      "lossless": 2634,
+      "svgoDefault": 1976,
+      "svgoDefaultRenderSsim": 0.9731705448947894,
+      "warnings": []
+    },
+    {
+      "file": "Tux.svg",
+      "in": 49983,
+      "balanced": 42334,
+      "balancedCodec": "svgo",
+      "balancedQuality": 0.9983512954352204,
+      "ms": 108,
+      "lossless": 48182,
+      "svgoDefault": 35983,
+      "svgoDefaultRenderSsim": 0.9983512954352204,
+      "warnings": []
+    },
+    {
+      "file": "Wikimedia-logo.svg",
+      "in": 557,
+      "balanced": 373,
+      "balancedCodec": "svgo",
+      "balancedQuality": "exact",
+      "ms": 17,
+      "lossless": 373,
+      "svgoDefault": 373,
+      "svgoDefaultRenderSsim": 1,
+      "warnings": []
+    },
+    {
+      "file": "Wikipedia-logo-v2.svg",
+      "in": 165428,
+      "balanced": 112185,
+      "balancedCodec": "svgo",
+      "balancedQuality": 0.9998309181297986,
+      "ms": 197,
+      "lossless": 165428,
+      "svgoDefault": 111609,
+      "svgoDefaultRenderSsim": 0.9998309181297986,
+      "warnings": []
+    },
+    {
+      "file": "optiq-favicon.svg",
+      "in": 684,
+      "balanced": 603,
+      "balancedCodec": "svgo",
+      "balancedQuality": "exact",
+      "ms": 27,
+      "lossless": 603,
+      "svgoDefault": 592,
+      "svgoDefaultRenderSsim": 0.9999999999999987,
+      "warnings": []
+    },
+    {
+      "file": "optiq-logo.svg",
+      "in": 621,
+      "balanced": 547,
+      "balancedCodec": "svgo",
+      "balancedQuality": "exact",
+      "ms": 22,
+      "lossless": 547,
+      "svgoDefault": 536,
+      "svgoDefaultRenderSsim": 0.9999999999999988,
+      "warnings": []
+    }
+  ]
+}

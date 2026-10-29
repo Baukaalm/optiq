@@ -13,6 +13,7 @@ import { effectiveMinQuality, formatMinQuality, losslessPlans, planCandidates, t
 import { predictStart } from "./predictor.js";
 import { displayDimensions, probe, type ProbeInfo } from "./probe.js";
 import { ssim } from "./quality.js";
+import { optimizeSvg } from "./svg.js";
 import type {
   CandidateReport,
   CompressionResult,
@@ -218,8 +219,32 @@ export async function optimize(input: Uint8Array, options: OptiqOptions | undefi
   if (info.format === "svg") {
     if (explicit) incompatible("SVG is a vector format and is never rasterized; use targetFormat 'auto' or 'original' to pass it through");
     if (opts.maxWidthOrHeight) warnings.push("maxWidthOrHeight does not apply to SVG");
-    warnings.push("SVG passed through unchanged (vector images are not rasterized or rewritten)");
-    return finish(passthrough(input, info.format), undefined);
+    baseline = passthrough(input, info.format);
+    emit("encoding", 0.15);
+    const svg = await timed("encode", () => optimizeSvg(input, opts.mode === "lossless" ? 1 : opts.minQuality, opts.preserveMetadata));
+    warnings.push(...svg.warnings);
+    for (const c of svg.candidates) {
+      candidates.push({
+        report: {
+          format: "svg",
+          codec: c.preset === "full" ? "svgo" : "svgo-markup",
+          settings: { preset: c.preset },
+          bytes: c.bytes.length,
+          quality: c.quality,
+          qualityMetric: c.exact ? "exact" : "ssim",
+          passed: c.passed,
+          durationMs: 0,
+          note: c.note ?? "verified by rendering with resvg",
+        },
+        bytes: c.bytes,
+        isOriginal: false,
+        container: false,
+        width: 0,
+        height: 0,
+      });
+    }
+    emit("finalizing", 0.97);
+    return finish(undefined, undefined);
   }
   if (info.width * info.height > opts.maxInputPixels) {
     throw new OptiqError("INPUT_TOO_LARGE", `Image declares ${info.width}x${info.height} pixels; limit is ${opts.maxInputPixels} (maxInputPixels)`, {

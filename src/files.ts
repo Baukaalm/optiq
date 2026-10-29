@@ -9,7 +9,7 @@ import { fileNameFor } from "./client.js";
 import { resolveOptions } from "./options.js";
 import type { DetectedFormat, OptiqOptions } from "./types.js";
 
-export const IMAGE_EXTENSIONS: readonly string[] = [".jpg", ".jpeg", ".png", ".webp", ".avif", ".gif"];
+export const IMAGE_EXTENSIONS: readonly string[] = [".jpg", ".jpeg", ".png", ".webp", ".avif", ".gif", ".svg"];
 
 export interface DiskOptions {
   /** Write results to this folder, mirroring each input folder's structure. */

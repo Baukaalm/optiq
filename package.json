@@ -74,6 +74,7 @@
     "vendor/jpegli/*.wasm",
     "vendor/jpegli/LICENSE.*",
     "vendor/jpegli/VERSION",
+    "vendor/resvg/index_bg.wasm",
     "README.md",
     "LICENSE",
     "NOTICE",
@@ -87,7 +88,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "build": "rm -rf dist && tsc -p tsconfig.build.json && node scripts/vendor-resvg.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run",
     "test:browser": "pnpm build && node test/browser/run.mjs",
@@ -123,7 +124,9 @@
     "@jsquash/oxipng": "2.3.0",
     "@jsquash/png": "3.1.1",
     "@jsquash/resize": "2.1.1",
-    "@jsquash/webp": "1.5.0"
+    "@jsquash/webp": "1.5.0",
+    "@resvg/resvg-wasm": "2.6.2",
+    "svgo": "4.1.0"
   },
   "devDependencies": {
     "@types/node": "24.19.2",

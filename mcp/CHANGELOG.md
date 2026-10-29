@@ -2,7 +2,8 @@
 
 ## 0.1.0-beta.3 (unreleased)
 
-- Uses optiq-image 0.6.0-beta.0: JPEG is encoded with jpegli (smaller JPEG photos, 2–3× faster on JPEG).
+- Uses optiq-image 0.6.0-beta.0: JPEG is encoded with jpegli (smaller JPEG photos, 2–3× faster on JPEG), and SVG
+  files are optimised (SVGO, verified by rendering) and picked up from folders.
 
 ## 0.1.0-beta.2 (2026-10-29)
 

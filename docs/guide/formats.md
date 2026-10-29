@@ -11,7 +11,7 @@ treated as PNG, and the result's `mimeType`/`fileName` are corrected.
 | AVIF | still images | libavif | animated or rotated (`irot`/`imir`) AVIF returned unchanged |
 | GIF | static and animated | – | static GIFs are converted; animated ones kept |
 | HEIC / HEIF | recognised | – | `UNSUPPORTED_FORMAT` (see FAQ) |
-| SVG | recognised | – | returned unchanged, never rasterised |
+| SVG | ✓ | SVGO (verified by rendering) | never rasterised; see [SVG](#svg) |
 
 ## Transparency
 
@@ -52,3 +52,40 @@ appearance are kept.
 With `preserveAnimation: true` (default) animated GIF, APNG and animated WebP are optimised at container level only
 (metadata removal), and conversion to another format fails with `INCOMPATIBLE_OPTIONS`. With
 `preserveAnimation: false` the first frame may be encoded as a still image, and a warning says so.
+
+## SVG
+
+SVG stays SVG and is never turned into pixels. SVGO rewrites the markup with a conservative configuration:
+- `id`s are kept, because CSS, scripts or other files (`<use href="icons.svg#name">`) may reference them;
+- `data-*`, `aria-*`, `role`, `viewBox` and legal comments (`<!--! ... -->`) are kept;
+- `<metadata>` is kept unless `preserveMetadata: false`.
+
+Every result is checked by rendering both the input and the output with resvg, compiled to WebAssembly. Browsers
+cannot rasterise SVG inside a Worker, so the renderer is WASM and behaves the same in Node. The longer side is rendered
+at 512 px, so small icons are compared magnified. A result is kept only if:
+- in `lossless` mode, the rendering is pixel-identical;
+- in the other modes, the rendering's SSIM is within a fifth of the mode's distance to 1 (≥ 0.995 in `balanced`);
+- and the file is at least `minSavingsRatio` smaller.
+
+Otherwise the original is returned.
+
+A static render cannot vouch for some things, so files that contain them get **markup-level clean-up only**:
+comments, editor data, the XML prolog and whitespace are removed, but numbers, geometry, ids and styles are left
+alone. These are:
+- text, because the verifying renderer has no fonts;
+- animation;
+- scripts or event handlers;
+- `<foreignObject>`;
+- external resources;
+- CSS `@import` or `@font-face`.
+
+On 17 real files (Wikimedia Commons logos and illustrations, our own logos), `balanced` saved 19.7% in total, against
+20.6% for SVGO's default preset, which runs without any check. That default preset visibly changed one of the files
+(rendered SSIM 0.973). Most of the remaining gap is from keeping `id`s.
+
+::: warning SVGO is not a sanitiser
+Scripts, event handlers and external references are kept as they are. If you accept SVG uploads and show them
+inline or same-origin, sanitise them separately (for example with DOMPurify) or serve them with a restrictive
+Content-Security-Policy.
+:::
+

@@ -13,7 +13,7 @@ encoding that satisfies an explicit constraint:
 
 Perceptual modes never claim to be lossless: decoded pixels differ, and the result says so (`qualityMetricName: "ssim"`).
 
-Non-goals: video/audio/PDF, a new codec, SVG rasterisation, HEIC decoding (see “Formats”).
+Non-goals: video/audio/PDF, a new codec, SVG rasterisation or sanitisation, HEIC decoding (see “Formats”).
 
 ## Component map
 
@@ -157,6 +157,8 @@ fitted for the `balanced`/`fast` thresholds only.
 | PNG optimiser | oxipng via `@jsquash/oxipng` | Rust → wasm-bindgen | MIT | 164 KB |
 | Resize | `resize` crate via `@jsquash/resize` | Rust → wasm-bindgen | MIT/Apache-2.0 | 35 KB |
 | GIF first frame | own LZW decoder (≈150 lines) | TypeScript | – | – |
+| SVG optimiser | SVGO (`svgo/browser`) | JavaScript | MIT (bundles sax BlueOak-1.0.0, css-tree/csso MIT, css-select & co. BSD-2) | 805 KB JS (195 KB gzip) |
+| SVG renderer (verification) | resvg via `@resvg/resvg-wasm` | Rust → wasm-bindgen | MPL-2.0 | 2.5 MB (950 KB gzip) |
 
 All are loaded with separate dynamic `import()`s, so a bundler emits separate chunks and a JPEG→WebP job never
 downloads the 3.5 MB AVIF encoder. Rejected: **libimagequant** (pngquant) — GPL-3.0/commercial, incompatible with
@@ -229,7 +231,7 @@ can fail and the original is returned), no lossless WebP, no encoder tuning.
 | AVIF | ✓ still | ✓ | animated / `irot` / `imir`: original kept |
 | GIF | ✓ (own decoder) | – | animated: original kept; static: converted |
 | HEIC/HEIF | recognised | – | `UNSUPPORTED_FORMAT`: no reliable, licence-compatible WASM decoder (libheif is LGPL, HEVC is patent-encumbered); Safari-only native decode would make results browser-dependent |
-| SVG | recognised | passthrough | never rasterised or rewritten |
+| SVG | ✓ | SVGO, verified by rendering with resvg | never rasterised; markup-only clean-up for text/animation/scripts ([formats](/guide/formats#svg)) |
 
 ## Security
 
@@ -240,3 +242,6 @@ can fail and the original is returned), no lossless WebP, no encoder tuning.
 - Default `preserveMetadata: true` keeps EXIF (which may include GPS location). Set `preserveMetadata: false` to
   remove EXIF/XMP/comments; colour profiles that change appearance are kept even then.
 - The upload helper only talks to the URL your backend presigned; no AWS credentials in browser code.
+- SVG is optimised, not sanitised: scripts, event handlers and external references pass through. Entity-expansion
+  bombs are rejected by the renderer's XML parser before SVGO runs (test: a 10⁹-character "billion laughs" file is
+  returned unchanged in 21 ms).

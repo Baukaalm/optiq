@@ -22,13 +22,14 @@ pixel-exact in "lossless" mode, SSIM against the input in the perceptual modes. 
 Recommended flow: call analyze_images first (read-only) and show the user the expected savings, then call
 optimize_images. Prefer write: "in-place" for images referenced from code (formats are kept, so references stay
 valid). Files that Optiq already compressed lossily carry a small marker and are skipped, so re-running is safe.
-SVG and HEIC are not handled. Use absolute paths.`;
+SVG is optimised with SVGO and verified by rendering (ids kept; not a sanitiser). HEIC is not handled.
+Use absolute paths.`;
 
 const common = {
   paths: z
     .array(z.string())
     .min(1)
-    .describe("Image files and/or folders. Folders are searched recursively for jpg, jpeg, png, webp, avif and gif; dot-folders are skipped. Use absolute paths; relative ones resolve against the server's working directory."),
+    .describe("Image files and/or folders. Folders are searched recursively for jpg, jpeg, png, webp, avif, gif and svg; dot-folders are skipped. Use absolute paths; relative ones resolve against the server's working directory."),
   mode: z
     .enum(["lossless", "visually-lossless", "balanced", "fast"])
     .default("balanced")

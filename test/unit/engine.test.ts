@@ -324,8 +324,8 @@ describe("validation and safety", () => {
     await expectError(run(heic), "UNSUPPORTED_FORMAT");
   });
 
-  it("passes SVG through untouched and refuses to rasterize it", async () => {
-    const svg = new TextEncoder().encode('<?xml version="1.0"?>\n<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"><rect width="10" height="10"/></svg>');
+  it("never rasterizes SVG and keeps an already minimal one unchanged", async () => {
+    const svg = new TextEncoder().encode('<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"><path d="M0 0h10v10H0z"/></svg>');
     const r = await run(svg);
     expect(r.report).toMatchObject({ usedOriginal: true, outputFormat: "svg", mimeType: "image/svg+xml" });
     await expectError(run(svg, { targetFormat: "png" }), "INCOMPATIBLE_OPTIONS");
@@ -360,6 +360,76 @@ describe("validation and safety", () => {
     expect(stages[0]).toBe("probing");
     expect(stages.at(-1)).toBe("done");
     expect(stages).toContain("encoding");
+  });
+});
+
+describe("SVG (SVGO, verified by rendering)", () => {
+  const enc = (t: string) => new TextEncoder().encode(t);
+  const dec = (b: Uint8Array) => new TextDecoder().decode(b);
+  // What an editor typically exports: XML prolog, comments, editor namespaces, metadata, redundant precision/groups.
+  const editorSvg = `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+  xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" width="120.000000" height="80.000000"
+  viewBox="0 0 120.000000 80.000000" inkscape:version="1.3" sodipodi:docname="logo.svg">
+  <sodipodi:namedview id="namedview1" pagecolor="#ffffff" inkscape:zoom="1.0000000"/>
+  <metadata id="metadata1"><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/></metadata>
+  <g id="layer1" inkscape:label="Layer 1" inkscape:groupmode="layer">
+    <g>
+      <rect id="badge" x="10.000000" y="10.000000" width="100.000000" height="60.000000" rx="8.000000" style="fill:#3366cc;fill-opacity:1;stroke:none;stroke-width:1.0000000" />
+      <path d="M 20.000000,40.000000 L 60.000000,20.000000 L 100.000000,40.000000 L 60.000000,60.000000 Z" style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.000000;stroke-opacity:1" />
+      <circle cx="60.000000" cy="40.000000" r="6.000000" fill="#ff8800" />
+    </g>
+  </g>
+</svg>`;
+
+  it("editor SVG: smaller, renders the same, keeps ids and viewBox", async () => {
+    const input = enc(editorSvg);
+    const r = await run(input, { preserveMetadata: false });
+    const out = dec(r.bytes!);
+    expect(r.report.outputFormat).toBe("svg");
+    expect(r.report.codec).toBe("svgo");
+    expect(r.report.outputBytes).toBeLessThan(input.length * 0.6);
+    expect(r.report.qualityMetric).toBeGreaterThanOrEqual(1 - (1 - 0.975) / 5);
+    expect(out).toContain('id="badge"');
+    expect(out).toContain("viewBox");
+    expect(out).not.toMatch(/inkscape|sodipodi|<!--/);
+  });
+
+  it("lossless mode accepts only a pixel-identical rendering", async () => {
+    const r = await run(enc(editorSvg), { mode: "lossless", preserveMetadata: false });
+    expect(r.report.qualityMetricName).toBe("exact");
+    expect(r.report.candidates.filter((c) => c.passed && c.format === "svg" && c.codec !== "original").every((c) => c.qualityMetric === "exact")).toBe(true);
+  });
+
+  it("text, scripts and animation get markup-level clean-up only; scripts are kept", async () => {
+    const svg = `<?xml version="1.0"?>\n<!-- comment -->\n<svg xmlns="http://www.w3.org/2000/svg" width="200.000" height="50.000" onload="init()">
+      <script>function init(){}</script><text x="10.000000" y="30.000000" font-size="20.000000">Hello</text></svg>`;
+    const r = await run(enc(svg));
+    expect(r.report.warnings.join(" ")).toMatch(/only markup-level clean-up/);
+    expect(r.report.candidates.some((c) => c.codec === "svgo")).toBe(false);
+    const out = r.bytes ? dec(r.bytes) : svg;
+    expect(out).toContain("<script>");
+    expect(out).toContain('onload="init()"');
+    expect(out).toContain('x="10.000000"'); // numbers untouched
+  });
+
+  it("recognises SVG with a DOCTYPE internal subset (Illustrator) and survives entity expansion attacks", async () => {
+    const illustrator = enc('<?xml version="1.0"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "svg11.dtd" [<!ENTITY st0 "fill:#231F20;">]><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"><rect style="&st0;" width="10" height="10"/></svg>');
+    expect((await run(illustrator)).report.outputFormat).toBe("svg");
+    let ents = '<!ENTITY lol "lol">';
+    for (let i = 1; i <= 9; i++) ents += `<!ENTITY lol${i} "${`&lol${i - 1 || ""};`.repeat(10)}">`;
+    const bomb = enc(`<?xml version="1.0"?><!DOCTYPE svg [${ents}]><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"><desc>&lol9;</desc></svg>`);
+    const t = performance.now();
+    const r = await run(bomb);
+    expect(performance.now() - t).toBeLessThan(5000);
+    expect(r.report.usedOriginal).toBe(true);
+  });
+
+  it("an SVG the renderer cannot read is passed through with a warning", async () => {
+    const r = await run(enc('<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"><rect width="10" height="10"'));
+    expect(r.report.usedOriginal).toBe(true);
+    expect(r.report.warnings.join(" ")).toMatch(/could not be rendered/);
   });
 });
 

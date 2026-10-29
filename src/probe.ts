@@ -31,7 +31,10 @@ export interface ProbeInfo {
   warnings: string[];
 }
 
-const SVG_RE = /^\s*(<\?xml[^>]*>\s*)?(<!--[\s\S]*?-->\s*)*(<!DOCTYPE\s+svg[^>]*>\s*)?(<!--[\s\S]*?-->\s*)*<svg[\s>]/i;
+// The DOCTYPE may carry an internal subset with entity declarations (Illustrator exports do): <!DOCTYPE svg ... [ ... ]>.
+const SVG_RE = /^\s*(<\?xml[^>]*>\s*)?(<!--[\s\S]*?-->\s*)*(<!DOCTYPE\s+svg[^>[]*(\[[\s\S]*?\]\s*)?>\s*)?(<!--[\s\S]*?-->\s*)*<svg[\s>]/i;
+/** Bytes searched for the root <svg> element; entity declarations in the DOCTYPE can be long. */
+const SVG_HEAD = 256 * 1024;
 
 /** Identify the format from content only. Extensions and MIME types are never consulted. */
 export function sniffFormat(b: Uint8Array): DetectedFormat | undefined {
@@ -41,7 +44,7 @@ export function sniffFormat(b: Uint8Array): DetectedFormat | undefined {
   if (isWebp(b)) return "webp";
   const iso = sniffIsobmff(b);
   if (iso) return iso;
-  let head = new TextDecoder("utf-8", { fatal: false }).decode(b.subarray(0, 4096));
+  let head = new TextDecoder("utf-8", { fatal: false }).decode(b.subarray(0, b[0] === 0x3c || b[0] === 0xef || b[0] <= 0x20 ? SVG_HEAD : 4096));
   if (head.charCodeAt(0) === 0xfeff) head = head.slice(1);
   if (SVG_RE.test(head)) return "svg";
   return undefined;

@@ -9,3 +9,5 @@ bench/predictor/images
 bench/predictor/downloads
 bench/predictor/labels.jsonl
 .cache/
+vendor/resvg/
+bench/svg/images/

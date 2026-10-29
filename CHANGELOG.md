@@ -12,6 +12,15 @@
 - SSIM thresholds are now per encoder. jpegli photos use k = 1.2 (0.97 in `balanced`), calibrated against
   SSIMULACRA2 like AVIF. A canvas JPEG fallback keeps the plain threshold.
 - JPEG decoding still uses libjpeg-turbo from jSquash.
+- **SVG is now optimised** with SVGO instead of being passed through, and every result is verified by rendering
+  input and output with resvg (WASM).
+  - Lossless mode requires a pixel-identical rendering; the other modes require SSIM ≥ 0.995 in `balanced`.
+  - The configuration is conservative: ids, `data-*`, `aria-*` and `role` are kept.
+  - Text, animation, scripts and external resources get markup-only clean-up.
+  - 17 real files: −19.7% in total (SVGO's unchecked default: −20.6%, and it visibly changed one file).
+  - The CLI and MCP server now pick up `.svg` files. SVGO is not a sanitiser.
+- SVG detection now accepts a DOCTYPE with an internal subset (`<!DOCTYPE svg [ <!ENTITY ...> ]>`, as Illustrator
+  writes). Such files were rejected as `UNSUPPORTED_FORMAT` before.
 
 ## 0.5.0-beta.0 (2026-10-29)
 

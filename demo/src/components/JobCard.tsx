@@ -132,7 +132,7 @@ export function JobCard({ job, onCancel, onRemove, onRetry, onUpload }: { job: J
                 ))}
               </ul>
             )}
-            {job.outputUrl && !r.usedOriginal && r.outputFormat !== "svg" && (
+            {job.outputUrl && !r.usedOriginal && (
               <Section title="Compare before / after" testId="compare" open>
                 <CompareSlider before={job.originalUrl} after={job.outputUrl} label={job.file.name} />
               </Section>

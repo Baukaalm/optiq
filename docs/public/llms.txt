@@ -7,7 +7,8 @@
 > (Web Worker) and in Node. Apache-2.0. Nothing is uploaded anywhere.
 
 Key facts:
-- Inputs: JPEG, PNG, WebP, AVIF, GIF (static; animated kept as is). SVG is passed through unchanged. HEIC/HEIF is
+- Inputs: JPEG, PNG, WebP, AVIF, GIF (static; animated kept as is). SVG is optimised with SVGO and verified by
+  rendering (never rasterised; files with text/animation/scripts get markup-only clean-up; not a sanitiser). HEIC/HEIF is
   rejected with `UNSUPPORTED_FORMAT`.
 - Formats are detected from content, not extensions. Transparency, EXIF orientation and ICC profiles are kept;
   JPEG is never chosen for images with alpha.

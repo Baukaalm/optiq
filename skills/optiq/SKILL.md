@@ -48,7 +48,8 @@ If the `optiq` MCP server is connected (tools `analyze_images` / `optimize_image
 - Do not use `--reoptimize` unless the user asks. Files Optiq already compressed lossily carry a small marker and
   are skipped on purpose: every lossy pass loses a little more and the losses add up.
 - Exit code `2` means some files failed; the others were still processed. Report the failures, do not retry blindly.
-- SVG is passed through unchanged; HEIC/HEIF is not supported (convert it elsewhere first).
+- SVG is optimised safely (ids kept, every result verified by rendering); it is not sanitised, so scripts stay.
+  HEIC/HEIF is not supported (convert it elsewhere first).
 - SSIM is a proxy for perception, not a guarantee. If the user reports visible artefacts, re-run the affected files
   from the originals (for example from git) with `--mode visually-lossless` or `--mode lossless`.
 - Do not commit results without the user's approval.

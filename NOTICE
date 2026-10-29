@@ -10,6 +10,16 @@ codecs/jpegli/build.sh, and the licence texts ship next to it (vendor/jpegli/LIC
   Highway (in jpegli)                           Apache-2.0 OR BSD-3-Clause, Copyright Google LLC
   skcms (in jpegli)                             BSD-3-Clause, Copyright (c) 2018 Google Inc.
 
+For SVG, Optiq depends on two more packages and ships resvg's .wasm (unmodified) in vendor/resvg/:
+
+  svgo (svgo/browser)                           MIT, Copyright (c) Kir Belevich; the browser build bundles
+                                                sax (BlueOak-1.0.0), css-tree and csso (MIT), css-select,
+                                                css-what, domutils, domhandler, nth-check, entities (BSD-2-Clause),
+                                                dom-serializer (MIT), boolbase (ISC)
+  @resvg/resvg-wasm (resvg)                     MPL-2.0, Copyright (c) the resvg authors; source:
+                                                https://github.com/yisibl/resvg-js and https://github.com/linebender/resvg ;
+                                                licence text: https://mozilla.org/MPL/2.0/
+
 The other codecs come from the following packages, which an application bundle that uses Optiq will include.
 Their licences permit commercial redistribution provided the notices are reproduced; the full texts ship inside
 each package (LICENSE and codec/LICENSE.codec.md).

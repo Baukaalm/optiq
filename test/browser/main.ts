@@ -57,6 +57,20 @@ const cases: Case[] = [
     },
   },
   {
+    name: "svg from an editor -> smaller, still SVG, verified by rendering in the worker",
+    async run() {
+      const svg = `<?xml version="1.0" encoding="UTF-8"?>\n<!-- Created with an editor -->\n<svg xmlns="http://www.w3.org/2000/svg" width="120.000000" height="80.000000" viewBox="0 0 120.000000 80.000000"><g><g><rect id="badge" x="10.000000" y="10.000000" width="100.000000" height="60.000000" rx="8.000000" style="fill:#3366cc;fill-opacity:1;stroke:none"/><circle cx="60.000000" cy="40.000000" r="6.000000" fill="#ff8800"/></g></g></svg>`;
+      const r = await compressImage(new File([svg], "logo.svg", { type: "image/svg+xml" }));
+      assert(r.outputFormat === "svg" && r.blob.type === "image/svg+xml", "format");
+      assert(r.codec === "svgo", `codec ${r.codec}`);
+      assert(r.outputBytes < r.originalBytes * 0.8, "not smaller");
+      assert(r.qualityMetric! >= 0.995, "quality");
+      const text = await r.blob.text();
+      assert(text.includes('id="badge"') && text.includes("viewBox"), "ids/viewBox kept");
+      return summary(r);
+    },
+  },
+  {
     name: "png screenshot (lossless) -> pixel identical in the browser decoder",
     async run() {
       const input = await canvasImage("screenshot", 900, 600, "image/png");
