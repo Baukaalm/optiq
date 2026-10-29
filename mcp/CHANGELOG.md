@@ -1,6 +1,10 @@
 # Changelog
 
-## 0.1.0-beta.2 (unreleased)
+## 0.1.0-beta.3 (unreleased)
+
+- Uses optiq-image 0.6.0-beta.0: JPEG is encoded with jpegli (smaller JPEG photos, 2–3× faster on JPEG).
+
+## 0.1.0-beta.2 (2026-10-29)
 
 - Uses optiq-image 0.5.0-beta.0: AVIF is held to a stricter SSIM threshold, calibrated against SSIMULACRA2, so
   `balanced` outputs no longer trade visible quality for bytes on graphics and transparent images.

@@ -1,6 +1,6 @@
 {
   "name": "optiq-mcp",
-  "version": "0.1.0-beta.2",
+  "version": "0.1.0-beta.3",
   "mcpName": "io.github.Baukaalm/optiq-mcp",
   "description": "MCP server for Optiq: lets AI agents optimise images in a project with verified quality (SSIM or pixel-exact).",
   "license": "Apache-2.0",
