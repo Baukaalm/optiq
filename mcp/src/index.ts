@@ -25,25 +25,28 @@ valid). Files that Optiq already compressed lossily carry a small marker and are
 SVG and HEIC are not handled. Use absolute paths.`;
 
 const common = {
-  paths: z.array(z.string()).min(1).describe("Image files and/or folders (searched recursively, dot-folders skipped). Absolute paths recommended."),
+  paths: z
+    .array(z.string())
+    .min(1)
+    .describe("Image files and/or folders. Folders are searched recursively for jpg, jpeg, png, webp, avif and gif; dot-folders are skipped. Use absolute paths; relative ones resolve against the server's working directory."),
   mode: z
     .enum(["lossless", "visually-lossless", "balanced", "fast"])
     .default("balanced")
     .describe(
-      "lossless: pixels verified identical. visually-lossless: SSIM >= 0.99. balanced (default): SSIM >= 0.975. fast: like balanced, no AVIF, fewer encodes. Use visually-lossless for hero images, artwork, product photos.",
+      "How strict the quality check is. lossless: decoded pixels verified identical (JPEG inputs only get metadata changes). visually-lossless: SSIM >= 0.99. balanced (default): SSIM >= 0.975. fast: same threshold as balanced, no AVIF, at most 5 encodes, about 3x faster. Use visually-lossless for hero images, artwork and product photos.",
     ),
   keepFormat: z
     .boolean()
     .optional()
-    .describe("Never change the file format. Default: true for in-place writes and analysis, false when writing to outDir."),
+    .describe("Never change the file format (a .png stays PNG). Default: true for in-place writes and for analysis, false when writing to outDir. Set false in analysis to see what converting to WebP/AVIF would save."),
   formats: z
     .array(z.enum(["jpeg", "png", "webp", "avif"]))
     .optional()
-    .describe("Formats allowed when the format may change. Default all four. Drop avif if the site must support old browsers."),
-  maxSize: z.number().int().positive().optional().describe("Downscale so the longest side is at most this many pixels."),
-  stripMetadata: z.boolean().default(false).describe("Remove EXIF (including GPS location) and XMP. Recommended before publishing photos."),
-  minQuality: z.number().gt(0).max(1).optional().describe("Custom SSIM threshold for perceptual modes, e.g. 0.98."),
-  minSaving: z.number().min(0).lt(1).optional().describe("Keep a file unchanged unless it gets at least this much smaller. Default 0.02."),
+    .describe("Formats Optiq may choose when the format may change. Default: all four (fast mode: no avif). Drop avif if the site must support browsers older than Safari 16.4. JPEG is never chosen for images with transparency."),
+  maxSize: z.number().int().positive().optional().describe("Downscale so the longest side is at most this many pixels, e.g. 2560 for camera photos on a website. Smaller images are not enlarged. Allowed in lossless mode too (the resize itself changes pixels)."),
+  stripMetadata: z.boolean().default(false).describe("Remove EXIF (including GPS location, camera serial) and XMP. Recommended before publishing personal photos. Colour profiles that matter (non-sRGB ICC) and image orientation are preserved either way."),
+  minQuality: z.number().gt(0).max(1).optional().describe("Custom SSIM threshold for perceptual modes instead of the mode's default, e.g. 0.98. Higher keeps more detail and saves less. Ignored in lossless mode."),
+  minSaving: z.number().min(0).lt(1).optional().describe("Keep a file unchanged unless it gets at least this share smaller (0.05 = 5%). Default 0.02. Raise it to avoid churning files for tiny gains."),
 };
 
 const fileResult = z.object({
@@ -126,7 +129,9 @@ export function createServer(): McpServer {
     {
       title: "Analyze images (dry run)",
       description:
-        "Read-only. Runs the full optimisation in memory and reports, per image, the format Optiq would choose, size before/after, and the measured quality (SSIM or pixel-exact). Writes nothing. Use it to estimate savings before optimize_images.",
+        "Read-only dry run: runs the full optimisation in memory and reports, per image, the format Optiq would choose, bytes before and after, and the measured quality (SSIM, or pixel-exact). Writes nothing. Use it first to show the user the expected savings, then call optimize_images with the same arguments. " +
+        "Main parameters: paths (files or folders), mode (how strict the quality check is), keepFormat/formats (whether and to what the format may change), maxSize (downscale), stripMetadata (drop EXIF/GPS). " +
+        "Cost: it does the same work as optimize_images, several encodes per image, typically 0.3-3 s per image on a modern laptop (fast mode is quicker; very large screenshots in visually-lossless can take tens of seconds). For hundreds of images, try one subfolder first. Progress is reported per file and the call can be cancelled.",
       inputSchema: commonSchema,
       outputSchema: resultSchema,
       annotations: { readOnlyHint: true, openWorldHint: false },
@@ -139,7 +144,11 @@ export function createServer(): McpServer {
     {
       title: "Optimize images",
       description:
-        'Optimises images and writes the results. write: "in-place" overwrites each file and keeps its format (safe for files referenced from code; atomic rename). write: "out-dir" writes to outDir mirroring the folder structure and may change formats (file extensions change accordingly; update references). A file is only replaced when the result passes the quality check and is smaller. Files Optiq already compressed lossily are skipped (unless reoptimize is true), so calling this twice is safe.',
+        'Optimises images and writes the results. If the user only wants to know how much could be saved, or has not agreed to changes yet, use analyze_images instead: it takes the same arguments and writes nothing. ' +
+        'write: "in-place" overwrites each file and keeps its format and name, so references in code stay valid (atomic rename). write: "out-dir" writes to outDir, mirroring the folder structure, and may change formats; extensions change accordingly, so update references. ' +
+        "A file is only replaced when the result passes the quality check and is smaller. Files Optiq already compressed lossily are skipped (unless reoptimize is true), so calling this twice is safe. " +
+        "Choosing parameters: mode visually-lossless for hero images, artwork and product photos, lossless for logos and UI assets that must stay exact, balanced otherwise; stripMetadata before publishing personal photos (GPS); formats without avif if old browsers matter. " +
+        "Takes the same time as analyze_images (typically 0.3-3 s per image).",
       inputSchema: z.object({
         ...common,
         write: z.enum(["in-place", "out-dir"]).describe('"in-place" overwrites inputs; "out-dir" writes to outDir.'),
