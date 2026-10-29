@@ -1,7 +1,7 @@
 # Optiq
 
 > Optiq (npm package `optiq-image`) optimises images with verified quality. For every image it encodes a bounded set
-> of candidates with WASM codecs (MozJPEG, libwebp, libavif, oxipng), measures each against the input, and returns
+> of candidates with WASM codecs (jpegli, libwebp, libavif, oxipng), measures each against the input, and returns
 > the smallest output that meets the constraint: pixel-exact (`lossless`), SSIM >= 0.99 (`visually-lossless`),
 > SSIM >= 0.975 (`balanced`, default) or `fast` (balanced threshold, no AVIF, <= 5 encodes). Runs in the browser
 > (Web Worker) and in Node. Apache-2.0. Nothing is uploaded anywhere.
@@ -42,7 +42,7 @@ Key facts:
 - [React hook](https://baukaalm.github.io/optiq/guide/react): `useOptiq` from `optiq-image/react`
 - [CLI and Vite plugin](https://baukaalm.github.io/optiq/guide/static)
 - [AI agents](https://baukaalm.github.io/optiq/guide/agents): MCP server, skill
-- [Benchmarks](https://baukaalm.github.io/optiq/benchmarks): 24-image corpus. balanced -60% total with SSIMULACRA2
+- [Benchmarks](https://baukaalm.github.io/optiq/benchmarks): 24-image corpus. balanced -61% total with SSIMULACRA2
   median 79 (WebP q80: -51%, 79). visually-lossless -50% with median 86. Gradients are the weakest category.
 
 ## Optional

@@ -12,6 +12,6 @@ export interface CodecBackend {
   /** Lossless PNG re-compression of existing PNG bytes (keeps ancillary chunks). */
   optimisePng?(bytes: Uint8Array, settings: EncodeSettings): Promise<Uint8Array>;
   resize?(img: RawImage, width: number, height: number): Promise<RawImage>;
-  /** Human-readable codec label for reports, e.g. "mozjpeg". */
+  /** Human-readable codec label for reports, e.g. "jpegli". */
   codecName(format: OutputFormat, settings: EncodeSettings): string;
 }

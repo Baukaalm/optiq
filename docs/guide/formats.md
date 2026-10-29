@@ -5,7 +5,7 @@ treated as PNG, and the result's `mimeType`/`fileName` are corrected.
 
 | Format | Input | Output | Notes |
 |---|---|---|---|
-| JPEG | 8-bit RGB / grayscale | MozJPEG, progressive | CMYK and 12-bit JPEG are returned unchanged |
+| JPEG | 8-bit RGB / grayscale | jpegli, progressive | CMYK and 12-bit JPEG are returned unchanged |
 | PNG | all, including 16-bit | oxipng (lossless) | APNG: container-level only |
 | WebP | lossy, lossless, animated | lossy / lossless | animated: container-level only |
 | AVIF | still images | libavif | animated or rotated (`irot`/`imir`) AVIF returned unchanged |

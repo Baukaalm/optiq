@@ -8,3 +8,4 @@ test-results
 bench/predictor/images
 bench/predictor/downloads
 bench/predictor/labels.jsonl
+.cache/

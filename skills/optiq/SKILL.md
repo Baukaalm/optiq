@@ -5,7 +5,7 @@ description: Optimise images in a project (JPEG, PNG, WebP, AVIF, GIF) with veri
 
 # Optimising images with Optiq
 
-`optiq-image` encodes each image with several codecs (MozJPEG, libwebp, libavif, oxipng), measures every result
+`optiq-image` encodes each image with several codecs (jpegli, libwebp, libavif, oxipng), measures every result
 against the input, and keeps the smallest one that passes: pixel-exact in `lossless` mode, SSIM ≥ 0.99 in
 `visually-lossless`, SSIM ≥ 0.975 in `balanced`. Everything runs locally; nothing is uploaded. Needs Node ≥ 20.
 

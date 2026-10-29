@@ -1,6 +1,6 @@
 {
   "name": "optiq-image",
-  "version": "0.5.0-beta.0",
+  "version": "0.6.0-beta.0",
   "description": "Browser-side image optimizer: picks the smallest encoding that satisfies lossless or perceptual (SSIM) quality constraints, in a Web Worker.",
   "license": "Apache-2.0",
   "author": "Bauyrzhan (https://github.com/Baukaalm)",
@@ -18,7 +18,7 @@
     "optimization",
     "webp",
     "avif",
-    "mozjpeg",
+    "jpegli",
     "oxipng",
     "wasm",
     "web-worker",
@@ -69,6 +69,11 @@
   },
   "files": [
     "dist",
+    "vendor/jpegli/*.js",
+    "vendor/jpegli/*.d.ts",
+    "vendor/jpegli/*.wasm",
+    "vendor/jpegli/LICENSE.*",
+    "vendor/jpegli/VERSION",
     "README.md",
     "LICENSE",
     "NOTICE",

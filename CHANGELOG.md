@@ -1,6 +1,19 @@
 # Changelog
 
-## 0.5.0-beta.0 (unreleased)
+## 0.6.0-beta.0 (unreleased)
+
+- **JPEG is now encoded with jpegli** (Google, from the JPEG XL project) instead of MozJPEG. Optiq builds it to
+  WebAssembly itself (`codecs/jpegli/build.sh`, 148 KB, byte-identical to the native `cjpegli`; CI rebuilds and
+  verifies it).
+  - Photos as JPEG: 7–24% smaller at about the same SSIMULACRA2.
+  - Engine time on JPEG: 2–3× faster.
+  - Graphics as JPEG: 10–16% larger but higher quality. In `auto` they rarely end up as JPEG.
+  - Measured in `bench/jpegli-compare.mjs` and `bench/jpegli-engine.mjs`.
+- SSIM thresholds are now per encoder. jpegli photos use k = 1.2 (0.97 in `balanced`), calibrated against
+  SSIMULACRA2 like AVIF. A canvas JPEG fallback keeps the plain threshold.
+- JPEG decoding still uses libjpeg-turbo from jSquash.
+
+## 0.5.0-beta.0 (2026-10-29)
 
 - **Quality: AVIF is held to a stricter SSIM threshold.** Scoring the benchmark outputs with the independent
   SSIMULACRA2 metric (libjxl) showed that SSIM tolerates AVIF's smoothing. `balanced` had a median SSIMULACRA2 of

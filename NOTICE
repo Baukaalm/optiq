@@ -3,14 +3,21 @@ Copyright 2026 Optiq contributors
 
 This product is licensed under the Apache License, Version 2.0 (see LICENSE).
 
-Optiq does not bundle codec binaries itself. It depends on the following packages, which an application
-bundle that uses Optiq will include. Their licences permit commercial redistribution provided the notices
-are reproduced; the full texts ship inside each package (LICENSE and codec/LICENSE.codec.md).
+Optiq bundles one codec binary itself, the jpegli JPEG encoder in vendor/jpegli/. It is built from source by
+codecs/jpegli/build.sh, and the licence texts ship next to it (vendor/jpegli/LICENSE.*):
+
+  jpegli                                        BSD-3-Clause, Copyright (c) the JPEG XL Project Authors
+  Highway (in jpegli)                           Apache-2.0 OR BSD-3-Clause, Copyright Google LLC
+  skcms (in jpegli)                             BSD-3-Clause, Copyright (c) 2018 Google Inc.
+
+The other codecs come from the following packages, which an application bundle that uses Optiq will include.
+Their licences permit commercial redistribution provided the notices are reproduced; the full texts ship inside
+each package (LICENSE and codec/LICENSE.codec.md).
 
   @jsquash/jpeg, @jsquash/webp, @jsquash/avif, @jsquash/png, @jsquash/oxipng, @jsquash/resize
     Apache-2.0, Copyright 2023 jamsinclair; derived from Squoosh, Copyright 2020 Google Inc.
 
-  MozJPEG / libjpeg-turbo (in @jsquash/jpeg)
+  MozJPEG / libjpeg-turbo (in @jsquash/jpeg; Optiq uses its JPEG decoder)
     IJG License, Modified (3-clause) BSD License, zlib License
     "This software is based in part on the work of the Independent JPEG Group."
 

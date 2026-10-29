@@ -47,3 +47,18 @@ jobs:
           name: screenshots
           path: test-results/*.png
           if-no-files-found: ignore
+
+  # vendor/jpegli is built from pinned sources (codecs/jpegli/build.sh). Rebuild it in the official Emscripten
+  # container and check that it encodes byte-identically to the committed module.
+  jpegli:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    container: emscripten/emsdk:6.0.13
+    steps:
+      - uses: actions/checkout@v7
+      - run: apt-get update -qq && apt-get install -y -qq --no-install-recommends ninja-build cmake
+      - name: Rebuild jpegli and compare with vendor/jpegli
+        run: |
+          git config --global --add safe.directory '*'
+          JPEGLI_OUT="$RUNNER_TEMP/jpegli" codecs/jpegli/build.sh "$RUNNER_TEMP/jpegli-build"
+          "${EMSDK_NODE:-node}" codecs/jpegli/check.mjs "$RUNNER_TEMP/jpegli"

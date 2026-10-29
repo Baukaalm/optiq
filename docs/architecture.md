@@ -26,7 +26,7 @@ compressImage / createCompressor  ──Blob──▶  worker.ts → run.ts
   progress relay, typed errors,                  classify.ts             (heuristic category)
   Blob/File result with correct type+name        plan.ts                 (codec/settings plan per category & mode)
                                   ◀─ArrayBuffer─ quality.ts              (SSIM, exact equality)
-upload.ts: presigned PUT/POST, progress,       codecs/wasm.ts   (jSquash: MozJPEG, libwebp, libavif, png, oxipng, resize)
+upload.ts: presigned PUT/POST, progress,       codecs/wasm.ts   (jpegli; jSquash: libwebp, libavif, png, oxipng, resize)
   original-file fallback                       codecs/canvas.ts (OffscreenCanvas fallback)
                                                codecs/fallback.ts (per-operation fallback + reporting)
 ```
@@ -63,9 +63,9 @@ Node (tests and benchmarks, `src/node.ts`).
    On the benchmark corpus the classifier matched the hand-assigned category on 23/24 images; the miss (a
    presentation slide labelled `illustration` instead of `text-graphic`) gets the same codec strategy.
 7. **Plan.** `plan.ts` orders candidates per category:
-   - photo: AVIF (4:2:0) → WebP → MozJPEG (4:2:0);
+   - photo: AVIF (4:2:0) → WebP → jpegli (4:2:0);
    - screenshot / text / illustration: lossless PNG (oxipng) and lossless WebP first, then WebP with sharp YUV,
-     AVIF 4:4:4, MozJPEG 4:4:4;
+     AVIF 4:4:4, jpegli 4:4:4;
    - transparent: as graphics, without JPEG; AVIF alpha quality raised by 25;
    - gradient: photo order plus lossless candidates and a stricter SSIM threshold (half-way to 1), because banding
      appears before SSIM drops.
@@ -149,7 +149,8 @@ fitted for the `balanced`/`fast` thresholds only.
 
 | Need | Choice | Language | Licence | Size (wasm) |
 |---|---|---|---|---|
-| JPEG enc/dec | MozJPEG via `@jsquash/jpeg` | C → Emscripten | BSD-style (IJG/libjpeg-turbo) | 252 KB / 166 KB |
+| JPEG encoder | jpegli, built by `codecs/jpegli/build.sh` (`vendor/jpegli`) | C++ → Emscripten | BSD-3 (+ Highway, skcms) | 148 KB |
+| JPEG decoder | libjpeg-turbo via `@jsquash/jpeg` | C → Emscripten | BSD-style (IJG/libjpeg-turbo) | 166 KB |
 | WebP enc/dec | libwebp via `@jsquash/webp` | C → Emscripten | BSD-3 | 346 KB (SIMD) / 138 KB |
 | AVIF enc/dec | libavif + libaom via `@jsquash/avif` | C → Emscripten | BSD-2 / BSD-2 + AOM patent licence | 3.5 MB / 1.2 MB |
 | PNG enc/dec | `png` crate via `@jsquash/png` | Rust → wasm-bindgen | MIT/Apache-2.0 | 181 KB |
@@ -160,7 +161,30 @@ fitted for the `balanced`/`fast` thresholds only.
 All are loaded with separate dynamic `import()`s, so a bundler emits separate chunks and a JPEG→WebP job never
 downloads the 3.5 MB AVIF encoder. Rejected: **libimagequant** (pngquant) — GPL-3.0/commercial, incompatible with
 permissive distribution; **JPEG XL** — no shipping browser decodes it by default except Safari, so outputs would not
-be displayable; **jpegtran** lossless JPEG transcoding — not available in the jSquash builds (next step).
+be displayable; **jpegtran** lossless JPEG transcoding — not available in the jSquash builds (next step); a
+**Rust port of jpegli** (`zenjpeg`) — AGPL-3.0, and by its own account it now shares little code with jpegli.
+
+### Why jpegli instead of MozJPEG
+
+MozJPEG (from jSquash) was the JPEG encoder until 0.5. jpegli, Google's encoder from the JPEG XL project, spends
+bits where the eye notices them: adaptive quantisation per block, tuned tables, more internal precision. It was
+measured before switching (`bench/jpegli-compare.mjs`). Both encoders' outputs were decoded with the same standard
+decoder, because jpegli's own high-precision decoder would flatter it. At equal SSIMULACRA2, jpegli needed 5–9%
+fewer bytes for photos at the `balanced` quality level and 9–14% fewer at `visually-lossless`. On graphics there was
+no gain.
+
+Inside the engine the gate is SSIM, which does not see that advantage, so jpegli's SSIM threshold for photos was
+calibrated against SSIMULACRA2 (k = 1.2, see [modes](/guide/modes#the-quality-metric)). With that calibration, on
+JPEG output (`bench/jpegli-engine.mjs`):
+- photos were 7% (held-out set) to 24% (benchmark) smaller than with MozJPEG at about the same SSIMULACRA2;
+- the engine ran 2–3× faster, because the jSquash MozJPEG build has no SIMD and uses trellis quantisation, and
+  jpegli encodes 4–10× faster in WASM.
+
+Graphics encoded as JPEG come out 10–16% larger but score higher. In `auto` they rarely end up as JPEG.
+
+The module is built from a pinned commit by `codecs/jpegli/build.sh` with Emscripten 6.0.13 and ships in
+`vendor/jpegli/` (148 KB). Its encodes are byte-identical to the native `cjpegli`. CI rebuilds it in the official
+Emscripten container and checks that the rebuild encodes identically (`codecs/jpegli/check.mjs`).
 
 ### Why no custom Rust crate (yet)
 
@@ -199,7 +223,7 @@ can fail and the original is returned), no lossless WebP, no encoder tuning.
 
 | Format | Input | Output | Notes |
 |---|---|---|---|
-| JPEG | ✓ (8-bit YCbCr/gray) | ✓ MozJPEG | CMYK/12-bit: original kept |
+| JPEG | ✓ (8-bit YCbCr/gray) | ✓ jpegli | CMYK/12-bit: original kept |
 | PNG (incl. 16-bit) | ✓ | ✓ oxipng | APNG: container-level only |
 | WebP (lossy/lossless/animated) | ✓ | ✓ | animated: container-level only, or first frame with `preserveAnimation: false` |
 | AVIF | ✓ still | ✓ | animated / `irot` / `imir`: original kept |

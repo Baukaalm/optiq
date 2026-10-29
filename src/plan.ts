@@ -86,18 +86,26 @@ export function planCandidates(input: PlanInput, opts: ResolvedOptions): FormatP
 }
 
 /**
- * SSIM is more lenient towards AVIF's smoothing than towards JPEG/WebP artefacts: at the same SSIM, AVIF outputs scored
- * 3-5 points lower on SSIMULACRA2 (median, same images), and graphics up to 17 lower. AVIF must therefore get k times
- * closer to 1: T_avif = 1 − k·(1 − T). k was fitted so that AVIF matches WebP on SSIMULACRA2 at both perceptual
- * thresholds (bench/calibrate-s2.mjs, bench/calibrate-s2-fit.mjs; fitted on the benchmark corpus, checked on a
+ * SSIM does not judge every encoder's artefacts alike, so each encoder gets its own threshold T_e = 1 − k·(1 − T),
+ * with k fitted so that the format matches WebP on SSIMULACRA2 (an independent, perception-tuned metric) at both
+ * perceptual thresholds, on the same images (bench/calibrate-s2.mjs; fitted on the benchmark corpus, checked on a
  * held-out set of 91 images).
+ * - AVIF: SSIM tolerates its smoothing; at equal SSIM it scored 3–5 points lower than WebP (graphics up to 17 lower),
+ *   so it must get closer to 1 (k < 1).
+ * - jpegli: its perceptual quantisation scored 4 points *higher* than WebP at equal SSIM on photos, so photos may
+ *   stop slightly earlier (k > 1); on graphics it is behind WebP and keeps k = 1.
+ * Keyed by encoder, not format: a browser's canvas JPEG fallback did not earn jpegli's allowance.
  */
-const AVIF_STRICTNESS: { photo: number; other: number } = { photo: 0.7, other: 0.3 };
+const STRICTNESS: Record<string, { photo: number; other: number }> = {
+  libavif: { photo: 0.7, other: 0.3 },
+  jpegli: { photo: 1.2, other: 1 },
+};
 
-/** The SSIM a candidate of `format` must reach, given the category threshold from `effectiveMinQuality`. */
-export function formatMinQuality(threshold: number, format: OutputFormat, category: ImageCategory): number {
-  if (format !== "avif" || threshold >= 1) return threshold;
-  return 1 - (category === "photo" ? AVIF_STRICTNESS.photo : AVIF_STRICTNESS.other) * (1 - threshold);
+/** The SSIM a candidate from `codec` (CodecBackend.codecName) must reach, given the category threshold. */
+export function formatMinQuality(threshold: number, codec: string, category: ImageCategory): number {
+  const k = STRICTNESS[codec];
+  if (!k || threshold >= 1) return threshold;
+  return 1 - (category === "photo" ? k.photo : k.other) * (1 - threshold);
 }
 
 /** Gradients band visibly before SSIM drops; require a stricter threshold for them. */

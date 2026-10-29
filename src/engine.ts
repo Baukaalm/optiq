@@ -401,7 +401,8 @@ export async function optimize(input: Uint8Array, options: OptiqOptions | undefi
     } else {
       metric = "ssim";
       quality = out.width === expected.width && out.height === expected.height ? (await timed("ssim", () => ssim(expected, out))).ssim : 0;
-      passed = quality >= formatMinQuality(minQuality, plan.format, category);
+      // After encoding, codecName reports the encoder that actually ran (a fallback may have taken over).
+      passed = quality >= formatMinQuality(minQuality, ctx.backend.codecName(plan.format, settings), category);
     }
     const c: Candidate = {
       report: {
@@ -569,8 +570,7 @@ export async function optimize(input: Uint8Array, options: OptiqOptions | undefi
         // Nothing met the quality constraint: best-effort is the highest-quality candidate.
         chosen = [...candidates].sort((a, b) => (b.report.quality ?? 0) - (a.report.quality ?? 0) || a.bytes.length - b.bytes.length)[0];
         if (!chosen) throw new OptiqError("CODEC_UNAVAILABLE", `No encoder could produce output: ${warnings.filter((w) => w.includes("unavailable")).join("; ")}`);
-        const f = chosen.report.format;
-        const limit = cat && (f === "jpeg" || f === "png" || f === "webp" || f === "avif") ? formatMinQuality(minQuality, f, cat) : minQuality;
+        const limit = cat ? formatMinQuality(minQuality, chosen.report.codec, cat) : minQuality;
         unmet.push({ constraint: "minQuality", limit, actual: chosen.report.quality ?? 0 });
       }
       // Prefer the container candidate unless re-encoding saves at least minSavingsRatio.

@@ -3,8 +3,8 @@
 | Mode | Constraint | Pixels | Default budget | AVIF preset |
 |---|---|---|---|---|
 | `lossless` | decoded RGBA identical to the input | unchanged (verified) | 4 encodes | not used |
-| `visually-lossless` | SSIM ≥ 0.99 (AVIF stricter, see below) | may differ | 16 encodes | speed 6 |
-| `balanced` (default) | SSIM ≥ 0.975 (AVIF stricter, see below) | may differ | 10 encodes | speed 7 |
+| `visually-lossless` | SSIM ≥ 0.99 (per encoder, see below) | may differ | 16 encodes | speed 6 |
+| `balanced` (default) | SSIM ≥ 0.975 (per encoder, see below) | may differ | 10 encodes | speed 7 |
 | `fast` | SSIM ≥ 0.975 | may differ | 5 encodes | not used (no AVIF, no oxipng) |
 
 Perceptual modes never claim to be lossless: the result reports `qualityMetricName: "ssim"` and the measured
@@ -49,6 +49,10 @@ SSIM with uniform 8×8 windows at stride 4, on BT.601 Y, Cb and Cr, weighted 6:1
   than WebP on the same images, and up to 17 points lower on screenshots and text. k was fitted so that AVIF matches
   WebP on SSIMULACRA2 in both perceptual modes. It was fitted on the 24 benchmark images and checked on 91 held-out
   ones. Scripts: `bench/calibrate-s2.mjs` and `bench/calibrate-s2-fit.mjs`.
+- **jpegli** (the JPEG encoder) goes the other way on photos. Its perceptual quantisation scored 4 points *higher*
+  than WebP at the same SSIM, so JPEG photos may stop slightly earlier: k = 1.2, which makes `balanced` 0.97. On
+  graphics it is behind WebP and keeps the plain threshold. This allowance belongs to jpegli, not to the format:
+  when a browser's canvas encoder stands in for it, the plain threshold applies.
 - **Large images (> 4 MP):** the quality search runs on a 3×3 mosaic of full-resolution 512 px tiles; the winning
   encoder is then run on the full image and verified there.
 

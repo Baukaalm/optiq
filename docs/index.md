@@ -25,7 +25,7 @@ features:
   - title: Constraint first
     details: "lossless (pixel-exact, verified), visually-lossless (SSIM ≥ 0.99) or balanced (SSIM ≥ 0.975). Every candidate is decoded and scored; nothing is returned on an estimate."
   - title: Mature codecs in WASM
-    details: MozJPEG, libwebp, libavif, oxipng and Rust resize/png via jSquash. Each codec is a lazy chunk; a JPEG→WebP job never downloads the AVIF encoder.
+    details: jpegli (built from source), plus libwebp, libavif, oxipng and Rust resize/png via jSquash. Each codec is a lazy chunk; a JPEG→WebP job never downloads the AVIF encoder.
   - title: Off the main thread
     details: Work runs in module Web Workers. Cancel with AbortSignal (the worker is terminated), follow progress by stage, get typed errors.
   - title: Content-aware

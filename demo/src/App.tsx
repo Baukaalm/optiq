@@ -80,7 +80,7 @@ export function App() {
         </div>
         <div className="flex flex-wrap gap-2">
           <Chip variant="soft" color="accent">Runs in a Web Worker</Chip>
-          <Chip variant="soft">MozJPEG · WebP · AVIF · oxipng (WASM)</Chip>
+          <Chip variant="soft">jpegli · WebP · AVIF · oxipng (WASM)</Chip>
           <Chip variant="soft" color="success">Nothing leaves the page until you upload</Chip>
         </div>
         <h1 className="text-4xl font-bold tracking-tight text-balance sm:text-5xl">Smaller uploads, measured quality.</h1>

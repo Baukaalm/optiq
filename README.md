@@ -10,7 +10,7 @@
 **[Try the demo](https://baukaalm.github.io/optiq/try)** · **[Documentation](https://baukaalm.github.io/optiq/)** · [Benchmarks](https://baukaalm.github.io/optiq/benchmarks)
 
 Browser-side image optimisation for uploads. For every image Optiq encodes a bounded set of candidates
-(MozJPEG, libwebp, libavif, oxipng — compiled to WebAssembly), **measures** each one, and returns the smallest
+(jpegli, libwebp, libavif, oxipng — compiled to WebAssembly), **measures** each one, and returns the smallest
 output that satisfies your constraint:
 
 - `lossless` — decoded pixels (including alpha) are verified identical to the input;
@@ -186,7 +186,7 @@ Presigned URLs must come from your backend — see [docs/guide/s3.md](https://gi
 
 | | Input | Output |
 |---|---|---|
-| JPEG | 8-bit RGB/gray (CMYK, 12-bit: kept as is) | MozJPEG, progressive |
+| JPEG | 8-bit RGB/gray (CMYK, 12-bit: kept as is) | jpegli, progressive |
 | PNG | all incl. 16-bit, APNG (container-level only) | oxipng (lossless) |
 | WebP | lossy, lossless, animated (container-level only) | lossy / lossless |
 | AVIF | still (animated / rotated: kept as is) | libavif |
@@ -219,10 +219,17 @@ Formats are detected from file content. Extensions and MIME types are ignored (a
 
 ## Licensing
 
-Optiq: Apache-2.0. Bundled codecs (via jSquash, Apache-2.0 wrappers): MozJPEG (IJG + BSD-3 + zlib),
-libwebp (BSD-3), libavif (BSD-2) with libaom (BSD-2 + AOMedia patent licence), Rust `png`, `oxipng`, `resize`
-(MIT/Apache-2.0). All permit commercial redistribution with notices. No GPL code is included
-(libimagequant was rejected for that reason).
+Optiq is licensed under Apache-2.0. Its codecs come from two places:
+- **jpegli** (BSD-3, with Highway and skcms), the JPEG encoder. Optiq builds it itself from pinned sources
+  (`codecs/jpegli/build.sh`), and CI rebuilds it and checks that it encodes identically.
+- **jSquash** (Apache-2.0 wrappers), for everything else:
+  - libjpeg-turbo, the JPEG decoder (IJG + BSD-3 + zlib);
+  - libwebp (BSD-3);
+  - libavif (BSD-2) with libaom (BSD-2 + AOMedia patent licence);
+  - the Rust crates `png`, `oxipng` and `resize` (MIT/Apache-2.0).
+
+All of these permit commercial redistribution with notices. No GPL or AGPL code is included: libimagequant and a
+Rust jpegli port were rejected for that reason.
 
 ## Benchmark results
 
@@ -245,10 +252,10 @@ tables and per-image rows are in [`bench/results/RESULTS.md`](https://github.com
 
 | Tool | Total output | Reduction | SSIMULACRA2 median | SSIMULACRA2 ≥ 80 | Median time | Median peak RSS |
 |---|---|---|---|---|---|---|
-| Optiq `balanced` | 13.25 → 5.29 MB | 60.1% | 79.4 | 10/24 | 1.6 s | 301 MB |
-| Optiq `fast` (no AVIF, ≤ 5 encodes) | 13.25 → 5.49 MB | 58.5% | 78.0 | 9/24 | 410 ms | 175 MB |
-| Optiq `balanced`, `preserveMetadata: false` | 13.25 → 5.12 MB | 61.4% | 79.0 | 10/24 | 1.6 s | 301 MB |
-| Optiq `visually-lossless` | 13.25 → 6.70 MB | 49.5% | 85.8 | 19/24 | 2.4 s | 322 MB |
+| Optiq `balanced` | 13.25 → 5.12 MB | 61.4% | 78.7 | 9/24 | 1.4 s | 301 MB |
+| Optiq `fast` (no AVIF, ≤ 5 encodes) | 13.25 → 5.41 MB | 59.2% | 78.4 | 8/24 | 321 ms | 173 MB |
+| Optiq `balanced`, `preserveMetadata: false` | 13.25 → 5.04 MB | 62.0% | 78.0 | 9/24 | 1.4 s | 300 MB |
+| Optiq `visually-lossless` | 13.25 → 6.68 MB | 49.6% | 85.5 | 19/24 | 2.1 s | 318 MB |
 | libvips WebP q80 | 13.25 → 6.50 MB | 51.0% | 78.6 | 6/24 | 59 ms | 105 MB |
 | libvips MozJPEG q80 (opaque only) | 12.82 → 6.87 MB | 46.4% | 77.8 | 6/20 | 54 ms | 106 MB |
 | libvips AVIF q50 | 13.25 → 3.41 MB | 74.3% | 71.2 | 11/24 | 590 ms | 151 MB |
@@ -257,9 +264,9 @@ tables and per-image rows are in [`bench/results/RESULTS.md`](https://github.com
 
 | Tool | Total output | Reduction | SSIMULACRA2 median | SSIMULACRA2 ≥ 80 | Median time |
 |---|---|---|---|---|---|
-| Optiq `balanced` | 13.25 → 5.29 MB | 60.1% | 79.4 | 10/24 | 1.3 s |
-| Optiq `fast` | 13.25 → 5.49 MB | 58.5% | 78.0 | 9/24 | 331 ms |
-| Optiq `visually-lossless` | 13.25 → 6.70 MB | 49.5% | 85.8 | 19/24 | 2.2 s |
+| Optiq `balanced` | 13.25 → 5.12 MB | 61.4% | 78.7 | 9/24 | 1.2 s |
+| Optiq `fast` | 13.25 → 5.41 MB | 59.2% | 78.4 | 8/24 | 234 ms |
+| Optiq `visually-lossless` | 13.25 → 6.68 MB | 49.6% | 85.5 | 19/24 | 1.9 s |
 | browser-image-compression `initialQuality: 0.8` | 13.25 → 10.21 MB | 22.9% | 91.9 | 17/24 | 78 ms |
 | browser-image-compression `fileType: webp, 0.8` | 13.25 → 6.52 MB | 50.8% | 78.5 | 6/24 | 37 ms |
 | browser-image-compression `maxSizeMB: 1` | 13.25 → 7.14 MB | 46.1% | 92.4 | 21/21 (3 large photos were downscaled, not scored) | 128 ms |
@@ -267,26 +274,27 @@ tables and per-image rows are in [`bench/results/RESULTS.md`](https://github.com
 
 What the numbers say:
 
-- **`balanced` vs WebP 0.8.** Files are 19% smaller with about the same SSIMULACRA2 (median 79.4 vs 78.5–78.6).
-  Per image, `balanced` is smaller *and* scores higher on 11/24, and is never worse on both. The other 13 are
-  trade-offs.
-- **`visually-lossless` vs WebP 0.8.** About the same total size (6.70 vs 6.50 MB) at clearly higher quality:
-  median 85.8 vs 78.6, and 19/24 images at 80+ vs 6/24.
+- **`balanced` vs WebP 0.8.** Files are 21% smaller at the same median SSIMULACRA2 (78.7 vs 78.5–78.6), and the
+  worst image scores higher (70.1 vs 65.8). Per image, `balanced` is smaller *and* scores higher on 12/24, and is
+  never worse on both. The other 12 are trade-offs.
+- **`visually-lossless` vs WebP 0.8.** About the same total size (6.68 vs 6.50 MB) at clearly higher quality:
+  median 85.5 vs 78.6, and 19/24 images at 80+ vs 6/24.
 - **AVIF q50 is much smaller, at lower quality** (median 71.2). Whether that trade is right is a product decision.
   Optiq spends bytes to stay above its threshold.
 - **An earlier version claimed more than the data supports.** It said "24/24 meet SSIM 0.975 vs 18/24 for WebP 0.8".
   SSIMULACRA2 showed that SSIM was too lenient on AVIF: `balanced` then had a median of 73.9, below WebP 0.8.
   AVIF is now held to a stricter SSIM threshold, calibrated against SSIMULACRA2 on 91 held-out images
-  ([modes](https://baukaalm.github.io/optiq/guide/modes#the-quality-metric)). That costs +2.7% bytes in `balanced`.
+  ([modes](https://baukaalm.github.io/optiq/guide/modes#the-quality-metric)). That cost +2.7% bytes in `balanced`.
+  The switch from MozJPEG to jpegli in 0.6 more than won it back.
 - **Gradients remain the weak spot.** They score 64–72 in every Optiq mode and for every codec, because SSIM
   under-rates banding.
 - **Category matters.**
   - Screenshots: −89.7% vs −62.8% for WebP q80.
   - Text: −91.8% vs −46.6% (lossless WebP and screen-content encodes win there).
-  - Large 12 MP phone photos: −41.5% with metadata kept, −43.8% without, vs −30.7% for WebP q80.
+  - Large 12 MP phone photos: −43.8% with metadata kept, −44.8% without, vs −30.7% for WebP q80.
 - **Optiq is slow and memory-hungry by comparison.** It runs several encodes plus decodes and quality checks per
   image.
-  - Typical: 1–4 s per image, 3–5 s for 12 MP photos.
+  - Typical: 1–4 s per image, 2–3 s for 12 MP photos.
   - Worst case, a 5 MP dashboard screenshot: 17 s in `balanced`, 48 s in `visually-lossless`.
   - Memory: median peak RSS ≈ 300 MB, up to 1.1 GB.
   - Single canvas/libvips encodes take 5–800 ms.

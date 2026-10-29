@@ -1,11 +1,11 @@
 import type { RawImage } from "../pixels.js";
 import type { DecodableFormat, OutputFormat } from "../types.js";
+import { encodeJpegli } from "./jpegli.js";
 import type { CodecBackend, EncodeSettings } from "./types.js";
 
 // Each codec is a separate dynamic import so bundlers emit separate chunks and the
 // browser downloads only the WASM it actually needs (AVIF alone is ~3.5 MB).
 const loaders = {
-  jpegEnc: () => import("@jsquash/jpeg/encode.js"),
   jpegDec: () => import("@jsquash/jpeg/decode.js"),
   pngEnc: () => import("@jsquash/png/encode.js"),
   pngDec: () => import("@jsquash/png/decode.js"),
@@ -38,8 +38,8 @@ const num = (s: EncodeSettings, k: string, d: number): number => (typeof s[k] ==
 const bool = (s: EncodeSettings, k: string): boolean => s[k] === true;
 
 /**
- * WASM codecs from jSquash (Squoosh builds): MozJPEG, libwebp, libavif (C/C++ via Emscripten),
- * and the Rust crates png, oxipng and resize (via wasm-bindgen).
+ * WASM codecs: jpegli for JPEG encoding (our build, see ./jpegli.ts), and from jSquash (Squoosh builds) the JPEG
+ * decoder, libwebp, libavif (C/C++ via Emscripten) and the Rust crates png, oxipng and resize (via wasm-bindgen).
  */
 export function createWasmBackend(): CodecBackend {
   return {
@@ -62,18 +62,8 @@ export function createWasmBackend(): CodecBackend {
     async encode(format: OutputFormat, img: RawImage, s: EncodeSettings) {
       let out: ArrayBuffer;
       switch (format) {
-        case "jpeg": {
-          const sub444 = s.chroma === "444";
-          out = await (await loaders.jpegEnc()).default(toImageData(img), {
-            quality: num(s, "quality", 75),
-            progressive: true,
-            optimize_coding: true,
-            auto_subsample: !sub444,
-            chroma_subsample: sub444 ? 1 : 2,
-            trellis_multipass: bool(s, "trellisMultipass"),
-          });
-          break;
-        }
+        case "jpeg":
+          return encodeJpegli(img.data, img.width, img.height, num(s, "quality", 75), s.chroma === "444" ? "444" : "420");
         case "webp":
           out = await (await loaders.webpEnc()).default(toImageData(img), {
             quality: num(s, "quality", 75),
@@ -118,7 +108,7 @@ export function createWasmBackend(): CodecBackend {
       return raw(r);
     },
     codecName(format: OutputFormat, s: EncodeSettings) {
-      if (format === "jpeg") return "mozjpeg";
+      if (format === "jpeg") return "jpegli";
       if (format === "png") return "oxipng";
       if (format === "webp") return bool(s, "lossless") ? "libwebp-lossless" : "libwebp";
       return bool(s, "lossless") ? "libavif-lossless" : "libavif";

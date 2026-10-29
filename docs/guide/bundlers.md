@@ -58,7 +58,7 @@ Without `'wasm-unsafe-eval'` Optiq falls back to the browser's canvas encoders a
 |---|---|---|
 | Main-thread API | ≈ 10 KB | always |
 | Worker + engine | ≈ 47 KB | first compression |
-| MozJPEG enc / dec | 252 KB / 166 KB | JPEG input or output |
+| jpegli encoder / libjpeg-turbo decoder | 148 KB / 166 KB | JPEG output / JPEG input |
 | libwebp enc / dec | 346 KB / 138 KB | WebP |
 | libavif enc / dec | 3.5 MB / 1.2 MB | AVIF (consider removing it from `autoFormats` on slow networks) |
 | oxipng, png | 164 KB, 181 KB | PNG |
