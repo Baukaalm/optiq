@@ -1,6 +1,16 @@
 # Changelog
 
-## 0.6.0-beta.0 (unreleased)
+## 0.7.0-beta.0 (unreleased)
+
+- **Faster AVIF on cross-origin isolated pages.** With COOP/COEP headers, jSquash already used its multi-threaded
+  AVIF encoder, but this was untested. It is now verified in Chromium, Firefox and WebKit, inside Optiq's worker,
+  after a Vite build.
+  - Optiq adds 2×2 tiles for images of 1 MP and up so the threads can work in parallel: AVIF 1.5–1.7× faster than
+    on a plain page (threads alone: 1.35–1.46×), at +1.0% bytes (median).
+  - Measured with `bench/browser/avif-threads.mjs`; the browser suite now also runs isolated.
+  - Pages without the headers are unchanged.
+
+## 0.6.0-beta.0 (2026-10-29)
 
 - **JPEG is now encoded with jpegli** (Google, from the JPEG XL project) instead of MozJPEG. Optiq builds it to
   WebAssembly itself (`codecs/jpegli/build.sh`, 148 KB, byte-identical to the native `cjpegli`; CI rebuilds and

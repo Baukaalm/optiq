@@ -34,6 +34,15 @@ const ab = (b: Uint8Array): ArrayBuffer =>
   (b.byteOffset === 0 && b.byteLength === b.buffer.byteLength ? b.buffer : b.slice().buffer) as ArrayBuffer;
 const raw = (d: { data: Uint8ClampedArray; width: number; height: number }): RawImage => ({ data: d.data, width: d.width, height: d.height });
 
+/**
+ * On cross-origin isolated pages jSquash picks its multi-threaded AVIF encoder; 2×2 tiles let libaom's threads work
+ * in parallel. Measured (bench/browser/avif-threads.mjs): threads alone 1.35–1.46× faster, with tiles 1.54–1.71×;
+ * tiles cost +1.0% bytes (median, 38 encodes) at equal SSIMULACRA2. Single-threaded encodes gain nothing from tiles,
+ * and small images lose more, so tiles are used only for isolated pages and images of 1 MP and up.
+ */
+const avifTiles = (img: RawImage): boolean =>
+  (globalThis as { crossOriginIsolated?: boolean }).crossOriginIsolated === true && img.width * img.height >= 1_000_000;
+
 const num = (s: EncodeSettings, k: string, d: number): number => (typeof s[k] === "number" ? (s[k] as number) : d);
 const bool = (s: EncodeSettings, k: string): boolean => s[k] === true;
 
@@ -82,6 +91,7 @@ export function createWasmBackend(): CodecBackend {
             speed: num(s, "speed", 6),
             subsample: s.chroma === "444" ? 3 : 1,
             lossless: bool(s, "lossless"),
+            ...(avifTiles(img) ? { tileColsLog2: 1, tileRowsLog2: 1 } : {}),
           });
           break;
         case "png": {

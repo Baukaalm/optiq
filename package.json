@@ -1,6 +1,6 @@
 {
   "name": "optiq-image",
-  "version": "0.6.0-beta.0",
+  "version": "0.7.0-beta.0",
   "description": "Browser-side image optimizer: picks the smallest encoding that satisfies lossless or perceptual (SSIM) quality constraints, in a Web Worker.",
   "license": "Apache-2.0",
   "author": "Bauyrzhan (https://github.com/Baukaalm)",

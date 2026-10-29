@@ -1,4 +1,4 @@
-import { compressImage, type CompressionResult } from "optiq-image";
+import { compressImage, createCompressor, type CompressionResult } from "optiq-image";
 
 async function canvasImage(kind: "photo" | "screenshot" | "transparent", w: number, h: number, type: string, quality?: number): Promise<Blob> {
   const c = new OffscreenCanvas(w, h);
@@ -183,8 +183,30 @@ const cases: Case[] = [
 declare global {
   interface Window {
     runSuite: (only?: string) => Promise<{ name: string; ok: boolean; detail: unknown }[]>;
+    benchAvif: (opts: { width: number; height: number; runs: number; parallel: number }) => Promise<Record<string, unknown>>;
   }
 }
+
+/** AVIF timing for bench/browser/avif-threads.mjs: one image at a time, then `parallel` images at once. */
+window.benchAvif = async ({ width, height, runs, parallel }) => {
+  const input = await canvasImage("photo", width, height, "image/png");
+  const file = (i: number) => new File([input], `p${i}.png`, { type: "image/png" });
+  const opts = { targetFormat: "avif" as const, mode: "balanced" as const, preserveMetadata: false };
+  const c = createCompressor();
+  await c.compress(file(-1), opts); // warm-up: worker start, codec download and compile
+  const single: number[] = [];
+  let last: CompressionResult | undefined;
+  for (let i = 0; i < runs; i++) {
+    const t = performance.now();
+    last = await c.compress(file(i), opts);
+    single.push(performance.now() - t);
+  }
+  const t = performance.now();
+  await Promise.all(Array.from({ length: parallel }, (_, i) => c.compress(file(100 + i), opts)));
+  const batch = performance.now() - t;
+  c.terminate();
+  return { crossOriginIsolated: self.crossOriginIsolated, cores: navigator.hardwareConcurrency, single, batch, bytes: last?.outputBytes, codec: last?.codec, candidates: last?.candidates.length };
+};
 
 window.runSuite = async (only?: string) => {
   const out: { name: string; ok: boolean; detail: unknown }[] = [];

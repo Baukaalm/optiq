@@ -208,7 +208,9 @@ environment and adding an unbuilt, untested crate would violate the “working a
   dropped. Browser test: abort latency 0 ms on a 12 MP job.
 - **WASM memory never shrinks.** Workers are terminated after jobs above 8 MP (`recycleAfterPixels`) and after 30 s idle.
 - `SharedArrayBuffer`/cross-origin isolation are not required. When the page *is* cross-origin isolated, jSquash
-  selects its multi-threaded AVIF encoder and oxipng builds; that configuration is **not** benchmarked or tested here.
+  selects its multi-threaded AVIF encoder and oxipng builds, and Optiq adds 2×2 AVIF tiles for images of 1 MP and up.
+  AVIF is then 1.5–1.7× faster in Chromium, Firefox and WebKit, at +1% bytes. The browser suite runs the whole test
+  set isolated as well ([bundlers](/guide/bundlers#cross-origin-isolation-faster-avif)).
 
 ## Fallbacks
 
